@@ -42,6 +42,7 @@ public class ResidentLogin extends javax.swing.JFrame {
         residentUsernameTxtField = new javax.swing.JTextField();
         residentPassTxtField = new javax.swing.JTextField();
         residentLoginBtn = new javax.swing.JButton();
+        passView = new javax.swing.JCheckBox();
 
         mgmtLoginPageLabel1.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         mgmtLoginPageLabel1.setText("Management Login Page");
@@ -85,6 +86,14 @@ public class ResidentLogin extends javax.swing.JFrame {
             }
         });
 
+        passView.setFont(new java.awt.Font("Georgia", 0, 8)); // NOI18N
+        passView.setText("Show Password");
+        passView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,17 +108,19 @@ public class ResidentLogin extends javax.swing.JFrame {
                         .addComponent(mgmtLoginPageLabel4))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(residentPassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(residentPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(residentUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(residentUsernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(passView)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(residentPassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(residentPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(residentUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(residentUsernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
+                        .addGap(180, 180, 180)
                         .addComponent(residentLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -128,9 +139,11 @@ public class ResidentLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentPassLabel)
                     .addComponent(residentPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(residentLoginBtn)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,6 +160,10 @@ public class ResidentLogin extends javax.swing.JFrame {
     private void residentLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentLoginBtnActionPerformed
         login();
     }//GEN-LAST:event_residentLoginBtnActionPerformed
+
+    private void passViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passViewActionPerformed
+
+    }//GEN-LAST:event_passViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +208,8 @@ public class ResidentLogin extends javax.swing.JFrame {
         // get the username & password typed from text field
         userName = residentUsernameTxtField.getText();
         pass = residentPassTxtField.getText();
-        file = "C:\\JP\\ParkhillPMS\\src\\txtFile\\resdient.txt";
+        
+        file = "database\\residentTenant.txt";
         
         User user = new User(userName,pass);
         if(user.login2(userName, pass, file)){
@@ -228,6 +246,7 @@ public class ResidentLogin extends javax.swing.JFrame {
     private javax.swing.JLabel mgmtLoginPageLabel1;
     private javax.swing.JLabel mgmtLoginPageLabel3;
     private javax.swing.JLabel mgmtLoginPageLabel4;
+    private javax.swing.JCheckBox passView;
     private javax.swing.JButton residentLoginBtn;
     private javax.swing.JLabel residentPassLabel;
     private javax.swing.JTextField residentPassTxtField;
