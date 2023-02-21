@@ -6,6 +6,7 @@ package Interface;
 
 import User.Resident;
 import User.User;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -83,6 +84,11 @@ public class ResidentLogin extends javax.swing.JFrame {
         residentLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 residentLoginBtnActionPerformed(evt);
+            }
+        });
+        residentLoginBtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                residentLoginBtnKeyPressed(evt);
             }
         });
 
@@ -164,6 +170,12 @@ public class ResidentLogin extends javax.swing.JFrame {
     private void passViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passViewActionPerformed
 
     }//GEN-LAST:event_passViewActionPerformed
+
+    private void residentLoginBtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_residentLoginBtnKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            login();
+        }
+    }//GEN-LAST:event_residentLoginBtnKeyPressed
 
     /**
      * @param args the command line arguments
