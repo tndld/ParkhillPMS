@@ -6,6 +6,8 @@ package Interface;
 
 import User.BuildingExecutive;
 import User.User;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -18,6 +20,10 @@ public class BuildingExeMenu extends javax.swing.JFrame {
      */
     public BuildingExeMenu() {
         initComponents();
+        
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -62,8 +68,8 @@ public class BuildingExeMenu extends javax.swing.JFrame {
 
     private void buidingExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buidingExeLogoutBtnActionPerformed
         BuildingExecutive buildingExe = new BuildingExecutive("building", "building123");
-        
-        
+        buildingExe.logout();
+        this.setVisible(false);
     }//GEN-LAST:event_buidingExeLogoutBtnActionPerformed
 
     /**

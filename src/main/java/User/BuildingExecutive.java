@@ -4,6 +4,8 @@
  */
 package User;
 
+import Interface.BuildingExeMenu;
+
 /**
  *
  * @author Asus
@@ -15,6 +17,6 @@ public class BuildingExecutive extends User {
     }
     
     public void buildingExeMenu(){
-        System.out.println("Building Executive Page");
+        new BuildingExeMenu().setVisible(true);
     }
 }

@@ -17,6 +17,6 @@ public class BuildingManager extends User {
     }
     
     public void buidingManagerMenu(){
-        new BuildingExeMenu().setVisible(true);
+        System.out.println("Building Manager Page");
     }
 }
