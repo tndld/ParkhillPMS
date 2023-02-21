@@ -70,22 +70,22 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="residentRoleLabel" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField5" max="32767" attributes="0"/>
+                              <Component id="userRoleTF" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="residentPhoneLabel" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField4" max="32767" attributes="0"/>
+                              <Component id="residentPhoneTF" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="residentEmailLabel" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField3" max="32767" attributes="0"/>
+                              <Component id="residentEmailTF" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="residentFullNameLabel" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="fullNameTF" max="32767" attributes="0"/>
+                              <Component id="residentFullNameTF" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="residentUsernameLabel" min="-2" pref="82" max="-2" attributes="0"/>
@@ -99,8 +99,10 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="homepageBTN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="editButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,22 +119,22 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="residentFullNameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="fullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="residentFullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="residentEmailLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="residentEmailTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="residentPhoneLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="residentPhoneTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="residentRoleLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userRoleTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -144,9 +146,12 @@
                   <Component id="residentPasswordLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="changePwButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="editButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="homepageBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -232,7 +237,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fullNameTF">
+    <Component class="javax.swing.JTextField" name="residentFullNameTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -240,7 +245,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="residentEmailTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -248,7 +253,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="residentPhoneTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -256,7 +261,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="userRoleTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -279,6 +284,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Pasword"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePwButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="homepageBTN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Homepage"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homepageBTNActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

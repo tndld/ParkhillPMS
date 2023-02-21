@@ -43,9 +43,9 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         saveBtn = new javax.swing.JButton();
         usernameTF = new javax.swing.JTextField();
         fullNameTF = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        emailTF = new javax.swing.JTextField();
+        phoneTF = new javax.swing.JTextField();
+        userRoleTF = new javax.swing.JTextField();
         unitNoTF = new javax.swing.JTextField();
         changePwButton = new javax.swing.JButton();
 
@@ -89,8 +89,8 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         usernameTF.setEditable(false);
         usernameTF.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
+        userRoleTF.setEditable(false);
+        userRoleTF.setBackground(new java.awt.Color(204, 204, 204));
 
         unitNoTF.setEditable(false);
         unitNoTF.setBackground(new java.awt.Color(204, 204, 204));
@@ -101,6 +101,11 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         });
 
         changePwButton.setText("Change Pasword");
+        changePwButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePwButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,15 +130,15 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(residentRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField5))
+                                .addComponent(userRoleTF))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4))
+                                .addComponent(phoneTF))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(residentEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3))
+                                .addComponent(emailTF))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(residentFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -164,15 +169,15 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userRoleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentUnitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +188,7 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                     .addComponent(changePwButton))
                 .addGap(30, 30, 30)
                 .addComponent(saveBtn)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,6 +202,11 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         this.setVisible(false);
         new ResidentUserProfile().setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void changePwButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePwButtonActionPerformed
+        this.setVisible(false);
+        new ResidentChangePassword().setVisible(true);
+    }//GEN-LAST:event_changePwButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,12 +253,11 @@ public class ResidentEditProfile extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton changePwButton;
+    private javax.swing.JTextField emailTF;
     private javax.swing.JTextField fullNameTF;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField phoneTF;
     private javax.swing.JLabel residentEmailLabel;
     private javax.swing.JLabel residentFullNameLabel;
     private javax.swing.JLabel residentPasswordLabel;
@@ -258,6 +267,7 @@ public class ResidentEditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel residentUsernameLabel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextField unitNoTF;
+    private javax.swing.JTextField userRoleTF;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 }
