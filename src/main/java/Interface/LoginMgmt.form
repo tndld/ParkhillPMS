@@ -74,7 +74,7 @@
               <Component id="mgmtLoginPageLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="mgmtUsernameTxtField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mgmtUsernameTxtField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="mgmtUsernameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -89,7 +89,7 @@
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="mgmtLoginBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

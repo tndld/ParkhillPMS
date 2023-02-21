@@ -9,6 +9,7 @@ import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,6 +46,7 @@ public class User {
     
     public boolean login2(String username, String pasword, String filename){
         try{
+            
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
             String line;
@@ -62,6 +64,7 @@ public class User {
         }
         return false;
     }
+    
     
     public void logout(){
         int confirmLogout = JOptionPane.showConfirmDialog(null, 

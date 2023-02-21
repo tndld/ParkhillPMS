@@ -145,7 +145,7 @@ public class ResidentLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_residentPassTxtFieldActionPerformed
 
     private void residentLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentLoginBtnActionPerformed
-       login();
+        login();
     }//GEN-LAST:event_residentLoginBtnActionPerformed
 
     /**
@@ -186,42 +186,18 @@ public class ResidentLogin extends javax.swing.JFrame {
     public void login(){
         String userName;
         String pass;
+        String file;
         
+        // get the username & password typed from text field
         userName = residentUsernameTxtField.getText();
         pass = residentPassTxtField.getText();
+        file = "C:\\JP\\ParkhillPMS\\src\\txtFile\\resdient.txt";
         
-        try{
-            FileReader fr = new FileReader("C:\\JP\\ParkhillPMS\\src\\txtFile\\resdient.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line;
-            while((line = br.readLine()) != null){
-                String[] residentInfo = line.split(",");
-                if (residentInfo[0].equals(userName) && residentInfo[1].equals(pass)){
-                    String username = userName;
-                    String password = pass; 
-                    Resident resident = new Resident(userName, pass);
-                }
-            }
-            br.close();
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-    }
-    }
-    
-    
-    public void login(User user, String username, String password) {
-        
-        String userName;
-        String pass;
-        
-        userName = residentUsernameTxtField.getText();
-        pass = residentPassTxtField.getText();
-        
-        if (user.login(username, password)){
+        User user = new User(userName,pass);
+        if(user.login2(userName, pass, file)){
             JOptionPane.showMessageDialog(this, "Login Successful.");
             this.setVisible(false);
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this,
                     "Login Failed! \nIncorrect Username or Password.",
                     "Error Message",
@@ -229,8 +205,23 @@ public class ResidentLogin extends javax.swing.JFrame {
             residentUsernameTxtField.setText("");
             residentPassTxtField.setText("");
         }
-            
+//        try {
+//            FileReader fr = new FileReader("C:\\JP\\ParkhillPMS\\src\\txtFile\\resdient.txt");
+//            BufferedReader br = new BufferedReader(fr);
+//            String line;
+//            while((line = br.readLine()) != null){
+//                String[] residentInfo = line.split(",");
+//        }
+//        br.close();
+//        fr.close();
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
+        
     }
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel mgmtLoginPageLabel;
