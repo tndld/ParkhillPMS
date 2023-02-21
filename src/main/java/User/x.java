@@ -10,4 +10,5 @@ package User;
  */
 public class x {
     private String Hi;
+    private int num;
 }
