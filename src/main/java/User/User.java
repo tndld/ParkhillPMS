@@ -5,6 +5,10 @@
 package User;
 
 import Interface.LoginMgmt;
+import java.awt.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +41,26 @@ public class User {
     }else {
             return false;
         }
+    }
+    
+    public boolean login2(String username, String pasword, String filename){
+        try{
+            FileReader fr = new FileReader(filename);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while((line = br.readLine()) != null){
+                String[] residentInfo = line.split(",");
+                if (residentInfo[0].equals(username) && residentInfo[1].equals(password)){
+                    this.isLoggedIn = true;
+                    return true;
+                }
+            }
+            br.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     public void logout(){

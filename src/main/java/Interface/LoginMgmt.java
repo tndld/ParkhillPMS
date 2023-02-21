@@ -41,98 +41,118 @@ public class LoginMgmt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        accountExeUsernameLabel = new javax.swing.JLabel();
-        accountExePasswordLabel = new javax.swing.JLabel();
-        usernameTxtField = new javax.swing.JTextField();
-        passTxtField = new javax.swing.JTextField();
-        adminLoginBtn = new javax.swing.JButton();
+        mgmtLoginPageLabel2 = new javax.swing.JLabel();
+        mgmtUsernameLabel = new javax.swing.JLabel();
+        mgmtPasswordLabel = new javax.swing.JLabel();
+        mgmtUsernameTxtField = new javax.swing.JTextField();
+        mgmtPassTxtField = new javax.swing.JTextField();
+        mgmtLoginBtn = new javax.swing.JButton();
         mgmtLoginPageLabel = new javax.swing.JLabel();
+        mgmtLoginPageLabel3 = new javax.swing.JLabel();
+
+        mgmtLoginPageLabel2.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        mgmtLoginPageLabel2.setText("Login Page");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        accountExeUsernameLabel.setText("Username:");
+        mgmtUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mgmtUsernameLabel.setText("Username:");
 
-        accountExePasswordLabel.setText("Password:");
+        mgmtPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mgmtPasswordLabel.setText("Password:");
 
-        usernameTxtField.addActionListener(new java.awt.event.ActionListener() {
+        mgmtUsernameTxtField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mgmtUsernameTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTxtFieldActionPerformed(evt);
+                mgmtUsernameTxtFieldActionPerformed(evt);
             }
         });
 
-        passTxtField.addActionListener(new java.awt.event.ActionListener() {
+        mgmtPassTxtField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mgmtPassTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passTxtFieldActionPerformed(evt);
+                mgmtPassTxtFieldActionPerformed(evt);
             }
         });
 
-        adminLoginBtn.setText("Login");
-        adminLoginBtn.addActionListener(new java.awt.event.ActionListener() {
+        mgmtLoginBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mgmtLoginBtn.setText("Login");
+        mgmtLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminLoginBtnActionPerformed(evt);
+                mgmtLoginBtnActionPerformed(evt);
             }
         });
 
         mgmtLoginPageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         mgmtLoginPageLabel.setText("Management Login Page");
 
+        mgmtLoginPageLabel3.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        mgmtLoginPageLabel3.setText("Parkhill Residence");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mgmtLoginPageLabel3)
+                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
+                        .addGap(108, 108, 108)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mgmtPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(accountExePasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(passTxtField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(accountExeUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(usernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(mgmtUsernameTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                            .addComponent(mgmtPassTxtField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(adminLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addComponent(mgmtLoginPageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(mgmtLoginPageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGap(169, 169, 169)
+                        .addComponent(mgmtLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(mgmtLoginPageLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mgmtLoginPageLabel)
-                .addGap(41, 41, 41)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accountExeUsernameLabel)
-                    .addComponent(usernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accountExePasswordLabel)
-                    .addComponent(passTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(adminLoginBtn)
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(mgmtUsernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(mgmtPasswordLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mgmtPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(mgmtLoginBtn)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtFieldActionPerformed
+    private void mgmtUsernameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtUsernameTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTxtFieldActionPerformed
+    }//GEN-LAST:event_mgmtUsernameTxtFieldActionPerformed
 
-    private void passTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtFieldActionPerformed
+    private void mgmtPassTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtPassTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passTxtFieldActionPerformed
+    }//GEN-LAST:event_mgmtPassTxtFieldActionPerformed
 
-    private void adminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginBtnActionPerformed
+    private void mgmtLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtLoginBtnActionPerformed
         login();
-    }//GEN-LAST:event_adminLoginBtnActionPerformed
+    }//GEN-LAST:event_mgmtLoginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,21 +196,21 @@ public class LoginMgmt extends javax.swing.JFrame {
         BuildingExecutive buildingExe = new BuildingExecutive("building", "building123");
         
         // check user role
-        if (usernameTxtField.getText().equals("manager")){
+        if (mgmtUsernameTxtField.getText().equals("manager")){
             login(buildingManager, "manager", "manager123");
-        } else if (usernameTxtField.getText().equals("account")){
+        } else if (mgmtUsernameTxtField.getText().equals("account")){
             login(accountExe, "account","account123");
-        } else if (usernameTxtField.getText().equals("admin")){
+        } else if (mgmtUsernameTxtField.getText().equals("admin")){
             login(admin, "admin","admin123");
-        } else if (usernameTxtField.getText().equals("building")){
+        } else if (mgmtUsernameTxtField.getText().equals("building")){
             login(buildingExe, "building", "building123");
         }else {
             JOptionPane.showMessageDialog(this,
                     "Login Failed! \nIncorrect Username or Password.",
                     "Error Message",
                     JOptionPane.ERROR_MESSAGE);
-            usernameTxtField.setText("");
-            passTxtField.setText("");
+            mgmtUsernameTxtField.setText("");
+            mgmtPassTxtField.setText("");
         }
     }
     
@@ -199,8 +219,8 @@ public class LoginMgmt extends javax.swing.JFrame {
         String pass;
         
         // get the username & password typed from text field
-        userName = usernameTxtField.getText();
-        pass = passTxtField.getText();
+        userName = mgmtUsernameTxtField.getText();
+        pass = mgmtPassTxtField.getText();
         
         // check password
         if (user.login(userName,pass)){
@@ -223,17 +243,19 @@ public class LoginMgmt extends javax.swing.JFrame {
                     "Login Failed! \nIncorrect Username or Password.",
                     "Error Message",
                     JOptionPane.ERROR_MESSAGE);
-            usernameTxtField.setText("");
-            passTxtField.setText("");
+            mgmtUsernameTxtField.setText("");
+            mgmtPassTxtField.setText("");
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountExePasswordLabel;
-    private javax.swing.JLabel accountExeUsernameLabel;
-    private javax.swing.JButton adminLoginBtn;
+    private javax.swing.JButton mgmtLoginBtn;
     private javax.swing.JLabel mgmtLoginPageLabel;
-    private javax.swing.JTextField passTxtField;
-    private javax.swing.JTextField usernameTxtField;
+    private javax.swing.JLabel mgmtLoginPageLabel2;
+    private javax.swing.JLabel mgmtLoginPageLabel3;
+    private javax.swing.JTextField mgmtPassTxtField;
+    private javax.swing.JLabel mgmtPasswordLabel;
+    private javax.swing.JLabel mgmtUsernameLabel;
+    private javax.swing.JTextField mgmtUsernameTxtField;
     // End of variables declaration//GEN-END:variables
 }
