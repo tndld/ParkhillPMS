@@ -9,5 +9,5 @@ package User;
  * @author user
  */
 public class x {
-    
+    private String Hi;
 }
