@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,21 @@ public class ResidentLogin extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+        try {
+                 // Open the file in write mode with "truncate" option to delete its content
+                FileWriter fw = new FileWriter("database\\vendorActive.txt", false);
+                PrintWriter pw = new PrintWriter(fw, false);
+                
+                // Write an empty string to the file to clear its content
+                pw.flush();
+                
+                // Close the writers to release resources
+                pw.close();
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     /**
