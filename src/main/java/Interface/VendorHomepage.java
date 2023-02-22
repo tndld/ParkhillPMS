@@ -4,8 +4,10 @@
  */
 package Interface;
 
+import User.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +36,7 @@ public class VendorHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         vendorProfileBTN = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,21 +47,35 @@ public class VendorHomepage extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(392, Short.MAX_VALUE)
-                .addComponent(vendorProfileBTN)
-                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(392, Short.MAX_VALUE)
+                        .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(vendorProfileBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap()
+                .addComponent(logoutBtn)
+                .addGap(38, 38, 38)
                 .addComponent(vendorProfileBTN)
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,6 +85,10 @@ public class VendorHomepage extends javax.swing.JFrame {
         this.setVisible(false);
         new VendorProfile().setVisible(true);
     }//GEN-LAST:event_vendorProfileBTNActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        logout();
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,8 +124,23 @@ public class VendorHomepage extends javax.swing.JFrame {
             }
         });
     }
+    
+     public void logout(){
+        User user = new User(null,null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            user.logout2("database\\vendorActive");
+            new vendorLogin().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JButton vendorProfileBTN;
     // End of variables declaration//GEN-END:variables
 }
