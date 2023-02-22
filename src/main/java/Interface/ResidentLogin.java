@@ -35,7 +35,7 @@ public class ResidentLogin extends javax.swing.JFrame {
         
         try {
                  // Open the file in write mode with "truncate" option to delete its content
-                FileWriter fw = new FileWriter("database\\vendorActive.txt", false);
+                FileWriter fw = new FileWriter("database\\activeUser.txt", false);
                 PrintWriter pw = new PrintWriter(fw, false);
                 
                 // Write an empty string to the file to clear its content

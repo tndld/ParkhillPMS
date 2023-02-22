@@ -5,8 +5,10 @@
 package Interface;
 
 import User.Resident;
+import User.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,10 +85,11 @@ public class ResidentHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_userProfileBTNActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        Resident resident = new Resident(null,null);
-        resident.logout2("database\\activeUser.txt");
-        this.setVisible(false);
-        new ResidentLogin().setVisible(true);
+//        Resident resident = new Resident(null,null);
+//        resident.logout2("database\\activeUser.txt");
+//        this.setVisible(false);
+//        new ResidentLogin().setVisible(true);
+        logout();
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
@@ -123,6 +126,20 @@ public class ResidentHomepage extends javax.swing.JFrame {
                 new ResidentHomepage().setVisible(true);
             }
         });
+    }
+    
+    public void logout(){
+        User user = new User(null,null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            user.logout2("database\\activeUser");
+            new ResidentLogin().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
