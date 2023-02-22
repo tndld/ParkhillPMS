@@ -274,7 +274,7 @@ public class ResidentLogin extends javax.swing.JFrame {
             // save the username into the activeUser.txt
             try {
                 FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
-                myWriter.write(userName);
+                myWriter.write(userName + "," + pass);
                 myWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();

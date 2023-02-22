@@ -4,8 +4,12 @@
  */
 package Interface;
 
+import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -23,7 +27,29 @@ public class ResidentUserProfile extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        
+//        To get current user
+        String filePath = "database\\activeUser.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            
+//            Get current user details from Resident class.
+            Resident res = new Resident(uname, pw);
+            
+//            Set details into text field
+            usernameTF.setText(uname);
+            residentFullNameTF.setText(res.getFullName());
+            residentEmailTF.setText(res.getEmail());
+            residentPhoneTF.setText(res.getPhoneNo());
+            unitNoTF.setText(res.getUnitNo());
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**

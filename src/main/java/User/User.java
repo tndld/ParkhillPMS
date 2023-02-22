@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
  * @author Asus
  */
 public class User {
-    private String username;
-    private String password;
+    protected String username;
+    protected String password;
     private boolean isLoggedIn;
     
     public User(String username, String password){

@@ -4,6 +4,10 @@
  */
 package User;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Asus
@@ -15,12 +19,47 @@ public class Resident extends User {
     private String phoneNo;
     private String unitNo;
     
+//    For existing resident
     public Resident(String username, String password) {
         super(username, password);
-        fullName="";
-        email="";
-        phoneNo="";
-        unitNo="";
+        
+//        Read from Resident text file to get user's details
+        String filePath = "database\\residentTenant.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] residentInfo = line.split(",");
+//                Assign details into constructor
+                if (residentInfo[0].equals(username)){
+                    this.fullName = residentInfo[2];
+                    this.email = residentInfo[3];
+                    this.phoneNo = residentInfo[4];
+                    this.unitNo = residentInfo[5];
+                }
+            }
+                    
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+//    For new resident
+    public Resident(){
+        fullName = "";
+        email = "";
+        phoneNo = "";
+        unitNo = "";
+    }
+    
+    @Override
+    public String getUsername() {
+        return super.username;
+    }
+    
+    public String getPassword() {
+        return super.password;
     }
     
     public void setFullName(String fname){
