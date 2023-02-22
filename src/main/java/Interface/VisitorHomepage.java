@@ -4,20 +4,19 @@
  */
 package Interface;
 
-import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 /**
  *
- * @author user
+ * @author Asus
  */
-public class ResidentTenantHomepage extends javax.swing.JFrame {
+public class VisitorHomepage extends javax.swing.JFrame {
 
     /**
-     * Creates new form ResidentTenantHomepage
+     * Creates new form VisitorHomepage
      */
-    public ResidentTenantHomepage() {
+    public VisitorHomepage() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -34,23 +33,14 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userProfileBTN = new javax.swing.JButton();
-        logOutBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 360));
 
-        userProfileBTN.setText("User Profile");
-        userProfileBTN.addActionListener(new java.awt.event.ActionListener() {
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userProfileBTNActionPerformed(evt);
-            }
-        });
-
-        logOutBtn.setIcon(new javax.swing.ImageIcon("C:\\JP\\vendingMachine\\Icon\\logOut.png")); // NOI18N
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -59,39 +49,25 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(407, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(userProfileBTN)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(logOutBtn)
-                        .addGap(20, 20, 20))))
+                .addContainerGap()
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(userProfileBTN)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addComponent(backBtn)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userProfileBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userProfileBTNActionPerformed
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        new MainMenu().setVisible(true);
         this.setVisible(false);
-        new ResidentUserProfile().setVisible(true);
-    }//GEN-LAST:event_userProfileBTNActionPerformed
-
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        // TODO add your handling code here:
-        Resident resident = new Resident(null,null);
-        resident.logout2("database\\activeUser.txt");
-        this.setVisible(false);
-    }//GEN-LAST:event_logOutBtnActionPerformed
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,26 +86,25 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResidentTenantHomepage().setVisible(true);
+                new VisitorHomepage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton logOutBtn;
-    private javax.swing.JButton userProfileBTN;
+    private javax.swing.JButton backBtn;
     // End of variables declaration//GEN-END:variables
 }
