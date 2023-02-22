@@ -6,6 +6,7 @@ package User;
 
 import Interface.LoginMgmt;
 import Interface.MainMenu;
+import Interface.ResidentTenantHomepage;
 import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -80,7 +81,7 @@ public class User {
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);
             
-            new LoginMgmt().setVisible(true);
+            new MainMenu().setVisible(true);
         }
     }
         
@@ -107,6 +108,9 @@ public class User {
             }
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);
+            new MainMenu().setVisible(true);
+            
+        } else {
         }
     }
     

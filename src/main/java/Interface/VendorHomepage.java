@@ -4,24 +4,17 @@
  */
 package Interface;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 /**
  *
- * @author user
+ * @author Asus
  */
 public class VendorHomepage extends javax.swing.JFrame {
 
     /**
-     * Creates new form ResidentTenantHomepage
+     * Creates new form VendorHomepage
      */
     public VendorHomepage() {
         initComponents();
-        
-        Toolkit toolkit = getToolkit();
-        Dimension size = toolkit.getScreenSize();
-        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -49,16 +42,16 @@ public class VendorHomepage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(405, Short.MAX_VALUE)
+                .addContainerGap(392, Short.MAX_VALUE)
                 .addComponent(vendorProfileBTN)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(45, 45, 45)
                 .addComponent(vendorProfileBTN)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,7 +87,6 @@ public class VendorHomepage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VendorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
