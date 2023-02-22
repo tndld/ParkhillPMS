@@ -5,6 +5,7 @@
 package User;
 
 import Interface.LoginMgmt;
+import Interface.MainMenu;
 import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -79,7 +80,6 @@ public class User {
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);
             
-            // ALERT!!! Change to general menu page later
             new LoginMgmt().setVisible(true);
         }
     }
@@ -107,9 +107,6 @@ public class User {
             }
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);
-            
-            // ALERT!!! Change to general menu page later
-            new LoginMgmt().setVisible(true);
         }
     }
     

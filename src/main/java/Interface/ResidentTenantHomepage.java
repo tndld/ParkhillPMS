@@ -35,10 +35,9 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         userProfileBTN = new javax.swing.JButton();
-        logOutBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 360));
 
         userProfileBTN.setText("User Profile");
         userProfileBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -47,10 +46,10 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
             }
         });
 
-        logOutBtn.setIcon(new javax.swing.ImageIcon("C:\\JP\\vendingMachine\\Icon\\logOut.png")); // NOI18N
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
+        logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
+                logoutBtnActionPerformed(evt);
             }
         });
 
@@ -58,22 +57,19 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(407, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(userProfileBTN)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(logOutBtn)
-                        .addGap(20, 20, 20))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userProfileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
+                .addComponent(logoutBtn)
+                .addGap(29, 29, 29)
                 .addComponent(userProfileBTN)
                 .addContainerGap(268, Short.MAX_VALUE))
         );
@@ -86,12 +82,12 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
         new ResidentUserProfile().setVisible(true);
     }//GEN-LAST:event_userProfileBTNActionPerformed
 
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        // TODO add your handling code here:
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         Resident resident = new Resident(null,null);
         resident.logout2("database\\activeUser.txt");
         this.setVisible(false);
-    }//GEN-LAST:event_logOutBtnActionPerformed
+        new ResidentLogin().setVisible(true);
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +125,7 @@ public class ResidentTenantHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton logOutBtn;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JButton userProfileBTN;
     // End of variables declaration//GEN-END:variables
 }
