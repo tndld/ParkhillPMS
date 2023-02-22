@@ -4,19 +4,14 @@
  */
 package User;
 
-import Interface.AccountExeHomepage;
-
 /**
  *
  * @author Asus
  */
-public class AccountExecutive extends User {
+public class Guard extends User{
     
-    public AccountExecutive(String username, String password) {
+    public Guard(String username, String password) {
         super(username, password);
     }
     
-    public void accountExeMenu(){
-        new AccountExeHomepage().setVisible(true);
-    }
 }
