@@ -9,6 +9,7 @@ import User.User;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Asus
  */
 public class ResidentLogin extends javax.swing.JFrame {
-
+  
     /**
      * Creates new form ResidentLogin
      */
@@ -213,6 +214,7 @@ public class ResidentLogin extends javax.swing.JFrame {
     }
     
     public void login(){
+        
         String userName;
         String pass;
         String file;
@@ -226,7 +228,18 @@ public class ResidentLogin extends javax.swing.JFrame {
         User user = new User(userName,pass);
         if(user.login2(userName, pass, file)){
             JOptionPane.showMessageDialog(this, "Login Successful.");
+            
+            // save the username into the activeUser.txt
+            try {
+                FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
+                myWriter.write(userName);
+                myWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
             this.setVisible(false);
+            new ResidentTenantHomepage().setVisible(true);
         }else {
             JOptionPane.showMessageDialog(this,
                     "Login Failed! \nIncorrect Username or Password.",
@@ -234,20 +247,7 @@ public class ResidentLogin extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             residentUsernameTxtField.setText("");
             residentPassTxtField.setText("");
-        }
-//        try {
-//            FileReader fr = new FileReader("C:\\JP\\ParkhillPMS\\src\\txtFile\\resdient.txt");
-//            BufferedReader br = new BufferedReader(fr);
-//            String line;
-//            while((line = br.readLine()) != null){
-//                String[] residentInfo = line.split(",");
-//        }
-//        br.close();
-//        fr.close();
-//        } catch (IOException e){
-//            e.printStackTrace();
-//        }
-        
+        }     
     }
     
     
@@ -265,4 +265,8 @@ public class ResidentLogin extends javax.swing.JFrame {
     private javax.swing.JLabel residentUsernameLabel;
     private javax.swing.JTextField residentUsernameTxtField;
     // End of variables declaration//GEN-END:variables
+
+    private String generateSessionID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
