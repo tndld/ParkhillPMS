@@ -4,6 +4,9 @@
  */
 package Interface;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author user
@@ -15,6 +18,10 @@ public class ResidentEditProfile extends javax.swing.JFrame {
      */
     public ResidentEditProfile() {
         initComponents();
+        // make the page to the middle
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**

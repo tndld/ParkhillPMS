@@ -4,6 +4,9 @@
  */
 package Interface;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author user
@@ -15,6 +18,10 @@ public class VendorEditProfile extends javax.swing.JFrame {
      */
     public VendorEditProfile() {
         initComponents();
+        // make the page to the middle
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -52,7 +59,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
         changePwButton1 = new javax.swing.JButton();
         vendorLotLB = new javax.swing.JLabel();
         vendorPWLB = new javax.swing.JLabel();
-        UserProfileTitle1 = new javax.swing.JLabel();
+        vendorProfileLB = new javax.swing.JLabel();
         vendorUsernameTF = new javax.swing.JTextField();
         vendorFullNameTF = new javax.swing.JTextField();
         vendorEmailTF = new javax.swing.JTextField();
@@ -163,8 +170,8 @@ public class VendorEditProfile extends javax.swing.JFrame {
         vendorPWLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorPWLB.setText("Password");
 
-        UserProfileTitle1.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        UserProfileTitle1.setText("Vendor Profile");
+        vendorProfileLB.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        vendorProfileLB.setText("Vendor Profile");
 
         vendorUsernameTF.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -227,7 +234,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(UserProfileTitle1)
+                        .addComponent(vendorProfileLB)
                         .addGap(147, 147, 147))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(saveBtn)
@@ -237,7 +244,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(UserProfileTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vendorProfileLB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +292,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
 
     private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
         this.setVisible(false);
-        new ResidentTenantHomepage().setVisible(true);
+        new ResidentHomepage().setVisible(true);
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
@@ -349,7 +356,6 @@ public class VendorEditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserProfileTitle;
-    private javax.swing.JLabel UserProfileTitle1;
     private javax.swing.JButton changePwButton;
     private javax.swing.JButton changePwButton1;
     private javax.swing.JButton editButton;
@@ -379,6 +385,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel vendorPWLB;
     private javax.swing.JLabel vendorPhoneLB;
     private javax.swing.JTextField vendorPhoneTF;
+    private javax.swing.JLabel vendorProfileLB;
     private javax.swing.JLabel vendorUsernameLB;
     private javax.swing.JTextField vendorUsernameTF;
     // End of variables declaration//GEN-END:variables

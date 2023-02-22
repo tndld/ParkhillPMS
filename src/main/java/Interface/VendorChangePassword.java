@@ -4,6 +4,9 @@
  */
 package Interface;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author user
@@ -15,6 +18,10 @@ public class VendorChangePassword extends javax.swing.JFrame {
      */
     public VendorChangePassword() {
         initComponents();
+        // make the page to the middle
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -32,7 +39,7 @@ public class VendorChangePassword extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         buttonGroup4 = new javax.swing.ButtonGroup();
-        UserProfileTitle = new javax.swing.JLabel();
+        changePWLB = new javax.swing.JLabel();
         curPwLB = new javax.swing.JLabel();
         newPwLB = new javax.swing.JLabel();
         confirmPwLB = new javax.swing.JLabel();
@@ -47,8 +54,8 @@ public class VendorChangePassword extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        UserProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        UserProfileTitle.setText("Change Password");
+        changePWLB.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        changePWLB.setText("Change Password");
 
         curPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         curPwLB.setText("Current Password");
@@ -86,7 +93,7 @@ public class VendorChangePassword extends javax.swing.JFrame {
                             .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(UserProfileTitle)))
+                        .addComponent(changePWLB)))
                 .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -97,7 +104,7 @@ public class VendorChangePassword extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(UserProfileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changePWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(curPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,11 +181,11 @@ public class VendorChangePassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel UserProfileTitle;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.JLabel changePWLB;
     private javax.swing.JTextField changePwTF;
     private javax.swing.JLabel confirmPwLB;
     private javax.swing.JLabel curPwLB;

@@ -4,6 +4,9 @@
  */
 package Interface;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author user
@@ -15,6 +18,10 @@ public class VendorProfile extends javax.swing.JFrame {
      */
     public VendorProfile() {
         initComponents();
+        // make the page to the middle
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -305,7 +312,7 @@ public class VendorProfile extends javax.swing.JFrame {
 
     private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
         this.setVisible(false);
-        new ResidentTenantHomepage().setVisible(true);
+        new ResidentHomepage().setVisible(true);
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
