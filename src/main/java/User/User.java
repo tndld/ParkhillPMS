@@ -6,7 +6,6 @@ package User;
 
 import Interface.LoginMgmt;
 import Interface.MainMenu;
-import Interface.ResidentTenantHomepage;
 import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
