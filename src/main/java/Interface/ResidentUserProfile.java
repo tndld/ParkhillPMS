@@ -47,6 +47,9 @@ public class ResidentUserProfile extends javax.swing.JFrame {
             residentPhoneTF.setText(res.getPhoneNo());
             unitNoTF.setText(res.getUnitNo());
             
+            br.close();
+            fr.close();
+            
         }catch(IOException e){
             e.printStackTrace();
         }

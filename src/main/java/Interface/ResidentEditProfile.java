@@ -4,8 +4,12 @@
  */
 package Interface;
 
+import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -22,6 +26,30 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+//        To get current user
+        String filePath = "database\\activeUser.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            
+//            Get current user details from Resident class.
+            Resident res = new Resident(uname, pw);
+            
+//            Set details into text field
+            usernameTF.setText(uname);
+            fullNameTF.setText(res.getFullName());
+            emailTF.setText(res.getEmail());
+            phoneTF.setText(res.getPhoneNo());
+            unitNoTF.setText(res.getUnitNo());
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -44,7 +72,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         residentFullNameLabel = new javax.swing.JLabel();
         residentEmailLabel = new javax.swing.JLabel();
         residentPhoneLabel = new javax.swing.JLabel();
-        residentRoleLabel = new javax.swing.JLabel();
         residentUnitLabel = new javax.swing.JLabel();
         residentPasswordLabel = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
@@ -52,7 +79,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         fullNameTF = new javax.swing.JTextField();
         emailTF = new javax.swing.JTextField();
         phoneTF = new javax.swing.JTextField();
-        userRoleTF = new javax.swing.JTextField();
         unitNoTF = new javax.swing.JTextField();
         changePwButton = new javax.swing.JButton();
 
@@ -77,9 +103,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         residentPhoneLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         residentPhoneLabel.setText("Phone");
 
-        residentRoleLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentRoleLabel.setText("Role");
-
         residentUnitLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         residentUnitLabel.setText("Unit No.");
 
@@ -95,9 +118,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
 
         usernameTF.setEditable(false);
         usernameTF.setBackground(new java.awt.Color(204, 204, 204));
-
-        userRoleTF.setEditable(false);
-        userRoleTF.setBackground(new java.awt.Color(204, 204, 204));
 
         unitNoTF.setEditable(false);
         unitNoTF.setBackground(new java.awt.Color(204, 204, 204));
@@ -135,10 +155,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(changePwButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(residentRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(userRoleTF))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(phoneTF))
@@ -158,7 +174,7 @@ public class ResidentEditProfile extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(saveBtn)
-                .addGap(206, 206, 206))
+                .addGap(205, 205, 205))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,21 +197,17 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(residentRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userRoleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentUnitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unitNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(residentPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(changePwButton))
-                .addGap(30, 30, 30)
+                .addGap(38, 38, 38)
                 .addComponent(saveBtn)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +218,30 @@ public class ResidentEditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_unitNoTFActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        String newFname = fullNameTF.getText();
+        String newEmail = emailTF.getText();
+        String newPhone = phoneTF.getText();
+        
+        String filePath = "database\\activeUser.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            Resident res = new Resident(uname, pw);
+            
+//            Call edit method
+            res.editDetails(uname, pw, newFname, newEmail, newPhone);
+            fr.close();
+            br.close();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+       
+//        Back to view mode
         this.setVisible(false);
         new ResidentUserProfile().setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
@@ -269,12 +305,10 @@ public class ResidentEditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel residentFullNameLabel;
     private javax.swing.JLabel residentPasswordLabel;
     private javax.swing.JLabel residentPhoneLabel;
-    private javax.swing.JLabel residentRoleLabel;
     private javax.swing.JLabel residentUnitLabel;
     private javax.swing.JLabel residentUsernameLabel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextField unitNoTF;
-    private javax.swing.JTextField userRoleTF;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,13 @@
 package User;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -40,6 +45,9 @@ public class Resident extends User {
                 }
             }
                     
+            br.close();
+            fr.close();
+            
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -92,6 +100,49 @@ public class Resident extends User {
     
     public String getUnitNo(){
         return this.unitNo;
+    }
+    
+    public void editDetails(String uname, String pw, String fname, String email, String phone){
+        Resident res = new Resident(uname, pw);
+        this.fullName = fname;
+        this.email = email;
+        this.phoneNo = phone;
+        
+        String filePath = "database\\residentTenant.txt";
+        String tempFile = "database\\tempResident.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            PrintWriter p = new PrintWriter(bw);
+            
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] resInfo = line.split(",");
+                if (!resInfo[0].equals(uname)){
+                    p.println(line);
+                }else{
+                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5]);
+                }
+            }
+            
+            br.close();
+            p.flush();
+            p.close();
+            
+            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
+            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+            while ((copy = br2.readLine()) != null){
+                p2.println(copy);
+            }
+            br2.close();
+            p2.close();
+            File f = new File(tempFile);
+            f.delete();
+                                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
 }
