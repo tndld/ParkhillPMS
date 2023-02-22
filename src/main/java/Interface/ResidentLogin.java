@@ -265,7 +265,7 @@ public class ResidentLogin extends javax.swing.JFrame {
             }
             
             this.setVisible(false);
-            new ResidentTenantHomepage().setVisible(true);
+            new ResidentHomepage().setVisible(true);
         }else {
             JOptionPane.showMessageDialog(this,
                     "Login Failed! \nIncorrect Username or Password.",
