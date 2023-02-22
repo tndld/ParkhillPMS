@@ -4,8 +4,13 @@
  */
 package Interface;
 
+import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,8 +131,51 @@ public class ResidentChangePassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        this.setVisible(false);
-        new ResidentUserProfile().setVisible(true);
+        String cPW = curPwTF.getText();
+        String nPW = newPwTF.getText();
+        String cfm = changePwTF.getText();
+        
+        String filePath = "database\\activeUser.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            Resident res = new Resident(uname, pw);
+            
+            if (cPW.equals(res.getPassword())){
+                if (nPW.equals(cfm)){
+                    res.changePassword(uname, pw, cfm);
+                    
+                    this.setVisible(false);
+                    new ResidentUserProfile().setVisible(true);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                    "New Password and Confirm Password Not Match.",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+                    newPwTF.setText("");
+                    changePwTF.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this,
+                    "Current Password Incorrect",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+                    curPwTF.setText("");
+                    newPwTF.setText("");
+                    changePwTF.setText("");
+            }
+
+            fr.close();
+            br.close();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     /**

@@ -103,11 +103,59 @@ public class Resident extends User {
     }
     
     public void editDetails(String uname, String pw, String fname, String email, String phone){
+        
+//        Change value in constructor
         Resident res = new Resident(uname, pw);
         this.fullName = fname;
         this.email = email;
         this.phoneNo = phone;
         
+//        Original data path
+        String filePath = "database\\residentTenant.txt";
+//        Temporary file to write new data
+        String tempFile = "database\\tempResident.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            PrintWriter p = new PrintWriter(bw);
+            
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] resInfo = line.split(",");
+                if (!resInfo[0].equals(uname)){
+//                    If username not equals to logged in username, write original data
+                    p.println(line);
+                }else{
+//                    If username equals to logged in username, write edited data
+                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5]);
+                }
+            }
+            
+            br.close();
+            p.flush();
+            p.close();
+            
+            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
+            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+//            Write back all data into original file
+            while ((copy = br2.readLine()) != null){
+                p2.println(copy);
+            }
+            br2.close();
+            p2.close();
+//            Delete temporary file
+            File f = new File(tempFile);
+            f.delete();
+                                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void changePassword(String uname, String pw, String newPW){
+        Resident res = new Resident(uname, pw);
+        this.password = newPW;
         String filePath = "database\\residentTenant.txt";
         String tempFile = "database\\tempResident.txt";
         try{
@@ -121,10 +169,9 @@ public class Resident extends User {
                 if (!resInfo[0].equals(uname)){
                     p.println(line);
                 }else{
-                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5]);
+                    p.println(resInfo[0] + "," + newPW + "," + resInfo[2] + "," + resInfo[3] + "," + resInfo[4] + "," + resInfo[5]);
                 }
             }
-            
             br.close();
             p.flush();
             p.close();
@@ -139,8 +186,18 @@ public class Resident extends User {
             p2.close();
             File f = new File(tempFile);
             f.delete();
-                                
-        }catch(IOException e){
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        
+//        Change password in active user text file
+        String auFilePath = "database\\activeUser.txt";
+        try {
+            FileWriter fw = new FileWriter(auFilePath, false);
+            fw.write(uname + "," + newPW);
+            fw.close();
+            
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
