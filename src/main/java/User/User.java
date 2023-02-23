@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author Asus
  */
-public class User extends userCommonMethod{
+public class User extends UserCommonMethod{
     protected String username;
     protected String password;
     private boolean isLoggedIn;
@@ -38,6 +38,11 @@ public class User extends userCommonMethod{
     @Override
     public String getPassword(){
         return this.username;
+    }
+    
+    @Override
+    public void changePassword(String uname, String currentPW, String newPW){
+        this.password = newPW;
     }
     
     public boolean verifyPassword(String password){

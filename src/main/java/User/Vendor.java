@@ -144,6 +144,7 @@ public class Vendor extends User {
         }
     }
     
+    @Override
     public void changePassword(String uname, String pw, String newPW){
         Vendor ven = new Vendor(uname, pw);
         ven.password = newPW;

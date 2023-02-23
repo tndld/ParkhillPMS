@@ -132,7 +132,7 @@ public class VendorHomepage extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION);
         if(confirmLogout == JOptionPane.YES_OPTION){
             user.logout2("database\\vendorActive");
-            new vendorLogin().setVisible(true);
+            new VendorLogin().setVisible(true);
             this.setVisible(false);
         }else{
             this.setVisible(true);

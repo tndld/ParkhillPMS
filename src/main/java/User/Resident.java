@@ -145,6 +145,7 @@ public class Resident extends User {
         }
     }
     
+    @Override
     public void changePassword(String uname, String pw, String newPW){
         Resident res = new Resident(uname, pw);
         res.password = newPW;

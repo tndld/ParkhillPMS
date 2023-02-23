@@ -38,6 +38,11 @@ public class ResidentHomepage extends javax.swing.JFrame {
 
         userProfileBTN = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
+        ApplyVPassBTN = new javax.swing.JButton();
+        viewVPassBTN = new javax.swing.JButton();
+        residentUsernameLabel = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,16 +60,48 @@ public class ResidentHomepage extends javax.swing.JFrame {
             }
         });
 
+        ApplyVPassBTN.setText("Apply");
+        ApplyVPassBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApplyVPassBTNActionPerformed(evt);
+            }
+        });
+
+        viewVPassBTN.setText("View");
+        viewVPassBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewVPassBTNActionPerformed(evt);
+            }
+        });
+
+        residentUsernameLabel.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
+        residentUsernameLabel.setText("My Visitor Pass");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(407, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userProfileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userProfileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(residentUsernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                        .addComponent(viewVPassBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ApplyVPassBTN)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jSeparator3)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,7 +110,19 @@ public class ResidentHomepage extends javax.swing.JFrame {
                 .addComponent(logoutBtn)
                 .addGap(29, 29, 29)
                 .addComponent(userProfileBTN)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGap(99, 99, 99)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(residentUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewVPassBTN)
+                    .addComponent(ApplyVPassBTN))
+                .addContainerGap(138, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(228, Short.MAX_VALUE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(129, 129, 129)))
         );
 
         pack();
@@ -91,6 +140,15 @@ public class ResidentHomepage extends javax.swing.JFrame {
 //        new ResidentLogin().setVisible(true);
         logout();
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void ApplyVPassBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApplyVPassBTNActionPerformed
+        applyVisitorType();
+    }//GEN-LAST:event_ApplyVPassBTNActionPerformed
+
+    private void viewVPassBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVPassBTNActionPerformed
+        this.setVisible(false);
+        new ResidentViewEditVPass().setVisible(true);
+    }//GEN-LAST:event_viewVPassBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,9 +199,35 @@ public class ResidentHomepage extends javax.swing.JFrame {
             this.setVisible(true);
         }
     }
+    
+    public void applyVisitorType() {
+        
+//        Options available
+        String[] options = {"Visitor", "Overnight"};
+        
+//        Let user choose the type
+        int type = JOptionPane.showOptionDialog(null, 
+                "Which visitor pass do you want to apply?", 
+                "Visitor Pass", JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        
+        if (type == 0){
+            this.setVisible(false);
+            new ResidentApplyVPass().setVisible(true);
+        } else {
+            this.setVisible(false);
+            new ResidentApplyOvernight().setVisible(true);
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ApplyVPassBTN;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JLabel residentUsernameLabel;
     private javax.swing.JButton userProfileBTN;
+    private javax.swing.JButton viewVPassBTN;
     // End of variables declaration//GEN-END:variables
 }
