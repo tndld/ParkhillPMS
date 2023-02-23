@@ -52,14 +52,6 @@ public class Resident extends User {
         }
     }
     
-//    For new resident
-    public Resident(){
-        fullName = "";
-        email = "";
-        phoneNo = "";
-        unitNo = "";
-    }
-    
     @Override
     public String getUsername() {
         return super.username;
@@ -158,6 +150,7 @@ public class Resident extends User {
         res.password = newPW;
         String filePath = "database\\residentTenant.txt";
         String tempFile = "database\\tempResident.txt";
+        String auFilePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
@@ -186,18 +179,13 @@ public class Resident extends User {
             p2.close();
             File f = new File(tempFile);
             f.delete();
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        
+            
 //        Change password in active user text file
-        String auFilePath = "database\\activeUser.txt";
-        try {
             FileWriter fw = new FileWriter(auFilePath, false);
             fw.write(uname + "," + newPW);
             fw.close();
             
-        } catch (IOException e){
+        } catch(IOException e){
             e.printStackTrace();
         }
     }

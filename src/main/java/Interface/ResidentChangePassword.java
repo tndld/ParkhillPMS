@@ -19,11 +19,10 @@ import javax.swing.JOptionPane;
 public class ResidentChangePassword extends javax.swing.JFrame {
 
     /**
-     * Creates new form ResidentUserProfile
+     * Creates new form ResidentChangePassword
      */
     public ResidentChangePassword() {
         initComponents();
-        
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
@@ -38,24 +37,14 @@ public class ResidentChangePassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        buttonGroup4 = new javax.swing.ButtonGroup();
         UserProfileTitle = new javax.swing.JLabel();
         curPwLB = new javax.swing.JLabel();
-        newPwLB = new javax.swing.JLabel();
-        confirmPwLB = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JButton();
         curPwTF = new javax.swing.JTextField();
+        newPwLB = new javax.swing.JLabel();
         newPwTF = new javax.swing.JTextField();
         changePwTF = new javax.swing.JTextField();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        confirmPwLB = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,25 +74,26 @@ public class ResidentChangePassword extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(confirmPwLB)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newPwTF, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                            .addComponent(curPwTF)
-                            .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(confirmPwLB)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(newPwTF)
+                                    .addComponent(curPwTF)
+                                    .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(UserProfileTitle))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(UserProfileTitle)))
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(199, 199, 199))
+                        .addGap(202, 202, 202)
+                        .addComponent(saveBtn)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +112,9 @@ public class ResidentChangePassword extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(changePwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addComponent(saveBtn)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,45 +124,54 @@ public class ResidentChangePassword extends javax.swing.JFrame {
         String cPW = curPwTF.getText();
         String nPW = newPwTF.getText();
         String cfm = changePwTF.getText();
-        
+
         String filePath = "database\\activeUser.txt";
         try{
-            FileReader fr = new FileReader(filePath);
-            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
             String[] activeUser = line.split(",");
             String uname = activeUser[0];
             String pw = activeUser[1];
             Resident res = new Resident(uname, pw);
-            
-            if (cPW.equals(res.getPassword())){
-                if (nPW.equals(cfm)){
-                    res.changePassword(uname, pw, cfm);
-                    
-                    this.setVisible(false);
-                    new ResidentUserProfile().setVisible(true);
-                    
+
+            if ((!cPW.equals("")) && (!nPW.equals("")) && (!cfm.equals(""))){
+                if (cPW.equals(res.getPassword())){
+                    if (nPW.equals(cfm)){
+                        res.changePassword(uname, pw, cfm);
+
+                        this.setVisible(false);
+                        new ResidentUserProfile().setVisible(true);
+
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                            "New Password and Confirm Password Not Match.",
+                            "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                        newPwTF.setText("");
+                        changePwTF.setText("");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this,
-                    "New Password and Confirm Password Not Match.",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
+                        "Current Password Incorrect",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                    curPwTF.setText("");
                     newPwTF.setText("");
                     changePwTF.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(this,
-                    "Current Password Incorrect",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
+                        "Please fill up every field.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
                     curPwTF.setText("");
                     newPwTF.setText("");
                     changePwTF.setText("");
             }
-
-            fr.close();
-            br.close();
             
+
+            br.close();
+
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -204,13 +203,6 @@ public class ResidentChangePassword extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ResidentChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -222,16 +214,10 @@ public class ResidentChangePassword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserProfileTitle;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JTextField changePwTF;
     private javax.swing.JLabel confirmPwLB;
     private javax.swing.JLabel curPwLB;
     private javax.swing.JTextField curPwTF;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel newPwLB;
     private javax.swing.JTextField newPwTF;
     private javax.swing.JButton saveBtn;

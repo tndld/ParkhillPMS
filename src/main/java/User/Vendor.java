@@ -5,9 +5,13 @@
 package User;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -21,7 +25,7 @@ public class Vendor extends User {
     private String shopName;
     
 //    For existing vendor, retrieve information from database
-    public Vendor(String username, String password) throws FileNotFoundException {
+    public Vendor(String username, String password) {
         super(username, password);
         
         String filePath = "database\\vendor.txt";
@@ -42,15 +46,6 @@ public class Vendor extends User {
         }catch(IOException e){
             e.printStackTrace();
         }
-    }
-    
-//    For new vendor
-    public Vendor() {
-        fullName = "";
-        workEmail = "";
-        workPhone = "";
-        lotNo = "";
-        shopName = "";
     }
     
     @Override
@@ -101,5 +96,95 @@ public class Vendor extends User {
     
     public void setShopName(String sname){
         this.shopName = sname;
+    }
+    
+    public void edit(String uname, String pw, String fname, String email, String phone, String sname){
+        
+        Vendor ven = new Vendor(uname, pw);
+        ven.fullName = fname;
+        ven.workEmail = email;
+        ven.workPhone = phone;
+        ven.shopName = sname;
+        
+        String filePath = "database\\vendor.txt";
+        String tempFile = "database\\tempVen.txt";
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+            
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] venInfo = line.split(",");
+                if (!venInfo[0].equals(uname)){
+                    p.println(line);
+                } else{
+                    p.println(venInfo[0] + "," + venInfo[1] + "," + fname + "," + email + "," + phone + "," + venInfo[5] + "," + sname);
+                }
+            }
+            
+            br.close();
+            p.flush();
+            p.close();
+            
+            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
+            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String copy;
+            while ((copy = rc.readLine()) != null){
+                pc.println(copy);
+            }
+            
+            rc.close();
+            pc.close();
+            new File(tempFile).delete();
+            
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void changePassword(String uname, String pw, String newPW){
+        Vendor ven = new Vendor(uname, pw);
+        ven.password = newPW;
+        String filePath = "database\\vendor.txt";
+        String tempFile = "database\\tempVen.txt";
+        String vaFile = "database\\vendorActive.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+            
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] venInfo = line.split(",");
+                if (!venInfo[0].equals(uname)){
+                    p.println(line);
+                }else{
+                    p.println(venInfo[0] + "," + newPW + "," + venInfo[2] + "," + venInfo[3] + "," + venInfo[4] + "," + venInfo[5] + "," + venInfo[6]);
+                }
+            }
+            br.close();
+            p.flush();
+            p.close();
+            
+            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
+            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String copy;
+            while ((copy = rc.readLine()) != null){
+                pc.println(copy);
+            }
+            
+            rc.close();
+            pc.close();
+            new File(tempFile).delete();
+            
+            FileWriter fw = new FileWriter(vaFile, false);
+            fw.write(uname + "," + newPW);
+            fw.close();
+            
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }

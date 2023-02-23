@@ -4,8 +4,13 @@
  */
 package Interface;
 
+import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +19,10 @@ import java.awt.Toolkit;
 public class VendorChangePassword extends javax.swing.JFrame {
 
     /**
-     * Creates new form ResidentUserProfile
+     * Creates new form VendorChangePassword
      */
     public VendorChangePassword() {
         initComponents();
-        // make the page to the middle
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
@@ -33,24 +37,14 @@ public class VendorChangePassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        buttonGroup4 = new javax.swing.ButtonGroup();
         changePWLB = new javax.swing.JLabel();
         curPwLB = new javax.swing.JLabel();
+        curPwTF = new javax.swing.JTextField();
         newPwLB = new javax.swing.JLabel();
+        newPwTF = new javax.swing.JTextField();
+        cfmPwTF = new javax.swing.JTextField();
         confirmPwLB = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
-        curPwTF = new javax.swing.JTextField();
-        newPwTF = new javax.swing.JTextField();
-        changePwTF = new javax.swing.JTextField();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,32 +74,34 @@ public class VendorChangePassword extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(confirmPwLB)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newPwTF, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                            .addComponent(curPwTF)
-                            .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(confirmPwLB)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(newPwTF)
+                                    .addComponent(curPwTF)
+                                    .addComponent(cfmPwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(saveBtn)
+                                .addGap(143, 143, 143))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
+                        .addGap(108, 108, 108)
                         .addComponent(changePWLB)))
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(199, 199, 199))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(34, 34, 34)
                 .addComponent(changePWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(curPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(curPwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -116,18 +112,68 @@ public class VendorChangePassword extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(changePwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cfmPwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(saveBtn)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        this.setVisible(false);
-        new VendorProfile().setVisible(true);
+        String current = curPwTF.getText();
+        String newP = newPwTF.getText();
+        String cfm = cfmPwTF.getText();
+
+        String filePath = "database\\vendorActive.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeVen = line.split(",");
+            String uname = activeVen[0];
+            String pw = activeVen[1];
+            Vendor ven = new Vendor(uname, pw);
+
+            if ((!current.equals("")) && (!newP.equals("")) && (!cfm.equals(""))){
+                if (current.equals(ven.getPassword())) {
+                    if (newP.equals(cfm)){
+                        ven.changePassword(uname, pw, cfm);
+                        this.setVisible(false);
+                        new VendorProfile().setVisible(true);
+
+                    } else{
+                        JOptionPane.showMessageDialog(this,
+                            "New Password and Confirm Password Not Match.",
+                            "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                        newPwTF.setText("");
+                        cfmPwTF.setText("");
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(this,
+                        "Current Password Incorrect",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                    curPwTF.setText("");
+                    newPwTF.setText("");
+                    cfmPwTF.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Please fill up every field.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                    curPwTF.setText("");
+                    newPwTF.setText("");
+                    cfmPwTF.setText("");
+            }
+            
+            br.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     /**
@@ -156,21 +202,6 @@ public class VendorChangePassword extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VendorChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -181,17 +212,11 @@ public class VendorChangePassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.JTextField cfmPwTF;
     private javax.swing.JLabel changePWLB;
-    private javax.swing.JTextField changePwTF;
     private javax.swing.JLabel confirmPwLB;
     private javax.swing.JLabel curPwLB;
     private javax.swing.JTextField curPwTF;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel newPwLB;
     private javax.swing.JTextField newPwTF;
     private javax.swing.JButton saveBtn;

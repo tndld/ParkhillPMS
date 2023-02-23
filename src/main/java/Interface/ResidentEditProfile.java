@@ -18,34 +18,30 @@ import java.io.IOException;
 public class ResidentEditProfile extends javax.swing.JFrame {
 
     /**
-     * Creates new form ResidentUserProfile
+     * Creates new form ResidentEdtProfile
      */
     public ResidentEditProfile() {
         initComponents();
-        // make the page to the middle
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-//        To get current user
         String filePath = "database\\activeUser.txt";
         try{
-            FileReader fr = new FileReader(filePath);
-            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
             String[] activeUser = line.split(",");
             String uname = activeUser[0];
             String pw = activeUser[1];
-            
-//            Get current user details from Resident class.
             Resident res = new Resident(uname, pw);
             
-//            Set details into text field
             usernameTF.setText(uname);
             fullNameTF.setText(res.getFullName());
             emailTF.setText(res.getEmail());
             phoneTF.setText(res.getPhoneNo());
             unitNoTF.setText(res.getUnitNo());
+            
+            br.close();
             
         }catch(IOException e){
             e.printStackTrace();
@@ -61,30 +57,20 @@ public class ResidentEditProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        buttonGroup4 = new javax.swing.ButtonGroup();
         UserProfileTitle = new javax.swing.JLabel();
         residentUsernameLabel = new javax.swing.JLabel();
-        residentFullNameLabel = new javax.swing.JLabel();
-        residentEmailLabel = new javax.swing.JLabel();
-        residentPhoneLabel = new javax.swing.JLabel();
-        residentUnitLabel = new javax.swing.JLabel();
-        residentPasswordLabel = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JButton();
         usernameTF = new javax.swing.JTextField();
+        residentFullNameLabel = new javax.swing.JLabel();
         fullNameTF = new javax.swing.JTextField();
+        residentEmailLabel = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
+        residentPhoneLabel = new javax.swing.JLabel();
         phoneTF = new javax.swing.JTextField();
+        residentUnitLabel = new javax.swing.JLabel();
         unitNoTF = new javax.swing.JTextField();
+        residentPasswordLabel = new javax.swing.JLabel();
         changePwButton = new javax.swing.JButton();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +79,9 @@ public class ResidentEditProfile extends javax.swing.JFrame {
 
         residentUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         residentUsernameLabel.setText("Username");
+
+        usernameTF.setEditable(false);
+        usernameTF.setBackground(new java.awt.Color(204, 204, 204));
 
         residentFullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         residentFullNameLabel.setText("Full Name");
@@ -106,19 +95,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         residentUnitLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         residentUnitLabel.setText("Unit No.");
 
-        residentPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentPasswordLabel.setText("Password");
-
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
-            }
-        });
-
-        usernameTF.setEditable(false);
-        usernameTF.setBackground(new java.awt.Color(204, 204, 204));
-
         unitNoTF.setEditable(false);
         unitNoTF.setBackground(new java.awt.Color(204, 204, 204));
         unitNoTF.addActionListener(new java.awt.event.ActionListener() {
@@ -127,10 +103,20 @@ public class ResidentEditProfile extends javax.swing.JFrame {
             }
         });
 
+        residentPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentPasswordLabel.setText("Password");
+
         changePwButton.setText("Change Pasword");
         changePwButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changePwButtonActionPerformed(evt);
+            }
+        });
+
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
             }
         });
 
@@ -217,39 +203,38 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unitNoTFActionPerformed
 
+    private void changePwButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePwButtonActionPerformed
+        this.setVisible(false);
+        new ResidentChangePassword().setVisible(true);
+    }//GEN-LAST:event_changePwButtonActionPerformed
+
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         String newFname = fullNameTF.getText();
         String newEmail = emailTF.getText();
         String newPhone = phoneTF.getText();
-        
+
         String filePath = "database\\activeUser.txt";
         try{
-            FileReader fr = new FileReader(filePath);
-            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
             String[] activeUser = line.split(",");
             String uname = activeUser[0];
             String pw = activeUser[1];
             Resident res = new Resident(uname, pw);
-            
-//            Call edit method
+
+            //            Call edit method
             res.editDetails(uname, pw, newFname, newEmail, newPhone);
-            fr.close();
+
             br.close();
-            
+
         }catch(IOException e){
             e.printStackTrace();
         }
-       
-//        Back to view mode
+
+        //        Back to view mode
         this.setVisible(false);
         new ResidentUserProfile().setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
-
-    private void changePwButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePwButtonActionPerformed
-        this.setVisible(false);
-        new ResidentChangePassword().setVisible(true);
-    }//GEN-LAST:event_changePwButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,8 +263,6 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -291,15 +274,9 @@ public class ResidentEditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserProfileTitle;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton changePwButton;
     private javax.swing.JTextField emailTF;
     private javax.swing.JTextField fullNameTF;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField phoneTF;
     private javax.swing.JLabel residentEmailLabel;
     private javax.swing.JLabel residentFullNameLabel;

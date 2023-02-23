@@ -4,8 +4,12 @@
  */
 package Interface;
 
+import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -18,10 +22,32 @@ public class VendorProfile extends javax.swing.JFrame {
      */
     public VendorProfile() {
         initComponents();
-        // make the page to the middle
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+        String filePath = "database\\vendorActive.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeVendor = line.split(",");
+            String uname = activeVendor[0];
+            String pw = activeVendor[1];
+            
+            Vendor ven = new Vendor(uname,pw);
+            vendorUnameTF.setText(uname);
+            vendorFnameTF.setText(ven.getFullName());
+            vendorEmailTF.setText(ven.getEmail());
+            vendorPhoneTF.setText(ven.getPhone());
+            lotTF.setText(ven.getLotNo());
+            shopNameTF.setText(ven.getSName());
+            vendorPWTF.setText(ven.getPassword());
+            
+            br.close();
+            
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -33,130 +59,46 @@ public class VendorProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        residentUsernameLabel = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        residentFullNameLabel = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        residentEmailLabel = new javax.swing.JLabel();
-        unitNoTF = new javax.swing.JTextField();
-        residentPhoneLabel = new javax.swing.JLabel();
-        residentRoleLabel = new javax.swing.JLabel();
-        changePwButton = new javax.swing.JButton();
-        residentUnitLabel = new javax.swing.JLabel();
-        homepageBTN = new javax.swing.JButton();
-        residentPasswordLabel = new javax.swing.JLabel();
-        UserProfileTitle = new javax.swing.JLabel();
-        editButton = new javax.swing.JButton();
-        usernameTF = new javax.swing.JTextField();
-        fullNameTF = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        VendorProfileTitle = new javax.swing.JLabel();
         vendorUsernameLB = new javax.swing.JLabel();
-        vendorPhoneTF = new javax.swing.JTextField();
+        vendorUnameTF = new javax.swing.JTextField();
         vendorFullNameLB = new javax.swing.JLabel();
+        vendorFnameTF = new javax.swing.JTextField();
         vendorEmailLB = new javax.swing.JLabel();
-        lotTF = new javax.swing.JTextField();
+        vendorEmailTF = new javax.swing.JTextField();
         vendorPhoneLB = new javax.swing.JLabel();
         vendorLotLB = new javax.swing.JLabel();
-        homeBTN = new javax.swing.JButton();
-        vendorPWLB = new javax.swing.JLabel();
-        VendorProfileTitle = new javax.swing.JLabel();
-        editBTN = new javax.swing.JButton();
-        vendorUnameTF = new javax.swing.JTextField();
-        vendorFnameTF = new javax.swing.JTextField();
-        vendorEmailTF = new javax.swing.JTextField();
-        shopNameTF = new javax.swing.JTextField();
         vendorShopNameLB = new javax.swing.JLabel();
+        vendorPWLB = new javax.swing.JLabel();
         vendorPWTF = new javax.swing.JPasswordField();
-
-        residentUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentUsernameLabel.setText("Username");
-
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(204, 204, 204));
-
-        residentFullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentFullNameLabel.setText("Full Name");
-
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
-
-        residentEmailLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentEmailLabel.setText("Email");
-
-        unitNoTF.setEditable(false);
-        unitNoTF.setBackground(new java.awt.Color(204, 204, 204));
-        unitNoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unitNoTFActionPerformed(evt);
-            }
-        });
-
-        residentPhoneLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentPhoneLabel.setText("Phone");
-
-        residentRoleLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentRoleLabel.setText("Role");
-
-        changePwButton.setText("Change Pasword");
-        changePwButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changePwButtonActionPerformed(evt);
-            }
-        });
-
-        residentUnitLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentUnitLabel.setText("Unit No.");
-
-        homepageBTN.setText("Homepage");
-        homepageBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homepageBTNActionPerformed(evt);
-            }
-        });
-
-        residentPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        residentPasswordLabel.setText("Password");
-
-        UserProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        UserProfileTitle.setText("User Profile");
-
-        editButton.setText("Edit Profile");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-
-        usernameTF.setEditable(false);
-        usernameTF.setBackground(new java.awt.Color(204, 204, 204));
-
-        fullNameTF.setEditable(false);
-        fullNameTF.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(204, 204, 204));
+        shopNameTF = new javax.swing.JTextField();
+        vendorPhoneTF = new javax.swing.JTextField();
+        lotTF = new javax.swing.JTextField();
+        homeBTN = new javax.swing.JButton();
+        editBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        VendorProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        VendorProfileTitle.setText("Vendor Profile");
 
         vendorUsernameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorUsernameLB.setText("Username");
 
-        vendorPhoneTF.setEditable(false);
-        vendorPhoneTF.setBackground(new java.awt.Color(204, 204, 204));
+        vendorUnameTF.setEditable(false);
+        vendorUnameTF.setBackground(new java.awt.Color(204, 204, 204));
 
         vendorFullNameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorFullNameLB.setText("Full Name");
 
+        vendorFnameTF.setEditable(false);
+        vendorFnameTF.setBackground(new java.awt.Color(204, 204, 204));
+
         vendorEmailLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorEmailLB.setText("Email");
 
-        lotTF.setEditable(false);
-        lotTF.setBackground(new java.awt.Color(204, 204, 204));
-        lotTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lotTFActionPerformed(evt);
-            }
-        });
+        vendorEmailTF.setEditable(false);
+        vendorEmailTF.setBackground(new java.awt.Color(204, 204, 204));
 
         vendorPhoneLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorPhoneLB.setText("Phone");
@@ -164,34 +106,14 @@ public class VendorProfile extends javax.swing.JFrame {
         vendorLotLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorLotLB.setText("Lot No.");
 
-        homeBTN.setText("Homepage");
-        homeBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBTNActionPerformed(evt);
-            }
-        });
+        vendorShopNameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorShopNameLB.setText("Shop Name");
 
         vendorPWLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorPWLB.setText("Password");
 
-        VendorProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        VendorProfileTitle.setText("Vendor Profile");
-
-        editBTN.setText("Edit Profile");
-        editBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBTNActionPerformed(evt);
-            }
-        });
-
-        vendorUnameTF.setEditable(false);
-        vendorUnameTF.setBackground(new java.awt.Color(204, 204, 204));
-
-        vendorFnameTF.setEditable(false);
-        vendorFnameTF.setBackground(new java.awt.Color(204, 204, 204));
-
-        vendorEmailTF.setEditable(false);
-        vendorEmailTF.setBackground(new java.awt.Color(204, 204, 204));
+        vendorPWTF.setEditable(false);
+        vendorPWTF.setBackground(new java.awt.Color(204, 204, 204));
 
         shopNameTF.setEditable(false);
         shopNameTF.setBackground(new java.awt.Color(204, 204, 204));
@@ -201,63 +123,72 @@ public class VendorProfile extends javax.swing.JFrame {
             }
         });
 
-        vendorShopNameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        vendorShopNameLB.setText("Shop Name");
+        vendorPhoneTF.setEditable(false);
+        vendorPhoneTF.setBackground(new java.awt.Color(204, 204, 204));
 
-        vendorPWTF.setEditable(false);
-        vendorPWTF.setBackground(new java.awt.Color(204, 204, 204));
+        lotTF.setEditable(false);
+        lotTF.setBackground(new java.awt.Color(204, 204, 204));
+        lotTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lotTFActionPerformed(evt);
+            }
+        });
+
+        homeBTN.setText("Homepage");
+        homeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTNActionPerformed(evt);
+            }
+        });
+
+        editBTN.setText("Edit Profile");
+        editBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(homeBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editBTN)
-                .addGap(163, 163, 163))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VendorProfileTitle)
-                .addGap(147, 147, 147))
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorShopNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(shopNameTF))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vendorFullNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorLotLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorShopNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(shopNameTF)
+                                    .addComponent(lotTF)
+                                    .addComponent(vendorPWTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorPhoneTF)
+                                    .addComponent(vendorEmailTF)
+                                    .addComponent(vendorFnameTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(homeBTN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editBTN))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorLotLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lotTF))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorPWTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorPhoneTF))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorEmailTF))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(vendorFullNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorFnameTF))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addGap(147, 147, 147)
+                        .addComponent(VendorProfileTitle)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addComponent(VendorProfileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -287,34 +218,19 @@ public class VendorProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorPWTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editBTN)
                     .addComponent(homeBTN))
-                .addGap(31, 31, 31))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void unitNoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitNoTFActionPerformed
+    private void shopNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopNameTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_unitNoTFActionPerformed
-
-    private void changePwButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePwButtonActionPerformed
-        this.setVisible(false);
-        new ResidentChangePassword().setVisible(true);
-    }//GEN-LAST:event_changePwButtonActionPerformed
-
-    private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
-        this.setVisible(false);
-        new ResidentHomepage().setVisible(true);
-    }//GEN-LAST:event_homepageBTNActionPerformed
-
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        this.setVisible(false);
-        new ResidentEditProfile().setVisible(true);
-    }//GEN-LAST:event_editButtonActionPerformed
+    }//GEN-LAST:event_shopNameTFActionPerformed
 
     private void lotTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTFActionPerformed
         // TODO add your handling code here:
@@ -329,10 +245,6 @@ public class VendorProfile extends javax.swing.JFrame {
         this.setVisible(false);
         new VendorEditProfile().setVisible(true);
     }//GEN-LAST:event_editBTNActionPerformed
-
-    private void shopNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopNameTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_shopNameTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,28 +282,11 @@ public class VendorProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel UserProfileTitle;
     private javax.swing.JLabel VendorProfileTitle;
-    private javax.swing.JButton changePwButton;
     private javax.swing.JButton editBTN;
-    private javax.swing.JButton editButton;
-    private javax.swing.JTextField fullNameTF;
     private javax.swing.JButton homeBTN;
-    private javax.swing.JButton homepageBTN;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lotTF;
-    private javax.swing.JLabel residentEmailLabel;
-    private javax.swing.JLabel residentFullNameLabel;
-    private javax.swing.JLabel residentPasswordLabel;
-    private javax.swing.JLabel residentPhoneLabel;
-    private javax.swing.JLabel residentRoleLabel;
-    private javax.swing.JLabel residentUnitLabel;
-    private javax.swing.JLabel residentUsernameLabel;
     private javax.swing.JTextField shopNameTF;
-    private javax.swing.JTextField unitNoTF;
-    private javax.swing.JTextField usernameTF;
     private javax.swing.JLabel vendorEmailLB;
     private javax.swing.JTextField vendorEmailTF;
     private javax.swing.JTextField vendorFnameTF;
