@@ -180,7 +180,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorPWLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="changePwButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="changePWBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorPhoneLB" min="-2" pref="82" max="-2" attributes="0"/>
@@ -195,12 +195,12 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="vendorNameLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="vendorFullNameTF" max="32767" attributes="0"/>
+                      <Component id="vendorFnameTF" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorUsernameLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="vendorUsernameTF" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Component id="vendorUnameTF" min="-2" pref="260" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="79" max="32767" attributes="0"/>
@@ -228,12 +228,12 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorUsernameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorUsernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorUnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorNameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorFullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorFnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -258,7 +258,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorPWLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="changePwButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="changePWBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
@@ -313,12 +313,12 @@
         <Property name="text" type="java.lang.String" value="Phone"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="changePwButton1">
+    <Component class="javax.swing.JButton" name="changePWBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Pasword"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePwButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePWBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="vendorLotLB">
@@ -345,14 +345,14 @@
         <Property name="text" type="java.lang.String" value="Vendor Profile"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="vendorUsernameTF">
+    <Component class="javax.swing.JTextField" name="vendorUnameTF">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="vendorFullNameTF">
+    <Component class="javax.swing.JTextField" name="vendorFnameTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

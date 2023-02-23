@@ -56,12 +56,12 @@ public class VendorEditProfile extends javax.swing.JFrame {
         vendorEmailLB = new javax.swing.JLabel();
         lotTF = new javax.swing.JTextField();
         vendorPhoneLB = new javax.swing.JLabel();
-        changePwButton1 = new javax.swing.JButton();
+        changePWBtn = new javax.swing.JButton();
         vendorLotLB = new javax.swing.JLabel();
         vendorPWLB = new javax.swing.JLabel();
         vendorProfileLB = new javax.swing.JLabel();
-        vendorUsernameTF = new javax.swing.JTextField();
-        vendorFullNameTF = new javax.swing.JTextField();
+        vendorUnameTF = new javax.swing.JTextField();
+        vendorFnameTF = new javax.swing.JTextField();
         vendorEmailTF = new javax.swing.JTextField();
         shopNameTF = new javax.swing.JTextField();
         shopNameLB = new javax.swing.JLabel();
@@ -157,10 +157,10 @@ public class VendorEditProfile extends javax.swing.JFrame {
         vendorPhoneLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendorPhoneLB.setText("Phone");
 
-        changePwButton1.setText("Change Pasword");
-        changePwButton1.addActionListener(new java.awt.event.ActionListener() {
+        changePWBtn.setText("Change Pasword");
+        changePWBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changePwButton1ActionPerformed(evt);
+                changePWBtnActionPerformed(evt);
             }
         });
 
@@ -173,10 +173,10 @@ public class VendorEditProfile extends javax.swing.JFrame {
         vendorProfileLB.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         vendorProfileLB.setText("Vendor Profile");
 
-        vendorUsernameTF.setBackground(new java.awt.Color(204, 204, 204));
+        vendorUnameTF.setBackground(new java.awt.Color(204, 204, 204));
 
-        vendorFullNameTF.setEditable(false);
-        vendorFullNameTF.setBackground(new java.awt.Color(204, 204, 204));
+        vendorFnameTF.setEditable(false);
+        vendorFnameTF.setBackground(new java.awt.Color(204, 204, 204));
 
         shopNameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +212,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(changePwButton1))
+                        .addComponent(changePWBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -224,11 +224,11 @@ public class VendorEditProfile extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(vendorNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorFullNameTF))
+                        .addComponent(vendorFnameTF))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendorUsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -248,11 +248,11 @@ public class VendorEditProfile extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorUsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorFullNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vendorFnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,7 +272,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(changePwButton1))
+                    .addComponent(changePWBtn))
                 .addGap(27, 27, 27)
                 .addComponent(saveBtn)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -304,10 +304,10 @@ public class VendorEditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lotTFActionPerformed
 
-    private void changePwButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePwButton1ActionPerformed
+    private void changePWBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePWBtnActionPerformed
         this.setVisible(false);
         new VendorChangePassword().setVisible(true);
-    }//GEN-LAST:event_changePwButton1ActionPerformed
+    }//GEN-LAST:event_changePWBtnActionPerformed
 
     private void shopNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopNameTFActionPerformed
         // TODO add your handling code here:
@@ -356,8 +356,8 @@ public class VendorEditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserProfileTitle;
+    private javax.swing.JButton changePWBtn;
     private javax.swing.JButton changePwButton;
-    private javax.swing.JButton changePwButton1;
     private javax.swing.JButton editButton;
     private javax.swing.JTextField fullNameTF;
     private javax.swing.JButton homepageBTN;
@@ -379,14 +379,14 @@ public class VendorEditProfile extends javax.swing.JFrame {
     private javax.swing.JTextField usernameTF;
     private javax.swing.JLabel vendorEmailLB;
     private javax.swing.JTextField vendorEmailTF;
-    private javax.swing.JTextField vendorFullNameTF;
+    private javax.swing.JTextField vendorFnameTF;
     private javax.swing.JLabel vendorLotLB;
     private javax.swing.JLabel vendorNameLB;
     private javax.swing.JLabel vendorPWLB;
     private javax.swing.JLabel vendorPhoneLB;
     private javax.swing.JTextField vendorPhoneTF;
     private javax.swing.JLabel vendorProfileLB;
+    private javax.swing.JTextField vendorUnameTF;
     private javax.swing.JLabel vendorUsernameLB;
-    private javax.swing.JTextField vendorUsernameTF;
     // End of variables declaration//GEN-END:variables
 }

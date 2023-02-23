@@ -166,9 +166,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="homepageBTN1" min="-2" max="-2" attributes="0"/>
+              <Component id="homeBTN" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="editButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="editBTN" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -192,7 +192,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorPWLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="changePWButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="vendorPWTF" min="-2" pref="260" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorPhoneLB" min="-2" pref="82" max="-2" attributes="0"/>
@@ -207,12 +207,12 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="vendorFullNameLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="vendorFullNameTF" max="32767" attributes="0"/>
+                      <Component id="vendorFnameTF" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vendorUsernameLB" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="vendorUsernameTF" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Component id="vendorUnameTF" min="-2" pref="260" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="79" max="32767" attributes="0"/>
@@ -227,12 +227,12 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorUsernameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorUsernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorUnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorFullNameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorFullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorFnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -257,12 +257,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorPWLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="changePWButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorPWTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="editButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="homepageBTN1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="editBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="homeBTN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
@@ -321,14 +321,6 @@
         <Property name="text" type="java.lang.String" value="Phone"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="changePWButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Change Pasword"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePWButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="vendorLotLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -337,12 +329,12 @@
         <Property name="text" type="java.lang.String" value="Lot No."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="homepageBTN1">
+    <Component class="javax.swing.JButton" name="homeBTN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Homepage"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homepageBTN1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeBTNActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="vendorPWLB">
@@ -361,15 +353,15 @@
         <Property name="text" type="java.lang.String" value="Vendor Profile"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="editButton1">
+    <Component class="javax.swing.JButton" name="editBTN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Profile"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBTNActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="vendorUsernameTF">
+    <Component class="javax.swing.JTextField" name="vendorUnameTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -377,7 +369,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="vendorFullNameTF">
+    <Component class="javax.swing.JTextField" name="vendorFnameTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -410,6 +402,14 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Shop Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="vendorPWTF">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

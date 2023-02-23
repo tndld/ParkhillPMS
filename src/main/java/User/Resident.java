@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 /**
  *
@@ -66,6 +65,7 @@ public class Resident extends User {
         return super.username;
     }
     
+    @Override
     public String getPassword() {
         return super.password;
     }
@@ -106,9 +106,9 @@ public class Resident extends User {
         
 //        Change value in constructor
         Resident res = new Resident(uname, pw);
-        this.fullName = fname;
-        this.email = email;
-        this.phoneNo = phone;
+        res.fullName = fname;
+        res.email = email;
+        res.phoneNo = phone;
         
 //        Original data path
         String filePath = "database\\residentTenant.txt";
@@ -155,7 +155,7 @@ public class Resident extends User {
     
     public void changePassword(String uname, String pw, String newPW){
         Resident res = new Resident(uname, pw);
-        this.password = newPW;
+        res.password = newPW;
         String filePath = "database\\residentTenant.txt";
         String tempFile = "database\\tempResident.txt";
         try{

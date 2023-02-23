@@ -126,7 +126,7 @@ public class VendorHomepage extends javax.swing.JFrame {
     }
     
      public void logout(){
-        User user = new User(null,null);
+        User user = new User(null,null) {};
         int confirmLogout = JOptionPane.showConfirmDialog(null, 
                 "Are you sure want to log out?", "Logout", 
                 JOptionPane.YES_NO_OPTION);
