@@ -8,7 +8,7 @@ package User;
  *
  * @author user
  */
-public abstract class UserCommonMethod {
+public abstract class UserCommon {
     public abstract String getUsername();
     public abstract String getPassword();
     public abstract void changePassword(String uname, String pw, String newPW);

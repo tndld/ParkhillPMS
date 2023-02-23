@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author Asus
  */
-public class User extends UserCommonMethod{
+public class User extends UserCommon{
     protected String username;
     protected String password;
     private boolean isLoggedIn;
