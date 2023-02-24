@@ -4,8 +4,17 @@
  */
 package Interface;
 
+import User.Resident;
+import User.VisitorPass;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +31,7 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        setMinDate();
     }
 
     /**
@@ -103,11 +113,11 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
                                     .addComponent(cpTF, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(vicTF, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(vnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(inDatePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(inDatePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(outDate, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,7 +164,7 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
     private void cancelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTNActionPerformed
         
         int cancel = JOptionPane.showConfirmDialog(null, 
-                "Confirm to cancel application?", "Visitor Pass", 
+                "Confirm to cancel application?", "Overnight Pass", 
                 JOptionPane.YES_NO_OPTION);
         if (cancel == JOptionPane.YES_OPTION) {
             this.setVisible(false);
@@ -164,6 +174,49 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         
+        String v_name = vnameTF.getText();
+        String v_ic = vicTF.getText();
+        String carp = cpTF.getText();
+        Date ind = inDatePicker.getDate();
+        String inDate = DateFormat.getDateInstance().format(ind);
+        Date outd = outDatePicker.getDate();
+        String outDate = DateFormat.getDateInstance().format(outd);
+        
+        if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
+                !ind.equals("") && !outd.equals("")){
+            String filePath = "database\\activeUser.txt";
+            try{
+                BufferedReader br = new BufferedReader(new FileReader(filePath));
+                String line = br.readLine();
+                String[] activeUser = line.split(",");
+                String uname = activeUser[0];
+                String pw = activeUser[1];
+                Resident res = new Resident(uname, pw);
+                VisitorPass vp = new VisitorPass(res);
+                if (vp.addOvernightPass(res, v_name, v_ic, carp, inDate, outDate)){
+                    vp.setReferenceNum(res, res.getUnitNo(), inDate);
+                    JOptionPane.showMessageDialog(this, 
+                            "Overnight Pass Successfully Applied!");
+                    this.setVisible(false);
+                    new ResidentViewEditVPass().setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, 
+                            "Errors occured, please try again.", "Error Message", 
+                            JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(false);
+                    new ResidentHomepage().setVisible(true);
+                }
+                
+            } catch(IOException e){
+                System.out.println("Exception Occurred" + e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,
+                        "Please fill up every field.\n",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_submitBTNActionPerformed
 
     /**
@@ -195,10 +248,21 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ResidentApplyOvernight().setVisible(true);
             }
         });
+    }
+    
+    private void setMinDate(){
+        ZoneId def = ZoneId.systemDefault();
+        LocalDate local = LocalDate.now();
+        Date d = Date.from(local.atStartOfDay(def).toInstant());
+        inDatePicker.setMinSelectableDate(d);
+        outDatePicker.setMinSelectableDate(d);
+        inDatePicker.setDate(d);
+        outDatePicker.setDate(d);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

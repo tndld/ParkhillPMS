@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -29,6 +31,7 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        setMinDate();
     }
 
     /**
@@ -106,19 +109,18 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
                             .addComponent(cpTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                             .addComponent(vicTF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(vnameTF)
-                            .addComponent(datePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(duration)
-                        .addGap(18, 18, 18)
-                        .addComponent(durationSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(vpassApply))
+                            .addComponent(datePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(vpassApply)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(cancelBTN)
+                            .addGap(18, 18, 18)
+                            .addComponent(submitBTN))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(duration)
+                            .addGap(18, 18, 18)
+                            .addComponent(durationSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelBTN)
-                .addGap(18, 18, 18)
-                .addComponent(submitBTN)
-                .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,6 +255,14 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new ResidentApplyVPass().setVisible(true);
         });
+    }
+    
+    private void setMinDate(){
+        ZoneId def = ZoneId.systemDefault();
+        LocalDate local = LocalDate.now();
+        Date d = Date.from(local.atStartOfDay(def).toInstant());
+        datePicker.setMinSelectableDate(d);
+        datePicker.setDate(d);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

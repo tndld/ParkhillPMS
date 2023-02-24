@@ -134,7 +134,7 @@ public class VisitorPass {
         vp.visitorCarPlate = cp;
         vp.inDate = date;
         vp.outDate = date;
-        vp.duration = hr;
+        vp.duration = hr + " hour(s)";
         vp.dateTimeApplied = LocalDateTime.now();
         
 //        Write into text file
@@ -170,7 +170,7 @@ public class VisitorPass {
             }
             
 //            Generate Reference Number
-            String refNo = res.username + date.replaceAll(" ", "") + Integer.toString(i);
+            String refNo = res.username + vp.dateTimeApplied + Integer.toString(i);
 //            Append into text file
             BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
             bw.write(refNo + "\n");
@@ -183,6 +183,42 @@ public class VisitorPass {
             
         } catch(IOException e){
             System.out.println("Exception Occurred" + e);
+        }
+    }
+    
+    public boolean addOvernightPass(Resident res, String name, String ic, 
+            String cp, String inDate, String outDate) {
+        
+//        Assign into constructor
+        VisitorPass vp = new VisitorPass(res);
+        vp.resName = res.getFullName();
+        vp.resPhone = res.getPhoneNo();
+        vp.resUnit = res.getUnitNo();
+        vp.type = "Overnight";
+        vp.visitorName = name;
+        vp.visitorIC = ic;
+        vp.visitorCarPlate = cp;
+        vp.inDate = inDate;
+        vp.outDate = outDate;
+        String[] date1 = inDate.split(" ");
+        String[] date2 = outDate.split(" ");
+        int dur = Integer.parseInt(date2[0]) - Integer.parseInt(date1[0]);
+        vp.duration = Integer.toString(dur) + " day(s)";
+        vp.dateTimeApplied = LocalDateTime.now();
+        
+//        Write into text file
+        String filePath = "database\\visitorPass.txt";
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
+            bw.write(vp.type + "," + vp.resUnit + "," + vp.resName + "," + 
+                    vp.resPhone + "," + vp.visitorName + "," + vp.visitorIC 
+                    + "," + vp.visitorCarPlate + "," + vp.inDate + "," + 
+                    vp.outDate + "," + vp.duration + "," + vp.dateTimeApplied + ",");
+            bw.close();
+            return true;
+        } catch(IOException e){
+            System.out.println("Exception Occurred" + e);
+            return false;
         }
     }
 }
