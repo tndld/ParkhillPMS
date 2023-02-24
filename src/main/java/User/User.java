@@ -4,16 +4,12 @@
  */
 package User;
 
-import Interface.LoginMgmt;
 import Interface.MainMenu;
-import Interface.ResidentHomepage;
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**

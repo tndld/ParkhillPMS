@@ -45,7 +45,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
             br.close();
             
         } catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Exception Occurred" + e);
         }
     }
 
@@ -80,28 +80,34 @@ public class VendorEditProfile extends javax.swing.JFrame {
         VendorProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         VendorProfileTitle.setText("Vendor Profile");
 
-        vendorUsernameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorUsernameLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorUsernameLB.setText("Username");
 
         vendorUnameTF.setEditable(false);
         vendorUnameTF.setBackground(new java.awt.Color(204, 204, 204));
 
-        vendorFullNameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorFullNameLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorFullNameLB.setText("Full Name");
 
-        vendorEmailLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorEmailLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorEmailLB.setText("Email");
 
-        vendorPhoneLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorEmailTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendorEmailTFActionPerformed(evt);
+            }
+        });
+
+        vendorPhoneLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorPhoneLB.setText("Phone");
 
-        vendorLotLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorLotLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorLotLB.setText("Lot No.");
 
-        vendorShopNameLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorShopNameLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorShopNameLB.setText("Shop Name");
 
-        vendorPWLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendorPWLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         vendorPWLB.setText("Password");
 
         changePWBtn.setText("Change Pasword");
@@ -136,66 +142,66 @@ public class VendorEditProfile extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(212, 212, 212))
             .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(VendorProfileTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(saveBtn)
+                            .addGap(136, 136, 136))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(vendorFullNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(29, 29, 29)
                                 .addComponent(vendorFnameTF))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vendorEmailTF))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vendorPhoneTF))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(vendorLotLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lotTF))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(vendorShopNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(shopNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(changePWBtn)))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lotTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vendorShopNameLB)
+                                    .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vendorPWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(changePWBtn)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(vendorEmailTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vendorPhoneTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(shopNameTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(VendorProfileTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addComponent(VendorProfileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorUsernameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vendorUnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(vendorFullNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorFnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(vendorFnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorEmailLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorEmailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(vendorEmailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorPhoneLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorPhoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,7 +219,7 @@ public class VendorEditProfile extends javax.swing.JFrame {
                     .addComponent(changePWBtn))
                 .addGap(29, 29, 29)
                 .addComponent(saveBtn)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,12 +257,16 @@ public class VendorEditProfile extends javax.swing.JFrame {
             br.close();
 
         }catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Exception Occurred" + e);
         }
 
         this.setVisible(false);
         new VendorProfile().setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void vendorEmailTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorEmailTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vendorEmailTFActionPerformed
 
     /**
      * @param args the command line arguments

@@ -51,13 +51,13 @@ public class ResidentChangePassword extends javax.swing.JFrame {
         UserProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         UserProfileTitle.setText("Change Password");
 
-        curPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        curPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         curPwLB.setText("Current Password");
 
-        newPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        newPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         newPwLB.setText("New Password");
 
-        confirmPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        confirmPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         confirmPwLB.setText("Confirm Password");
 
         saveBtn.setText("Save");
@@ -74,26 +74,23 @@ public class ResidentChangePassword extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(confirmPwLB)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newPwTF)
-                                    .addComponent(curPwTF)
-                                    .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(UserProfileTitle))))
+                            .addComponent(confirmPwLB)
+                            .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newPwLB))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newPwTF)
+                            .addComponent(curPwTF)
+                            .addComponent(changePwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(UserProfileTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(saveBtn)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +170,7 @@ public class ResidentChangePassword extends javax.swing.JFrame {
             br.close();
 
         }catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Exception Occurred" + e);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 

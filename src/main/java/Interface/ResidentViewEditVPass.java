@@ -35,25 +35,29 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         mgmtLoginPageLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        homeBTN = new javax.swing.JButton();
+        homeBTN1 = new javax.swing.JButton();
+        homeBTN2 = new javax.swing.JButton();
+        homeBTN3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mgmtLoginPageLabel4.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtLoginPageLabel4.setText("Visitor Pass");
+        mgmtLoginPageLabel4.setText("Visitor / Overnight Pass");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Type", "Date", "Duration", "Visitor Name", "Visitor IC", "Car Plate"
+                "Reference No.", "Type", "Date", "Duration", "Visitor Name", "Visitor IC", "Car Plate"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -66,19 +70,46 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        homeBTN.setText("Homepage");
+        homeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTNActionPerformed(evt);
+            }
+        });
+
+        homeBTN1.setText("Add New");
+        homeBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTN1ActionPerformed(evt);
+            }
+        });
+
+        homeBTN2.setText("Edit");
+
+        homeBTN3.setText("Delete");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(mgmtLoginPageLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(homeBTN)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(homeBTN1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(homeBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(homeBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mgmtLoginPageLabel4)
+                        .addGap(80, 80, 80)))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,11 +118,27 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
                 .addComponent(mgmtLoginPageLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(homeBTN)
+                    .addComponent(homeBTN1)
+                    .addComponent(homeBTN2)
+                    .addComponent(homeBTN3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTNActionPerformed
+        this.setVisible(false);
+        new ResidentHomepage().setVisible(true);
+    }//GEN-LAST:event_homeBTNActionPerformed
+
+    private void homeBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN1ActionPerformed
+        this.setVisible(false);
+        new ResidentApplyVPass().setVisible(true);
+    }//GEN-LAST:event_homeBTN1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +176,10 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton homeBTN;
+    private javax.swing.JButton homeBTN1;
+    private javax.swing.JButton homeBTN2;
+    private javax.swing.JButton homeBTN3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel mgmtLoginPageLabel4;

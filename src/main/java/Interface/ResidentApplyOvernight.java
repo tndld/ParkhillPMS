@@ -6,6 +6,7 @@ package Interface;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,11 +34,52 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
     private void initComponents() {
 
         mgmtLoginPageLabel4 = new javax.swing.JLabel();
+        vname = new javax.swing.JLabel();
+        vnameTF = new javax.swing.JTextField();
+        vic = new javax.swing.JLabel();
+        vicTF = new javax.swing.JTextField();
+        cp = new javax.swing.JLabel();
+        cpTF = new javax.swing.JTextField();
+        inDate = new javax.swing.JLabel();
+        inDatePicker = new com.toedter.calendar.JDateChooser();
+        cancelBTN = new javax.swing.JButton();
+        submitBTN = new javax.swing.JButton();
+        outDate = new javax.swing.JLabel();
+        outDatePicker = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mgmtLoginPageLabel4.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         mgmtLoginPageLabel4.setText("Overnight Pass Application Form");
+
+        vname.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        vname.setText("Visitor Name");
+
+        vic.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        vic.setText("Visitor IC");
+
+        cp.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        cp.setText("Car Plate No.");
+
+        inDate.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        inDate.setText("In Date");
+
+        cancelBTN.setText("Cancel");
+        cancelBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBTNActionPerformed(evt);
+            }
+        });
+
+        submitBTN.setText("Submit");
+        submitBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBTNActionPerformed(evt);
+            }
+        });
+
+        outDate.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        outDate.setText("Out Date");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -45,19 +87,84 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(mgmtLoginPageLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mgmtLoginPageLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(vname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(inDate, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cpTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vicTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inDatePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(outDate, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelBTN)
+                .addGap(18, 18, 18)
+                .addComponent(submitBTN)
+                .addGap(170, 170, 170))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(mgmtLoginPageLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vname, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vic, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vicTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(outDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitBTN)
+                    .addComponent(cancelBTN))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTNActionPerformed
+        
+        int cancel = JOptionPane.showConfirmDialog(null, 
+                "Confirm to cancel application?", "Visitor Pass", 
+                JOptionPane.YES_NO_OPTION);
+        if (cancel == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            new ResidentHomepage().setVisible(true);
+        }
+    }//GEN-LAST:event_cancelBTNActionPerformed
+
+    private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
+        
+    }//GEN-LAST:event_submitBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,6 +202,18 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelBTN;
+    private javax.swing.JLabel cp;
+    private javax.swing.JTextField cpTF;
+    private javax.swing.JLabel inDate;
+    private com.toedter.calendar.JDateChooser inDatePicker;
     private javax.swing.JLabel mgmtLoginPageLabel4;
+    private javax.swing.JLabel outDate;
+    private com.toedter.calendar.JDateChooser outDatePicker;
+    private javax.swing.JButton submitBTN;
+    private javax.swing.JLabel vic;
+    private javax.swing.JTextField vicTF;
+    private javax.swing.JLabel vname;
+    private javax.swing.JTextField vnameTF;
     // End of variables declaration//GEN-END:variables
 }

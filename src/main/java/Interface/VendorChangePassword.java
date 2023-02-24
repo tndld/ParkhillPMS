@@ -51,13 +51,13 @@ public class VendorChangePassword extends javax.swing.JFrame {
         changePWLB.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         changePWLB.setText("Change Password");
 
-        curPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        curPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         curPwLB.setText("Current Password");
 
-        newPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        newPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         newPwLB.setText("New Password");
 
-        confirmPwLB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        confirmPwLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         confirmPwLB.setText("Confirm Password");
 
         saveBtn.setText("Save");
@@ -74,34 +74,30 @@ public class VendorChangePassword extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(confirmPwLB)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newPwTF)
-                                    .addComponent(curPwTF)
-                                    .addComponent(cfmPwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(saveBtn)
-                                .addGap(143, 143, 143))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(changePWLB)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addComponent(changePWLB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirmPwLB)
+                            .addComponent(curPwLB, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newPwLB))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newPwTF)
+                            .addComponent(curPwTF)
+                            .addComponent(cfmPwTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(saveBtn)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(changePWLB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(curPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(curPwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -113,9 +109,9 @@ public class VendorChangePassword extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPwLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cfmPwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(31, 31, 31)
                 .addComponent(saveBtn)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,7 +168,7 @@ public class VendorChangePassword extends javax.swing.JFrame {
             br.close();
 
         }catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Exception Occurred" + e);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 

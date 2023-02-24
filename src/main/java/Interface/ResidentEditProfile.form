@@ -30,38 +30,23 @@
                       <Component id="UserProfileTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="residentUnitLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="unitNoTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="residentPasswordLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="changePwButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="residentPhoneLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="phoneTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="residentEmailLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="emailTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="residentFullNameLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="fullNameTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="residentUsernameLabel" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="usernameTF" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="residentUnitLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="residentPasswordLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="residentPhoneLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="residentEmailLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="residentFullNameLabel" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="residentUsernameLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="unitNoTF" max="32767" attributes="0"/>
+                          <Component id="changePwButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="phoneTF" max="32767" attributes="0"/>
+                          <Component id="emailTF" max="32767" attributes="0"/>
+                          <Component id="fullNameTF" alignment="1" max="32767" attributes="0"/>
+                          <Component id="usernameTF" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -79,35 +64,37 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="UserProfileTitle" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentUsernameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="usernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentFullNameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="fullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentEmailLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="emailTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentPhoneLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="phoneTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentUnitLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="unitNoTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="residentPasswordLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="changePwButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="changePwButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="residentUsernameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="usernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="residentFullNameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="fullNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="residentEmailLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="emailTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="residentPhoneLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="phoneTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="residentUnitLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="unitNoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="residentPasswordLabel" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
@@ -128,7 +115,7 @@
     <Component class="javax.swing.JLabel" name="residentUsernameLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
@@ -144,7 +131,7 @@
     <Component class="javax.swing.JLabel" name="residentFullNameLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Full Name"/>
       </Properties>
@@ -154,7 +141,7 @@
     <Component class="javax.swing.JLabel" name="residentEmailLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
@@ -164,7 +151,7 @@
     <Component class="javax.swing.JLabel" name="residentPhoneLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Phone"/>
       </Properties>
@@ -174,7 +161,7 @@
     <Component class="javax.swing.JLabel" name="residentUnitLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Unit No."/>
       </Properties>
@@ -193,7 +180,7 @@
     <Component class="javax.swing.JLabel" name="residentPasswordLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>

@@ -50,7 +50,7 @@ public class ResidentUserProfile extends javax.swing.JFrame {
             br.close();
             
         }catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Exception Occurred" + e);
         }
     }
 
@@ -84,25 +84,25 @@ public class ResidentUserProfile extends javax.swing.JFrame {
         UserProfileTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         UserProfileTitle.setText("User Profile");
 
-        residentUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentUsernameLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentUsernameLabel.setText("Username");
 
         usernameTF.setEditable(false);
         usernameTF.setBackground(new java.awt.Color(204, 204, 204));
 
-        residentFullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentFullNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentFullNameLabel.setText("Full Name");
 
-        residentEmailLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentEmailLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentEmailLabel.setText("Email");
 
-        residentPhoneLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentPhoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentPhoneLabel.setText("Phone");
 
-        residentUnitLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentUnitLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentUnitLabel.setText("Unit No.");
 
-        residentPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residentPasswordLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentPasswordLabel.setText("Password");
 
         pwTF.setEditable(false);
@@ -144,42 +144,38 @@ public class ResidentUserProfile extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addGap(165, 165, 165)
                         .addComponent(UserProfileTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(168, 168, 168)
                         .addComponent(homepageBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(residentUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(residentFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(residentFullNameTF))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(residentEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(residentEmailTF))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(residentPhoneTF))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(residentUnitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(unitNoTF))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(residentPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(pwTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(residentUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(residentFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(residentEmailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(residentPhoneLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(residentUnitLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(residentPasswordLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(residentFullNameTF)
+                                    .addComponent(residentEmailTF)
+                                    .addComponent(residentPhoneTF)
+                                    .addComponent(unitNoTF)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pwTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

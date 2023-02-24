@@ -23,83 +23,84 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="VendorProfileTitle" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="vendorFullNameLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="vendorFnameTF" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="vendorUsernameLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="vendorUnameTF" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="vendorEmailLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="vendorEmailTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="vendorPhoneLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="vendorPhoneTF" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="vendorLotLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lotTF" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lotTF" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="vendorShopNameLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="shopNameTF" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="vendorPWLB" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="changePWBtn" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="vendorShopNameLB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="vendorPhoneLB" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="vendorEmailLB" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="vendorPWLB" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="changePWBtn" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Component id="vendorEmailTF" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="vendorPhoneTF" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="shopNameTF" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="vendorUsernameLB" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="vendorUnameTF" min="-2" pref="260" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="VendorProfileTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="VendorProfileTitle" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorUsernameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorUnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorUnameTF" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vendorFullNameLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorFnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="vendorFullNameLB" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                      <Component id="vendorFnameTF" min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorEmailLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="vendorEmailTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vendorEmailTF" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vendorPhoneLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="vendorPhoneTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,7 +122,7 @@
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -138,7 +139,7 @@
     <Component class="javax.swing.JLabel" name="vendorUsernameLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
@@ -154,7 +155,7 @@
     <Component class="javax.swing.JLabel" name="vendorFullNameLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Full Name"/>
       </Properties>
@@ -164,17 +165,20 @@
     <Component class="javax.swing.JLabel" name="vendorEmailLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="vendorEmailTF">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendorEmailTFActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="vendorPhoneLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Phone"/>
       </Properties>
@@ -182,7 +186,7 @@
     <Component class="javax.swing.JLabel" name="vendorLotLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Lot No."/>
       </Properties>
@@ -190,7 +194,7 @@
     <Component class="javax.swing.JLabel" name="vendorShopNameLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Shop Name"/>
       </Properties>
@@ -198,7 +202,7 @@
     <Component class="javax.swing.JLabel" name="vendorPWLB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+          <Font name="Times New Roman" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>

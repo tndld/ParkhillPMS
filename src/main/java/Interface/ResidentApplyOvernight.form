@@ -25,17 +25,81 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="mgmtLoginPageLabel4" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="mgmtLoginPageLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="vname" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="vic" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cp" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="inDate" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="cpTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="vicTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="vnameTF" alignment="1" min="-2" pref="289" max="-2" attributes="0"/>
+                                  <Component id="inDatePicker" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="outDate" min="-2" pref="109" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="outDatePicker" min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace pref="21" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="cancelBTN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="submitBTN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="mgmtLoginPageLabel4" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="311" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="vname" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="vnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="vic" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="vicTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="cpTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="inDate" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="inDatePicker" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="outDate" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="outDatePicker" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="submitBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,6 +112,72 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Overnight Pass Application Form"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="vname">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Visitor Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="vnameTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="vic">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Visitor IC"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="vicTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="cp">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Car Plate No."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cpTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="inDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="In Date"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="inDatePicker">
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelBTN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBTNActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="submitBTN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Submit"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitBTNActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="outDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Out Date"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="outDatePicker">
     </Component>
   </SubComponents>
 </Form>
