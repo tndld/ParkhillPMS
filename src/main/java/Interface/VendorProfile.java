@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class VendorProfile extends javax.swing.JFrame {
+public class VendorProfile extends getActiveVendor {
 
     /**
      * Creates new form VendorProfile
@@ -26,28 +26,14 @@ public class VendorProfile extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        String filePath = "database\\vendorActive.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeVendor = line.split(",");
-            String uname = activeVendor[0];
-            String pw = activeVendor[1];
-            
-            Vendor ven = new Vendor(uname,pw);
-            vendorUnameTF.setText(uname);
-            vendorFnameTF.setText(ven.getFullName());
-            vendorEmailTF.setText(ven.getEmail());
-            vendorPhoneTF.setText(ven.getPhone());
-            lotTF.setText(ven.getLotNo());
-            shopNameTF.setText(ven.getSName());
-            vendorPWTF.setText(ven.getPassword());
-            
-            br.close();
-            
-        } catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
+        Vendor ven = new Vendor(getActiveVendor()[0], getActiveVendor()[1]);
+        vendorUnameTF.setText(ven.getUsername());
+        vendorFnameTF.setText(ven.getFullName());
+        vendorEmailTF.setText(ven.getEmail());
+        vendorPhoneTF.setText(ven.getPhone());
+        lotTF.setText(ven.getLotNo());
+        shopNameTF.setText(ven.getSName());
+        vendorPWTF.setText(ven.getPassword());
     }
 
     /**
@@ -277,6 +263,24 @@ public class VendorProfile extends javax.swing.JFrame {
                 new VendorProfile().setVisible(true);
             }
         });
+    }
+    
+    @Override
+    public String[] getActiveVendor(){
+        String filePath = "database\\vendorActive.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
