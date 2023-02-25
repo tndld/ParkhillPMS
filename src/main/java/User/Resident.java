@@ -121,7 +121,7 @@ public class Resident extends User {
                     p.println(line);
                 }else{
 //                    If username equals to logged in username, write edited data
-                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5]);
+                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5] + ",");
                 }
             }
             
@@ -129,9 +129,18 @@ public class Resident extends User {
             p.flush();
             p.close();
             
-            new File(filePath).delete();
-            File dump = new File(filePath);
-            new File(tempFile).renameTo(dump);
+            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
+            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+//            Write back all data into original file
+            while ((copy = br2.readLine()) != null){
+                p2.println(copy);
+            }
+            br2.close();
+            p2.close();
+//            Delete temporary file
+            File f = new File(tempFile);
+            f.delete();
                                 
         } catch(IOException e){
             System.out.println("Input/Output Exception : " + e);
@@ -165,9 +174,16 @@ public class Resident extends User {
             p.flush();
             p.close();
             
-            new File(filePath).delete();
-            File dump = new File(filePath);
-            new File(tempFile).renameTo(dump);
+            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
+            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+            while ((copy = br2.readLine()) != null){
+                p2.println(copy);
+            }
+            br2.close();
+            p2.close();
+            File f = new File(tempFile);
+            f.delete();
             
 //        Change password in active user text file
             FileWriter fw = new FileWriter(auFilePath, false);
