@@ -73,8 +73,8 @@
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="editBTN" alignment="0" max="32767" attributes="0"/>
-                  <Component id="deleteBTN" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                  <Component id="deleteBTN" max="32767" attributes="0"/>
+                  <Component id="editBTN" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
           </Group>
@@ -309,6 +309,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBTNActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

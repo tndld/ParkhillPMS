@@ -180,6 +180,11 @@ public class ResidentViewEditVPass extends getActiveResident {
         });
 
         deleteBTN.setText("Delete");
+        deleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,8 +228,8 @@ public class ResidentViewEditVPass extends getActiveResident {
                         .addComponent(cpTF, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(editBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(127, 127, 127))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,25 +323,66 @@ public class ResidentViewEditVPass extends getActiveResident {
     }//GEN-LAST:event_newBTNActionPerformed
 
     private void editBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBTNActionPerformed
-        String name = vnameTF.getText();
-        String ic = vicTF.getText();
-        String car = cpTF.getText();
-        String refNo = refTF.getText();
+        
+        int cfm = JOptionPane.showConfirmDialog(null, 
+                "Confirm edit this visitor pass? ", "Edit Confirmation", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if (cfm == JOptionPane.YES_OPTION) {
+            
+            String name = vnameTF.getText();
+            String ic = vicTF.getText();
+            String car = cpTF.getText();
+            String refNo = refTF.getText();
 
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
-        VisitorPass vp = new VisitorPass(res);
-        if (vp.editVisitorPass(refNo, name, ic, car)){
-            JOptionPane.showMessageDialog(this, 
-                        "Visitor Pass Edit Successfully!");
-        } else {
+            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            VisitorPass vp = new VisitorPass(res);
+            if (vp.editVisitorPass(refNo, name, ic, car)){
                 JOptionPane.showMessageDialog(this, 
-                        "Errors occured, please try again.", "Error Message", 
-                        JOptionPane.ERROR_MESSAGE);
+                            "Visitor Pass Edit Successfully!");
+            } else {
+                    JOptionPane.showMessageDialog(this, 
+                            "Errors occured, please try again.", "Error Message", 
+                            JOptionPane.ERROR_MESSAGE);
+            }
+
+            this.setVisible(false);
+            new ResidentViewEditVPass().setVisible(true);
+            
+        }else{
+            this.setVisible(true);
         }
         
-        this.setVisible(false);
-        new ResidentViewEditVPass().setVisible(true);
+        
     }//GEN-LAST:event_editBTNActionPerformed
+
+    private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
+        
+        int cfm = JOptionPane.showConfirmDialog(null, 
+                "Confirm delete this visitor pass? ", "Delete Confirmation", 
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        
+        if (cfm == JOptionPane.YES_OPTION){
+            
+            String refNo = refTF.getText();
+            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            VisitorPass vp = new VisitorPass(res);
+            if (vp.deleteVisitorPass(refNo)) {
+                JOptionPane.showMessageDialog(this, 
+                            "Visitor Pass Deleted!");
+            }else {
+                    JOptionPane.showMessageDialog(this, 
+                            "Errors occured, please try again.", "Error Message", 
+                            JOptionPane.ERROR_MESSAGE);
+            }
+            this.setVisible(false);
+            new ResidentViewEditVPass().setVisible(true);
+            
+        }else{
+            this.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_deleteBTNActionPerformed
 
     /**
      * @param args the command line arguments

@@ -237,7 +237,6 @@ public class VisitorPass {
                             passInfo[2] + "," + passInfo[3] + "," + name + "," 
                             + ic + "," + car + "," + passInfo[7] + "," + 
                             passInfo[8] + "," + passInfo[9] + "," + passInfo[10]);
-                    System.out.println("written");
                 }
             }
             
@@ -254,6 +253,38 @@ public class VisitorPass {
             rc.close();
             pc.close();
             new File(tempFile).delete();
+            return true;
+            
+        } catch (IOException e){
+            System.out.println("Input/Output Exception occur: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Exception occur: " + e);
+            return false;
+        }
+    }
+    
+    public boolean deleteVisitorPass(String ref){
+        
+        String filePath = "database\\visitorPass.txt";
+        String tempFile = "database\\tempVisitorPass.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+            
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] passInfo = line.split(",");
+                if (!passInfo[10].equals(ref)) pw.println(line);
+            }
+            pw.flush();
+            pw.close();
+            br.close();
+            
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
+            
             return true;
             
         } catch (IOException e){
