@@ -200,7 +200,7 @@ public class ResidentHomepage extends javax.swing.JFrame {
         }
     }
     
-    public void applyVisitorType() {
+    private void applyVisitorType() {
         
 //        Options available
         String[] options = {"Visitor", "Overnight"};

@@ -13,13 +13,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author user
  */
-public class ResidentViewEditVPass extends javax.swing.JFrame {
+public class ResidentViewEditVPass extends getActiveResident {
 
     /**
      * Creates new form ResidentViewEditVPass
@@ -30,23 +31,9 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        String filePath = "database\\activeUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeUser = line.split(",");
-            String uname = activeUser[0];
-            String pw = activeUser[1];
-            Resident res = new Resident(uname, pw);
-            
-//            Call visitor pass constructor, check this user's visitor pass
-            VisitorPass vp = new VisitorPass(res);
-            vp.viewActiveResVisitorPass(vp.getResName());
-            br.close();
-            
-        }catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        VisitorPass vp = new VisitorPass(res);
+        vp.viewActiveResVisitorPass(vp.getResName());
         
 //        Read the user's visitor pass file.
         String activeVisitorPass = "database\\activeResidentVisitorPass.txt";
@@ -85,9 +72,23 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         passTable = new javax.swing.JTable();
         homeBTN = new javax.swing.JButton();
-        homeBTN1 = new javax.swing.JButton();
-        homeBTN2 = new javax.swing.JButton();
-        homeBTN3 = new javax.swing.JButton();
+        newBTN = new javax.swing.JButton();
+        ref = new javax.swing.JLabel();
+        refTF = new javax.swing.JTextField();
+        type = new javax.swing.JLabel();
+        typeTF = new javax.swing.JTextField();
+        date = new javax.swing.JLabel();
+        dateTF = new javax.swing.JTextField();
+        vnameTF = new javax.swing.JTextField();
+        vname = new javax.swing.JLabel();
+        vic = new javax.swing.JLabel();
+        duration = new javax.swing.JLabel();
+        durationTF = new javax.swing.JTextField();
+        vicTF = new javax.swing.JTextField();
+        cp = new javax.swing.JLabel();
+        cpTF = new javax.swing.JTextField();
+        editBTN = new javax.swing.JButton();
+        deleteBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +100,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Reference No.", "Type", "Date", "Duration", "Visitor Name", "Visitor IC", "Car Plate"
+                "Reference No.", "Type", "Date", "Estimate Duration", "Visitor Name", "Visitor IC", "Car Plate"
             }
         ) {
             Class[] types = new Class [] {
@@ -117,6 +118,11 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        passTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(passTable);
 
         homeBTN.setText("Homepage");
@@ -126,48 +132,114 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
             }
         });
 
-        homeBTN1.setText("Add New");
-        homeBTN1.addActionListener(new java.awt.event.ActionListener() {
+        newBTN.setText("Add New");
+        newBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBTN1ActionPerformed(evt);
+                newBTNActionPerformed(evt);
             }
         });
 
-        homeBTN2.setText("Edit");
-        homeBTN2.addActionListener(new java.awt.event.ActionListener() {
+        ref.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        ref.setText("Reference No.");
+
+        refTF.setEditable(false);
+        refTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        type.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        type.setText("Type of Visitor Pass");
+
+        typeTF.setEditable(false);
+        typeTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        date.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        date.setText("Date");
+
+        dateTF.setEditable(false);
+        dateTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        vname.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        vname.setText("Visitor Name");
+
+        vic.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        vic.setText("Visitor IC");
+
+        duration.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        duration.setText("Estimate Duration");
+
+        durationTF.setEditable(false);
+        durationTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        cp.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        cp.setText("Car Plate No.");
+
+        editBTN.setText("Save Changes");
+        editBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBTN2ActionPerformed(evt);
+                editBTNActionPerformed(evt);
             }
         });
 
-        homeBTN3.setText("Delete");
-        homeBTN3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBTN3ActionPerformed(evt);
-            }
-        });
+        deleteBTN.setText("Delete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(homeBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(homeBTN1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(type)
+                            .addComponent(ref, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(typeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(date))
+                            .addComponent(refTF)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(387, 387, 387)
+                        .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(vname, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(vic, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(vnameTF)
+                            .addComponent(vicTF, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(duration)
+                        .addGap(31, 31, 31)
+                        .addComponent(durationTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(homeBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(homeBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25))
+                        .addComponent(cpTF, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(editBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(127, 127, 127))
             .addGroup(layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(mgmtLoginPageLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(homeBTN)
+                                .addGap(744, 744, 744)
+                                .addComponent(newBTN))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(mgmtLoginPageLabel4)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,32 +251,82 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeBTN)
-                    .addComponent(homeBTN1)
-                    .addComponent(homeBTN2)
-                    .addComponent(homeBTN3))
-                .addContainerGap(162, Short.MAX_VALUE))
+                    .addComponent(newBTN))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ref, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vname, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vic, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vicTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(durationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBTN))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void passTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTableMouseClicked
+
+        DefaultTableModel model = (DefaultTableModel)passTable.getModel();
+
+        //        Get data when the row is selected
+        String refNo = model.getValueAt(passTable.getSelectedRow(), 0).toString();
+        String typePass = model.getValueAt(passTable.getSelectedRow(), 1).toString();
+        String inDate = model.getValueAt(passTable.getSelectedRow(), 2).toString();
+        String dur = model.getValueAt(passTable.getSelectedRow(), 3).toString();
+        String name = model.getValueAt(passTable.getSelectedRow(), 4).toString();
+        String ic = model.getValueAt(passTable.getSelectedRow(), 5).toString();
+        String carPlate = model.getValueAt(passTable.getSelectedRow(), 6).toString();
+
+        //        Assign into text field
+        refTF.setText(refNo);
+        typeTF.setText(typePass);
+        dateTF.setText(inDate);
+        durationTF.setText(dur);
+        vnameTF.setText(name);
+        vicTF.setText(ic);
+        cpTF.setText(carPlate);
+
+    }//GEN-LAST:event_passTableMouseClicked
 
     private void homeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTNActionPerformed
         this.setVisible(false);
         new ResidentHomepage().setVisible(true);
     }//GEN-LAST:event_homeBTNActionPerformed
 
-    private void homeBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN1ActionPerformed
-        this.setVisible(false);
-        new ResidentApplyVPass().setVisible(true);
-    }//GEN-LAST:event_homeBTN1ActionPerformed
+    private void newBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBTNActionPerformed
+        applyVisitorType();
+    }//GEN-LAST:event_newBTNActionPerformed
 
-    private void homeBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_homeBTN2ActionPerformed
+    private void editBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBTNActionPerformed
+        String name = vnameTF.getText();
+        String ic = vicTF.getText();
+        String car = cpTF.getText();
+        String ref = refTF.getText();
 
-    private void homeBTN3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_homeBTN3ActionPerformed
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        VisitorPass vp = new VisitorPass(res);
+        vp.editVisitorPass(ref, name, ic, car);
+    }//GEN-LAST:event_editBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,14 +362,63 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void applyVisitorType() {
+        
+        String[] options = {"Visitor", "Overnight"};
+        int type = JOptionPane.showOptionDialog(null, 
+                "Which visitor pass do you want to apply?", 
+                "Visitor Pass", JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        
+        if (type == 0){
+            this.setVisible(false);
+            new ResidentApplyVPass().setVisible(true);
+        } else {
+            this.setVisible(false);
+            new ResidentApplyOvernight().setVisible(true);
+        }
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cp;
+    private javax.swing.JTextField cpTF;
+    private javax.swing.JLabel date;
+    private javax.swing.JTextField dateTF;
+    private javax.swing.JButton deleteBTN;
+    private javax.swing.JLabel duration;
+    private javax.swing.JTextField durationTF;
+    private javax.swing.JButton editBTN;
     private javax.swing.JButton homeBTN;
-    private javax.swing.JButton homeBTN1;
-    private javax.swing.JButton homeBTN2;
-    private javax.swing.JButton homeBTN3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mgmtLoginPageLabel4;
+    private javax.swing.JButton newBTN;
     private javax.swing.JTable passTable;
+    private javax.swing.JLabel ref;
+    private javax.swing.JTextField refTF;
+    private javax.swing.JLabel type;
+    private javax.swing.JTextField typeTF;
+    private javax.swing.JLabel vic;
+    private javax.swing.JTextField vicTF;
+    private javax.swing.JLabel vname;
+    private javax.swing.JTextField vnameTF;
     // End of variables declaration//GEN-END:variables
 }

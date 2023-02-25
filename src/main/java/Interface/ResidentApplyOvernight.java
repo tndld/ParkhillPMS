@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentApplyOvernight extends javax.swing.JFrame {
+public class ResidentApplyOvernight extends getActiveResident {
 
     /**
      * Creates new form ResidentApplyOvernight
@@ -199,33 +199,23 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         
         if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
                 !ind.equals("") && !outd.equals("") && !durToString.equals("0")){
-            String filePath = "database\\activeUser.txt";
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(filePath));
-                String line = br.readLine();
-                String[] activeUser = line.split(",");
-                String uname = activeUser[0];
-                String pw = activeUser[1];
-                Resident res = new Resident(uname, pw);
-                VisitorPass vp = new VisitorPass(res);
-                if (vp.addOvernightPass(res, v_name, v_ic, carp, inDate, outDate, durToString)){
-                    JOptionPane.showMessageDialog(this, 
-                            "Overnight Pass Successfully Applied!");
-                    this.setVisible(false);
-                    new ResidentViewEditVPass().setVisible(true);
+            
+            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            VisitorPass vp = new VisitorPass(res);
+            
+            if (vp.addOvernightPass(res, v_name, v_ic, 
+                    carp, inDate, outDate, durToString)){
+                JOptionPane.showMessageDialog(this, 
+                        "Overnight Pass Successfully Applied!");
+                this.setVisible(false);
+                new ResidentViewEditVPass().setVisible(true);
 
-                } else {
-                    JOptionPane.showMessageDialog(this, 
-                            "Errors occured, please try again.", "Error Message", 
-                            JOptionPane.ERROR_MESSAGE);
-                    this.setVisible(false);
-                    new ResidentHomepage().setVisible(true);
-                }
-                
-            } catch(IOException e){
-                System.out.println("Exception Occurred" + e);
-            } catch (Exception ex){
-                System.out.println("Exception " + ex);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+                this.setVisible(false);
+                new ResidentHomepage().setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(this,
@@ -279,6 +269,24 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         outDatePicker.setMinSelectableDate(d);
         inDatePicker.setDate(d);
         outDatePicker.setDate(d);
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

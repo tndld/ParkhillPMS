@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentApplyVPass extends javax.swing.JFrame {
+public class ResidentApplyVPass extends getActiveResident {
 
     /**
      * Creates new form ResidentApplyVPass
@@ -169,38 +169,22 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
         
         if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
                 !sdate.equals("") && !durToString.equals("0")){
-    //        Get to know current user
-            String filePath = "database\\activeUser.txt";
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(filePath));
-                String line = br.readLine();
-                String[] activeUser = line.split(",");
-                String uname = activeUser[0];
-                String pw = activeUser[1];
-                Resident res = new Resident(uname, pw);
+            
+            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            VisitorPass vp = new VisitorPass(res);
+            if (vp.addVisitorPass(res, v_name, v_ic, 
+                    carp, sdate, durToString)){
+                JOptionPane.showMessageDialog(this, 
+                        "Visitor Pass Successfully Applied!");
+                this.setVisible(false);
+                new ResidentViewEditVPass().setVisible(true);
 
-    //            Pass current user into visitor pass constructor
-                VisitorPass vp = new VisitorPass(res);
-    //            Use VisitorPass class method addVisitorPass to add record into text file
-    //            if () is used to check whether the method return true value
-                if (vp.addVisitorPass(res, v_name, v_ic, carp, sdate, durToString)){
-                    JOptionPane.showMessageDialog(this, 
-                            "Visitor Pass Successfully Applied!");
-                    this.setVisible(false);
-                    new ResidentViewEditVPass().setVisible(true);
-
-                } else {
-                    JOptionPane.showMessageDialog(this, 
-                            "Errors occured, please try again.", "Error Message", 
-                            JOptionPane.ERROR_MESSAGE);
-                    this.setVisible(false);
-                    new ResidentHomepage().setVisible(true);
-                }
-                
-            } catch(IOException e){
-                System.out.println("Exception Occurred" + e);
-            } catch (Exception ex){
-                System.out.println("Exception " + ex);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+                this.setVisible(false);
+                new ResidentHomepage().setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(this,
@@ -208,8 +192,6 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void cancelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTNActionPerformed
@@ -264,6 +246,24 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
         Date d = Date.from(local.atStartOfDay(def).toInstant());
         datePicker.setMinSelectableDate(d);
         datePicker.setDate(d);
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
