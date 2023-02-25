@@ -6,9 +6,11 @@ package User;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 /**
@@ -217,7 +219,49 @@ public class VisitorPass {
         }
     }
     
-    public void editVisitorPass(String ref, String name, String ic, String car) {
-        System.out.println("Success");
+    public boolean editVisitorPass(String ref, String name, String ic, String car) {
+        
+        String filePath = "database\\visitorPass.txt";
+        String tempFile = "database\\tempVisitorPass.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+            
+            String line;
+            while((line = br.readLine()) != null){
+                String[] passInfo = line.split(",");
+                if (!passInfo[10].equals(ref)){
+                    pw.println(line);
+                } else {
+                    pw.println(passInfo[0] + "," + passInfo[1] + "," + 
+                            passInfo[2] + "," + passInfo[3] + "," + name + "," 
+                            + ic + "," + car + "," + passInfo[7] + "," + 
+                            passInfo[8] + "," + passInfo[9] + "," + passInfo[10]);
+                    System.out.println("written");
+                }
+            }
+            
+            br.close();
+            pw.flush();
+            pw.close();
+            
+            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
+            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+            while ((copy = rc.readLine()) != null){
+                pc.println(copy);
+            }
+            rc.close();
+            pc.close();
+            new File(tempFile).delete();
+            return true;
+            
+        } catch (IOException e){
+            System.out.println("Input/Output Exception occur: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Exception occur: " + e);
+            return false;
+        }
     }
 }

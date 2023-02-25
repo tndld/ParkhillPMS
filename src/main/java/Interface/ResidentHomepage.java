@@ -203,20 +203,23 @@ public class ResidentHomepage extends javax.swing.JFrame {
     private void applyVisitorType() {
         
 //        Options available
-        String[] options = {"Visitor", "Overnight"};
+        String[] options = {"Visitor", "Overnight", "Cancel"};
         
 //        Let user choose the type
         int type = JOptionPane.showOptionDialog(null, 
                 "Which visitor pass do you want to apply?", 
                 "Visitor Pass", JOptionPane.DEFAULT_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         
         if (type == 0){
             this.setVisible(false);
             new ResidentApplyVPass().setVisible(true);
-        } else {
+        } else if(type == 1){
             this.setVisible(false);
             new ResidentApplyOvernight().setVisible(true);
+        } else{
+            this.setVisible(false);
+            new ResidentHomepage().setVisible(true);
         }
         
     }

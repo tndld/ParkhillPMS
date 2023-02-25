@@ -321,11 +321,21 @@ public class ResidentViewEditVPass extends getActiveResident {
         String name = vnameTF.getText();
         String ic = vicTF.getText();
         String car = cpTF.getText();
-        String ref = refTF.getText();
+        String refNo = refTF.getText();
 
         Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
         VisitorPass vp = new VisitorPass(res);
-        vp.editVisitorPass(ref, name, ic, car);
+        if (vp.editVisitorPass(refNo, name, ic, car)){
+            JOptionPane.showMessageDialog(this, 
+                        "Visitor Pass Edit Successfully!");
+        } else {
+                JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+        }
+        
+        this.setVisible(false);
+        new ResidentViewEditVPass().setVisible(true);
     }//GEN-LAST:event_editBTNActionPerformed
 
     /**
@@ -369,7 +379,7 @@ public class ResidentViewEditVPass extends getActiveResident {
         int type = JOptionPane.showOptionDialog(null, 
                 "Which visitor pass do you want to apply?", 
                 "Visitor Pass", JOptionPane.DEFAULT_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                JOptionPane.INFORMATION_MESSAGE, null, options, EXIT_ON_CLOSE);
         
         if (type == 0){
             this.setVisible(false);
