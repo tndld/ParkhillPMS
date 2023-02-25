@@ -134,8 +134,18 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         });
 
         homeBTN2.setText("Edit");
+        homeBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTN2ActionPerformed(evt);
+            }
+        });
 
         homeBTN3.setText("Delete");
+        homeBTN3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTN3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,6 +197,14 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         this.setVisible(false);
         new ResidentApplyVPass().setVisible(true);
     }//GEN-LAST:event_homeBTN1ActionPerformed
+
+    private void homeBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeBTN2ActionPerformed
+
+    private void homeBTN3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTN3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeBTN3ActionPerformed
 
     /**
      * @param args the command line arguments
