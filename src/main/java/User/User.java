@@ -134,7 +134,7 @@ public class User extends UserCommon{
                 pw.close();
                 fw.close();
             } catch (IOException e) {
-                 System.out.println("Exception Occurred aaaa" + e);
+                 System.out.println("Exception Occurred" + e);
             }
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);

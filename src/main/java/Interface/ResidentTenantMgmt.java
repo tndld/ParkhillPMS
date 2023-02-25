@@ -77,6 +77,7 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
         searchTxtField = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,12 +129,21 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
             }
         });
 
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addContainerGap()
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mgmtPageTitle)
                     .addComponent(residentTenantTitle))
@@ -158,7 +168,9 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mgmtPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 24, Short.MAX_VALUE)
@@ -179,20 +191,17 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         AdminExecutive admin = new AdminExecutive(null, null);
-        System.out.println("1");
+
         
         // Get the selected row index
         int row = residentTenantTable.getSelectedRow();
-        System.out.println("2");
         
         //Check if a row is selected
         if (row < 0){
             JOptionPane.showMessageDialog(this, "Please select a resident to update.", "Error",
                     JOptionPane.ERROR_MESSAGE);
-             System.out.println("2.1");
             return;
         }
-        System.out.println("3");
         
         // Get the current resident info from the selected row
         String username = residentTenantTable.getValueAt(row, 0).toString();
@@ -200,34 +209,30 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
         String email = residentTenantTable.getValueAt(row, 2).toString();
         String phoneNo = residentTenantTable.getValueAt(row, 3).toString();
         String unitNo = residentTenantTable.getValueAt(row, 4).toString();
-        System.out.println("4");
+
         System.out.println(username + fullName+ email+ phoneNo+ unitNo);
         
         File filePath = new File("database\\residentTenant.txt");
-        System.out.println("4.1");
+
         try {          
             String currentLine;
-            System.out.println("4.2");
+
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            System.out.println("4.3");
+
             
             while((currentLine = reader.readLine()) != null) {
-                System.out.println("4.4");
                 String[] residentInfo = currentLine.split(",");
-                System.out.println("4.5");
+
                 if(residentInfo[0].equals(username)){
-                    System.out.println("4.6");
+
                     // use the existing password
                     String pass = residentInfo[1];
-                    System.out.println("4.7");
                     Resident res = new Resident(username, pass);
-                    System.out.println("4.8");
                     res.setFullName(fullName);
                     res.setEmail(email);
                     res.setPhoneNo(phoneNo);
                     res.setUnitNo(unitNo);
                     pass = res.getPassword();
-                    System.out.println("4.3");
                     System.out.println(username + pass + fullName+ email+ phoneNo+ unitNo);
                     admin.updateResident(username, pass, fullName, email, phoneNo, unitNo);
                     if(admin.updateResident(username, pass, fullName, email, phoneNo, unitNo)){
@@ -235,26 +240,25 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
                     }else {
                         JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    System.out.println("4.10");
                 }
             }
             reader.close();
-            System.out.println("5");
             
         }catch (IOException e) {
                  System.out.println("Exception Occurred" + e);
             }
         
-        // Create a new resident object with the updated info
-        System.out.println("6");
-        
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        
-        
+        new AddNewResidentTenant().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        new AdminExeHomepage().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,6 +297,7 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mgmtPageTitle;

@@ -28,18 +28,30 @@ public class AdminExecutive extends User {
         System.out.println("Admin Page");
     }
     
-    public void addResident(Resident res) {
+    public boolean addResident(String username, String password, String fname, String email, String phoneNum, String unitNo) {
+        Resident res = new Resident(null,null);
+        
+        boolean success =  true;
+        
+        res.setNewUsername(username);
+        res.setNewPass(password);
+        res.setFullName(fname);
+        res.setEmail(email);
+        res.setPhoneNo(phoneNum);
+        res.getUnitNo();
+        
         
         try {
                 String filePath = "database\\residentTenant.txt";
                 FileWriter myWriter = new FileWriter(filePath, true); //open the file
-                myWriter.write(res.getFullName()+ ","+ res.getPassword()+ ","+ res.getEmail()+ ","+res.getPhoneNo()+ ","+res.getUnitNo()+ ",");
+                myWriter.write("\n" + username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + unitNo + ",");
                 myWriter.close();
                 
             } catch (IOException e) {
                 System.out.println("Exception Occurred" + e);
-                
+                success = false;
             }
+        return success;
     }
     
     public boolean updateResident(String username, String pw, String fname, String email, String phoneNum, String unitNo){

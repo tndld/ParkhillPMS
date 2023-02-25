@@ -97,6 +97,16 @@ public class Resident extends User {
         return this.unitNo;
     }
     
+    public String setNewUsername(String username){
+        this.username = username;
+        return null;
+    }
+    
+    public String setNewPass(String password){
+        this.password = password;
+        return null;
+    }
+    
 //    public void updateResident(String username, String fullName, String email, String phone, String unitNum){
 //        Resident res = new Resident(username, password);
 //        res.fullName = fullName;
