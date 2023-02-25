@@ -47,8 +47,10 @@ public class Resident extends User {
             br.close();
             fr.close();
             
-        }catch(IOException e){
-            e.printStackTrace();
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
     
@@ -127,21 +129,14 @@ public class Resident extends User {
             p.flush();
             p.close();
             
-            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
-            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
-            String copy;
-//            Write back all data into original file
-            while ((copy = br2.readLine()) != null){
-                p2.println(copy);
-            }
-            br2.close();
-            p2.close();
-//            Delete temporary file
-            File f = new File(tempFile);
-            f.delete();
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
                                 
-        }catch(IOException e){
-            e.printStackTrace();
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
     
@@ -170,16 +165,9 @@ public class Resident extends User {
             p.flush();
             p.close();
             
-            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
-            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
-            String copy;
-            while ((copy = br2.readLine()) != null){
-                p2.println(copy);
-            }
-            br2.close();
-            p2.close();
-            File f = new File(tempFile);
-            f.delete();
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
             
 //        Change password in active user text file
             FileWriter fw = new FileWriter(auFilePath, false);
@@ -187,7 +175,9 @@ public class Resident extends User {
             fw.close();
             
         } catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
     

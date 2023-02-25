@@ -244,15 +244,9 @@ public class VisitorPass {
             pw.flush();
             pw.close();
             
-            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
-            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-            String copy;
-            while ((copy = rc.readLine()) != null){
-                pc.println(copy);
-            }
-            rc.close();
-            pc.close();
-            new File(tempFile).delete();
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
             return true;
             
         } catch (IOException e){

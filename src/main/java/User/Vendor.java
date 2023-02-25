@@ -43,8 +43,10 @@ public class Vendor extends User {
                 }
             }
             br.close();
-        }catch(IOException e){
-            e.printStackTrace();
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
     
@@ -127,20 +129,14 @@ public class Vendor extends User {
             p.flush();
             p.close();
             
-            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
-            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-            
-            String copy;
-            while ((copy = rc.readLine()) != null){
-                pc.println(copy);
-            }
-            
-            rc.close();
-            pc.close();
-            new File(tempFile).delete();
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
             
         } catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
     
@@ -168,24 +164,18 @@ public class Vendor extends User {
             p.flush();
             p.close();
             
-            BufferedReader rc = new BufferedReader(new FileReader(tempFile));
-            PrintWriter pc = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-            
-            String copy;
-            while ((copy = rc.readLine()) != null){
-                pc.println(copy);
-            }
-            
-            rc.close();
-            pc.close();
-            new File(tempFile).delete();
+            new File(filePath).delete();
+            File dump = new File(filePath);
+            new File(tempFile).renameTo(dump);
             
             FileWriter fw = new FileWriter(vaFile, false);
             fw.write(uname + "," + newPW);
             fw.close();
             
         } catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
         }
     }
 }
