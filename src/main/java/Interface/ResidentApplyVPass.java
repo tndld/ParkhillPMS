@@ -184,7 +184,6 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
     //            Use VisitorPass class method addVisitorPass to add record into text file
     //            if () is used to check whether the method return true value
                 if (vp.addVisitorPass(res, v_name, v_ic, carp, sdate, durToString)){
-                    vp.setReferenceNum(res, res.getUnitNo(), sdate);
                     JOptionPane.showMessageDialog(this, 
                             "Visitor Pass Successfully Applied!");
                     this.setVisible(false);
@@ -200,10 +199,12 @@ public class ResidentApplyVPass extends javax.swing.JFrame {
                 
             } catch(IOException e){
                 System.out.println("Exception Occurred" + e);
+            } catch (Exception ex){
+                System.out.println("Exception " + ex);
             }
         } else {
             JOptionPane.showMessageDialog(this,
-                        "Please fill up every field.\n Duration should not be 0.",
+                        "Please fill up every field.\nDuration should not be 0.",
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
         }

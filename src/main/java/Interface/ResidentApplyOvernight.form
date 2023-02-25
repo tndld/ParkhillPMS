@@ -50,6 +50,11 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="outDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="duration" min="-2" pref="109" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="durationSpinner" min="-2" pref="152" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -67,9 +72,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="mgmtLoginPageLabel4" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vname" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="vnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -94,12 +99,17 @@
                   <Component id="outDate" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="outDatePicker" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="duration" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="durationSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="submitBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelBTN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -178,6 +188,16 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="outDatePicker">
+    </Component>
+    <Component class="javax.swing.JLabel" name="duration">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Duration (Day)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="durationSpinner">
     </Component>
   </SubComponents>
 </Form>

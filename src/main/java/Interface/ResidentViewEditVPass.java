@@ -4,8 +4,16 @@
  */
 package Interface;
 
+import User.Resident;
+import User.VisitorPass;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +29,47 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            Resident res = new Resident(uname, pw);
+            
+//            Call visitor pass constructor, check this user's visitor pass
+            VisitorPass vp = new VisitorPass(res);
+            vp.viewActiveResVisitorPass(vp.getResName());
+            br.close();
+            
+        }catch(IOException e){
+            System.out.println("Exception Occurred" + e);
+        }
+        
+//        Read the user's visitor pass file.
+        String activeVisitorPass = "database\\activeResidentVisitorPass.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader (activeVisitorPass));
+            String firstLine = br.readLine().trim();
+            String[] columns = firstLine.split(":");
+            DefaultTableModel model = (DefaultTableModel)passTable.getModel();
+//            Set title
+            model.setColumnIdentifiers(columns);
+            
+            Object[] record = br.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line = record[i].toString().trim();
+                String[] recInfo = line.split(",");
+//                set existing record
+                model.addRow(recInfo);
+            }
+            
+            br.close();
+        } catch (IOException e){
+            System.out.println("Exception Occurred" + e);
+        }
     }
 
     /**
@@ -34,7 +83,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
 
         mgmtLoginPageLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        passTable = new javax.swing.JTable();
         homeBTN = new javax.swing.JButton();
         homeBTN1 = new javax.swing.JButton();
         homeBTN2 = new javax.swing.JButton();
@@ -45,7 +94,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
         mgmtLoginPageLabel4.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         mgmtLoginPageLabel4.setText("Visitor / Overnight Pass");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        passTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,7 +117,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(passTable);
 
         homeBTN.setText("Homepage");
         homeBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -95,21 +144,20 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(homeBTN)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(homeBTN1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(homeBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
-                            .addComponent(homeBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mgmtLoginPageLabel4)
-                        .addGap(80, 80, 80)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(homeBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(homeBTN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(homeBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(homeBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(330, 330, 330)
+                .addComponent(mgmtLoginPageLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +172,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
                     .addComponent(homeBTN1)
                     .addComponent(homeBTN2)
                     .addComponent(homeBTN3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,7 +229,7 @@ public class ResidentViewEditVPass extends javax.swing.JFrame {
     private javax.swing.JButton homeBTN2;
     private javax.swing.JButton homeBTN3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel mgmtLoginPageLabel4;
+    private javax.swing.JTable passTable;
     // End of variables declaration//GEN-END:variables
 }

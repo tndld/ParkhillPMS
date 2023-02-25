@@ -56,6 +56,8 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         submitBTN = new javax.swing.JButton();
         outDate = new javax.swing.JLabel();
         outDatePicker = new com.toedter.calendar.JDateChooser();
+        duration = new javax.swing.JLabel();
+        durationSpinner = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,9 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         outDate.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         outDate.setText("Out Date");
 
+        duration.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        duration.setText("Duration (Day)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,7 +122,11 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(outDate, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(durationSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,9 +138,9 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(mgmtLoginPageLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vname, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,11 +160,15 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(outDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(durationSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitBTN)
                     .addComponent(cancelBTN))
-                .addGap(24, 24, 24))
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -181,9 +194,11 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
         String inDate = DateFormat.getDateInstance().format(ind);
         Date outd = outDatePicker.getDate();
         String outDate = DateFormat.getDateInstance().format(outd);
+        int dur = (Integer)durationSpinner.getValue();
+        String durToString = Integer.toString(dur);
         
         if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
-                !ind.equals("") && !outd.equals("")){
+                !ind.equals("") && !outd.equals("") && !durToString.equals("0")){
             String filePath = "database\\activeUser.txt";
             try{
                 BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -193,8 +208,7 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
                 String pw = activeUser[1];
                 Resident res = new Resident(uname, pw);
                 VisitorPass vp = new VisitorPass(res);
-                if (vp.addOvernightPass(res, v_name, v_ic, carp, inDate, outDate)){
-                    vp.setReferenceNum(res, res.getUnitNo(), inDate);
+                if (vp.addOvernightPass(res, v_name, v_ic, carp, inDate, outDate, durToString)){
                     JOptionPane.showMessageDialog(this, 
                             "Overnight Pass Successfully Applied!");
                     this.setVisible(false);
@@ -210,10 +224,12 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
                 
             } catch(IOException e){
                 System.out.println("Exception Occurred" + e);
+            } catch (Exception ex){
+                System.out.println("Exception " + ex);
             }
         } else {
             JOptionPane.showMessageDialog(this,
-                        "Please fill up every field.\n",
+                        "Please fill up every field.\nDuration should not be 0.",
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
         }
@@ -269,6 +285,8 @@ public class ResidentApplyOvernight extends javax.swing.JFrame {
     private javax.swing.JButton cancelBTN;
     private javax.swing.JLabel cp;
     private javax.swing.JTextField cpTF;
+    private javax.swing.JLabel duration;
+    private javax.swing.JSpinner durationSpinner;
     private javax.swing.JLabel inDate;
     private com.toedter.calendar.JDateChooser inDatePicker;
     private javax.swing.JLabel mgmtLoginPageLabel4;

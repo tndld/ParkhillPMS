@@ -27,22 +27,41 @@ public class VisitorPass {
     private String inDate;
     private String outDate;
     private String duration;
-    private LocalDateTime dateTimeApplied;
     private String ref;
     
-    public VisitorPass(Resident user){
-        resName = "";
-        resPhone = "";
-        resUnit = "";
-        type = "";
-        visitorName = "";
-        visitorIC = "";
-        visitorCarPlate = "";
-        inDate = "";
-        outDate = "";
-        duration = "";
-        dateTimeApplied = LocalDateTime.now();
-        ref = "";
+    public VisitorPass(Resident user, String ref){
+        
+        String filePath = "database\\visitorPass.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] passInfo = line.split(",");
+                if (passInfo[11].equals(ref)){
+                    this.type = passInfo[0];
+                    this.resUnit = passInfo[1];
+                    this.resName = passInfo[2];
+                    this.resPhone = passInfo[3];
+                    this.visitorName = passInfo[4];
+                    this.visitorIC = passInfo[5];
+                    this.visitorCarPlate = passInfo[6];
+                    this.inDate = passInfo[7];
+                    this.outDate = passInfo[8];
+                    this.duration = passInfo[9];
+                    this.ref = passInfo[10];
+                }
+            }
+            br.close();
+        } catch(IOException e){
+            System.out.println("Exception Occurred" + e);
+        }
+    }
+    
+    public VisitorPass(Resident res){
+        this.resName = res.getFullName();
+        this.resUnit = res.getUnitNo();
+        this.resPhone = res.getPhoneNo();
+        this.ref = res.username + LocalDateTime.now();
     }
     
     public void setType(String type){
@@ -113,21 +132,15 @@ public class VisitorPass {
         return this.duration;
     }
     
-    public LocalDateTime getAppliedDate() {
-        return this.dateTimeApplied;
-    }
-    
     public String getRef() {
         return this.ref;
     }
     
-    public boolean addVisitorPass(Resident res, String name, String ic, String cp, String date, String hr) {
+    public boolean addVisitorPass(Resident res, String name, String ic, 
+            String cp, String date, String hr) {
         
 //        Assign into constructor
         VisitorPass vp = new VisitorPass(res);
-        vp.resName = res.getFullName();
-        vp.resPhone = res.getPhoneNo();
-        vp.resUnit = res.getUnitNo();
         vp.type = "Visitor";
         vp.visitorName = name;
         vp.visitorIC = ic;
@@ -135,7 +148,6 @@ public class VisitorPass {
         vp.inDate = date;
         vp.outDate = date;
         vp.duration = hr + " hour(s)";
-        vp.dateTimeApplied = LocalDateTime.now();
         
 //        Write into text file
         String filePath = "database\\visitorPass.txt";
@@ -144,7 +156,7 @@ public class VisitorPass {
             bw.write(vp.type + "," + vp.resUnit + "," + vp.resName + "," + 
                     vp.resPhone + "," + vp.visitorName + "," + vp.visitorIC 
                     + "," + vp.visitorCarPlate + "," + vp.inDate + "," + 
-                    vp.outDate + "," + vp.duration + "," + vp.dateTimeApplied + ",");
+                    vp.outDate + "," + vp.duration + "," + vp.ref + "\n");            
             bw.close();
             return true;
         } catch(IOException e){
@@ -152,73 +164,57 @@ public class VisitorPass {
             return false;
         }
     }
-    
-    public void setReferenceNum(Resident res, String unit, String date){
-        VisitorPass vp = new VisitorPass(res);
-        String filePath = "database\\visitorPass.txt";
-        try {
-            BufferedReader br = new BufferedReader (new FileReader(filePath));
-            String line;
-            int i = 0;
-            
-//            Check the records of the unit on that day
-            while ((line = br.readLine()) != null) {
-                String[] record = line.split(",");
-                if (record[1].equals(unit) && record[7].equals(date)){
-                    i+=1;
-                }
-            }
-            
-//            Generate Reference Number
-            String refNo = res.username + vp.dateTimeApplied + Integer.toString(i);
-//            Append into text file
-            BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
-            bw.write(refNo + "\n");
-            
-            br.close();
-            bw.close();
-            
-//            Assign into constructor
-            vp.ref = refNo;
-            
-        } catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
-    }
-    
+
     public boolean addOvernightPass(Resident res, String name, String ic, 
-            String cp, String inDate, String outDate) {
+            String cp, String inDate, String outDate, String day) {
         
-//        Assign into constructor
         VisitorPass vp = new VisitorPass(res);
-        vp.resName = res.getFullName();
-        vp.resPhone = res.getPhoneNo();
-        vp.resUnit = res.getUnitNo();
         vp.type = "Overnight";
         vp.visitorName = name;
         vp.visitorIC = ic;
         vp.visitorCarPlate = cp;
         vp.inDate = inDate;
         vp.outDate = outDate;
-        String[] date1 = inDate.split(" ");
-        String[] date2 = outDate.split(" ");
-        int dur = Integer.parseInt(date2[0]) - Integer.parseInt(date1[0]);
-        vp.duration = Integer.toString(dur) + " day(s)";
-        vp.dateTimeApplied = LocalDateTime.now();
+        vp.duration = day + " day(s)";
         
-//        Write into text file
         String filePath = "database\\visitorPass.txt";
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
             bw.write(vp.type + "," + vp.resUnit + "," + vp.resName + "," + 
                     vp.resPhone + "," + vp.visitorName + "," + vp.visitorIC 
                     + "," + vp.visitorCarPlate + "," + vp.inDate + "," + 
-                    vp.outDate + "," + vp.duration + "," + vp.dateTimeApplied + ",");
+                    vp.outDate + "," + vp.duration + "," + vp.ref + "\n");
             bw.close();
             return true;
         } catch(IOException e){
             System.out.println("Exception Occurred" + e);
             return false;
+        }
+    }
+    
+    public void viewActiveResVisitorPass(String fname){
+        
+        String readFile = "database\\visitorPass.txt";
+        String writeFile = "database\\activeResidentVisitorPass.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(readFile));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(writeFile));
+            bw.write("Reference No:Type:Date:Duration:Visitor Name:Visitor IC:Car Plate:\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] passInfo = line.split(",");
+                if (passInfo[2].equals(fname)){
+//                    bw.write(line);
+                    bw.write(passInfo[10] + "," + passInfo[0] + "," + 
+                            passInfo[7] + "," + passInfo[9] + "," + 
+                            passInfo[4] + "," + passInfo[5] + "," + 
+                            passInfo[6] + "\n");
+                } 
+            }
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
         }
     }
 }
