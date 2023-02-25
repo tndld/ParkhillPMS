@@ -199,39 +199,44 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
     private void addTenantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTenantBtnActionPerformed
         AdminExecutive admin = new AdminExecutive(null,null);
         
-        String username = usernameTF.getText();
-        String fullName = residentFullNameTF.getText();
-        String email = residentEmailTF.getText();
-        String phoneNum = residentPhoneTF.getText();
-        String unitNo = unitNoTF.getText();
-        
-        String password1 = pwTF.getText();
-        String confirmPass = confirmPwTF.getText();
-        if (password1.equals(confirmPass)){
-            String finalPassword = confirmPass;
-            if(admin.addResident(username, password1, fullName, email, phoneNum, unitNo)){
-            JOptionPane.showMessageDialog(this, "Resident added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-            usernameTF.setText("");
-            residentFullNameTF.setText("");
-            residentEmailTF.setText("");
-            residentPhoneTF.setText("");
-            unitNoTF.setText("");
-            pwTF.setText("");
-            confirmPwTF.setText("");
+        if (usernameTF.getText().isEmpty() || residentFullNameTF.getText().isEmpty() || residentEmailTF.getText().isEmpty() ||
+               residentPhoneTF.getText().isEmpty() || unitNoTF.getText().isEmpty() || pwTF.getText().isEmpty() || confirmPwTF.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please insert all the required information!", "Error", JOptionPane.ERROR_MESSAGE);
         }else {
-            JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
-            usernameTF.setText("");
-            residentFullNameTF.setText("");
-            residentEmailTF.setText("");
-            residentPhoneTF.setText("");
-            unitNoTF.setText("");
+            String username = usernameTF.getText();
+            String fullName = residentFullNameTF.getText();
+            String email = residentEmailTF.getText();
+            String phoneNum = residentPhoneTF.getText();
+            String unitNo = unitNoTF.getText();
+        
+            String password1 = pwTF.getText();
+            String confirmPass = confirmPwTF.getText();
+            if (password1.equals(confirmPass)){
+                String finalPassword = confirmPass;
+                if(admin.addResident(username, password1, fullName, email, phoneNum, unitNo)){
+                JOptionPane.showMessageDialog(this, "Resident added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                usernameTF.setText("");
+                residentFullNameTF.setText("");
+                residentEmailTF.setText("");
+                residentPhoneTF.setText("");
+                unitNoTF.setText("");
+                pwTF.setText("");
+                confirmPwTF.setText("");
+            }else {
+                JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
+                usernameTF.setText("");
+                residentFullNameTF.setText("");
+                residentEmailTF.setText("");
+                residentPhoneTF.setText("");
+                unitNoTF.setText("");
+                pwTF.setText("");
+                confirmPwTF.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Your passwords are different!", "Error", JOptionPane.ERROR_MESSAGE);
             pwTF.setText("");
             confirmPwTF.setText("");
         }
-        } else {
-            JOptionPane.showMessageDialog(this, "Your password is different!", "Error", JOptionPane.ERROR_MESSAGE);
-            pwTF.setText("");
-            confirmPwTF.setText("");
         }
         
         
