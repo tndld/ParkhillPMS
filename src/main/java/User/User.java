@@ -71,7 +71,7 @@ public class User extends UserCommon{
             br.close();
             fr.close();
         } catch (IOException e) {
-            e.printStackTrace();
+             System.out.println("Exception Occurred bbbb" + e);
         }
         return false;
     }
@@ -134,7 +134,7 @@ public class User extends UserCommon{
                 pw.close();
                 fw.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                 System.out.println("Exception Occurred aaaa" + e);
             }
             JOptionPane.showMessageDialog(null, "You have been logged out.", 
                     "Logout", JOptionPane.INFORMATION_MESSAGE);
@@ -144,4 +144,5 @@ public class User extends UserCommon{
     public boolean isLoggedIn(){
         return this.isLoggedIn();
     }
+    
 }

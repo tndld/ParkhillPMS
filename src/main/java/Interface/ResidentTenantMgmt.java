@@ -5,6 +5,7 @@
 package Interface;
 
 import User.AdminExecutive;
+import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -176,13 +178,80 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        AdminExecutive admin = new AdminExecutive(null,null);
+        AdminExecutive admin = new AdminExecutive(null, null);
+        System.out.println("1");
+        
+        // Get the selected row index
+        int row = residentTenantTable.getSelectedRow();
+        System.out.println("2");
+        
+        //Check if a row is selected
+        if (row < 0){
+            JOptionPane.showMessageDialog(this, "Please select a resident to update.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+             System.out.println("2.1");
+            return;
+        }
+        System.out.println("3");
+        
+        // Get the current resident info from the selected row
+        String username = residentTenantTable.getValueAt(row, 0).toString();
+        String fullName = residentTenantTable.getValueAt(row, 1).toString();
+        String email = residentTenantTable.getValueAt(row, 2).toString();
+        String phoneNo = residentTenantTable.getValueAt(row, 3).toString();
+        String unitNo = residentTenantTable.getValueAt(row, 4).toString();
+        System.out.println("4");
+        System.out.println(username + fullName+ email+ phoneNo+ unitNo);
+        
+        File filePath = new File("database\\residentTenant.txt");
+        System.out.println("4.1");
+        try {          
+            String currentLine;
+            System.out.println("4.2");
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            System.out.println("4.3");
+            
+            while((currentLine = reader.readLine()) != null) {
+                System.out.println("4.4");
+                String[] residentInfo = currentLine.split(",");
+                System.out.println("4.5");
+                if(residentInfo[0].equals(username)){
+                    System.out.println("4.6");
+                    // use the existing password
+                    String pass = residentInfo[1];
+                    System.out.println("4.7");
+                    Resident res = new Resident(username, pass);
+                    System.out.println("4.8");
+                    res.setFullName(fullName);
+                    res.setEmail(email);
+                    res.setPhoneNo(phoneNo);
+                    res.setUnitNo(unitNo);
+                    pass = res.getPassword();
+                    System.out.println("4.3");
+                    System.out.println(username + pass + fullName+ email+ phoneNo+ unitNo);
+                    admin.updateResident(username, pass, fullName, email, phoneNo, unitNo);
+                    if(admin.updateResident(username, pass, fullName, email, phoneNo, unitNo)){
+                        JOptionPane.showMessageDialog(this, "Resident updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    }else {
+                        JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    System.out.println("4.10");
+                }
+            }
+            reader.close();
+            System.out.println("5");
+            
+        }catch (IOException e) {
+                 System.out.println("Exception Occurred" + e);
+            }
+        
+        // Create a new resident object with the updated info
+        System.out.println("6");
         
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        AdminExecutive admin = new AdminExecutive(null,null);
         
         
     }//GEN-LAST:event_addBtnActionPerformed
