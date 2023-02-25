@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentChangePassword extends javax.swing.JFrame {
+public class ResidentChangePassword extends getActiveResident {
 
     /**
      * Creates new form ResidentChangePassword
@@ -122,55 +122,41 @@ public class ResidentChangePassword extends javax.swing.JFrame {
         String nPW = newPwTF.getText();
         String cfm = changePwTF.getText();
 
-        String filePath = "database\\activeUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeUser = line.split(",");
-            String uname = activeUser[0];
-            String pw = activeUser[1];
-            Resident res = new Resident(uname, pw);
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
 
-            if ((!cPW.equals("")) && (!nPW.equals("")) && (!cfm.equals(""))){
-                if (cPW.equals(res.getPassword())){
-                    if (nPW.equals(cfm)){
-                        res.changePassword(uname, pw, cfm);
+        if ((!cPW.equals("")) && (!nPW.equals("")) && (!cfm.equals(""))){
+            if (cPW.equals(res.getPassword())){
+                if (nPW.equals(cfm)){
+                    res.changePassword(res.getUsername(), getActiveResident()[1], cfm);
 
-                        this.setVisible(false);
-                        new ResidentUserProfile().setVisible(true);
+                    this.setVisible(false);
+                    new ResidentUserProfile().setVisible(true);
 
-                    } else {
-                        JOptionPane.showMessageDialog(this,
-                            "New Password and Confirm Password Not Match.",
-                            "Error Message",
-                            JOptionPane.ERROR_MESSAGE);
-                        newPwTF.setText("");
-                        changePwTF.setText("");
-                    }
                 } else {
                     JOptionPane.showMessageDialog(this,
-                        "Current Password Incorrect",
+                        "New Password and Confirm Password Not Match.",
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
-                    curPwTF.setText("");
                     newPwTF.setText("");
                     changePwTF.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(this,
-                        "Please fill up every field.",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-                    curPwTF.setText("");
-                    newPwTF.setText("");
-                    changePwTF.setText("");
+                    "Current Password Incorrect",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+                curPwTF.setText("");
+                newPwTF.setText("");
+                changePwTF.setText("");
             }
-            
-
-            br.close();
-
-        }catch(IOException e){
-            System.out.println("Exception Occurred" + e);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Please fill up every field.",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+                curPwTF.setText("");
+                newPwTF.setText("");
+                changePwTF.setText("");
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -207,6 +193,24 @@ public class ResidentChangePassword extends javax.swing.JFrame {
                 new ResidentChangePassword().setVisible(true);
             }
         });
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

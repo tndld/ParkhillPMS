@@ -51,10 +51,6 @@ public class Resident extends User {
             e.printStackTrace();
         }
     }
-
-    Resident() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     @Override
     public String getUsername() {

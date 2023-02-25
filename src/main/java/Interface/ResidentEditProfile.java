@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class ResidentEditProfile extends javax.swing.JFrame {
+public class ResidentEditProfile extends getActiveResident {
 
     /**
      * Creates new form ResidentEdtProfile
@@ -26,26 +26,12 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        String filePath = "database\\activeUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeUser = line.split(",");
-            String uname = activeUser[0];
-            String pw = activeUser[1];
-            Resident res = new Resident(uname, pw);
-            
-            usernameTF.setText(uname);
-            fullNameTF.setText(res.getFullName());
-            emailTF.setText(res.getEmail());
-            phoneTF.setText(res.getPhoneNo());
-            unitNoTF.setText(res.getUnitNo());
-            
-            br.close();
-            
-        }catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        usernameTF.setText(res.getUsername());
+        fullNameTF.setText(res.getFullName());
+        emailTF.setText(res.getEmail());
+        phoneTF.setText(res.getPhoneNo());
+        unitNoTF.setText(res.getUnitNo());
     }
 
     /**
@@ -204,23 +190,8 @@ public class ResidentEditProfile extends javax.swing.JFrame {
         String newEmail = emailTF.getText();
         String newPhone = phoneTF.getText();
 
-        String filePath = "database\\activeUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeUser = line.split(",");
-            String uname = activeUser[0];
-            String pw = activeUser[1];
-            Resident res = new Resident(uname, pw);
-
-            //            Call edit method
-            res.editDetails(uname, pw, newFname, newEmail, newPhone);
-
-            br.close();
-
-        }catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        res.editDetails(res.getUsername(), res.getPassword(), newFname, newEmail, newPhone);
 
         //        Back to view mode
         this.setVisible(false);
@@ -261,6 +232,24 @@ public class ResidentEditProfile extends javax.swing.JFrame {
                 new ResidentEditProfile().setVisible(true);
             }
         });
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

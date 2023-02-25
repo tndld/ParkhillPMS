@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class ResidentUserProfile extends javax.swing.JFrame {
+public class ResidentUserProfile extends getActiveResident {
 
     /**
      * Creates new form ResidentUserProfile
@@ -27,31 +27,15 @@ public class ResidentUserProfile extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-//        To get current user
-        String filePath = "database\\activeUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String line = br.readLine();
-            String[] activeUser = line.split(",");
-            String uname = activeUser[0];
-            String pw = activeUser[1];
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
             
-//            Get current user details from Resident class.
-            Resident res = new Resident(uname, pw);
-            
-//            Set details into text field
-            usernameTF.setText(uname);
-            residentFullNameTF.setText(res.getFullName());
-            residentEmailTF.setText(res.getEmail());
-            residentPhoneTF.setText(res.getPhoneNo());
-            unitNoTF.setText(res.getUnitNo());
-            pwTF.setText(res.getPassword());
-            
-            br.close();
-            
-        }catch(IOException e){
-            System.out.println("Exception Occurred" + e);
-        }
+//        Set details into text field
+        usernameTF.setText(res.getUsername());
+        residentFullNameTF.setText(res.getFullName());
+        residentEmailTF.setText(res.getEmail());
+        residentPhoneTF.setText(res.getPhoneNo());
+        unitNoTF.setText(res.getUnitNo());
+        pwTF.setText(res.getPassword());
     }
 
     /**
@@ -263,6 +247,24 @@ public class ResidentUserProfile extends javax.swing.JFrame {
                 new ResidentUserProfile().setVisible(true);
             }
         });
+    }
+    
+    @Override
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,7 +37,7 @@ public class VisitorPass {
             String line;
             while ((line = br.readLine()) != null){
                 String[] passInfo = line.split(",");
-                if (passInfo[11].equals(ref)){
+                if (passInfo[10].equals(ref)){
                     this.type = passInfo[0];
                     this.resUnit = passInfo[1];
                     this.resName = passInfo[2];
@@ -199,12 +199,11 @@ public class VisitorPass {
         try {
             BufferedReader br = new BufferedReader(new FileReader(readFile));
             BufferedWriter bw = new BufferedWriter(new FileWriter(writeFile));
-            bw.write("Reference No:Type:Date:Duration:Visitor Name:Visitor IC:Car Plate:\n");
+            bw.write("Reference No:Type:Date:Estimate Duration:Visitor Name:Visitor IC:Car Plate:\n");
             String line;
             while ((line = br.readLine()) != null) {
                 String[] passInfo = line.split(",");
                 if (passInfo[2].equals(fname)){
-//                    bw.write(line);
                     bw.write(passInfo[10] + "," + passInfo[0] + "," + 
                             passInfo[7] + "," + passInfo[9] + "," + 
                             passInfo[4] + "," + passInfo[5] + "," + 
@@ -216,5 +215,9 @@ public class VisitorPass {
         } catch (IOException e) {
             System.out.println("Exception Occurred" + e);
         }
+    }
+    
+    public void editVisitorPass(String ref, String name, String ic, String car) {
+        System.out.println("Success");
     }
 }
