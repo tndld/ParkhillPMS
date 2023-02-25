@@ -1,0 +1,4 @@
+EmpID,Name,IC,DoB,Email,PhoneNo,Address
+AC01;Emily;890424-01-0866;emily@gmail.com;0177798756;B7-1 Jalan Bunga Raya 8 Taman Bunga Raya
+AC02;John;780506-56-7777;john@gmail.com;0165789865;C5-1 Regal Condominium
+AC03;Ahmad;900202-01-4131;ahmad@gmail.com;0187697654;No 19 Jalan Mega Taman Mega

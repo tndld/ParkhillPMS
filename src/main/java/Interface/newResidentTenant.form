@@ -23,10 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Component id="mgmtLoginPageLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -34,8 +34,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="mgmtLoginPageLabel4" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="459" max="32767" attributes="0"/>
+              <Component id="mgmtLoginPageLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="454" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,7 +46,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Goudy Old Style" size="36" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Visitor / Overnight Pass"/>
+        <Property name="text" type="java.lang.String" value="Add Resident/ Tenant Page"/>
       </Properties>
     </Component>
   </SubComponents>

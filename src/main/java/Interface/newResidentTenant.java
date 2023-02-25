@@ -31,23 +31,23 @@ public class newResidentTenant extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mgmtLoginPageLabel4.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtLoginPageLabel4.setText("Visitor / Overnight Pass");
+        mgmtLoginPageLabel4.setText("Add Resident/ Tenant Page");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(62, 62, 62)
                 .addComponent(mgmtLoginPageLabel4)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mgmtLoginPageLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addComponent(mgmtLoginPageLabel4)
+                .addContainerGap(454, Short.MAX_VALUE))
         );
 
         pack();
