@@ -13,12 +13,12 @@ import java.awt.Toolkit;
  *
  * @author Asus
  */
-public class BuildingExeMenu extends javax.swing.JFrame {
+public class BuildingExeHomepage extends javax.swing.JFrame {
 
     /**
      * Creates new form BuildingExeMenu
      */
-    public BuildingExeMenu() {
+    public BuildingExeHomepage() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -89,20 +89,21 @@ public class BuildingExeMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuildingExeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuildingExeHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuildingExeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuildingExeHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuildingExeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuildingExeHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuildingExeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuildingExeHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuildingExeMenu().setVisible(true);
+                new BuildingExeHomepage().setVisible(true);
             }
         });
     }

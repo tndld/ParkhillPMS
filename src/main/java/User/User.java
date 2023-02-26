@@ -45,16 +45,6 @@ public class User extends UserCommon{
         return this.password.equals(password);
     }
     
-    //add
-//    public boolean login(String username, String password){
-//        if(this.username.equals(username) && this.password.equals(password)){
-//        this.isLoggedIn = true;
-//        return true;
-//    }else {
-//            return false;
-//        }
-//    }
-    
     public boolean login2(String username, String pasword, String filename){
         try{
             
@@ -71,7 +61,7 @@ public class User extends UserCommon{
             br.close();
             fr.close();
         } catch (IOException e) {
-             System.out.println("Exception Occurred bbbb" + e);
+             System.out.println("Exception Occurred" + e);
         }
         return false;
     }

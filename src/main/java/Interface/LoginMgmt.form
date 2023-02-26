@@ -44,11 +44,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="mgmtPasswordLabel" min="-2" pref="64" max="-2" attributes="0"/>
                           <Component id="mgmtUsernameLabel" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="logInLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="mgmtPassTxtField" pref="112" max="32767" attributes="0"/>
+                          <Component id="mgmtPassTxtField" max="32767" attributes="0"/>
                           <Component id="mgmtUsernameTxtField" max="32767" attributes="0"/>
+                          <Component id="loginOption" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -80,12 +82,17 @@
               <Component id="mgmtLoginPageLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="mgmtLoginPageLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="logInLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="loginOption" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mgmtUsernameLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="mgmtUsernameTxtField" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mgmtPasswordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mgmtPassTxtField" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -168,6 +175,32 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="logInLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Log in as:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="loginOption">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Building Manager"/>
+            <StringItem index="1" value="Account Executive"/>
+            <StringItem index="2" value="Admin Executive"/>
+            <StringItem index="3" value="Building Executive"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginOptionActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

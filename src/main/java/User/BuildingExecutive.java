@@ -4,7 +4,7 @@
  */
 package User;
 
-import Interface.BuildingExeMenu;
+import Interface.BuildingExeHomepage;
 
 /**
  *
@@ -17,6 +17,6 @@ public class BuildingExecutive extends User {
     }
     
     public void buildingExeMenu(){
-        new BuildingExeMenu().setVisible(true);
+        new BuildingExeHomepage().setVisible(true);
     }
 }
