@@ -39,8 +39,9 @@ public class MainMenu extends javax.swing.JFrame {
         parkhillLabel = new javax.swing.JLabel();
         logInAsLabel = new javax.swing.JLabel();
         residentTenantBtn = new javax.swing.JButton();
-        managementBtn = new javax.swing.JButton();
+        vendorBtn = new javax.swing.JButton();
         visitorBtn = new javax.swing.JButton();
+        managementBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,10 +61,10 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        managementBtn.setText("Management");
-        managementBtn.addActionListener(new java.awt.event.ActionListener() {
+        vendorBtn.setText("Vendor");
+        vendorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managementBtnActionPerformed(evt);
+                vendorBtnActionPerformed(evt);
             }
         });
 
@@ -71,6 +72,13 @@ public class MainMenu extends javax.swing.JFrame {
         visitorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 visitorBtnActionPerformed(evt);
+            }
+        });
+
+        managementBtn1.setText("Management");
+        managementBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managementBtn1ActionPerformed(evt);
             }
         });
 
@@ -85,18 +93,19 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(parkhillLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(managementBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(residentTenantBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(visitorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(182, 182, 182))
-                            .addComponent(pmsLabel)))
+                        .addComponent(pmsLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(245, 245, 245)
                         .addComponent(logInAsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(visitorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(managementBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentTenantBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(276, 276, 276))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,13 +116,15 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(pmsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(logInAsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(residentTenantBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(managementBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(managementBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(visitorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,17 +136,21 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_residentTenantBtnActionPerformed
 
-    private void managementBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managementBtnActionPerformed
+    private void vendorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorBtnActionPerformed
         
-        new LoginMgmt().setVisible(true);
+        new VendorLoginPage().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_managementBtnActionPerformed
+    }//GEN-LAST:event_vendorBtnActionPerformed
 
     private void visitorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorBtnActionPerformed
         
         new VisitorHomepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_visitorBtnActionPerformed
+
+    private void managementBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managementBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_managementBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,10 +189,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel logInAsLabel;
-    private javax.swing.JButton managementBtn;
+    private javax.swing.JButton managementBtn1;
     private javax.swing.JLabel parkhillLabel;
     private javax.swing.JLabel pmsLabel;
     private javax.swing.JButton residentTenantBtn;
+    private javax.swing.JButton vendorBtn;
     private javax.swing.JButton visitorBtn;
     // End of variables declaration//GEN-END:variables
 }

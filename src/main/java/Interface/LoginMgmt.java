@@ -45,13 +45,14 @@ public class LoginMgmt extends javax.swing.JFrame {
         mgmtUsernameLabel = new javax.swing.JLabel();
         mgmtPasswordLabel = new javax.swing.JLabel();
         mgmtUsernameTxtField = new javax.swing.JTextField();
-        mgmtPassTxtField = new javax.swing.JTextField();
         mgmtLoginBtn = new javax.swing.JButton();
         mgmtLoginPageLabel = new javax.swing.JLabel();
         mgmtLoginPageLabel3 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         logInLabel = new javax.swing.JLabel();
         loginOption = new javax.swing.JComboBox<>();
+        passView = new javax.swing.JCheckBox();
+        mgmtPassTxtField = new javax.swing.JPasswordField();
 
         mgmtLoginPageLabel2.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         mgmtLoginPageLabel2.setText("Login Page");
@@ -68,13 +69,6 @@ public class LoginMgmt extends javax.swing.JFrame {
         mgmtUsernameTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mgmtUsernameTxtFieldActionPerformed(evt);
-            }
-        });
-
-        mgmtPassTxtField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        mgmtPassTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mgmtPassTxtFieldActionPerformed(evt);
             }
         });
 
@@ -109,38 +103,48 @@ public class LoginMgmt extends javax.swing.JFrame {
             }
         });
 
+        passView.setFont(new java.awt.Font("Georgia", 0, 8)); // NOI18N
+        passView.setText("Show Password");
+        passView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 81, Short.MAX_VALUE)
+                .addComponent(mgmtLoginPageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mgmtPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mgmtPassTxtField)
-                            .addComponent(mgmtUsernameTxtField)
-                            .addComponent(loginOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(123, 123, 123)
+                        .addComponent(mgmtLoginPageLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(mgmtLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(144, 144, 144)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(passView)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mgmtPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(logInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(mgmtUsernameTxtField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(loginOption, javax.swing.GroupLayout.Alignment.LEADING, 0, 170, Short.MAX_VALUE)
+                                    .addComponent(mgmtPassTxtField)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(mgmtLoginPageLabel3)
-                                .addGap(49, 49, 49))
-                            .addComponent(mgmtLoginPageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addGap(215, 215, 215)
+                        .addComponent(mgmtLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,24 +152,30 @@ public class LoginMgmt extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(backBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mgmtLoginPageLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mgmtLoginPageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mgmtLoginPageLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mgmtLoginPageLabel)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(loginOption, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mgmtUsernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 59, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mgmtPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mgmtPasswordLabel))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passView)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mgmtUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mgmtUsernameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mgmtPasswordLabel)
-                    .addComponent(mgmtPassTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
                 .addComponent(mgmtLoginBtn)
-                .addGap(24, 24, 24))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -174,10 +184,6 @@ public class LoginMgmt extends javax.swing.JFrame {
     private void mgmtUsernameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtUsernameTxtFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mgmtUsernameTxtFieldActionPerformed
-
-    private void mgmtPassTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtPassTxtFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mgmtPassTxtFieldActionPerformed
 
     private void mgmtLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgmtLoginBtnActionPerformed
         String loginOptionStr = (String) loginOption.getSelectedItem();
@@ -269,6 +275,17 @@ public class LoginMgmt extends javax.swing.JFrame {
         //         String selected = (String) searchOption.getSelectedItem();
     }//GEN-LAST:event_loginOptionActionPerformed
 
+    private void passViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passViewActionPerformed
+
+        if (passView.isSelected()){
+            // Show the password
+            mgmtPassTxtField.setEchoChar((char)0); // Set echo char to 0 to show the characters
+        } else {
+            // Hide the password
+            mgmtPassTxtField.setEchoChar('*'); // Set echo char back to '*' to hide the characters
+        }
+    }//GEN-LAST:event_passViewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,9 +330,10 @@ public class LoginMgmt extends javax.swing.JFrame {
     private javax.swing.JLabel mgmtLoginPageLabel;
     private javax.swing.JLabel mgmtLoginPageLabel2;
     private javax.swing.JLabel mgmtLoginPageLabel3;
-    private javax.swing.JTextField mgmtPassTxtField;
+    private javax.swing.JPasswordField mgmtPassTxtField;
     private javax.swing.JLabel mgmtPasswordLabel;
     private javax.swing.JLabel mgmtUsernameLabel;
     private javax.swing.JTextField mgmtUsernameTxtField;
+    private javax.swing.JCheckBox passView;
     // End of variables declaration//GEN-END:variables
 }
