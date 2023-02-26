@@ -13,6 +13,8 @@ import User.AdminExecutive;
 import User.BuildingExecutive;
 import User.BuildingManager;
 import User.User;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -200,18 +202,35 @@ public class LoginMgmt extends javax.swing.JFrame {
         }else {
             // Check user role
             if (loginOptionStr.equals("Building Manager")){
-                String file = "database\\buildingManagerAccInformation.txt";
+                String file = "database\\buildingManager.txt";
                 if (user.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
+                    try {
+                        FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
+                        myWriter.write(username + "," + password);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            
                     this.setVisible(false);
                     new BuildingManagerHomepage().setVisible(true);
 
                 }
 
             } else if (loginOptionStr.equals("Account Executive")) {
-                String file = "database\\accountExeAccInformation.txt";
+                String file = "database\\accountExecutive.txt";
                 if (user.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
+                    
+                    try {
+                        FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
+                        myWriter.write(username + "," + password);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    
                     this.setVisible(false);
                     new AccountExeHomepage().setVisible(true);
 
@@ -225,9 +244,18 @@ public class LoginMgmt extends javax.swing.JFrame {
                 }
 
             } else if (loginOptionStr.equals("Admin Executive")) {
-                String file = "database\\adminExeAccInformation.txt";
+                String file = "database\\adminExecutive.txt";
                 if (user.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
+                    
+                    try {
+                        FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
+                        myWriter.write(username + "," + password);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    
                     this.setVisible(false);
                     new AdminExeHomepage().setVisible(true);
 
@@ -241,9 +269,18 @@ public class LoginMgmt extends javax.swing.JFrame {
                 }
 
             } else if (loginOptionStr.equals("Building Executive")) {
-                String file = "database\\buildingExeAccInformation.txt";
+                String file = "database\\buildingExecutive.txt";
                 if (user.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
+                    
+                    try {
+                        FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
+                        myWriter.write(username + "," + password);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    
                     this.setVisible(false);
                     new BuildingExeHomepage().setVisible(true);
 

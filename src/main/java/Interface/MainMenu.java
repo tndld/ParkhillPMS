@@ -150,6 +150,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void managementBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managementBtn1ActionPerformed
         // TODO add your handling code here:
+        new LoginMgmt().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_managementBtn1ActionPerformed
 
     /**

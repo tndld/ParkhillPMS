@@ -1,0 +1,2 @@
+Username,Password,EmpID,Name,IC,Email,PhoneNo,Address
+lily,123,BE01,Lily,900706012222;lily@gmail.com,0186546789,No 9 Jalan Putra,

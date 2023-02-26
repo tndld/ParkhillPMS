@@ -1,0 +1,2 @@
+Username,Password,EmpID,Name,IC,Email,PhoneNo,Address
+razak01,123,AD01,Razak,650302075555,razak@gmail.com,0198765789,No 8 Jalan Rambutan,

@@ -1,0 +1,2 @@
+Username,Password,EmpID,Name,IC,DoB,Email,PhoneNo,Address
+manager1,123,M01;Yeo Yan Ling,780601-65-7486,yeo@gmai.com,0187658976,No 14,Jalan Randin Ragus,
