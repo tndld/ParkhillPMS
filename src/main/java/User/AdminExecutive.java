@@ -7,11 +7,13 @@ package User;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +31,28 @@ public class AdminExecutive extends User {
     public void adminMenu(){
         System.out.println("Admin Page");
     }
+    
+    public boolean checkUsernameExists(String username) throws IOException {
+        boolean usernameExists = false;
+  
+        String filePath = "database\\residentTenant.txt";
+
+        try {
+            String line;
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            while((line = reader.readLine()) != null) {
+                String[] residentInfo = line.split(",");
+                if (residentInfo[0].equals(username)) {
+                    usernameExists = true;
+                    break;
+                }
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filePath);
+        }
+        return usernameExists;
+}
     
     public boolean addResident(String username, String password, String fname, String email, String phoneNum, String unitNo) {
         Resident res = new Resident(null,null);

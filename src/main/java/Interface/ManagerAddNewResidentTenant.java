@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author Asus
  */
-public class AddNewResidentTenant extends javax.swing.JFrame {
+public class ManagerAddNewResidentTenant extends javax.swing.JFrame {
 
     /**
      * Creates new form newResidentTenant
      */
-    public AddNewResidentTenant() {
+    public ManagerAddNewResidentTenant() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -226,7 +226,7 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
                     
                     if (password1.equals(confirmPass)){
                         String finalPassword = confirmPass;
-                        if(admin.addResident(username, password1, fullName, email, phoneNum, unitNo)){
+                        if(admin.addResident(username, finalPassword, fullName, email, phoneNum, unitNo)){
                             JOptionPane.showMessageDialog(this, "Resident added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                             usernameTF.setText("");
                             residentFullNameTF.setText("");
@@ -252,7 +252,7 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
                     }
                 }    
             } catch (IOException ex) {
-                Logger.getLogger(AddNewResidentTenant.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ManagerAddNewResidentTenant.class.getName()).log(Level.SEVERE, null, ex);
             }
         }  
     }//GEN-LAST:event_addTenantBtnActionPerformed
@@ -262,7 +262,7 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTFActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new ResidentTenantMgmt().setVisible(true);
+        new ManagerResidentTenantMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -283,21 +283,23 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerAddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerAddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerAddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerAddNewResidentTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddNewResidentTenant().setVisible(true);
+                new ManagerAddNewResidentTenant().setVisible(true);
             }
         });
     }

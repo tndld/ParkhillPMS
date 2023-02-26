@@ -35,16 +35,20 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buidingExeLogoutBtn = new javax.swing.JToggleButton();
+        logoutBtn = new javax.swing.JToggleButton();
+        homepageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buidingExeLogoutBtn.setText("Log Out");
-        buidingExeLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+        logoutBtn.setText("Log Out");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buidingExeLogoutBtnActionPerformed(evt);
+                logoutBtnActionPerformed(evt);
             }
         });
+
+        homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        homepageLabel.setText("Building Executive Homepage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,25 +56,31 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(391, Short.MAX_VALUE)
-                .addComponent(buidingExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(homepageLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buidingExeLogoutBtn)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addComponent(logoutBtn)
+                .addGap(18, 18, 18)
+                .addComponent(homepageLabel)
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buidingExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buidingExeLogoutBtnActionPerformed
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         BuildingExecutive buildingExe = new BuildingExecutive("building", "building123");
         buildingExe.logout();
         this.setVisible(false);
-    }//GEN-LAST:event_buidingExeLogoutBtnActionPerformed
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,6 +123,7 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton buidingExeLogoutBtn;
+    private javax.swing.JLabel homepageLabel;
+    private javax.swing.JToggleButton logoutBtn;
     // End of variables declaration//GEN-END:variables
 }

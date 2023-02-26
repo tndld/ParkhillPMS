@@ -16,30 +16,30 @@ import javax.swing.table.DefaultTableModel;
  * @author Asus
  */
 public class TeamManagement {
-    protected List<TeamMember> teamMembers;
-    protected DefaultTableModel tableModel;
-    protected JTable teamTable;
-    protected JLabel nameLabel;
-    protected JLabel emailLabel;
-    protected JLabel positionLabel;
-    protected JTextField nameField;
-    protected JTextField emailField;
-    protected JTextField positionField;
-
-    public TeamManagement(JTable teamTable, JLabel nameLabel, JLabel emailLabel, JLabel positionLabel, JTextField nameField, JTextField emailField, JTextField positionField) {
-        this.teamTable = teamTable;
-        this.nameLabel = nameLabel;
-        this.emailLabel = emailLabel;
-        this.positionLabel = positionLabel;
-        this.nameField = nameField;
-        this.emailField = emailField;
-        this.positionField = positionField;
-
-        teamMembers = new ArrayList<>();
-        tableModel = new DefaultTableModel();
-        tableModel.addColumn("Name");
-        tableModel.addColumn("Email");
-        tableModel.addColumn("Position");
-        teamTable.setModel(tableModel);
-        teamTable.getSelectionModel().addListSelectionListener(e -> updateFields());
+//    protected List<TeamMember> teamMembers;
+//    protected DefaultTableModel tableModel;
+//    protected JTable teamTable;
+//    protected JLabel nameLabel;
+//    protected JLabel emailLabel;
+//    protected JLabel positionLabel;
+//    protected JTextField nameField;
+//    protected JTextField emailField;
+//    protected JTextField positionField;
+//
+//    public TeamManagement(JTable teamTable, JLabel nameLabel, JLabel emailLabel, JLabel positionLabel, JTextField nameField, JTextField emailField, JTextField positionField) {
+//        this.teamTable = teamTable;
+//        this.nameLabel = nameLabel;
+//        this.emailLabel = emailLabel;
+//        this.positionLabel = positionLabel;
+//        this.nameField = nameField;
+//        this.emailField = emailField;
+//        this.positionField = positionField;
+//
+//        teamMembers = new ArrayList<>();
+//        tableModel = new DefaultTableModel();
+//        tableModel.addColumn("Name");
+//        tableModel.addColumn("Email");
+//        tableModel.addColumn("Position");
+//        teamTable.setModel(tableModel);
+//        teamTable.getSelectionModel().addListSelectionListener(e -> updateFields());
 }

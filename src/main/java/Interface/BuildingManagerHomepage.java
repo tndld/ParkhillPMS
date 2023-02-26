@@ -4,6 +4,7 @@
  */
 package Interface;
 
+import User.BuildingManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -33,21 +34,74 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buidingExeLogoutBtn = new javax.swing.JToggleButton();
+        homepageLabel = new javax.swing.JLabel();
+        userMgmtBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        buidingExeLogoutBtn.setText("Log Out");
+        buidingExeLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buidingExeLogoutBtnActionPerformed(evt);
+            }
+        });
+
+        homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        homepageLabel.setText("Building Manager Homepage");
+
+        userMgmtBtn.setText("User Management");
+        userMgmtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userMgmtBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(391, Short.MAX_VALUE)
+                        .addComponent(buidingExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(homepageLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(userMgmtBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buidingExeLogoutBtn)
+                .addGap(18, 18, 18)
+                .addComponent(homepageLabel)
+                .addGap(55, 55, 55)
+                .addComponent(userMgmtBtn)
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buidingExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buidingExeLogoutBtnActionPerformed
+        BuildingManager manager = new BuildingManager("building", "building123");
+        manager.logout();
+        this.setVisible(false);
+    }//GEN-LAST:event_buidingExeLogoutBtnActionPerformed
+
+    private void userMgmtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMgmtBtnActionPerformed
+        // TODO add your handling code here:
+        new ManagerUserMgmt().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_userMgmtBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,5 +139,8 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton buidingExeLogoutBtn;
+    private javax.swing.JLabel homepageLabel;
+    private javax.swing.JButton userMgmtBtn;
     // End of variables declaration//GEN-END:variables
 }
