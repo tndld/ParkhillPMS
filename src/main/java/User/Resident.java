@@ -97,14 +97,14 @@ public class Resident extends User {
         return this.unitNo;
     }
     
-    public String setNewUsername(String username){
+    public void setNewUsername(String username){
         this.username = username;
-        return null;
+//        return null;
     }
     
-    public String setNewPass(String password){
+    public void setNewPass(String password){
         this.password = password;
-        return null;
+//        return null;
     }
     
 //    public void updateResident(String username, String fullName, String email, String phone, String unitNum){
@@ -119,9 +119,9 @@ public class Resident extends User {
         
 //        Change value in constructor
         Resident res = new Resident(uname, pw);
-        res.fullName = fname;
-        res.email = email;
-        res.phoneNo = phone;
+        res.setFullName(fname);
+        res.setEmail(email);
+        res.setPhoneNo(phone);
         
 //        Original data path
         String filePath = "database\\residentTenant.txt";
@@ -140,7 +140,9 @@ public class Resident extends User {
                     p.println(line);
                 }else{
 //                    If username equals to logged in username, write edited data
-                    p.println(resInfo[0] + "," + resInfo[1] + "," + fname + "," + email + "," + phone + "," + resInfo[5] + ",");
+                    p.println(res.username + "," + res.password + "," + 
+                            res.fullName + "," + res.email + "," + res.phoneNo 
+                            + "," + res.unitNo + ",");
                 }
             }
             
@@ -171,7 +173,7 @@ public class Resident extends User {
     @Override
     public void changePassword(String uname, String pw, String newPW){
         Resident res = new Resident(uname, pw);
-        res.password = newPW;
+        res.setNewPass(newPW);
         String filePath = "database\\residentTenant.txt";
         String tempFile = "database\\tempResident.txt";
         String auFilePath = "database\\activeUser.txt";
@@ -186,7 +188,9 @@ public class Resident extends User {
                 if (!resInfo[0].equals(uname)){
                     p.println(line);
                 }else{
-                    p.println(resInfo[0] + "," + newPW + "," + resInfo[2] + "," + resInfo[3] + "," + resInfo[4] + "," + resInfo[5]);
+                    p.println(res.username + "," + res.password + "," + 
+                            res.fullName + "," + res.email + "," + res.phoneNo + 
+                            "," + res.unitNo);
                 }
             }
             br.close();
