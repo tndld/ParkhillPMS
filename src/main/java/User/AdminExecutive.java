@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -115,4 +117,64 @@ public class AdminExecutive extends User {
         return success;
     }
     
+    public Resident searchResidentByUsername(String Username){
+        String filePath = "database\\residentTenant.txt";
+        
+        Resident res = new Resident(username, null);
+        
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                String[] residentInfo = currentLine.split(",");
+                
+                if (residentInfo[0].equals(username)) {
+                    String password = residentInfo[1];
+                    String fullName = residentInfo[3];
+//                    return new Resident(residentInfo[0], residentInfo[1], residentInfo[2], residentInfo[3], residentInfo[4]);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public DefaultTableModel searchResultTable(String username, String unitNo){
+        String[] columnNames = {"Username", "Name", "Email", "Phone No", "Unit No"};
+        DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
+        
+        String filePath = "database\\residentTenant.txt";
+    
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String currentLine;
+            System.out.println("1");
+            while ((currentLine = reader.readLine()) != null) {
+                System.out.println("2");
+                Object [] residentInfo = currentLine.split(",");
+                System.out.println("3");
+                if ((username == null || residentInfo[0].equals(username)) 
+                        && (unitNo == null) || residentInfo[5].equals(unitNo)){
+                    System.out.println("4");
+                    String[] dataArray = {residentInfo[0].toString(),
+                                      residentInfo[2].toString(),
+                                      residentInfo[3].toString(),
+                                      residentInfo[4].toString(),
+                                      residentInfo[5].toString()};
+                    System.out.println("5");
+                    searchResultTable.addRow(dataArray);
+                    System.out.println("6");
+                    System.out.println("7");
+                } 
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return searchResultTable;
+    }
 }

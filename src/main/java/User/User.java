@@ -46,14 +46,14 @@ public class User extends UserCommon{
     }
     
     //add
-    public boolean login(String username, String password){
-        if(this.username.equals(username) && this.password.equals(password)){
-        this.isLoggedIn = true;
-        return true;
-    }else {
-            return false;
-        }
-    }
+//    public boolean login(String username, String password){
+//        if(this.username.equals(username) && this.password.equals(password)){
+//        this.isLoggedIn = true;
+//        return true;
+//    }else {
+//            return false;
+//        }
+//    }
     
     public boolean login2(String username, String pasword, String filename){
         try{

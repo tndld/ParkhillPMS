@@ -33,10 +33,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="confirmPasswordLabel" min="-2" pref="130" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="addTenantBtn" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="confirmPwTF" min="-2" pref="243" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="confirmPwTF" min="-2" pref="243" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -70,6 +67,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="backBtn" min="-2" pref="73" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="addTenantBtn" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="62" max="32767" attributes="0"/>
@@ -118,9 +119,9 @@
                   <Component id="confirmPasswordLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="confirmPwTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
               <Component id="addTenantBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

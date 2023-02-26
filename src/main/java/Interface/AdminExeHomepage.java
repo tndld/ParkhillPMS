@@ -37,6 +37,7 @@ public class AdminExeHomepage extends javax.swing.JFrame {
 
         AdminExeLogoutBtn = new javax.swing.JToggleButton();
         residentTenantManagementPageLabel = new javax.swing.JButton();
+        residentTenantTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,16 +55,25 @@ public class AdminExeHomepage extends javax.swing.JFrame {
             }
         });
 
+        residentTenantTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        residentTenantTitle.setText("Admin Executive Homepage");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(residentTenantManagementPageLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(AdminExeLogoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(AdminExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(residentTenantTitle)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(residentTenantManagementPageLabel)
+                        .addGap(154, 154, 154))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,8 +81,10 @@ public class AdminExeHomepage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(AdminExeLogoutBtn)
                 .addGap(18, 18, 18)
+                .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(residentTenantManagementPageLabel)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,5 +140,6 @@ public class AdminExeHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton AdminExeLogoutBtn;
     private javax.swing.JButton residentTenantManagementPageLabel;
+    private javax.swing.JLabel residentTenantTitle;
     // End of variables declaration//GEN-END:variables
 }
