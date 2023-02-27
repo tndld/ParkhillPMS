@@ -7,7 +7,7 @@ package Interface;
 import User.AccountExecutive;
 import User.AdminExecutive;
 import User.BuildingExecutive;
-import User.ManagerTeamStrutureMgmt;
+import User.ManagerTeamStructureMgmt;
 import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -75,11 +75,12 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         structureTable = new javax.swing.JTable();
         updateBtn = new javax.swing.JButton();
+        addNewAccExeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        homepageLabel.setText("Account Executive Page");
+        homepageLabel.setText("Building Executive Structure Page");
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -120,37 +121,50 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
             }
         });
 
+        addNewAccExeBtn.setText("Add");
+        addNewAccExeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewAccExeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
+                        .addGap(90, 90, 90)
                         .addComponent(homepageLabel)))
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
                 .addComponent(homepageLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(updateBtn)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateBtn)
+                    .addComponent(addNewAccExeBtn))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,7 +177,7 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        ManagerTeamStrutureMgmt manager = new ManagerTeamStrutureMgmt();
+        ManagerTeamStructureMgmt manager = new ManagerTeamStructureMgmt();
         
         // Get the selected row index
         int row = structureTable.getSelectedRow();
@@ -200,11 +214,6 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
                     // use the existing password
                     String pass = buildInfo[1];
                     BuildingExecutive build = new BuildingExecutive(username,pass);
-//                    admin.setFullName(fullName);
-//                    admin.setEmail(email);
-//                    admin.setPhone(phoneNo);
-//                    admin.setLotNo(lotNum);
-//                    admin = admin.getPassword();
 
                     if(manager.updateBuildingExeTeam(buildInfo[0], buildInfo[1], buildInfo[2], name, ic, email, phoneNum, address, position)){
                         JOptionPane.showMessageDialog(this, "Building Executive updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -219,6 +228,12 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
                  System.out.println("Exception Occurred" + e);
             }        
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void addNewAccExeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewAccExeBtnActionPerformed
+        // TODO add your handling code here:
+        new ManagerAddNewEmp().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addNewAccExeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +278,7 @@ public class ManageBuildingExeStructure extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addNewAccExeBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel homepageLabel;
     private javax.swing.JScrollPane jScrollPane1;

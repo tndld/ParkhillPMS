@@ -1,2 +1,4 @@
 Username,Password,EmpID,Name,IC,DoB,Email,PhoneNo,Address,position
-manager1,123,M01;Yeo Yan Ling,780601-65-7486,yeo@gmai.com,0187658976,No 14,Jalan Randin Ragus,Head Building Manager,
+manager1,123,M1,Yeo Yan Ling,780601-65-7486,yeo@gmai.com,0187658976,No 14 Jalan Randin Ragus,Head Building Manager,
+1,1,1,m2@gmail.com,1,1,1,
+2,2,M3,2,2,2,2,2,2,

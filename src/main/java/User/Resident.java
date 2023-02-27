@@ -99,16 +99,10 @@ public class Resident extends User {
     
     public void setNewUsername(String username){
         this.username = username;
-        /*<<<<<<< HEAD
-        //        return null;
-        =======
-        stash<= >>>>>>
-        }*/
     }
     
     public void setNewPass(String password){
         this.password = password;
-//        return null;
     }
     
 //    public void updateResident(String username, String fullName, String email, String phone, String unitNum){

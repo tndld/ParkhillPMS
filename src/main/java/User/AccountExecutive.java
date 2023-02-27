@@ -96,4 +96,12 @@ public class AccountExecutive extends User {
     public void setPosition(String position){
         this.position = position;
     }
+    
+    public void setNewUsername(String username){
+        this.username = username;
+    }
+    
+    public void setNewPass(String password){
+        this.password = password;
+    }
 }

@@ -4,7 +4,9 @@
  */
 package Interface;
 
+import User.AccountExecutive;
 import User.AdminExecutive;
+import User.BuildingExecutive;
 import User.ManagerTeamStructureMgmt;
 import User.Vendor;
 import java.awt.Dimension;
@@ -23,19 +25,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class ManageAdminExeStructure extends javax.swing.JFrame {
+public class ManageBuildingManagerStructure extends javax.swing.JFrame {
 
     /**
      * Creates new form ManageAccountExeStructure
      */
-    public ManageAdminExeStructure() {
+    public ManageBuildingManagerStructure() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        File file = new File("database\\adminExecutive.txt");
+        File file = new File("database\\buildingManager.txt");
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -78,7 +80,7 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        homepageLabel.setText("Admin Executive Struture Page");
+        homepageLabel.setText("Building Manager Page");
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -130,38 +132,39 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addGap(166, 166, 166)
                         .addComponent(homepageLabel)))
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
                 .addComponent(homepageLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateBtn)
                     .addComponent(addNewAccExeBtn))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,7 +184,7 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         
         //Check if a row is selected
         if (row < 0){
-            JOptionPane.showMessageDialog(this, "Please select an admin to update.", "Error",
+            JOptionPane.showMessageDialog(this, "Please select a building manager to update.", "Error",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -196,7 +199,7 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         String address = structureTable.getValueAt(row, 6).toString();
         String position = structureTable.getValueAt(row, 7).toString();
 
-        File filePath = new File("database\\adminExecutive.txt");
+        File filePath = new File("database\\buildingManager.txt");
 
         try {          
             String currentLine;
@@ -204,23 +207,14 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
             while((currentLine = reader.readLine()) != null) {
-                String[] adminInfo = currentLine.split(",");
+                String[] managerInfo = currentLine.split(",");
 
-                if(adminInfo[0].equals(username)){
+                if(managerInfo[0].equals(username)){
 
-                    // use the existing password
-                    String pass = adminInfo[1];
-                    AdminExecutive admin = new AdminExecutive(username,pass);
-//                    admin.setFullName(fullName);
-//                    admin.setEmail(email);
-//                    admin.setPhone(phoneNo);
-//                    admin.setLotNo(lotNum);
-//                    admin = admin.getPassword();
-
-                    if(manager.updateAdminTeam(username, adminInfo[0], empID, name, ic, email, phoneNum, address,position)){
-                        JOptionPane.showMessageDialog(this, "Admin updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    if(manager.updateManager(managerInfo[0], managerInfo[1], managerInfo[2], name, ic, email, phoneNum, address, position)){
+                        JOptionPane.showMessageDialog(this, "Building manager updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     }else {
-                        JOptionPane.showMessageDialog(this, "Failed to update admin information.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Failed to update Building Manager information.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -254,21 +248,83 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManageAdminExeStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuildingManagerStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManageAdminExeStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuildingManagerStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManageAdminExeStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuildingManagerStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManageAdminExeStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuildingManagerStructure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageAdminExeStructure().setVisible(true);
+                new ManageBuildingManagerStructure().setVisible(true);
             }
         });
     }

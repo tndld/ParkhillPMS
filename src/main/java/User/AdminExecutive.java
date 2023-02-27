@@ -103,6 +103,14 @@ public class AdminExecutive extends MgmtLevelUser {
         this.position = position;
     }
     
+    public void setNewUsername(String username){
+        this.username = username;
+    }
+    
+    public void setNewPass(String password){
+        this.password = password;
+    }
+    
     public boolean checkUsernameExists(String username) throws IOException {
         boolean usernameExists = false;
   

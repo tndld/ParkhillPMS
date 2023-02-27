@@ -6,7 +6,7 @@ package Interface;
 
 import User.AccountExecutive;
 import User.AdminExecutive;
-import User.ManagerTeamStrutureMgmt;
+import User.ManagerTeamStructureMgmt;
 import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -74,11 +74,12 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         structureTable = new javax.swing.JTable();
         updateBtn = new javax.swing.JButton();
+        addNewAccExeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        homepageLabel.setText("Account Executive Page");
+        homepageLabel.setText("Account Executive Structure Page");
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +120,13 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
             }
         });
 
+        addNewAccExeBtn.setText("Add");
+        addNewAccExeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewAccExeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,12 +139,15 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(homepageLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(homepageLabel)
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,8 +159,10 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(updateBtn)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateBtn)
+                    .addComponent(addNewAccExeBtn))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,7 +175,7 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        ManagerTeamStrutureMgmt manager = new ManagerTeamStrutureMgmt();
+        ManagerTeamStructureMgmt manager = new ManagerTeamStructureMgmt();
         
         // Get the selected row index
         int row = structureTable.getSelectedRow();
@@ -219,6 +232,11 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
             }        
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void addNewAccExeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewAccExeBtnActionPerformed
+        // TODO add your handling code here:
+        new ManagerAddNewEmp().setVisible(true);
+    }//GEN-LAST:event_addNewAccExeBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +276,7 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addNewAccExeBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel homepageLabel;
     private javax.swing.JScrollPane jScrollPane1;

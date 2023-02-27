@@ -86,6 +86,10 @@ public class BuildingManager extends MgmtLevelUser {
         this.ic = ic;
     }
     
+    public void setEmail(String email){
+        this.email = email;
+    }
+    
     public void setPhoneNo(String phoneNo){
         this.phoneNo = phoneNo;
     }
@@ -100,6 +104,14 @@ public class BuildingManager extends MgmtLevelUser {
     
     public void buidingManagerMenu(){
         System.out.println("Building Manager Page");
+    }
+    
+    public void setNewUsername(String username){
+        this.username = username;
+    }
+    
+    public void setNewPass(String password){
+        this.password = password;
     }
     
     public boolean checkUsernameExists(String username, String file) throws IOException {

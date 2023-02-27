@@ -42,7 +42,7 @@
                       <Component id="backBtn" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
                       <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -75,7 +75,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Goudy Old Style" size="36" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Building Executive Structure Page"/>
+        <Property name="text" type="java.lang.String" value="Building Manager Page"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backBtn">
