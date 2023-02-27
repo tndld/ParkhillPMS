@@ -98,7 +98,7 @@ public class AdminExeHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminExeLogoutBtnActionPerformed
 
     private void residentTenantManagementPageLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentTenantManagementPageLabelActionPerformed
-        new ResidentTenantMgmt().setVisible(true);
+        new AdminResidentTenantMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_residentTenantManagementPageLabelActionPerformed
 

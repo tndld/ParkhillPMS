@@ -100,6 +100,14 @@ public class Vendor extends User {
         this.shopName = sname;
     }
     
+    public void setNewUsername(String username){
+        this.username = username;
+    }
+    
+    public void setNewPass(String password){
+        this.password = password;
+    }
+    
     public void edit(String uname, String pw, String fname, String email, String phone, String sname){
         
         Vendor ven = new Vendor(uname, pw);

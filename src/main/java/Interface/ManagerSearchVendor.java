@@ -5,7 +5,7 @@
 package Interface;
 
 import User.BuildingManager;
-import User.Resident;
+import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -19,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class ManagerSearchResident extends javax.swing.JFrame {
+public class ManagerSearchVendor extends javax.swing.JFrame {
 
     /**
      * Creates new form adminSearchResident
      */
-    public ManagerSearchResident() {
+    public ManagerSearchVendor() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -42,7 +42,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        residentTable = new javax.swing.JTable();
+        vendorTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         mgmtPageTitle = new javax.swing.JLabel();
         searchTxtField = new javax.swing.JTextField();
@@ -53,19 +53,19 @@ public class ManagerSearchResident extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        residentTable.setModel(new javax.swing.table.DefaultTableModel(
+        vendorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Username", "Name", "Email", "Phone", "Unit No"
+                "Username", "Name", "Email", "Phone", "Lot Number", "Shop Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -76,13 +76,13 @@ public class ManagerSearchResident extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        residentTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(residentTable);
+        vendorTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(vendorTable);
 
         jLabel1.setText("Search:");
 
         mgmtPageTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtPageTitle.setText("Search Resident/Tenant Page");
+        mgmtPageTitle.setText("Search Vendor Page");
 
         searchTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +90,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
             }
         });
 
-        searchOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Username", "Unit No" }));
+        searchOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Username", "Lot Number" }));
         searchOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchOptionActionPerformed(evt);
@@ -128,26 +128,23 @@ public class ManagerSearchResident extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(mgmtPageTitle)
-                                    .addGap(72, 72, 72))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(mgmtPageTitle)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel1)
                                             .addGap(18, 18, 18)
                                             .addComponent(searchOption, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(45, 45, 45)))
+                                            .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(379, 379, 379)
-                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))))
+                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(45, 45, 45))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -156,7 +153,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backBtn)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mgmtPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -193,44 +190,44 @@ public class ManagerSearchResident extends javax.swing.JFrame {
         
         // check whether the search bar is empty
         if (searchText.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter username or unit number to search.", "Error",
+            JOptionPane.showMessageDialog(this, "Please enter username or lot number to search.", "Error",
                 JOptionPane.ERROR_MESSAGE);
         }else {
             // detect which search method used
             if (searchOptionStr.equals("Username")) {
-                searchResultTable = manager.searchResultTable(searchText, null);
-            } else if (searchOptionStr.equals("Unit No")) {
-                searchResultTable = manager.searchResultTable(null, searchText);
+                searchResultTable = manager.searchVendor(searchText, null);
+            } else if (searchOptionStr.equals("Lot Num")) {
+                searchResultTable = manager.searchVendor(null, searchText);
             }
         }
         
         // display the search result
-        residentTable.setModel(searchResultTable);
+        vendorTable.setModel(searchResultTable);
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-       BuildingManager manager = new BuildingManager(null,null);
+        BuildingManager manager = new BuildingManager(null,null);
 
         // Get the selected row index
-        int row = residentTable.getSelectedRow();
+        int row = vendorTable.getSelectedRow();
 
         //Check if a row is selected
         if (row < 0){
-            JOptionPane.showMessageDialog(this, "Please select a resident to update.", "Error",
+            JOptionPane.showMessageDialog(this, "Please select a vendor to update.", "Error",
                 JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Get the current resident info from the selected row
-        String username = residentTable.getValueAt(row, 0).toString();
-        String fullName = residentTable.getValueAt(row, 1).toString();
-        String email = residentTable.getValueAt(row, 2).toString();
-        String phoneNo = residentTable.getValueAt(row, 3).toString();
-        String unitNo = residentTable.getValueAt(row, 4).toString();
+        String username = vendorTable.getValueAt(row, 0).toString();
+        String fullName = vendorTable.getValueAt(row, 1).toString();
+        String email = vendorTable.getValueAt(row, 2).toString();
+        String phoneNo = vendorTable.getValueAt(row, 3).toString();
+        String lotNo = vendorTable.getValueAt(row, 4).toString();
+        String shopName = vendorTable.getValueAt(row, 5).toString();
 
-        System.out.println(username + fullName+ email+ phoneNo+ unitNo);
 
-        File filePath = new File("database\\residentTenant.txt");
+        File filePath = new File("database\\vendor.txt");
 
         try {
             String currentLine;
@@ -244,18 +241,19 @@ public class ManagerSearchResident extends javax.swing.JFrame {
 
                     // use the existing password
                     String pass = residentInfo[1];
-                    Resident res = new Resident(username, pass);
-                    res.setFullName(fullName);
-                    res.setEmail(email);
-                    res.setPhoneNo(phoneNo);
-                    res.setUnitNo(unitNo);
-                    pass = res.getPassword();
-                    System.out.println(username + pass + fullName+ email+ phoneNo+ unitNo);
-                    manager.updateResident(username, pass, fullName, email, phoneNo, unitNo);
-                    if(manager.updateResident(username, pass, fullName, email, phoneNo, unitNo)){
-                        JOptionPane.showMessageDialog(this, "Resident updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    Vendor ved = new Vendor(username,pass);
+                    ved.setFullName(fullName);
+                    ved.setEmail(email);
+                    ved.setPhone(phoneNo);
+                    ved.setLotNo(lotNo);
+                    ved.setShopName(shopName);
+                    pass = ved.getPassword();
+                    System.out.println(username + pass + fullName+ email+ phoneNo + lotNo + shopName);
+                    manager.updateVendor(username, pass, fullName, email, phoneNo, lotNo, shopName);
+                    if(manager.updateVendor(username, pass, fullName, email, phoneNo, lotNo, shopName)){
+                        JOptionPane.showMessageDialog(this, "Vendor updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     }else {
-                        JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Failed to update vendor information.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -268,7 +266,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new ManagerResidentTenantMgmt().setVisible(true);
+        new ManagerVendorMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -289,14 +287,18 @@ public class ManagerSearchResident extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManagerSearchResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerSearchVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManagerSearchResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerSearchVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManagerSearchResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerSearchVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManagerSearchResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerSearchVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -306,7 +308,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ManagerSearchResident().setVisible(true);
+                new ManagerSearchVendor().setVisible(true);
             }
         });
     }
@@ -316,10 +318,10 @@ public class ManagerSearchResident extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mgmtPageTitle;
-    private javax.swing.JTable residentTable;
     private javax.swing.JButton searchBtn;
     private javax.swing.JComboBox<String> searchOption;
     private javax.swing.JTextField searchTxtField;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JTable vendorTable;
     // End of variables declaration//GEN-END:variables
 }

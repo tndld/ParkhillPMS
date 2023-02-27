@@ -69,9 +69,11 @@ public class AdminExecutive extends User {
         
         try {
                 String filePath = "database\\residentTenant.txt";
-                FileWriter myWriter = new FileWriter(filePath, true); //open the file
-                myWriter.write("\n" + username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + unitNo + ",");
-                myWriter.close();
+                
+                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath,true));
+                bw.write(username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + unitNo + ",\n");
+                
+                bw.close();
                 
             } catch (IOException e) {
                 System.out.println("Exception Occurred" + e);
@@ -139,32 +141,6 @@ public class AdminExecutive extends User {
             }
         
         return success;
-    }
-    
-    public Resident searchResidentByUsername(String Username){
-        String filePath = "database\\residentTenant.txt";
-        
-        Resident res = new Resident(username, null);
-        
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            String currentLine;
-
-            while ((currentLine = reader.readLine()) != null) {
-                String[] residentInfo = currentLine.split(",");
-                
-                if (residentInfo[0].equals(username)) {
-                    String password = residentInfo[1];
-                    String fullName = residentInfo[3];
-//                    return new Resident(residentInfo[0], residentInfo[1], residentInfo[2], residentInfo[3], residentInfo[4]);
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
     
     public DefaultTableModel searchResultTable(String username, String unitNo){

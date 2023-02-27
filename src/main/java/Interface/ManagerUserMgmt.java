@@ -37,7 +37,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
         buildingMngBtn = new javax.swing.JButton();
         residentTenantBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        vendorBtn = new javax.swing.JButton();
         guardBtn = new javax.swing.JButton();
         accountExecutiveBtn = new javax.swing.JButton();
         adminExecutiveBtn = new javax.swing.JButton();
@@ -64,7 +64,12 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Vendor");
+        vendorBtn.setText("Vendor");
+        vendorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendorBtnActionPerformed(evt);
+            }
+        });
 
         guardBtn.setText("Security Guard");
         guardBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +94,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(residentTenantBtn)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(guardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +126,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
                     .addComponent(buildingMngBtn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(vendorBtn)
                     .addComponent(accountExecutiveBtn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,7 +141,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new AdminExeHomepage().setVisible(true);
+        new BuildingManagerHomepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -149,6 +154,12 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
         new ManagerResidentTenantMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_residentTenantBtnActionPerformed
+
+    private void vendorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorBtnActionPerformed
+        // TODO add your handling code here:
+        new ManagerVendorMgmt().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_vendorBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +191,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ManagerUserMgmt().setVisible(true);
             }
@@ -193,8 +205,8 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
     private javax.swing.JButton buildingExecutiveBtn;
     private javax.swing.JButton buildingMngBtn;
     private javax.swing.JButton guardBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton residentTenantBtn;
     private javax.swing.JLabel residentTenantTitle;
+    private javax.swing.JButton vendorBtn;
     // End of variables declaration//GEN-END:variables
 }

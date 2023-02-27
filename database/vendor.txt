@@ -1,1 +1,4 @@
-99mart,123,Chee Yan Heng,99mart@gmail.com,012-1112879,C1-7092,99 Speedmart
+username,password,name,email,phoneNo,lotNum,ShopName,
+99mart,123,Chee Yan Heng,99mart@gmail.com,012-1112879,C1-7099,99 Speedmart,
+2,2,1,2,nihao,2,2
+2@@,2,haobuhao,2,2,2,2

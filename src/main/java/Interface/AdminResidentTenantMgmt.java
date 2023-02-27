@@ -22,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class ResidentTenantMgmt extends javax.swing.JFrame {
+public class AdminResidentTenantMgmt extends javax.swing.JFrame {
 
     /**
      * Creates new form ResidentTenantMgmt
      */
-    public ResidentTenantMgmt() {
+    public AdminResidentTenantMgmt() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -54,7 +54,7 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
                 model.addRow(newArray);
             }
         } catch (Exception ex) {
-            Logger.getLogger(ResidentTenantMgmt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminResidentTenantMgmt.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
 
@@ -282,20 +282,21 @@ public class ResidentTenantMgmt extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResidentTenantMgmt().setVisible(true);
+                new AdminResidentTenantMgmt().setVisible(true);
             }
         });
     }

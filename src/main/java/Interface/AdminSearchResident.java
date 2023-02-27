@@ -269,7 +269,7 @@ public class AdminSearchResident extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new ResidentTenantMgmt().setVisible(true);
+        new AdminResidentTenantMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 

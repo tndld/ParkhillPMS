@@ -236,7 +236,7 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
                             pwTF.setText("");
                             confirmPwTF.setText("");
                         }else {
-                            JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Failed to add new resident. Please try again", "Error", JOptionPane.ERROR_MESSAGE);
                             usernameTF.setText("");
                             residentFullNameTF.setText("");
                             residentEmailTF.setText("");
@@ -262,7 +262,7 @@ public class AddNewResidentTenant extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTFActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new ResidentTenantMgmt().setVisible(true);
+        new AdminResidentTenantMgmt().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 

@@ -4,9 +4,8 @@
  */
 package Interface;
 
-import User.AdminExecutive;
 import User.BuildingManager;
-import User.Resident;
+import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -23,27 +22,27 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
+public class ManagerVendorMgmt extends javax.swing.JFrame {
 
     /**
      * Creates new form ResidentTenantMgmt
      */
-    public ManagerResidentTenantMgmt() {
+    public ManagerVendorMgmt() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        File file = new File("database\\residentTenant.txt");
+        File file = new File("database\\vendor.txt");
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line = br.readLine(); //read one line at a time
-            DefaultTableModel model = (DefaultTableModel) residentTenantTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) vendorTable.getModel();
             Object [] dataRows = br.lines().toArray();
-            for (Object dataRow1 : dataRows) {
-                String rec = dataRow1.toString();
+            for (int i = 0; i < dataRows.length; i++) {
+                String rec = dataRows[i].toString();
                 String [] dataRow = rec.split(",");
                 ArrayList<String> newDataRow = new ArrayList<>();
                 for (int j = 0; j < dataRow.length; j++) {
@@ -51,11 +50,11 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
                         newDataRow.add(dataRow[j]);
                     }
                 }
-                String[] newArray = newDataRow.toArray(String[]::new);
+                String[] newArray = newDataRow.toArray(new String[0]);
                 model.addRow(newArray);
             }
         } catch (IOException ex) {
-            Logger.getLogger(ManagerResidentTenantMgmt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerVendorMgmt.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
 
@@ -70,10 +69,9 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        residentTenantTitle = new javax.swing.JLabel();
-        mgmtPageTitle = new javax.swing.JLabel();
+        vendorMgmtPageTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        residentTenantTable = new javax.swing.JTable();
+        vendorTable = new javax.swing.JTable();
         addBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
@@ -82,25 +80,22 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        residentTenantTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        residentTenantTitle.setText("Resident/ Tenant");
+        vendorMgmtPageTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        vendorMgmtPageTitle.setText("Vendor Management Page");
 
-        mgmtPageTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtPageTitle.setText("Management Page");
-
-        residentTenantTable.setModel(new javax.swing.table.DefaultTableModel(
+        vendorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Username", "Name", "Email", "Phone", "Unit No"
+                "Username", "Name", "Email", "Phone", "Lot Num", "Shop Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -111,8 +106,8 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        residentTenantTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(residentTenantTable);
+        vendorTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(vendorTable);
 
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -153,17 +148,6 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mgmtPageTitle)
-                            .addComponent(residentTenantTitle)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -177,25 +161,32 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(vendorMgmtPageTitle)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backBtn)
-                .addGap(4, 4, 4)
-                .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mgmtPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(vendorMgmtPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn)
                     .addComponent(updateBtn)
                     .addComponent(SearchBtn)
                     .addComponent(deleteBtn))
-                .addGap(10, 10, 10))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -206,23 +197,24 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
         BuildingManager manager = new BuildingManager(null, null);
 
         // Get the selected row index
-        int row = residentTenantTable.getSelectedRow();
+        int row = vendorTable.getSelectedRow();
         
         //Check if a row is selected
         if (row < 0){
-            JOptionPane.showMessageDialog(this, "Please select a resident to update.", "Error",
+            JOptionPane.showMessageDialog(this, "Please select a vendor to update.", "Error",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         // Get the current resident info from the selected row
-        String username = residentTenantTable.getValueAt(row, 0).toString();
-        String fullName = residentTenantTable.getValueAt(row, 1).toString();
-        String email = residentTenantTable.getValueAt(row, 2).toString();
-        String phoneNo = residentTenantTable.getValueAt(row, 3).toString();
-        String unitNo = residentTenantTable.getValueAt(row, 4).toString();
+        String username = vendorTable.getValueAt(row, 0).toString();
+        String fullName = vendorTable.getValueAt(row, 1).toString();
+        String email = vendorTable.getValueAt(row, 2).toString();
+        String phoneNo = vendorTable.getValueAt(row, 3).toString();
+        String lotNum = vendorTable.getValueAt(row, 4).toString();
+        String shopName = vendorTable.getValueAt(row, 5).toString();
 
-        File filePath = new File("database\\residentTenant.txt");
+        File filePath = new File("database\\vendor.txt");
 
         try {          
             String currentLine;
@@ -230,24 +222,24 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
             while((currentLine = reader.readLine()) != null) {
-                String[] residentInfo = currentLine.split(",");
+                String[] vendorInfo = currentLine.split(",");
 
-                if(residentInfo[0].equals(username)){
+                if(vendorInfo[0].equals(username)){
 
                     // use the existing password
-                    String pass = residentInfo[1];
-                    Resident res = new Resident(username, pass);
-                    res.setFullName(fullName);
-                    res.setEmail(email);
-                    res.setPhoneNo(phoneNo);
-                    res.setUnitNo(unitNo);
-                    pass = res.getPassword();
+                    String pass = vendorInfo[1];
+                    Vendor ven = new Vendor(username,pass);
+                    ven.setFullName(fullName);
+                    ven.setEmail(email);
+                    ven.setPhone(phoneNo);
+                    ven.setLotNo(lotNum);
+                    pass = ven.getPassword();
 
-                    manager.updateResident(username, pass, fullName, email, phoneNo, unitNo);
-                    if(manager.updateResident(username, pass, fullName, email, phoneNo, unitNo)){
-                        JOptionPane.showMessageDialog(this, "Resident updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    manager.updateVendor(username, pass, fullName, email, phoneNo, lotNum, shopName);
+                    if(manager.updateVendor(username, pass, fullName, email, phoneNo, lotNum, shopName)){
+                        JOptionPane.showMessageDialog(this, "Vendor updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     }else {
-                        JOptionPane.showMessageDialog(this, "Failed to update resident information.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Failed to update vendor information.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -260,7 +252,7 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        new ManagerAddNewResidentTenant().setVisible(true);
+        new ManagerAddNewVendor().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -270,7 +262,7 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
-        new ManagerSearchResident().setVisible(true);
+        new ManagerSearchVendor().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_SearchBtnActionPerformed
 
@@ -278,29 +270,30 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         // Get the selected row index
-        DefaultTableModel model = (DefaultTableModel) residentTenantTable.getModel();
-        int row = residentTenantTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) vendorTable.getModel();
+        int row = vendorTable.getSelectedRow();
         
         //Check if a row is selected
         if (row < 0){
-            JOptionPane.showMessageDialog(this, "Please select a resident to delete.", "Error",
+            JOptionPane.showMessageDialog(this, "Please select a vendor to delete.", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else {
             // Get the current resident info from the selected row
-            String username = residentTenantTable.getValueAt(row, 0).toString();
-//            String fullName = residentTenantTable.getValueAt(row, 1).toString();
-//            String email = residentTenantTable.getValueAt(row, 2).toString();
-//            String phoneNo = residentTenantTable.getValueAt(row, 3).toString();
-//            String unitNo = residentTenantTable.getValueAt(row, 4).toString();
+            String username = vendorTable.getValueAt(row, 0).toString();
+//            String fullName = vendorTable.getValueAt(row, 1).toString();
+//            String email = vendorTable.getValueAt(row, 2).toString();
+//            String phoneNo = vendorTable.getValueAt(row, 3).toString();
+//            String lotNum = vendorTable.getValueAt(row, 4).toString();
+//            String shopName = vendorTable.getValueAt(row, 5).toString();
             
             BuildingManager manager = new BuildingManager(null,null);
-            if (manager.deleteResident(username)){
-                JOptionPane.showMessageDialog(this, "Resident deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            if (manager.deleteVendor(username)){
+                JOptionPane.showMessageDialog(this, "Vendor deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 // remove the selected row in table
                 model.removeRow(row);
                 
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to delete selected resident.\nPlease try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to delete selected vendor.\nPlease try again.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
@@ -322,14 +315,18 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManagerResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerVendorMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManagerResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerVendorMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManagerResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerVendorMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManagerResidentTenantMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerVendorMgmt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -339,7 +336,7 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ManagerResidentTenantMgmt().setVisible(true);
+                new ManagerVendorMgmt().setVisible(true);
             }
         });
     }
@@ -350,9 +347,8 @@ public class ManagerResidentTenantMgmt extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel mgmtPageTitle;
-    private javax.swing.JTable residentTenantTable;
-    private javax.swing.JLabel residentTenantTitle;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JLabel vendorMgmtPageTitle;
+    private javax.swing.JTable vendorTable;
     // End of variables declaration//GEN-END:variables
 }

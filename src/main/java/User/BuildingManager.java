@@ -30,14 +30,12 @@ public class BuildingManager extends User {
         System.out.println("Building Manager Page");
     }
     
-    public boolean checkUsernameExists(String username) throws IOException {
+    public boolean checkUsernameExists(String username, String file) throws IOException {
         boolean usernameExists = false;
-  
-        String filePath = "database\\residentTenant.txt";
 
         try {
             String line;
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             while((line = reader.readLine()) != null) {
                 String[] residentInfo = line.split(",");
                 if (residentInfo[0].equals(username)) {
@@ -47,7 +45,7 @@ public class BuildingManager extends User {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + filePath);
+            System.out.println("File not found: " + file);
         }
         return usernameExists;
 }
@@ -56,9 +54,7 @@ public class BuildingManager extends User {
         Resident res = new Resident(null,null);
         
         boolean success =  true;
-        
-        
-        
+
         res.setNewUsername(username);
         res.setNewPass(password);
         res.setFullName(fname);
@@ -69,9 +65,11 @@ public class BuildingManager extends User {
         
         try {
                 String filePath = "database\\residentTenant.txt";
-                FileWriter myWriter = new FileWriter(filePath, true); //open the file
-                myWriter.write("\n" + username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + unitNo + ",");
-                myWriter.close();
+                
+                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath,true));
+                bw.write(username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + unitNo + ",\n");
+                
+                bw.close();
                 
             } catch (IOException e) {
                 System.out.println("Exception Occurred" + e);
@@ -93,7 +91,7 @@ public class BuildingManager extends User {
         
         try {
             String filePath = "database\\residentTenant.txt";
-            String temp = "database\\residentTenantTemp.txt";
+  
             File inputFile = new File("database\\residentTenant.txt");
             File tempFile = new File("database\\residentTenantTemp.txt");
             
@@ -128,7 +126,7 @@ public class BuildingManager extends User {
             w.flush();
             w.close();
           
-            
+            String temp = "database\\residentTenantTemp.txt";
             File f = new File(temp);
             f.delete();
             
@@ -178,13 +176,155 @@ public class BuildingManager extends User {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
 
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 String[] residentInfo = currentLine.split(",");
                 if (!residentInfo[0].equals(username)) {
+                    pw.println(currentLine);
+                } else {
+                    success = true;
+                }
+            }
+            pw.flush();
+            pw.close();
+            reader.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\tempResidentTenant.txt";
+            File f = new File(temp);
+            f.delete();
+
+        } catch (IOException e) {
+            System.out.println("Exception occurred: " + e);
+            success = false;
+        }
+
+        return success;
+    }
+    
+    // Vendor
+     public boolean addVendor(String username, String password, String fname, String email, String phoneNum, String lotNum, String shopName) {
+        Vendor vendor = new Vendor(null,null);
+        
+        boolean success =  true;
+
+        vendor.setNewUsername(username);
+        vendor.setNewPass(password);
+        vendor.setFullName(fname);
+        vendor.setEmail(email);
+        vendor.setPhone(phoneNum);
+        vendor.setLotNo(lotNum);
+        vendor.setShopName(shopName);
+        
+        
+        try {
+                String filePath = "database\\vendor.txt";
+                
+                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath,true));
+                bw.write(username+ ","+ password + ","+ fname + ","+ email + ","+ phoneNum+ "," + lotNum + "," + shopName+ ",\n");
+                
+                bw.close();
+                
+            } catch (IOException e) {
+                System.out.println("Exception Occurred" + e);
+                success = false;
+            }
+        return success;
+    }
+     
+     public boolean updateVendor(String username, String password, String fname, String email, String phoneNum, String lotNum, String shopName){
+        Vendor ven = new Vendor(username, password);
+        
+        boolean success = true;
+    
+//        update cons
+        ven.setFullName(fname);
+        ven.setEmail(email);
+        ven.setPhone(phoneNum);
+        ven.setLotNo(lotNum);
+        ven.setShopName(shopName);
+        
+        try {
+            String filePath = "database\\vendor.txt";
+            File inputFile = new File("database\\vendor.txt");
+            File tempFile = new File("database\\vendorTemp.txt");
+            
+            String currentLine;
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            while((currentLine = reader.readLine()) != null) {
+                String[] vendorInfo = currentLine.split(",");
+                if(vendorInfo[0].equals(username)){
+                    // use the existing password
+                    String pass = vendorInfo[1];
+                    writer.write(vendorInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + lotNum + "," + shopName);
+                } else {
                     writer.write(currentLine + "\n");
+                }
+            }
+            reader.close();
+            writer.flush();
+            writer.close();
+            
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\vendorTemp.txt";
+            File f = new File(temp);
+            f.delete();
+            
+            
+        }catch (IOException e) {
+                System.out.println("Exception Occurred" + e);
+                success = false;
+            }
+        
+        return success;
+    }
+     
+     public boolean deleteVendor(String username) {
+        boolean success = false;
+        
+        String filePath = "database\\vendor.txt";
+        File file = new File(filePath);
+        File tempFile = new File("database\\vendorTemp.txt");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            PrintWriter p = new PrintWriter(writer);
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] vendorInfo = currentLine.split(",");
+                if (!vendorInfo[0].equals(username)) {
+                    p.println(currentLine);
                 } else {
                     success = true;
                 }
@@ -207,7 +347,7 @@ public class BuildingManager extends User {
             w.flush();
             w.close();
           
-            String temp = "database\\residentTenantTemp.txt";
+            String temp = "database\\vendorTemp.txt";
             File f = new File(temp);
             f.delete();
 
@@ -218,5 +358,33 @@ public class BuildingManager extends User {
 
         return success;
     }
+     
+     public DefaultTableModel searchVendor(String username, String lotNum){
+        String[] columnNames = {"Username", "Name", "Email", "Phone No", "Lot Num", "Shop Name"};
+        DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
+        
+        String filePath = "database\\vendor.txt";
     
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                Object [] vendorInfo = currentLine.split(",");
+                if ((username == null || vendorInfo[0].equals(username)) 
+                        && (lotNum == null) || vendorInfo[5].equals(lotNum)){
+                    String[] dataArray = {vendorInfo[0].toString(),
+                                      vendorInfo[2].toString(),
+                                      vendorInfo[3].toString(),
+                                      vendorInfo[4].toString(),
+                                      vendorInfo[5].toString(),
+                                      vendorInfo[6].toString()};
+                    searchResultTable.addRow(dataArray);
+                } 
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return searchResultTable;
+    }
 }
