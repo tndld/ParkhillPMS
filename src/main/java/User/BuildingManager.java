@@ -21,9 +21,81 @@ import javax.swing.table.DefaultTableModel;
  * @author Asus
  */
 public class BuildingManager extends MgmtLevelUser {
+    
+    private String empID;
+    private String name;
+    private String ic;
+    private String email;
+    private String phoneNo;
+    private String address;
+    private String position;
 
     public BuildingManager(String username, String password) {
         super(username, password);
+    }
+    
+    public String getUsername(){
+        return this.username;
+    }
+    
+    public String getpassword(){
+        return this.username;
+    }
+    
+    public String getEmpID(){
+        return this.empID;
+    }
+    
+    public String getname(){
+        return this.name;
+    }
+    
+    public String getIc(){
+        return this.ic;
+    }
+    
+    public String getEmail(){
+        return this.email;
+    }
+    
+    public String getPhoneNo(){
+        return this.phoneNo;
+    }
+    
+    public String getAddress(){
+        return this.address;
+    }
+
+    public String getPosition(){
+        return this.position;
+    }
+    
+    public void setPassword(String position){
+        this.position = position;
+    }
+    
+    public void setEmpID(String empID){
+        this.empID = empID;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public void setIC(String ic){
+        this.ic = ic;
+    }
+    
+    public void setPhoneNo(String phoneNo){
+        this.phoneNo = phoneNo;
+    }
+    
+    public void setAddress(String address){
+        this.address = address;
+    }
+    
+    public void setPosition(String position){
+        this.position = position;
     }
     
     public void buidingManagerMenu(){
@@ -390,4 +462,6 @@ public class BuildingManager extends MgmtLevelUser {
         }
         return searchResultTable;
     }
+     
+    
 }

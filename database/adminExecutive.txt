@@ -1,2 +1,3 @@
-Username,Password,EmpID,Name,IC,Email,PhoneNo,Address
-razak01,123,AD01,Razak,650302075555,razak@gmail.com,0198765789,No 8 Jalan Rambutan,
+Username,Password,EmpID,Name,IC,Email,PhoneNo,Address,position,
+razak01,123,AD01,Razak,650302075555,razak@gmail.com,0198765789,No 8 Jalan Rambutan,Head Admin Executive,
+rafiqi,123,AD02,Rafiqi,980706717777,raq@gmail.com,0123214567,No 7 Jalan Bunga Raya,Member

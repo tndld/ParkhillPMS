@@ -12,4 +12,6 @@ public abstract class UserCommon {
     public abstract String getUsername();
     public abstract String getPassword();
     public abstract void changePassword(String uname, String pw, String newPW);
+    
+    public abstract boolean login2(String username, String pasword, String filename);
 }

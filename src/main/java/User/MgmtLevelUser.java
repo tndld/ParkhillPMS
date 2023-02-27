@@ -109,4 +109,5 @@ public abstract class MgmtLevelUser {
     public abstract boolean updateResident(String username, String pw, String fname, String email, String phoneNum, String unitNo);
     
     public abstract DefaultTableModel searchResultTable(String username, String unitNo);
+    
 }
