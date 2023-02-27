@@ -12,6 +12,7 @@ import User.AccountExecutive;
 import User.AdminExecutive;
 import User.BuildingExecutive;
 import User.BuildingManager;
+import User.MgmtLevelUser;
 import User.User;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -209,7 +210,7 @@ public class LoginMgmt extends javax.swing.JFrame {
         String username = mgmtUsernameTxtField.getText();
         String password = mgmtPassTxtField.getText();
         
-        User user = new User(username, password);
+        
         if (username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this,
                         "Please fill in all the required information to log in.",
@@ -219,7 +220,8 @@ public class LoginMgmt extends javax.swing.JFrame {
             // Check user role
             if (loginOptionStr.equals("Building Manager")){
                 String file = "database\\buildingManager.txt";
-                if (user.login2(username, password, file)){
+                BuildingManager BuildingManager = new BuildingManager(username,password);
+                if (BuildingManager.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
                     try {
                         FileWriter myWriter = new FileWriter("database\\activeUser.txt", true); //open the file
@@ -232,11 +234,17 @@ public class LoginMgmt extends javax.swing.JFrame {
                     this.setVisible(false);
                     new BuildingManagerHomepage().setVisible(true);
 
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                        "Wrong username or password. Please try again.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
                 }
 
             } else if (loginOptionStr.equals("Account Executive")) {
                 String file = "database\\accountExecutive.txt";
-                if (user.login2(username, password, file)){
+                AccountExecutive account = new AccountExecutive(username,password);
+                if (account.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
                     
                     try {
@@ -261,7 +269,8 @@ public class LoginMgmt extends javax.swing.JFrame {
 
             } else if (loginOptionStr.equals("Admin Executive")) {
                 String file = "database\\adminExecutive.txt";
-                if (user.login2(username, password, file)){
+                AdminExecutive admin = new AdminExecutive(username,password);
+                if (admin.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
                     
                     try {
@@ -286,7 +295,8 @@ public class LoginMgmt extends javax.swing.JFrame {
 
             } else if (loginOptionStr.equals("Building Executive")) {
                 String file = "database\\buildingExecutive.txt";
-                if (user.login2(username, password, file)){
+                BuildingExecutive buildingExe = new BuildingExecutive(username,password);
+                if (buildingExe.login2(username, password, file)){
                     JOptionPane.showMessageDialog(this, "Login Successful.");
                     
                     try {

@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class BuildingManager extends User {
+public class BuildingManager extends MgmtLevelUser {
 
     public BuildingManager(String username, String password) {
         super(username, password);
@@ -50,6 +50,7 @@ public class BuildingManager extends User {
         return usernameExists;
 }
     
+    @Override
     public boolean addResident(String username, String password, String fname, String email, String phoneNum, String unitNo) {
         Resident res = new Resident(null,null);
         
@@ -78,6 +79,7 @@ public class BuildingManager extends User {
         return success;
     }
     
+    @Override
     public boolean updateResident(String username, String pw, String fname, String email, String phoneNum, String unitNo){
         Resident res = new Resident(username, pw);
         
@@ -139,6 +141,7 @@ public class BuildingManager extends User {
         return success;
     }
     
+    @Override
     public DefaultTableModel searchResultTable(String username, String unitNo){
         String[] columnNames = {"Username", "Name", "Email", "Phone No", "Unit No"};
         DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 

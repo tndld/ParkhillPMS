@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class AdminExecutive extends User {
+public class AdminExecutive extends MgmtLevelUser {
     
     
     public AdminExecutive(String username, String password) {
@@ -54,6 +54,7 @@ public class AdminExecutive extends User {
         return usernameExists;
 }
     
+    @Override
     public boolean addResident(String username, String password, String fname, String email, String phoneNum, String unitNo) {
         Resident res = new Resident(null,null);
         
@@ -82,6 +83,7 @@ public class AdminExecutive extends User {
         return success;
     }
     
+    @Override
     public boolean updateResident(String username, String pw, String fname, String email, String phoneNum, String unitNo){
         Resident res = new Resident(username, pw);
         
@@ -143,6 +145,7 @@ public class AdminExecutive extends User {
         return success;
     }
     
+    @Override
     public DefaultTableModel searchResultTable(String username, String unitNo){
         String[] columnNames = {"Username", "Name", "Email", "Phone No", "Unit No"};
         DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
