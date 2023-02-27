@@ -1,0 +1,5 @@
+Invoice No.:Issuance Date:Unit No.:Name:Description:Amount:Due:Status
+Inv20221-1:04 Jan 2022:D-9-8:Cheah Tian Le:Water Bill - December 2021:15.00:18 Jan 2022:Paid
+Inv20231-1:02 Jan 2023:D-9-8:Cheah Tian Le:Water Bill - December 2022:38.00:16 Jan 2023:Fail
+Inv20231-2:09 Jan 2023:D-9-8:Cheah Tian Le:Water Bill - December 2022:38.00:23 Jan 2023:Pending
+Inv20231-3:14 Jan 2023:D-9-8:Cheah Tian Le:Management Fee - January 2023:200.00:28 Jan 2023:Unpaid
