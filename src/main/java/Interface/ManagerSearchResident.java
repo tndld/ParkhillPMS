@@ -206,6 +206,7 @@ public class ManagerSearchResident extends javax.swing.JFrame {
         
         // display the search result
         residentTable.setModel(searchResultTable);
+        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed

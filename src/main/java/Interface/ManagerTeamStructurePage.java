@@ -50,7 +50,7 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
     private void initComponents() {
 
         receipt = new javax.swing.JLabel();
-        homepageBTN = new javax.swing.JButton();
+        backBTN = new javax.swing.JButton();
         buildingMngBtn = new javax.swing.JButton();
         accountExecutiveBtn = new javax.swing.JButton();
         adminExecutiveBtn = new javax.swing.JButton();
@@ -70,10 +70,10 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
         receipt.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         receipt.setText("Team Management Page");
 
-        homepageBTN.setText("Back");
-        homepageBTN.addActionListener(new java.awt.event.ActionListener() {
+        backBTN.setText("Back");
+        backBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homepageBTNActionPerformed(evt);
+                backBTNActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(receipt)))
@@ -186,7 +186,7 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(homepageBTN)
+                .addComponent(backBTN)
                 .addGap(10, 10, 10)
                 .addComponent(receipt)
                 .addGap(26, 26, 26)
@@ -228,10 +228,10 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
+    private void backBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBTNActionPerformed
         this.setVisible(false);
-        new ResidentHomepage().setVisible(true);
-    }//GEN-LAST:event_homepageBTNActionPerformed
+        new BuildingManagerHomepage().setVisible(true);
+    }//GEN-LAST:event_backBTNActionPerformed
 
     private void accountExecutiveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountExecutiveBtnActionPerformed
         // TODO add your handling code here:
@@ -306,11 +306,11 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
     private javax.swing.JButton accountExecutiveBtn;
     private javax.swing.JTextField adminExeAmountTF;
     private javax.swing.JButton adminExecutiveBtn;
+    private javax.swing.JButton backBTN;
     private javax.swing.JTextField buildingExeAmountTF;
     private javax.swing.JButton buildingExecutiveBtn;
     private javax.swing.JTextField buildingManagerAmountTF;
     private javax.swing.JButton buildingMngBtn;
-    private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel receipt;
     private javax.swing.JLabel teamLabel;
     private javax.swing.JLabel teamLabel1;

@@ -203,6 +203,7 @@ public class ManagerSearchVendor extends javax.swing.JFrame {
         
         // display the search result
         vendorTable.setModel(searchResultTable);
+        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed

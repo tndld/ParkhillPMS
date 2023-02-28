@@ -505,4 +505,235 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
         }
         return i;
     }
+    
+    public boolean deleteManager(String username) {
+        boolean success = false;
+        
+        String filePath = "database\\buildingManager.txt";
+        File file = new File(filePath);
+        File tempFile = new File("database\\buildingManagerTemp.txt");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] residentInfo = currentLine.split(",");
+                if (!residentInfo[0].equals(username)) {
+                    pw.println(currentLine);
+                } else {
+                    success = true;
+                }
+            }
+            pw.flush();
+            pw.close();
+            reader.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\buildingManagerTemp.txt";
+            File f = new File(temp);
+            f.delete();
+
+        } catch (IOException e) {
+            System.out.println("Exception occurred: " + e);
+            success = false;
+        }
+
+        return success;
+    }
+    
+    public boolean deleteAccountExe(String username) {
+        boolean success = false;
+        
+        String filePath = "database\\accountExecutive.txt";
+        File file = new File(filePath);
+        File tempFile = new File("database\\accountExecutiveTemp.txt");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] residentInfo = currentLine.split(",");
+                if (!residentInfo[0].equals(username)) {
+                    pw.println(currentLine);
+                } else {
+                    success = true;
+                }
+            }
+            pw.flush();
+            pw.close();
+            reader.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\accountExecutiveTemp.txt";
+            File f = new File(temp);
+            f.delete();
+
+        } catch (IOException e) {
+            System.out.println("Exception occurred: " + e);
+            success = false;
+        }
+
+        return success;
+    }
+    
+    public boolean deleteAdminExe(String username) {
+        boolean success = false;
+        
+        String filePath = "database\\adminExecutive.txt";
+        File file = new File(filePath);
+        File tempFile = new File("database\\adminExecutiveTemp.txt");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] residentInfo = currentLine.split(",");
+                if (!residentInfo[0].equals(username)) {
+                    pw.println(currentLine);
+                } else {
+                    success = true;
+                }
+            }
+            pw.flush();
+            pw.close();
+            reader.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\adminExecutiveTemp.txt";
+            File f = new File(temp);
+            f.delete();
+
+        } catch (IOException e) {
+            System.out.println("Exception occurred: " + e);
+            success = false;
+        }
+
+        return success;
+    }
+    
+    
+    public boolean deleteBuildingExe(String username) {
+        boolean success = false;
+        
+        String filePath = "database\\buildingExecutive.txt";
+        File file = new File(filePath);
+        File tempFile = new File("database\\buildingExecutiveTemp.txt");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] residentInfo = currentLine.split(",");
+                if (!residentInfo[0].equals(username)) {
+                    pw.println(currentLine);
+                } else {
+                    success = true;
+                }
+            }
+            pw.flush();
+            pw.close();
+            reader.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\buildingExecutiveTemp.txt";
+            File f = new File(temp);
+            f.delete();
+
+        } catch (IOException e) {
+            System.out.println("Exception occurred: " + e);
+            success = false;
+        }
+
+        return success;
+    }
+    
+    public DefaultTableModel searchTeam(String name, String empID, String filePath){
+        String[] columnNames = {"Username","Password", "EmpID", "Name", "IC", "Email", "Phone No", "Address", "Position"};
+        DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
+    
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                Object [] info = currentLine.split(",");
+                if ((name == null || info[3].equals(name)) 
+                        && (empID == null) || info[2].equals(empID)){
+                    String[] dataArray = {info[0].toString(),
+                                      info[1].toString(),
+                                      info[2].toString(),
+                                      info[3].toString(),
+                                      info[4].toString(),
+                                      info[5].toString(),
+                                      info[6].toString(),
+                                      info[7].toString(),
+                                      info[8].toString()};
+                    searchResultTable.addRow(dataArray);
+                } 
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return searchResultTable;
+    }
 }

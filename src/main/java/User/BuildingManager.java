@@ -446,7 +446,7 @@ public class BuildingManager extends MgmtLevelUser {
         return success;
     }
      
-     public DefaultTableModel searchVendor(String username, String lotNum){
+    public DefaultTableModel searchVendor(String username, String lotNum){
         String[] columnNames = {"Username", "Name", "Email", "Phone No", "Lot Num", "Shop Name"};
         DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
         

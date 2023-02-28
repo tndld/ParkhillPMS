@@ -74,6 +74,8 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         structureTable = new javax.swing.JTable();
         updateBtn = new javax.swing.JButton();
         addNewAccExeBtn = new javax.swing.JButton();
+        SearchBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,26 +128,43 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
             }
         });
 
+        SearchBtn.setText("Search");
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(homepageLabel)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(294, 294, 294)
+                            .addComponent(SearchBtn)
+                            .addGap(18, 18, 18)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(addNewAccExeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(113, 113, 113)
+                            .addComponent(homepageLabel))))
                 .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
@@ -160,8 +179,10 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateBtn)
-                    .addComponent(addNewAccExeBtn))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(addNewAccExeBtn)
+                    .addComponent(SearchBtn)
+                    .addComponent(deleteBtn))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,6 +258,42 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_addNewAccExeBtnActionPerformed
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+
+        // Get the selected row index
+        DefaultTableModel model = (DefaultTableModel) structureTable.getModel();
+        int row = structureTable.getSelectedRow();
+
+        //Check if a row is selected
+        if (row < 0){
+            JOptionPane.showMessageDialog(this, "Please select an admin to delete.", "Error",
+                JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Get the current resident info from the selected row
+            String username = structureTable.getValueAt(row, 0).toString();
+            //            String fullName = residentTenantTable.getValueAt(row, 1).toString();
+            //            String email = residentTenantTable.getValueAt(row, 2).toString();
+            //            String phoneNo = residentTenantTable.getValueAt(row, 3).toString();
+            //            String unitNo = residentTenantTable.getValueAt(row, 4).toString();
+
+            ManagerTeamStructureMgmt manage = new ManagerTeamStructureMgmt();
+            if (manage.deleteAdminExe(username)){
+                JOptionPane.showMessageDialog(this, "Admin deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                // remove the selected row in table
+                model.removeRow(row);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to delete selected admin.\nPlease try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
+        // TODO add your handling code here:
+        new SearchTeam().setVisible(true);
+    }//GEN-LAST:event_SearchBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,8 +331,10 @@ public class ManageAdminExeStructure extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SearchBtn;
     private javax.swing.JButton addNewAccExeBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel homepageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable structureTable;
