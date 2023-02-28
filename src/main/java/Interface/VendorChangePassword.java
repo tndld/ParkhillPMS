@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class VendorChangePassword extends getActiveVendor {
+public class VendorChangePassword extends getActiveUser {
 
     /**
      * Creates new form VendorChangePassword
@@ -122,12 +122,12 @@ public class VendorChangePassword extends getActiveVendor {
         String newP = newPwTF.getText();
         String cfm = cfmPwTF.getText();
 
-        Vendor ven = new Vendor(getActiveVendor()[0], getActiveVendor()[1]);
+        Vendor ven = new Vendor(getActiveUser()[0], getActiveUser()[1]);
         
         if ((!current.equals("")) && (!newP.equals("")) && (!cfm.equals(""))){
             if (current.equals(ven.getPassword())) {
                 if (newP.equals(cfm)){
-                    ven.changePassword(ven.getUsername(), getActiveVendor()[1], cfm);
+                    ven.changePassword(ven.getUsername(), getActiveUser()[1], cfm);
                     this.setVisible(false);
                     new VendorProfile().setVisible(true);
 
@@ -195,8 +195,8 @@ public class VendorChangePassword extends getActiveVendor {
     }
     
     @Override
-    public String[] getActiveVendor(){
-        String filePath = "database\\vendorActive.txt";
+    public String[] getActiveUser(){
+        String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();

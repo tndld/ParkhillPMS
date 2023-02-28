@@ -8,14 +8,15 @@ package Interface;
  *
  * @author user
  */
-public abstract class getActiveVendor extends javax.swing.JFrame {
+public abstract class getActiveUser extends javax.swing.JFrame {
 
     /**
-     * Creates new form getActicveVendor
+     * Creates new form getActiveResident
+     * @return 
      */
     
-    public abstract String[] getActiveVendor();
-
+    public abstract String[] getActiveUser();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

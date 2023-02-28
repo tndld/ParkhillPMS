@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author user
  */
-public class ResidentViewEditVPass extends getActiveResident {
+public class ResidentViewEditVPass extends getActiveUser {
 
     /**
      * Creates new form ResidentViewEditVPass
@@ -31,7 +31,7 @@ public class ResidentViewEditVPass extends getActiveResident {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         VisitorPass vp = new VisitorPass(res);
         vp.viewActiveResVisitorPass(vp.getResName());
         
@@ -335,7 +335,7 @@ public class ResidentViewEditVPass extends getActiveResident {
             String car = cpTF.getText();
             String refNo = refTF.getText();
 
-            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
             VisitorPass vp = new VisitorPass(res);
             if (vp.editVisitorPass(refNo, name, ic, car)){
                 JOptionPane.showMessageDialog(this, 
@@ -365,7 +365,7 @@ public class ResidentViewEditVPass extends getActiveResident {
         if (cfm == JOptionPane.YES_OPTION){
             
             String refNo = refTF.getText();
-            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
             VisitorPass vp = new VisitorPass(res);
             if (vp.deleteVisitorPass(refNo)) {
                 JOptionPane.showMessageDialog(this, 
@@ -437,7 +437,7 @@ public class ResidentViewEditVPass extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

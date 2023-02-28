@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author user
  */
-public class ResidentViewInvoice extends getActiveResident {
+public class ResidentViewInvoice extends getActiveUser {
 
     /**
      * Creates new form ResidentViewInvoice
@@ -387,7 +387,7 @@ public class ResidentViewInvoice extends getActiveResident {
 
     private void getInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInvoiceBTNActionPerformed
         int count = 0;
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         String currentUser = res.getFullName();
         String unitNo = res.getUnitNo();
         
@@ -456,7 +456,8 @@ public class ResidentViewInvoice extends getActiveResident {
         dueTF1.setText(due);
     }//GEN-LAST:event_pendingTableMouseClicked
 
-    public String[] getActiveResident(){
+    @Override
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -474,7 +475,7 @@ public class ResidentViewInvoice extends getActiveResident {
     }
     
     private void setInvoiceTable(){
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         String currentUser = res.getFullName();
         
         String filePath = "database\\invoice.txt";

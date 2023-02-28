@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class ResidentEditProfile extends getActiveResident {
+public class ResidentEditProfile extends getActiveUser {
 
     /**
      * Creates new form ResidentEdtProfile
@@ -26,7 +26,7 @@ public class ResidentEditProfile extends getActiveResident {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         usernameTF.setText(res.getUsername());
         fullNameTF.setText(res.getFullName());
         emailTF.setText(res.getEmail());
@@ -190,7 +190,7 @@ public class ResidentEditProfile extends getActiveResident {
         String newEmail = emailTF.getText();
         String newPhone = phoneTF.getText();
 
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         res.editDetails(res.getUsername(), res.getPassword(), newFname, newEmail, newPhone);
 
         //        Back to view mode
@@ -235,7 +235,7 @@ public class ResidentEditProfile extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

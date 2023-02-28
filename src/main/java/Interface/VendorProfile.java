@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class VendorProfile extends getActiveVendor {
+public class VendorProfile extends getActiveUser {
 
     /**
      * Creates new form VendorProfile
@@ -26,7 +26,7 @@ public class VendorProfile extends getActiveVendor {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        Vendor ven = new Vendor(getActiveVendor()[0], getActiveVendor()[1]);
+        Vendor ven = new Vendor(getActiveUser()[0], getActiveUser()[1]);
         vendorUnameTF.setText(ven.getUsername());
         vendorFnameTF.setText(ven.getFullName());
         vendorEmailTF.setText(ven.getEmail());
@@ -266,8 +266,8 @@ public class VendorProfile extends getActiveVendor {
     }
     
     @Override
-    public String[] getActiveVendor(){
-        String filePath = "database\\vendorActive.txt";
+    public String[] getActiveUser(){
+        String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();

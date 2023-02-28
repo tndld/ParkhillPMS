@@ -177,7 +177,7 @@ public class VendorLoginPage extends javax.swing.JFrame {
             
             // save the username into the activeUser.txt
             try {
-                FileWriter myWriter = new FileWriter("database\\vendorActive.txt", true); //open the file
+                FileWriter myWriter = new FileWriter("database\\activeUser.txt"); //open the file
                 myWriter.write(userName + "," + pass);
                 myWriter.close();
                 
@@ -216,7 +216,7 @@ public class VendorLoginPage extends javax.swing.JFrame {
             
             // save the username into the activeUser.txt
             try {
-                FileWriter myWriter = new FileWriter("database\\vendorActive.txt", true); //open the file
+                FileWriter myWriter = new FileWriter("database\\activeUser.txt"); //open the file
                 myWriter.write(userName + "," + pass);
                 myWriter.close();
                 

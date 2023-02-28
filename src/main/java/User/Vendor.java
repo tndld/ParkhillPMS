@@ -162,7 +162,7 @@ public class Vendor extends User {
         ven.password = newPW;
         String filePath = "database\\vendor.txt";
         String tempFile = "database\\tempVen.txt";
-        String vaFile = "database\\vendorActive.txt";
+        String vaFile = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));

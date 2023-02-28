@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentApplyVPass extends getActiveResident {
+public class ResidentApplyVPass extends getActiveUser {
 
     /**
      * Creates new form ResidentApplyVPass
@@ -170,7 +170,7 @@ public class ResidentApplyVPass extends getActiveResident {
         if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
                 !sdate.equals("") && !durToString.equals("0")){
             
-            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
             VisitorPass vp = new VisitorPass(res);
             if (vp.addVisitorPass(res, v_name, v_ic, 
                     carp, sdate, durToString)){
@@ -249,7 +249,7 @@ public class ResidentApplyVPass extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

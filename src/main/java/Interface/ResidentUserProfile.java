@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author user
  */
-public class ResidentUserProfile extends getActiveResident {
+public class ResidentUserProfile extends getActiveUser {
 
     /**
      * Creates new form ResidentUserProfile
@@ -27,7 +27,7 @@ public class ResidentUserProfile extends getActiveResident {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
             
 //        Set details into text field
         usernameTF.setText(res.getUsername());
@@ -250,7 +250,7 @@ public class ResidentUserProfile extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

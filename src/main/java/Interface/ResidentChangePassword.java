@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentChangePassword extends getActiveResident {
+public class ResidentChangePassword extends getActiveUser {
 
     /**
      * Creates new form ResidentChangePassword
@@ -122,12 +122,12 @@ public class ResidentChangePassword extends getActiveResident {
         String nPW = newPwTF.getText();
         String cfm = changePwTF.getText();
 
-        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
 
         if ((!cPW.equals("")) && (!nPW.equals("")) && (!cfm.equals(""))){
             if (cPW.equals(res.getPassword())){
                 if (nPW.equals(cfm)){
-                    res.changePassword(res.getUsername(), getActiveResident()[1], cfm);
+                    res.changePassword(res.getUsername(), getActiveUser()[1], cfm);
 
                     this.setVisible(false);
                     new ResidentUserProfile().setVisible(true);
@@ -196,7 +196,7 @@ public class ResidentChangePassword extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

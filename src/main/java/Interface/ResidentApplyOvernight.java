@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ResidentApplyOvernight extends getActiveResident {
+public class ResidentApplyOvernight extends getActiveUser {
 
     /**
      * Creates new form ResidentApplyOvernight
@@ -200,7 +200,7 @@ public class ResidentApplyOvernight extends getActiveResident {
         if (!v_name.equals("") && !v_ic.equals("") && !carp.equals("") && 
                 !ind.equals("") && !outd.equals("") && !durToString.equals("0")){
             
-            Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
             VisitorPass vp = new VisitorPass(res);
             
             if (vp.addOvernightPass(res, v_name, v_ic, 
@@ -272,7 +272,7 @@ public class ResidentApplyOvernight extends getActiveResident {
     }
     
     @Override
-    public String[] getActiveResident(){
+    public String[] getActiveUser(){
         String filePath = "database\\activeUser.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
