@@ -4,14 +4,22 @@
  */
 package Interface;
 
+import User.Resident;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author user
  */
-public class ResidentViewInvoice extends javax.swing.JFrame {
+public class ResidentViewInvoice extends getActiveResident {
 
     /**
      * Creates new form ResidentViewInvoice
@@ -21,6 +29,8 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+        setInvoiceTable();
     }
 
     /**
@@ -37,7 +47,7 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
         billtabbedPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        invoiceTable = new javax.swing.JTable();
         invoice = new javax.swing.JLabel();
         due = new javax.swing.JLabel();
         issueDate = new javax.swing.JLabel();
@@ -53,7 +63,7 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
         getInvoiceBTN = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        pendingTable = new javax.swing.JTable();
         invoice1 = new javax.swing.JLabel();
         due1 = new javax.swing.JLabel();
         desc2 = new javax.swing.JLabel();
@@ -78,7 +88,7 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        invoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,8 +111,13 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        invoiceTable.getTableHeader().setReorderingAllowed(false);
+        invoiceTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invoiceTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(invoiceTable);
 
         invoice.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         invoice.setText("Invoice No.");
@@ -207,7 +222,7 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
 
         billtabbedPane.addTab("My Bill", jPanel1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pendingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -230,8 +245,13 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable2);
+        pendingTable.getTableHeader().setReorderingAllowed(false);
+        pendingTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(pendingTable);
 
         invoice1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         invoice1.setText("Invoice No.");
@@ -334,17 +354,16 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))
-                    .addComponent(billtabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(billtabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(bill)))
                 .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addComponent(bill)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +386,37 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void getInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInvoiceBTNActionPerformed
-        // TODO add your handling code here:
+        int count = 0;
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        String currentUser = res.getFullName();
+        String unitNo = res.getUnitNo();
+        
+        String filePath = "database\\invoice.txt";
+        String tempFile = "database\\tempInvItem.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            
+            bw.write(invoiceTF.getText() + ":" + currentUser + ":" + unitNo 
+                    + ":" + issueDateTF.getText() + "\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] invInfo = line.split(":");
+
+                if (invInfo[0].equals(invoiceTF.getText())){
+                    count += 1;
+                    bw.write(count + ":" + invInfo[4] + ":" + invInfo[6] + ":" 
+                            + invInfo[5] + "\n");
+                }
+            }
+            br.close();
+            bw.close();
+
+        } catch (IOException ex){
+            System.out.println("Exception occur when getting invoice item: " + ex);
+        }
+        
+        new InvoicePage().setVisible(true);
     }//GEN-LAST:event_getInvoiceBTNActionPerformed
 
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
@@ -375,6 +424,112 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
         new ResidentMakePayment().setVisible(true);
     }//GEN-LAST:event_paymentBTNActionPerformed
 
+    private void invoiceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoiceTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)invoiceTable.getModel();
+        String invNo = model.getValueAt(invoiceTable.getSelectedRow(), 0).toString();
+        String date = model.getValueAt(invoiceTable.getSelectedRow(), 1).toString();
+        String desc = model.getValueAt(invoiceTable.getSelectedRow(), 2).toString();
+        String amt = model.getValueAt(invoiceTable.getSelectedRow(), 3).toString();
+        String due = model.getValueAt(invoiceTable.getSelectedRow(), 4).toString();
+        String status = model.getValueAt(invoiceTable.getSelectedRow(), 5).toString();
+        
+        invoiceTF.setText(invNo);
+        issueDateTF.setText(date);
+        descTF1.setText(desc);
+        amountTF1.setText(amt);
+        dueTF.setText(due);
+        statusTF.setText(status);
+    }//GEN-LAST:event_invoiceTableMouseClicked
+
+    private void pendingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingTableMouseClicked
+        DefaultTableModel model2 = (DefaultTableModel)pendingTable.getModel();
+        String invNo = model2.getValueAt(pendingTable.getSelectedRow(), 0).toString();
+        String date = model2.getValueAt(pendingTable.getSelectedRow(), 1).toString();
+        String desc = model2.getValueAt(pendingTable.getSelectedRow(), 2).toString();
+        String amt = model2.getValueAt(pendingTable.getSelectedRow(), 3).toString();
+        String due = model2.getValueAt(pendingTable.getSelectedRow(), 4).toString();
+        
+        invoiceTF1.setText(invNo);
+        issueDateTF1.setText(date);
+        descTF2.setText(desc);
+        amountTF2.setText(amt);
+        dueTF1.setText(due);
+    }//GEN-LAST:event_pendingTableMouseClicked
+
+    public String[] getActiveResident(){
+        String filePath = "database\\activeUser.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");           
+            br.close();
+            return activeUser;
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+            return null;
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
+    }
+    
+    private void setInvoiceTable(){
+        Resident res = new Resident(getActiveResident()[0], getActiveResident()[1]);
+        String currentUser = res.getFullName();
+        
+        String filePath = "database\\invoice.txt";
+        String tempFile = "database\\tempActiveResInv.txt";
+        String tempFile2 = "database\\tempUnpaidActiveResInv.txt";
+        try {
+            BufferedReader br = new BufferedReader (new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            BufferedWriter bw2 = new BufferedWriter(new FileWriter(tempFile2));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] invInfo = line.split(":");
+                String user = invInfo[3];
+                
+                if (user.equals(currentUser)){
+                    bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                            invInfo[4] + ":" + invInfo[5] + ":" + 
+                            invInfo[6] + ":" + invInfo[7] + "\n");
+                    
+                    bw2.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                            invInfo[4] + ":" + invInfo[5] + ":" + 
+                            invInfo[6] + "\n");
+                }
+            }
+            br.close();
+            bw.close();
+            bw2.close();
+            
+            BufferedReader br2 = new BufferedReader(new FileReader(tempFile));
+            DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
+            Object[] record = br2.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line2 = record[i].toString().trim();
+                String[] recInfo = line2.split(":");
+                invoice.addRow(recInfo);
+            }
+            br2.close();
+            new File(tempFile).delete();
+            
+            BufferedReader br3 = new BufferedReader(new FileReader(tempFile2));
+            DefaultTableModel pending = (DefaultTableModel)pendingTable.getModel();
+            Object[] record2 = br3.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line3 = record2[i].toString().trim();
+                String[] recInfo = line3.split(":");
+                pending.addRow(recInfo);
+            }
+            br3.close();
+            new File(tempFile2).delete();
+            
+        } catch (IOException ex) {
+            System.out.println("Exception occur: " + ex);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -431,6 +586,7 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
     private javax.swing.JLabel invoice1;
     private javax.swing.JTextField invoiceTF;
     private javax.swing.JTextField invoiceTF1;
+    private javax.swing.JTable invoiceTable;
     private javax.swing.JLabel issueDate;
     private javax.swing.JLabel issueDate1;
     private javax.swing.JTextField issueDateTF;
@@ -439,9 +595,8 @@ public class ResidentViewInvoice extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JButton paymentBTN;
+    private javax.swing.JTable pendingTable;
     private javax.swing.JLabel status;
     private javax.swing.JTextField statusTF;
     // End of variables declaration//GEN-END:variables

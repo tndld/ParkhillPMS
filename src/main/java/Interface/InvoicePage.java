@@ -4,22 +4,30 @@
  */
 package Interface;
 
+import User.Invoice;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author user
  */
-public class Invoice extends javax.swing.JFrame {
+public class InvoicePage extends javax.swing.JFrame {
 
     /**
      * Creates new form Invoice
      */
-    public Invoice() {
+    public InvoicePage() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -38,6 +46,8 @@ public class Invoice extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
+        printInvoice();
     }
 
     /**
@@ -61,6 +71,7 @@ public class Invoice extends javax.swing.JFrame {
         taman = new javax.swing.JLabel();
         postcode = new javax.swing.JLabel();
         area = new javax.swing.JLabel();
+        jalan1 = new javax.swing.JLabel();
         InvoiceTitle = new javax.swing.JLabel();
         invoiceTF = new javax.swing.JTextField();
         date = new javax.swing.JLabel();
@@ -92,7 +103,6 @@ public class Invoice extends javax.swing.JFrame {
         CusName.setEditable(false);
         CusName.setBackground(new java.awt.Color(255, 255, 255));
         CusName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        CusName.setText("Low Jye Shan");
         CusName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CusName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CusName.setFocusable(false);
@@ -106,7 +116,6 @@ public class Invoice extends javax.swing.JFrame {
         unit.setEditable(false);
         unit.setBackground(new java.awt.Color(255, 255, 255));
         unit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        unit.setText("B-7-1, Parkhill Residence,");
         unit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         unit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         unit.setFocusable(false);
@@ -129,6 +138,9 @@ public class Invoice extends javax.swing.JFrame {
         area.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         area.setText("WP Kuala Lumpur.");
 
+        jalan1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jalan1.setText(", Parkhill Residence,");
+
         javax.swing.GroupLayout CustomerPanelLayout = new javax.swing.GroupLayout(CustomerPanel);
         CustomerPanel.setLayout(CustomerPanelLayout);
         CustomerPanelLayout.setHorizontalGroup(
@@ -137,14 +149,17 @@ public class Invoice extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CusName)
-                    .addComponent(unit, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                     .addGroup(CustomerPanelLayout.createSequentialGroup()
                         .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jalan)
-                            .addComponent(taman)
                             .addComponent(postcode)
-                            .addComponent(area))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(area)
+                            .addComponent(taman)
+                            .addGroup(CustomerPanelLayout.createSequentialGroup()
+                                .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jalan1)))
+                        .addGap(0, 200, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         CustomerPanelLayout.setVerticalGroup(
@@ -153,7 +168,9 @@ public class Invoice extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(CusName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jalan1))
                 .addGap(2, 2, 2)
                 .addComponent(jalan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,7 +185,6 @@ public class Invoice extends javax.swing.JFrame {
         InvoiceTitle.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         InvoiceTitle.setText("Invoice No.: ");
 
-        invoiceTF.setEditable(false);
         invoiceTF.setBackground(new java.awt.Color(255, 255, 255));
         invoiceTF.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         invoiceTF.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -233,9 +249,8 @@ public class Invoice extends javax.swing.JFrame {
 
         totalTF.setEditable(false);
         totalTF.setBackground(new java.awt.Color(255, 255, 255));
-        totalTF.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        totalTF.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         totalTF.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        totalTF.setText("12.00");
         totalTF.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         totalTF.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         totalTF.setFocusable(false);
@@ -275,7 +290,7 @@ public class Invoice extends javax.swing.JFrame {
                                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateTF, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                    .addComponent(dateTF, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                     .addComponent(invoiceTF)))
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
@@ -365,6 +380,35 @@ public class Invoice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_totalTFActionPerformed
 
+    private void printInvoice(){
+        
+        String tempFile = "database\\tempInvItem.txt";
+        try {
+            BufferedReader br2 = new BufferedReader(new FileReader(tempFile));
+            String line = br2.readLine();
+            String[] general = line.split(":");
+            invoiceTF.setText(general[0]);
+            CusName.setText(general[1]);
+            unit.setText(general[2]);
+            dateTF.setText(general[3]);
+            
+            DefaultTableModel invoice = (DefaultTableModel)chargesTable.getModel();
+            Object[] record = br2.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line2 = record[i].toString().trim();
+                String[] recInfo = line2.split(":");
+                invoice.addRow(recInfo);
+            }
+            br2.close();
+        } catch (IOException ex){
+            System.out.println("Exception occur when getting invoice item: " + ex);
+        }
+        
+        Invoice inv = new Invoice(unit.getText(), invoiceTF.getText());
+        String total = String.valueOf(inv.calTotal());
+        totalTF.setText(total);
+    }
+            
     /**
      * @param args the command line arguments
      */
@@ -382,20 +426,21 @@ public class Invoice extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InvoicePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InvoicePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InvoicePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InvoicePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Invoice().setVisible(true);
+                new InvoicePage().setVisible(true);
             }
         });
     }
@@ -417,6 +462,7 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jalan;
+    private javax.swing.JLabel jalan1;
     private javax.swing.JTextArea note;
     private javax.swing.JLabel postcode;
     private javax.swing.JLabel taman;

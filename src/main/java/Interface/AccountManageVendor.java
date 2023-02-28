@@ -6,9 +6,6 @@ package Interface;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,18 +13,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author user
  */
-public class AccountManageResident extends javax.swing.JFrame {
+public class AccountManageVendor extends javax.swing.JFrame {
 
     /**
      * Creates new form AccountManageResident
      */
-    public AccountManageResident() {
+    public AccountManageVendor() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        setInvoiceTable();
+        DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
     }
 
     /**
@@ -101,14 +98,14 @@ public class AccountManageResident extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Invoice No.", "Issuance Date", "Unit No.", "Receiver", "Description", "Amount", "Due Date", "Status"
+                "Invoice No.", "Unit No.", "Description", "Issuance Date", "Due Date", "Amount", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -300,7 +297,7 @@ public class AccountManageResident extends javax.swing.JFrame {
                             .addComponent(descTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(amountTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(issueDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(invoiceBTN)
                         .addGap(20, 20, 20))
                     .addComponent(jScrollPane2))
@@ -469,6 +466,7 @@ public class AccountManageResident extends javax.swing.JFrame {
                     .addComponent(invoiceTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bank, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bankTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paymentPanelLayout.createSequentialGroup()
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -493,7 +491,7 @@ public class AccountManageResident extends javax.swing.JFrame {
                 .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         Tab.addTab("Payment Approval", paymentPanel);
@@ -516,22 +514,21 @@ public class AccountManageResident extends javax.swing.JFrame {
                         .addComponent(Tab)
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146)
-                        .addComponent(resAccTitle)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(189, 189, 189)
+                                .addComponent(resAccTitle)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(homepageBTN)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(resAccTitle)
-                        .addGap(18, 18, 18)))
+                .addComponent(homepageBTN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resAccTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Tab, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -555,6 +552,7 @@ public class AccountManageResident extends javax.swing.JFrame {
     }//GEN-LAST:event_approveBTNActionPerformed
 
     private void vInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vInvoiceBTNActionPerformed
+        this.setVisible(false);
         new InvoicePage().setVisible(true);
     }//GEN-LAST:event_vInvoiceBTNActionPerformed
 
@@ -564,33 +562,7 @@ public class AccountManageResident extends javax.swing.JFrame {
     }//GEN-LAST:event_vreceiptBTNActionPerformed
 
     private void setInvoiceTable(){
-        String checkManaging = "database\\accExeManageUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(checkManaging));
-            String filePath;
-            if (br.readLine().equals("Resident")){
-                filePath = "database\\invoice.txt";
-                BufferedReader br2 = new BufferedReader(new FileReader(filePath));
-                String firstLine = br2.readLine().trim();
-                String[] columns = firstLine.split(":");
-                DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
-                invoice.setColumnIdentifiers(columns);
-                Object[] record = br2.lines().toArray();
-                for (int i = 0; i < record.length; i++){
-                    String line = record[i].toString().trim();
-                    String[] recInfo = line.split(":");
-                    invoice.addRow(recInfo);
-                }
-                br2.close();
-            } else {
-                filePath = "";
-            }
-            br.close();
-            
-                        
-        } catch (IOException ex) {
-            System.out.println("Exception occur: " + ex);
-        }
+        
     }
     
     /**
@@ -610,20 +582,21 @@ public class AccountManageResident extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountManageResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountManageVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountManageResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountManageVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountManageResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountManageVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountManageResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountManageVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountManageResident().setVisible(true);
+                new AccountManageVendor().setVisible(true);
             }
         });
     }

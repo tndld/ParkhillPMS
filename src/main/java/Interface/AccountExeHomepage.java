@@ -7,6 +7,10 @@ package Interface;
 import User.AccountExecutive;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -60,16 +64,21 @@ public class AccountExeHomepage extends javax.swing.JFrame {
 
         venBTN.setFont(new java.awt.Font("Cooper Black", 0, 28)); // NOI18N
         venBTN.setText("Vendor");
+        venBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                venBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(accExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addComponent(resBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(venBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -105,7 +114,30 @@ public class AccountExeHomepage extends javax.swing.JFrame {
     private void resBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resBTNActionPerformed
         this.setVisible(false);
         new AccountManageResident().setVisible(true);
+        String filePath = "database\\accExeManageUser.txt";
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            pw.println("Resident");
+            pw.close();
+        } catch (IOException ex) {
+            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
+        } catch (Exception ex) {
+            System.out.println("Unkown exception: " + ex);
+        }
     }//GEN-LAST:event_resBTNActionPerformed
+
+    private void venBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venBTNActionPerformed
+        this.setVisible(false);
+        new AccountManageVendor().setVisible(true);
+        String filePath = "database\\accExeManageUser.txt";
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            pw.println("Vendor");
+            pw.close();
+        } catch (IOException ex) {
+            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
+        }
+    }//GEN-LAST:event_venBTNActionPerformed
 
     /**
      * @param args the command line arguments

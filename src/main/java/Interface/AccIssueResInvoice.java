@@ -4,11 +4,24 @@
  */
 package Interface;
 
+import User.Invoice;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,10 +38,34 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        SpinnerNumberModel day = new SpinnerNumberModel(1, 1, 30, 1);
-        dueSpinner.setModel(day);
         SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 1000.00, 0.01);
         amountSpinner.setModel(interval);
+//        By default choose today
+        dueDateChooser.setDate(new Date());
+//        Limit to select today and future only
+        ZoneId def = ZoneId.systemDefault();
+        LocalDate local = LocalDate.now();
+        Date d = Date.from(local.atStartOfDay(def).toInstant());
+        dueDateChooser.setMinSelectableDate(d);
+        
+//        Set option in the unit drop down combo box
+        DefaultComboBoxModel unitOpt = (DefaultComboBoxModel)unitCombo.getModel();
+        String filePath = "database\\residentTenant.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            br.readLine();
+            while ((line = br.readLine())!= null){
+                String[] resInfo = line.split(",");
+                String opt = resInfo[5] + " : " + resInfo[2];
+                unitOpt.addElement(opt);
+            }
+            
+        }catch(IOException e){
+            System.out.println("Input Output Exception Occurred" + e);
+        }catch(Exception e) {
+            System.out.println("Exception " + e);
+        }
     }
 
     /**
@@ -44,17 +81,18 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         issueInvoiceTitle = new javax.swing.JLabel();
         homepageBTN = new javax.swing.JButton();
         unit = new javax.swing.JLabel();
-        month = new javax.swing.JLabel();
+        monthLB = new javax.swing.JLabel();
         desc = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        descTA = new javax.swing.JTextArea();
         amount = new javax.swing.JLabel();
         due = new javax.swing.JLabel();
-        dueSpinner = new javax.swing.JSpinner();
         unitCombo = new javax.swing.JComboBox<>();
         amountSpinner = new javax.swing.JSpinner();
         addItemBTN = new javax.swing.JButton();
         issueBTN = new javax.swing.JButton();
+        descCombo = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        itemTable = new javax.swing.JTable();
+        dueDateChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,21 +111,23 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         unit.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         unit.setText("Unit No.");
 
-        month.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        month.setText("Month");
+        monthLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        monthLB.setText("Month");
 
         desc.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         desc.setText("Description");
-
-        descTA.setColumns(20);
-        descTA.setRows(5);
-        jScrollPane1.setViewportView(descTA);
 
         amount.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         amount.setText("Amount (RM)");
 
         due.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        due.setText("Due Within (Days)");
+        due.setText("Due");
+
+        unitCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitComboActionPerformed(evt);
+            }
+        });
 
         addItemBTN.setText("Add Item");
         addItemBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -103,49 +143,72 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
             }
         });
 
+        descCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Water Bill", "Management Fee", "Sinking Fund", "Insurance", "Late Interest Payment", "Access Card Fee", "Other" }));
+        descCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descComboActionPerformed(evt);
+            }
+        });
+
+        itemTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Description", "Amount"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(itemTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 48, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(due)
-                                            .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(dueSpinner)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(amountSpinner)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(33, 33, 33)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(unitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(58, 58, 58))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(issueInvoiceTitle)
-                                .addGap(126, 126, 126))))))
+                                    .addComponent(due)
+                                    .addComponent(amount))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(amountSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                                    .addComponent(dueDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(monthLB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(monthCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(unitCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(descCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 272, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(issueInvoiceTitle)))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(addItemBTN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(issueBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160))
+                .addGap(177, 177, 177))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,32 +216,35 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(homepageBTN)
                 .addGap(8, 8, 8)
-                .addComponent(issueInvoiceTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(issueInvoiceTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(monthLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(due, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dueDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(unitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(due, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dueSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addItemBTN)
                     .addComponent(issueBTN))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,17 +256,76 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void addItemBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemBTNActionPerformed
-        System.out.println("Success");
-        this.setVisible(false);
-        new AccIssueResInvoiceAddItem().setVisible(true);
+//        Get the description and amount
+        String item = (String)descCombo.getSelectedItem();
+        Double amt = (Double)amountSpinner.getValue();
+        String amtToString = Double.toString(amt);
+        
+//        put them in table
+        DefaultTableModel model = (DefaultTableModel)itemTable.getModel();
+        model.addRow(new Object[] {item, amt});
+        descCombo.setSelectedIndex(0);
+        amountSpinner.setValue(0.01);
     }//GEN-LAST:event_addItemBTNActionPerformed
 
     private void issueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueBTNActionPerformed
-        System.out.println("Success");
+//        Get selected unit and resident name
+        String getUnitOpt = (String)unitCombo.getSelectedItem();
+        String unit = getUnitOpt.split(" : ")[0];
+        String name = getUnitOpt.split(" : ")[1];
+        
+//        Get selected month, due, issue date
+        String month = (String)monthCombo.getSelectedItem();
+        Date d = dueDateChooser.getDate();
+        String dueDate = DateFormat.getDateInstance().format(d);
+        Date today = new Date();
+        String issueDate = DateFormat.getDateInstance().format(today);
+        
+        String tempFile = "database\\tempInvFile.txt";
+        try {
+            PrintWriter pw = new PrintWriter(new File(tempFile));
+            pw.println(unit + "," + name + "," + month + "," + issueDate + "," + dueDate);
+//            Get item record in table
+            DefaultTableModel model = (DefaultTableModel)itemTable.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    pw.print(model.getValueAt(i, j));
+                    pw.print(",");
+                }
+                pw.println();
+            }
+            pw.close();
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("File Not Found : " + ex);
+        } catch (Exception ex) {
+            System.out.println("Exception occur when getting issuance form data : " + ex);
+        }
+        
+        Invoice inv = new Invoice(unit, name, issueDate, "", 0.0, dueDate);
+        if (inv.addInvoice()) {
+            JOptionPane.showMessageDialog(this, 
+                        "Invoice Successfully Issued!");
+            new InvoicePage().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+        }
+
         this.setVisible(false);
-        new AccIssueResInvoiceConfirmation().setVisible(true);
+        new AccountManageResident().setVisible(true);
+
     }//GEN-LAST:event_issueBTNActionPerformed
 
+    private void unitComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitComboActionPerformed
+
+    private void descComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descComboActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -235,25 +360,22 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
             }
         });
     }
-    
-    public String getType(String type){
-        return type;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addItemBTN;
     private javax.swing.JLabel amount;
     private javax.swing.JSpinner amountSpinner;
     private javax.swing.JLabel desc;
-    private javax.swing.JTextArea descTA;
+    private javax.swing.JComboBox<String> descCombo;
     private javax.swing.JLabel due;
-    private javax.swing.JSpinner dueSpinner;
+    private com.toedter.calendar.JDateChooser dueDateChooser;
     private javax.swing.JButton homepageBTN;
     private javax.swing.JButton issueBTN;
     private javax.swing.JLabel issueInvoiceTitle;
+    private javax.swing.JTable itemTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel month;
     private javax.swing.JComboBox<String> monthCombo;
+    private javax.swing.JLabel monthLB;
     private javax.swing.JLabel unit;
     private javax.swing.JComboBox<String> unitCombo;
     // End of variables declaration//GEN-END:variables
