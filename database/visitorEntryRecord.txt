@@ -1,0 +1,2 @@
+entryID;unitNo;residentName;residentPhone;visitorName;visitorPhone;visitorCarPlate;inDate;outDate;
+ET1;B-01-01;Lily;0189876789;Yan Ling;0187678965;AKM6789;27 Feb;28 Feb;

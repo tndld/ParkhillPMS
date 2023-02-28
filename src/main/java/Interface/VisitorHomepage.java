@@ -34,6 +34,31 @@ public class VisitorHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         backBtn = new javax.swing.JButton();
+        parkhillLabel = new javax.swing.JLabel();
+        unitNoTF = new javax.swing.JTextField();
+        residentPhoneTF = new javax.swing.JTextField();
+        residentEmailTF = new javax.swing.JTextField();
+        referenceLabel = new javax.swing.JLabel();
+        residentFullNameTF = new javax.swing.JTextField();
+        usernameTF = new javax.swing.JTextField();
+        residentFullNameLabel = new javax.swing.JLabel();
+        residentPhoneLabel = new javax.swing.JLabel();
+        visitorNameLabel = new javax.swing.JLabel();
+        visitorICLabel = new javax.swing.JLabel();
+        visitorCarPlateLabel = new javax.swing.JLabel();
+        pwTF = new javax.swing.JPasswordField();
+        inDateLabel = new javax.swing.JLabel();
+        residentPasswordLabel2 = new javax.swing.JLabel();
+        residentPasswordLabel3 = new javax.swing.JLabel();
+        unitNoLabel = new javax.swing.JLabel();
+        usernameTF1 = new javax.swing.JTextField();
+        usernameTF2 = new javax.swing.JTextField();
+        usernameTF3 = new javax.swing.JTextField();
+        usernameTF4 = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        searchTF = new javax.swing.JTextField();
+        residentUsernameLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,21 +69,197 @@ public class VisitorHomepage extends javax.swing.JFrame {
             }
         });
 
+        parkhillLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        parkhillLabel.setText("View Visitor Pass Page");
+
+        unitNoTF.setEditable(false);
+        unitNoTF.setBackground(new java.awt.Color(204, 204, 204));
+        unitNoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitNoTFActionPerformed(evt);
+            }
+        });
+
+        residentPhoneTF.setEditable(false);
+        residentPhoneTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        residentEmailTF.setEditable(false);
+        residentEmailTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        referenceLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        referenceLabel.setText("Reference");
+
+        residentFullNameTF.setEditable(false);
+        residentFullNameTF.setBackground(new java.awt.Color(204, 204, 204));
+        residentFullNameTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                residentFullNameTFActionPerformed(evt);
+            }
+        });
+
+        usernameTF.setEditable(false);
+        usernameTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        residentFullNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentFullNameLabel.setText("Resident Name");
+
+        residentPhoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentPhoneLabel.setText("Resident Phone");
+
+        visitorNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        visitorNameLabel.setText("Visitor Name");
+
+        visitorICLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        visitorICLabel.setText("Visitor IC");
+
+        visitorCarPlateLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        visitorCarPlateLabel.setText("Visotor Car Plate");
+
+        pwTF.setEditable(false);
+        pwTF.setBackground(new java.awt.Color(204, 204, 204));
+
+        inDateLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        inDateLabel.setText("In Date");
+
+        residentPasswordLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentPasswordLabel2.setText("Out Date");
+
+        residentPasswordLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentPasswordLabel3.setText("Duration");
+
+        unitNoLabel.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        unitNoLabel.setText("Unit No.");
+
+        usernameTF1.setEditable(false);
+        usernameTF1.setBackground(new java.awt.Color(204, 204, 204));
+
+        usernameTF2.setEditable(false);
+        usernameTF2.setBackground(new java.awt.Color(204, 204, 204));
+
+        usernameTF3.setEditable(false);
+        usernameTF3.setBackground(new java.awt.Color(204, 204, 204));
+
+        usernameTF4.setEditable(false);
+        usernameTF4.setBackground(new java.awt.Color(204, 204, 204));
+
+        searchBtn.setText("Search");
+
+        residentUsernameLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentUsernameLabel2.setText("Search:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(parkhillLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(referenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(unitNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(visitorICLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(visitorNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(visitorCarPlateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residentPasswordLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residentPasswordLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameTF3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pwTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unitNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residentFullNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residentEmailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residentPhoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(94, 94, 94))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(29, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backBtn)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(parkhillLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn)
+                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(referenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentFullNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unitNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(residentFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentEmailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(residentPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentPhoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(visitorNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pwTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(visitorICLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(visitorCarPlateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(residentPasswordLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTF3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(residentPasswordLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(135, 135, 135)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(439, Short.MAX_VALUE)))
         );
 
         pack();
@@ -68,6 +269,14 @@ public class VisitorHomepage extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void unitNoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitNoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitNoTFActionPerformed
+
+    private void residentFullNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentFullNameTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_residentFullNameTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,5 +315,30 @@ public class VisitorHomepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JLabel inDateLabel;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel parkhillLabel;
+    private javax.swing.JPasswordField pwTF;
+    private javax.swing.JLabel referenceLabel;
+    private javax.swing.JTextField residentEmailTF;
+    private javax.swing.JLabel residentFullNameLabel;
+    private javax.swing.JTextField residentFullNameTF;
+    private javax.swing.JLabel residentPasswordLabel2;
+    private javax.swing.JLabel residentPasswordLabel3;
+    private javax.swing.JLabel residentPhoneLabel;
+    private javax.swing.JTextField residentPhoneTF;
+    private javax.swing.JLabel residentUsernameLabel2;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchTF;
+    private javax.swing.JLabel unitNoLabel;
+    private javax.swing.JTextField unitNoTF;
+    private javax.swing.JTextField usernameTF;
+    private javax.swing.JTextField usernameTF1;
+    private javax.swing.JTextField usernameTF2;
+    private javax.swing.JTextField usernameTF3;
+    private javax.swing.JTextField usernameTF4;
+    private javax.swing.JLabel visitorCarPlateLabel;
+    private javax.swing.JLabel visitorICLabel;
+    private javax.swing.JLabel visitorNameLabel;
     // End of variables declaration//GEN-END:variables
 }

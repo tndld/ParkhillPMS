@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -288,5 +289,33 @@ public class VisitorPass {
             System.out.println("Exception occur: " + e);
             return false;
         }
+    }
+    
+    public DefaultTableModel searchResultTable(String username, String unitNo){
+        String[] columnNames = {"Username", "Name", "Email", "Phone No", "Unit No"};
+        DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
+        
+        String filePath = "database\\residentTenant.txt";
+    
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                Object [] residentInfo = currentLine.split(",");
+                if ((username == null || residentInfo[0].equals(username)) 
+                        && (unitNo == null) || residentInfo[5].equals(unitNo)){
+                    String[] dataArray = {residentInfo[0].toString(),
+                                      residentInfo[2].toString(),
+                                      residentInfo[3].toString(),
+                                      residentInfo[4].toString(),
+                                      residentInfo[5].toString()};
+                    searchResultTable.addRow(dataArray);
+                } 
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return searchResultTable;
     }
 }
