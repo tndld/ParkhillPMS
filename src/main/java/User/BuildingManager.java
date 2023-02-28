@@ -334,7 +334,7 @@ public class BuildingManager extends MgmtLevelUser {
         return success;
     }
      
-     public boolean updateVendor(String username, String password, String fname, String email, String phoneNum, String lotNum, String shopName){
+    public boolean updateVendor(String username, String password, String fname, String email, String phoneNum, String lotNum, String shopName){
         Vendor ven = new Vendor(username, password);
         
         boolean success = true;

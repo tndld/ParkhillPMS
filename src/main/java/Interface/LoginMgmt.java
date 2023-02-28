@@ -282,7 +282,7 @@ public class LoginMgmt extends javax.swing.JFrame {
                     }
                     
                     this.setVisible(false);
-                    new AdminExeHomepage().setVisible(true);
+                    new AdminHomepage().setVisible(true);
 
                 } else {
                     JOptionPane.showMessageDialog(this,

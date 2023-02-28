@@ -1,0 +1,7 @@
+EID;empName;ic;phoneNo;position;
+E1;Daphne;900706052222;0187897657;technician;
+E2;Anne;870909756644;0168976530;technician;
+E3;Sarah;760503018866;0165476850;cleaner;
+E4;Navin;760808907777;0128713245;cleaner;
+E5;Siwa;600909017323;0118765678;security guard;
+E6;Ming Ming;800506567891;0176548790;security guard;

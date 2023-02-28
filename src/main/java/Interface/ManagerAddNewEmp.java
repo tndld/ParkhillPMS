@@ -72,7 +72,7 @@ public class ManagerAddNewEmp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mgmtLoginPageLabel4.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtLoginPageLabel4.setText("Add Employee Page");
+        mgmtLoginPageLabel4.setText("Add Team Member Page");
 
         usernameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class ManagerAddNewEmp extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(confirmPwTF, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(81, 81, 81)
                         .addComponent(mgmtLoginPageLabel4)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
