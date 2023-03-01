@@ -37,18 +37,18 @@
                       <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
                       <Component id="logInAsLabel" min="-2" pref="86" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="guardBtn" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="visitorBtn" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="residentTenantBtn" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="vendorBtn" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="managementBtn1" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="97" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="visitorBtn" min="-2" pref="129" max="-2" attributes="0"/>
-                  <Component id="managementBtn1" min="-2" pref="129" max="-2" attributes="0"/>
-                  <Component id="vendorBtn" min="-2" pref="129" max="-2" attributes="0"/>
-                  <Component id="residentTenantBtn" min="-2" pref="129" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,15 +61,17 @@
               <Component id="pmsLabel" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="logInAsLabel" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="residentTenantBtn" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="vendorBtn" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="managementBtn1" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="guardBtn" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="visitorBtn" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -129,6 +131,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managementBtn1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="guardBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Guard"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

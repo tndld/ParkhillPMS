@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class VisitorHomepage extends javax.swing.JFrame {
+public class GuardViewVisitorPass extends javax.swing.JFrame {
 
     /**
      * Creates new form VisitorHomepage
      */
-    public VisitorHomepage() {
+    public GuardViewVisitorPass() {
         initComponents();
         
         Toolkit toolkit = getToolkit();
@@ -181,20 +181,21 @@ public class VisitorHomepage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuardViewVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuardViewVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuardViewVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisitorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuardViewVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisitorHomepage().setVisible(true);
+                new GuardViewVisitorPass().setVisible(true);
             }
         });
     }

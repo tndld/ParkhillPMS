@@ -192,7 +192,7 @@ public class AdminExecutive extends MgmtLevelUser {
                 if(residentInfo[0].equals(username)){
                     // use the existing password
                     String pass = residentInfo[1];
-                    writer.write(residentInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + unitNo + ",");
+                    writer.write(residentInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + unitNo + ",\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }

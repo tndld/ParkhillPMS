@@ -71,7 +71,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
                 if(adminInfo[0].equals(username)){
                     // use the existing password
 
-                    writer.write(adminInfo[0] + "," + adminInfo[1] + "," +adminInfo[2] + "," + fname + "," + ic + "," + email + "," + phoneNum + "," + address + "," + position);
+                    writer.write(adminInfo[0] + "," + adminInfo[1] + "," +adminInfo[2] + "," + fname + "," + ic + "," + email + "," + phoneNum + "," + address + "," + position + "\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -135,7 +135,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
                 if(accInfo[0].equals(username)){
                     // use the existing password
 
-                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position);
+                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position + ",\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -198,7 +198,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
                 if(accInfo[0].equals(username)){
                     // use the existing password and username
 
-                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position);
+                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position + "\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -262,7 +262,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
                 if(accInfo[0].equals(username)){
                     // use the existing password and username
 
-                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position);
+                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position+ "\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }

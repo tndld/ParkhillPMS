@@ -291,24 +291,29 @@ public class VisitorPass {
         }
     }
     
-    public DefaultTableModel searchResultTable(String username, String unitNo){
-        String[] columnNames = {"Username", "Name", "Email", "Phone No", "Unit No"};
+    public DefaultTableModel searchVisitorPass(String ref){
+        String[] columnNames = {"Ref", "Type", "Unit No", "Resident Name", "Resident Phone", "Visitor Name", "Visitor IC", "Visitor Car Plate", "In Date", "Out Date","Duration"};
         DefaultTableModel searchResultTable = new DefaultTableModel(columnNames, 0); 
         
-        String filePath = "database\\residentTenant.txt";
+        String filePath = "database\\visitorPass.txt";
     
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
-                Object [] residentInfo = currentLine.split(",");
-                if ((username == null || residentInfo[0].equals(username)) 
-                        && (unitNo == null) || residentInfo[5].equals(unitNo)){
-                    String[] dataArray = {residentInfo[0].toString(),
-                                      residentInfo[2].toString(),
-                                      residentInfo[3].toString(),
-                                      residentInfo[4].toString(),
-                                      residentInfo[5].toString()};
+                Object [] passInfo = currentLine.split(",");
+                if (passInfo[10].equals(ref)){
+                    String[] dataArray = {passInfo[10].toString(),
+                                      passInfo[0].toString(),
+                                      passInfo[1].toString(),
+                                      passInfo[2].toString(),
+                                      passInfo[3].toString(),
+                                      passInfo[4].toString(),
+                                      passInfo[5].toString(),
+                                      passInfo[6].toString(),
+                                      passInfo[7].toString(),
+                                      passInfo[8].toString(),
+                                      passInfo[9].toString()};
                     searchResultTable.addRow(dataArray);
                 } 
             }

@@ -189,7 +189,7 @@ public class BuildingManager extends MgmtLevelUser {
                 if(residentInfo[0].equals(username)){
                     // use the existing password
                     String pass = residentInfo[1];
-                    writer.write(residentInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + unitNo + ",");
+                    writer.write(residentInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + unitNo + ",\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -359,7 +359,7 @@ public class BuildingManager extends MgmtLevelUser {
                 if(vendorInfo[0].equals(username)){
                     // use the existing password
                     String pass = vendorInfo[1];
-                    writer.write(vendorInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + lotNum + "," + shopName);
+                    writer.write(vendorInfo[0] + "," + pass + "," + fname + "," + email + "," + phoneNum + "," + lotNum + "," + shopName + ",\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -395,7 +395,7 @@ public class BuildingManager extends MgmtLevelUser {
         return success;
     }
      
-     public boolean deleteVendor(String username) {
+    public boolean deleteVendor(String username) {
         boolean success = false;
         
         String filePath = "database\\vendor.txt";
@@ -473,6 +473,63 @@ public class BuildingManager extends MgmtLevelUser {
             e.printStackTrace();
         }
         return searchResultTable;
+    }
+    
+    public boolean updateGuard(String username, String password){
+        Guard guard = new Guard(username, password);
+        
+        boolean success = true;
+    
+//        update cons
+
+        guard.setNewPass(password);
+        
+        try {
+            String filePath = "database\\guard.txt";
+            File inputFile = new File("database\\guard.txt");
+            File tempFile = new File("database\\guardTemp.txt");
+            
+            String currentLine;
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            while((currentLine = reader.readLine()) != null) {
+                String[] info = currentLine.split(",");
+                if(info[0].equals(username)){
+                    // use the existing password
+                    writer.write(info[0] + "," + password + ",\n");
+                } else {
+                    writer.write(currentLine + "\n");
+                }
+            }
+            reader.close();
+            writer.flush();
+            writer.close();
+            
+            BufferedReader br = new BufferedReader(new FileReader(tempFile));
+            PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+            
+            String line;
+            // Read each line from the input file and write to the output file
+            while((line = br.readLine()) != null) {
+                w.println(line);
+                
+            }
+            // Close the input and output files
+            br.close();
+            w.flush();
+            w.close();
+          
+            String temp = "database\\guardTemp.txt";
+            File f = new File(temp);
+            f.delete();
+            
+            
+        }catch (IOException e) {
+                System.out.println("Exception Occurred" + e);
+                success = false;
+            }
+        
+        return success;
     }
      
     
