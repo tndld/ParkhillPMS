@@ -35,13 +35,9 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
 
         residentTenantTitle = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
-        buildingMngBtn = new javax.swing.JButton();
         residentTenantBtn = new javax.swing.JButton();
         vendorBtn = new javax.swing.JButton();
         guardBtn = new javax.swing.JButton();
-        accountExecutiveBtn = new javax.swing.JButton();
-        adminExecutiveBtn = new javax.swing.JButton();
-        buildingExecutiveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +50,6 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
-
-        buildingMngBtn.setText("Building Manager");
 
         residentTenantBtn.setText("Resident/ Tenant");
         residentTenantBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -78,12 +72,6 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
             }
         });
 
-        accountExecutiveBtn.setText("Account Executive");
-
-        adminExecutiveBtn.setText("Admin Executive");
-
-        buildingExecutiveBtn.setText("Building Executive");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,27 +79,19 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(residentTenantBtn)
-                            .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(guardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(buildingExecutiveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(adminExecutiveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(accountExecutiveBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buildingMngBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(residentTenantTitle)))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(residentTenantTitle)))
+                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(residentTenantBtn)
+                    .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(192, 192, 192))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,21 +100,13 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(11, 11, 11)
                 .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(residentTenantBtn)
-                    .addComponent(buildingMngBtn))
+                .addGap(41, 41, 41)
+                .addComponent(residentTenantBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vendorBtn)
-                    .addComponent(accountExecutiveBtn))
+                .addComponent(vendorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardBtn)
-                    .addComponent(adminExecutiveBtn))
-                .addGap(18, 18, 18)
-                .addComponent(buildingExecutiveBtn)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(guardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,6 +119,8 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
 
     private void guardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardBtnActionPerformed
         // TODO add your handling code here:
+        new ManagerGuard().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_guardBtnActionPerformed
 
     private void residentTenantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentTenantBtnActionPerformed
@@ -199,11 +173,7 @@ public class ManagerUserMgmt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton accountExecutiveBtn;
-    private javax.swing.JButton adminExecutiveBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton buildingExecutiveBtn;
-    private javax.swing.JButton buildingMngBtn;
     private javax.swing.JButton guardBtn;
     private javax.swing.JButton residentTenantBtn;
     private javax.swing.JLabel residentTenantTitle;

@@ -113,6 +113,7 @@ public class ManageAccountExeStructure extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        structureTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(structureTable);
 
         updateBtn.setText("Update");

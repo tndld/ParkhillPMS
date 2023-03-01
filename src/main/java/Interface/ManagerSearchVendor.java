@@ -196,7 +196,7 @@ public class ManagerSearchVendor extends javax.swing.JFrame {
             // detect which search method used
             if (searchOptionStr.equals("Username")) {
                 searchResultTable = manager.searchVendor(searchText, null);
-            } else if (searchOptionStr.equals("Lot Num")) {
+            } else if (searchOptionStr.equals("Lot Number")) {
                 searchResultTable = manager.searchVendor(null, searchText);
             }
         }

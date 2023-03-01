@@ -114,6 +114,7 @@ public class ManageBuildingManagerStructure extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        structureTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(structureTable);
 
         updateBtn.setText("Update");
@@ -273,7 +274,7 @@ public class ManageBuildingManagerStructure extends javax.swing.JFrame {
             //            String unitNo = residentTenantTable.getValueAt(row, 4).toString();
 
             ManagerTeamStructureMgmt manage = new ManagerTeamStructureMgmt();
-            if (manage.deleteBuildingExe(username)){
+            if (manage.deleteManager(username)){
                 JOptionPane.showMessageDialog(this, "Building manager deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 // remove the selected row in table
                 model.removeRow(row);

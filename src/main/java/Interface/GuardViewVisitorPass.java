@@ -90,6 +90,7 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        searchTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(searchTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

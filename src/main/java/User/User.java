@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class User extends UserCommon{
     protected String username;
     protected String password;
-    private boolean isLoggedIn;
+    protected boolean isLoggedIn;
     
     public User(String username, String password){
         this.username = username;

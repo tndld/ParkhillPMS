@@ -67,9 +67,10 @@ public class PatrollingSchedule extends javax.swing.JFrame {
         patrollingScheduleLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         patrollingScheduleTable = new javax.swing.JTable();
-        addBtn = new javax.swing.JButton();
+        setUpBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
+        modifyBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,10 +103,10 @@ public class PatrollingSchedule extends javax.swing.JFrame {
         patrollingScheduleTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(patrollingScheduleTable);
 
-        addBtn.setText("Add");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        setUpBtn.setText("Set Up");
+        setUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                setUpBtnActionPerformed(evt);
             }
         });
 
@@ -116,10 +117,17 @@ public class PatrollingSchedule extends javax.swing.JFrame {
             }
         });
 
-        updateBtn.setText("Update");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+        modifyBtn.setText("Modify");
+        modifyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
+                modifyBtnActionPerformed(evt);
+            }
+        });
+
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -127,10 +135,6 @@ public class PatrollingSchedule extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(patrollingScheduleLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -138,22 +142,33 @@ public class PatrollingSchedule extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(setUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(modifyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(patrollingScheduleLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
+                .addComponent(backBtn)
+                .addGap(13, 13, 13)
                 .addComponent(patrollingScheduleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateBtn)
-                    .addComponent(addBtn)
+                    .addComponent(modifyBtn)
+                    .addComponent(setUpBtn)
                     .addComponent(deleteBtn))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -193,7 +208,7 @@ public class PatrollingSchedule extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+    private void modifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBtnActionPerformed
 
         
         // Get the selected row index
@@ -247,13 +262,19 @@ public class PatrollingSchedule extends javax.swing.JFrame {
             System.out.println("Exception Occurred" + e);
         }
 
-    }//GEN-LAST:event_updateBtnActionPerformed
+    }//GEN-LAST:event_modifyBtnActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+    private void setUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setUpBtnActionPerformed
         // TODO add your handling code here:
         new AddPatrollingSchedule().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_addBtnActionPerformed
+    }//GEN-LAST:event_setUpBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        new BuildingExeHomepage().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,11 +312,12 @@ public class PatrollingSchedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modifyBtn;
     private javax.swing.JLabel patrollingScheduleLabel;
     private javax.swing.JTable patrollingScheduleTable;
-    private javax.swing.JButton updateBtn;
+    private javax.swing.JButton setUpBtn;
     // End of variables declaration//GEN-END:variables
 }

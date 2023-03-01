@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public abstract class MgmtLevelUser {
     protected String username;
     protected String password;
-    private boolean isLoggedIn;
+    protected boolean isLoggedIn;
     
     public MgmtLevelUser(String username, String password){
         this.username = username;
