@@ -25,6 +25,7 @@ public class ResidentHomepage extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
+        
     }
 
     /**
@@ -245,7 +246,8 @@ public class ResidentHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingBTNActionPerformed
 
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new ResidentViewPayment().setVisible(true);
     }//GEN-LAST:event_paymentBTNActionPerformed
 
     private void billBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billBTNActionPerformed
