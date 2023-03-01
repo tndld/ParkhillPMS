@@ -6,5 +6,5 @@ Inv2023-3:14 Jan 2023:D-9-8:Cheah Tian Le:Management Fee - January:200.00:28 Jan
 Inv2023-4:28 Feb 2023:C-07-02:Hoong Jhen Wei:Management Fee - February:200.0:14 Mar 2023:Unpaid
 Inv2023-4:28 Feb 2023:C-07-02:Hoong Jhen Wei:Sinking Fund - February:21.2:14 Mar 2023:Unpaid
 Inv2023-6:28 Feb 2023:B-07-01:Low Jye Shan:Management Fee - February:220.0:28 Feb 2023:Unpaid
-Inv2023-6:28 Feb 2023:B-07-01:Low Jye Shan:Water Bill - February:15.27:28 Feb 2023:Unpaid
+Inv2023-6:28 Feb 2023:B-07-01:Low Jye Shan:Water Bill - February:15.27:28 Feb 2023:Paid
 Inv2023-6:28 Feb 2023:B-07-01:Low Jye Shan:Insurance - February:300.0:28 Feb 2023:Unpaid

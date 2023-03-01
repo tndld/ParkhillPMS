@@ -7,8 +7,11 @@ package Interface;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,6 +48,7 @@ public class AccountManageResident extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
         vInvoiceBTN = new javax.swing.JButton();
+        invoiceBTN1 = new javax.swing.JButton();
         allReceiptPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         receiptTable = new javax.swing.JTable();
@@ -56,7 +60,6 @@ public class AccountManageResident extends javax.swing.JFrame {
         descTF1 = new javax.swing.JTextField();
         issueDateTF = new javax.swing.JTextField();
         invoiceTF = new javax.swing.JTextField();
-        invoiceBTN = new javax.swing.JButton();
         invoice = new javax.swing.JLabel();
         unit2 = new javax.swing.JLabel();
         issueDate = new javax.swing.JLabel();
@@ -65,6 +68,7 @@ public class AccountManageResident extends javax.swing.JFrame {
         unitTF2 = new javax.swing.JTextField();
         due = new javax.swing.JLabel();
         dueTF = new javax.swing.JTextField();
+        vInvoiceBTN1 = new javax.swing.JButton();
         paymentPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         paymentTable = new javax.swing.JTable();
@@ -128,6 +132,13 @@ public class AccountManageResident extends javax.swing.JFrame {
             }
         });
 
+        invoiceBTN1.setText("Issue New Invoice");
+        invoiceBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invoiceBTN1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout allInvoicePanelLayout = new javax.swing.GroupLayout(allInvoicePanel);
         allInvoicePanel.setLayout(allInvoicePanelLayout);
         allInvoicePanelLayout.setHorizontalGroup(
@@ -135,9 +146,11 @@ public class AccountManageResident extends javax.swing.JFrame {
             .addGroup(allInvoicePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(allInvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, allInvoicePanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(invoiceBTN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(vInvoiceBTN)))
                 .addContainerGap())
         );
@@ -147,7 +160,9 @@ public class AccountManageResident extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vInvoiceBTN)
+                .addGroup(allInvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vInvoiceBTN)
+                    .addComponent(invoiceBTN1))
                 .addContainerGap())
         );
 
@@ -192,7 +207,7 @@ public class AccountManageResident extends javax.swing.JFrame {
             .addGroup(allReceiptPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(allReceiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, allReceiptPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(vreceiptBTN)))
@@ -215,14 +230,14 @@ public class AccountManageResident extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Invoice No.", "Unit No.", "Description", "Amount", "Date of Issuance", "Due"
+                "Invoice No.", "Date of Issuance", "Unit No.", "Receiver", "Description", "Amount", "Due Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -234,6 +249,11 @@ public class AccountManageResident extends javax.swing.JFrame {
             }
         });
         outstandingTable.getTableHeader().setReorderingAllowed(false);
+        outstandingTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                outstandingTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(outstandingTable);
 
         amountTF1.setEditable(false);
@@ -243,13 +263,6 @@ public class AccountManageResident extends javax.swing.JFrame {
         issueDateTF.setEditable(false);
 
         invoiceTF.setEditable(false);
-
-        invoiceBTN.setText("Issue New Invoice");
-        invoiceBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                invoiceBTNActionPerformed(evt);
-            }
-        });
 
         invoice.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         invoice.setText("Invoice No.");
@@ -272,6 +285,13 @@ public class AccountManageResident extends javax.swing.JFrame {
         due.setText("Due");
 
         dueTF.setEditable(false);
+
+        vInvoiceBTN1.setText("View Invoice");
+        vInvoiceBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vInvoiceBTN1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout oustandingPanelLayout = new javax.swing.GroupLayout(oustandingPanel);
         oustandingPanel.setLayout(oustandingPanelLayout);
@@ -300,8 +320,8 @@ public class AccountManageResident extends javax.swing.JFrame {
                             .addComponent(descTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(amountTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(issueDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(invoiceBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(vInvoiceBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -311,34 +331,30 @@ public class AccountManageResident extends javax.swing.JFrame {
             .addGroup(oustandingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(oustandingPanelLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(invoiceBTN))
-                    .addGroup(oustandingPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(invoiceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(unit2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(unitTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(due, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dueTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(issueDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(issueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(descTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(amountTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amount1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(invoiceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unit2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unitTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(due, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dueTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(issueDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(issueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(oustandingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(amountTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amount1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vInvoiceBTN1))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         Tab.addTab("Outstanding Fee", oustandingPanel);
@@ -421,7 +437,7 @@ public class AccountManageResident extends javax.swing.JFrame {
                 .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paymentPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
                     .addGroup(paymentPanelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,17 +560,45 @@ public class AccountManageResident extends javax.swing.JFrame {
         new AccountExeHomepage().setVisible(true);
     }//GEN-LAST:event_homepageBTNActionPerformed
 
-    private void invoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invoiceBTNActionPerformed
-        this.setVisible(false);
-        new AccIssueResInvoice().setVisible(true);
-    }//GEN-LAST:event_invoiceBTNActionPerformed
-
     private void approveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approveBTNActionPerformed
         this.setVisible(false);
         new AccGenerateReceipt().setVisible(true);
     }//GEN-LAST:event_approveBTNActionPerformed
 
     private void vInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vInvoiceBTNActionPerformed
+        DefaultTableModel model = (DefaultTableModel)invoiceTable.getModel();
+        String invNo = model.getValueAt(invoiceTable.getSelectedRow(), 0).toString();
+        String receiver = model.getValueAt(invoiceTable.getSelectedRow(), 3).toString();
+        String unit = model.getValueAt(invoiceTable.getSelectedRow(), 2).toString();
+        String date = model.getValueAt(invoiceTable.getSelectedRow(), 1).toString();
+        
+        int count = 0;
+        String filePath = "database\\invoice.txt";
+        String tempFile = "database\\tempInvItem.txt";
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            
+            bw.write(invNo + ":" + receiver + ":" + unit 
+                    + ":" + date + "\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] invInfo = line.split(":");
+
+                if (invInfo[0].equals(invNo)){
+                    count += 1;
+                    bw.write(count + ":" + invInfo[4] + ":" + invInfo[6] + ":" 
+                            + invInfo[5] + "\n");
+                }
+            }
+            br.close();
+            bw.close();
+
+        } catch (IOException ex){
+            System.out.println("Exception occur when getting invoice item: " + ex);
+        }
+        
         new InvoicePage().setVisible(true);
     }//GEN-LAST:event_vInvoiceBTNActionPerformed
 
@@ -562,6 +606,66 @@ public class AccountManageResident extends javax.swing.JFrame {
         this.setVisible(false);
         new ReceiptPage().setVisible(true);
     }//GEN-LAST:event_vreceiptBTNActionPerformed
+
+    private void invoiceBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invoiceBTN1ActionPerformed
+        this.setVisible(false);
+        new AccIssueResInvoice().setVisible(true);
+    }//GEN-LAST:event_invoiceBTN1ActionPerformed
+
+    private void vInvoiceBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vInvoiceBTN1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel)outstandingTable.getModel();
+        String invNo = model.getValueAt(outstandingTable.getSelectedRow(), 0).toString();
+        String receiver = model.getValueAt(outstandingTable.getSelectedRow(), 3).toString();
+        String unit = model.getValueAt(outstandingTable.getSelectedRow(), 2).toString();
+        String date = model.getValueAt(outstandingTable.getSelectedRow(), 1).toString();
+        
+        int count = 0;
+        String filePath = "database\\invoice.txt";
+        String tempFile = "database\\tempInvItem.txt";
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            
+            bw.write(invNo + ":" + receiver + ":" + unit 
+                    + ":" + date + "\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] invInfo = line.split(":");
+
+                if (invInfo[0].equals(invNo)){
+                    count += 1;
+                    bw.write(count + ":" + invInfo[4] + ":" + invInfo[6] + ":" 
+                            + invInfo[5] + "\n");
+                }
+            }
+            br.close();
+            bw.close();
+
+        } catch (IOException ex){
+            System.out.println("Exception occur when getting invoice item: " + ex);
+        }
+        
+        new InvoicePage().setVisible(true);
+    }//GEN-LAST:event_vInvoiceBTN1ActionPerformed
+
+    private void outstandingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outstandingTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)outstandingTable.getModel();
+        String invNo = model.getValueAt(outstandingTable.getSelectedRow(), 0).toString();
+        String receiver = model.getValueAt(outstandingTable.getSelectedRow(), 3).toString();
+        String unit = model.getValueAt(outstandingTable.getSelectedRow(), 2).toString();
+        String date = model.getValueAt(outstandingTable.getSelectedRow(), 1).toString();
+        String desc = model.getValueAt(outstandingTable.getSelectedRow(), 4).toString();
+        String amt = model.getValueAt(outstandingTable.getSelectedRow(), 5).toString();
+        String due = model.getValueAt(outstandingTable.getSelectedRow(), 6).toString();
+        
+        invoiceTF.setText(invNo);
+        unitTF2.setText(unit);
+        dueTF.setText(due);
+        issueDateTF.setText(date);
+        descTF1.setText(desc);
+        amountTF1.setText(amt);
+    }//GEN-LAST:event_outstandingTableMouseClicked
 
     private void setInvoiceTable(){
         String checkManaging = "database\\accExeManageUser.txt";
@@ -580,10 +684,38 @@ public class AccountManageResident extends javax.swing.JFrame {
                     String line = record[i].toString().trim();
                     String[] recInfo = line.split(":");
                     invoice.addRow(recInfo);
-                }
+                }                
                 br2.close();
+                
+                String tempFile = "database\\tempOustandingInv.txt";
+                BufferedReader br4 = new BufferedReader(new FileReader(filePath));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+                br4.readLine();
+                String line;
+                while ((line = br4.readLine()) != null) {
+                    String[] invInfo = line.split(":");
+                    if (invInfo[7].equals("Unpaid")) {
+                        bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                                invInfo[2] + ":" + invInfo[3] + ":" + 
+                                invInfo[4] + ":" + invInfo[5] + ":" + 
+                                invInfo[6] + "\n");
+                    }
+                }
+                bw.close();
+                br4.close();
+                
+                BufferedReader br3 = new BufferedReader(new FileReader(tempFile));
+                DefaultTableModel outstanding = (DefaultTableModel)outstandingTable.getModel();
+                Object[] record2 = br3.lines().toArray();
+                for (int i = 0; i < record2.length; i++) {
+                    String line2 = record2[i].toString().trim();
+                    String[] outInfo = line2.split(":");
+                    outstanding.addRow(outInfo);
+                }
+                br3.close();
+                
             } else {
-                filePath = "";
+                filePath = "database\\venInvoice.txt";
             }
             br.close();
             
@@ -591,6 +723,10 @@ public class AccountManageResident extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.out.println("Exception occur: " + ex);
         }
+    }
+    
+    private void checkOutstanding() {
+        
     }
     
     /**
@@ -650,7 +786,7 @@ public class AccountManageResident extends javax.swing.JFrame {
     private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel invoice;
     private javax.swing.JLabel invoice2;
-    private javax.swing.JButton invoiceBTN;
+    private javax.swing.JButton invoiceBTN1;
     private javax.swing.JTextField invoiceTF;
     private javax.swing.JTextField invoiceTF2;
     private javax.swing.JTable invoiceTable;
@@ -674,6 +810,7 @@ public class AccountManageResident extends javax.swing.JFrame {
     private javax.swing.JLabel unit2;
     private javax.swing.JTextField unitTF2;
     private javax.swing.JButton vInvoiceBTN;
+    private javax.swing.JButton vInvoiceBTN1;
     private javax.swing.JButton vreceiptBTN;
     // End of variables declaration//GEN-END:variables
 }

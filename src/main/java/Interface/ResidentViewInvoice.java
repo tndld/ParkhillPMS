@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -495,9 +496,12 @@ public class ResidentViewInvoice extends getActiveUser {
                             invInfo[4] + ":" + invInfo[5] + ":" + 
                             invInfo[6] + ":" + invInfo[7] + "\n");
                     
-                    bw2.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                    if(invInfo[7].equals("Unpaid")) {
+                        bw2.write(invInfo[0] + ":" + invInfo[1] + ":" + 
                             invInfo[4] + ":" + invInfo[5] + ":" + 
                             invInfo[6] + "\n");
+                    }
+//                    
                 }
             }
             br.close();
@@ -518,9 +522,10 @@ public class ResidentViewInvoice extends getActiveUser {
             BufferedReader br3 = new BufferedReader(new FileReader(tempFile2));
             DefaultTableModel pending = (DefaultTableModel)pendingTable.getModel();
             Object[] record2 = br3.lines().toArray();
-            for (int i = 0; i < record.length; i++){
+            for (int i = 0; i < record2.length; i++){
                 String line3 = record2[i].toString().trim();
                 String[] recInfo = line3.split(":");
+//                String[] recInfo = Arrays.copyOfRange(info, 0, info.length-1);
                 pending.addRow(recInfo);
             }
             br3.close();

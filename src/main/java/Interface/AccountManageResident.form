@@ -104,9 +104,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" pref="633" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="636" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="invoiceBTN1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="vInvoiceBTN" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -120,7 +122,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" pref="407" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="vInvoiceBTN" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="vInvoiceBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="invoiceBTN1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -207,6 +212,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vInvoiceBTNActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="invoiceBTN1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Issue New Invoice"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invoiceBTN1ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="allReceiptPanel">
@@ -224,7 +237,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane4" alignment="0" pref="633" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="636" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="vreceiptBTN" min="-2" max="-2" attributes="0"/>
@@ -361,8 +374,8 @@
                                   <Component id="amountTF1" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                                   <Component id="issueDateTF" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
-                              <Component id="invoiceBTN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="vInvoiceBTN1" pref="129" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
@@ -376,42 +389,35 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="260" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                              <Component id="invoiceBTN" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="invoiceTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="invoice" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="unit2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="unitTF2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="due" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="dueTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="issueDateTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="issueDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="descTF1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="desc1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="amountTF1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="amount1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="invoiceTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="invoice" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="unit2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="unitTF2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="due" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="dueTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="issueDateTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="issueDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="descTF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="desc1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="amountTF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amount1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="vInvoiceBTN1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -427,17 +433,23 @@
                 <Component class="javax.swing.JTable" name="outstandingTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="0">
+                      <Table columnCount="7" rowCount="0">
                         <Column editable="false" title="Invoice No." type="java.lang.String"/>
+                        <Column editable="false" title="Date of Issuance" type="java.lang.String"/>
                         <Column editable="false" title="Unit No." type="java.lang.String"/>
+                        <Column editable="false" title="Receiver" type="java.lang.String"/>
                         <Column editable="false" title="Description" type="java.lang.String"/>
                         <Column editable="false" title="Amount" type="java.lang.String"/>
-                        <Column editable="false" title="Date of Issuance" type="java.lang.String"/>
-                        <Column editable="false" title="Due" type="java.lang.String"/>
+                        <Column editable="false" title="Due Date" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -474,6 +486,9 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="outstandingTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -496,14 +511,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="invoiceBTN">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Issue New Invoice"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invoiceBTNActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="invoice">
               <Properties>
@@ -563,6 +570,14 @@
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="vInvoiceBTN1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Invoice"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vInvoiceBTN1ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="paymentPanel">
@@ -581,7 +596,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="633" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="636" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
