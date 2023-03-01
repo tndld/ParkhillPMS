@@ -37,6 +37,7 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
 
         logoutBtn = new javax.swing.JToggleButton();
         homepageLabel = new javax.swing.JLabel();
+        patrollingSchedulBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,17 +51,30 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
         homepageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         homepageLabel.setText("Building Executive Homepage");
 
+        patrollingSchedulBtn.setText("Patrolling Schedule ");
+        patrollingSchedulBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patrollingSchedulBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(391, Short.MAX_VALUE)
-                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(391, Short.MAX_VALUE)
+                        .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(homepageLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(homepageLabel)
+                .addGap(176, 176, 176)
+                .addComponent(patrollingSchedulBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,7 +84,9 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
                 .addComponent(logoutBtn)
                 .addGap(18, 18, 18)
                 .addComponent(homepageLabel)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(patrollingSchedulBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,6 +97,12 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
         buildingExe.logout();
         this.setVisible(false);
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void patrollingSchedulBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrollingSchedulBtnActionPerformed
+        // TODO add your handling code here:
+        new PatrollingSchedule().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_patrollingSchedulBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,5 +147,6 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel homepageLabel;
     private javax.swing.JToggleButton logoutBtn;
+    private javax.swing.JButton patrollingSchedulBtn;
     // End of variables declaration//GEN-END:variables
 }

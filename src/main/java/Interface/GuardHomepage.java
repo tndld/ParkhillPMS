@@ -53,10 +53,20 @@ public class GuardHomepage extends javax.swing.JFrame {
         });
 
         viewVisitorPassBtn.setText("View Visitor Pass");
+        viewVisitorPassBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewVisitorPassBtnActionPerformed(evt);
+            }
+        });
 
         insidentBtn.setText("Incident");
 
         checkpointBtn.setText("Checkpoint");
+        checkpointBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkpointBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +113,18 @@ public class GuardHomepage extends javax.swing.JFrame {
         guard.logout();
         this.setVisible(false);
     }//GEN-LAST:event_accExeLogoutBtnActionPerformed
+
+    private void viewVisitorPassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVisitorPassBtnActionPerformed
+        // TODO add your handling code here:
+        new GuardViewVisitorPass().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_viewVisitorPassBtnActionPerformed
+
+    private void checkpointBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkpointBtnActionPerformed
+        // TODO add your handling code here:
+        new GuardCheckpoint().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_checkpointBtnActionPerformed
 
     /**
      * @param args the command line arguments

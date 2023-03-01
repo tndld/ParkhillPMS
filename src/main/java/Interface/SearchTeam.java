@@ -81,6 +81,7 @@ public class SearchTeam extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        structureTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(structureTable);
 
         searchLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N

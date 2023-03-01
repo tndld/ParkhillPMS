@@ -23,14 +23,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="391" max="32767" attributes="0"/>
-              <Component id="logoutBtn" min="-2" pref="105" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="391" max="32767" attributes="0"/>
+                      <Component id="logoutBtn" min="-2" pref="105" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+              <Component id="patrollingSchedulBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -42,7 +51,9 @@
               <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="293" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="patrollingSchedulBtn" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace pref="212" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,6 +74,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Building Executive Homepage"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="patrollingSchedulBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patrolling Schedule "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patrollingSchedulBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

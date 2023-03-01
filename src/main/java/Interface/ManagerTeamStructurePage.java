@@ -251,6 +251,7 @@ public class ManagerTeamStructurePage extends javax.swing.JFrame {
     private void buildingMngBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingMngBtnActionPerformed
         // TODO add your handling code here:
         new ManageBuildingManagerStructure().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_buildingMngBtnActionPerformed
 
     private void adminExecutiveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminExecutiveBtnActionPerformed

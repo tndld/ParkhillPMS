@@ -473,7 +473,7 @@ public class ManagerAddNewEmp extends javax.swing.JFrame {
                         } catch (Exception e) {
                             e.getStackTrace();
                         }
-                        String id = "AD" + count;
+                        String id = "BE" + count;
                         if(manage.addBuildingExe(username, finalPassword, id, name, ic, email, phoneNum, address, position)){
                             JOptionPane.showMessageDialog(this, "Building executive added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                             usernameTF.setText("");

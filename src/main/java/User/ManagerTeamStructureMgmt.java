@@ -172,14 +172,14 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
      }
     
     @Override
-    public boolean updateBuildingExeTeam(String username, String password, String empID, String fname, String IC, String email, String phoneNum, String address, String position){
+    public boolean updateBuildingExeTeam(String username, String password, String empID, String fname, String ic, String email, String phoneNum, String address, String position){
         BuildingExecutive build = new BuildingExecutive(username, password);
         
         boolean success = true;
     
 //        update cons
         build.setName(fname);
-        build.setIC(IC);
+        build.setIC(ic);
         build.setEmail(email);
         build.setPhoneNo(phoneNum);
         build.setAddress(address);
@@ -198,7 +198,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
                 if(accInfo[0].equals(username)){
                     // use the existing password and username
 
-                    writer.write(accInfo[0] + "," + accInfo[1] + "," + fname + "," + email + "," + phoneNum + "," + address + "," + position + "\n");
+                    writer.write(accInfo[0] + "," + accInfo[1] + "," + accInfo[2] + fname + "," + ic + "," + email + "," + phoneNum + "," + address + "," + position + ",\n");
                 } else {
                     writer.write(currentLine + "\n");
                 }
@@ -427,7 +427,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
     }
     
     public String showManagerStructure(String filePath){
-        int count = 0;
+        int count = -1;
         String i = null;
 
         File file = new File("database\\buildingManager.txt");
@@ -447,7 +447,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
     }
     
     public String showAccountStructure(String filePath){
-        int count = 0;
+        int count = -1;
         String i = null;
 
         File file = new File("database\\accountExecutive.txt");
@@ -467,7 +467,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
     }
     
     public String showAdminStructure(String filePath){
-        int count = 0;
+        int count = -1;
         String i = null;
 
         File file = new File("database\\adminExecutive.txt");
@@ -487,7 +487,7 @@ public class ManagerTeamStructureMgmt extends TeamManagement {
     }
     
     public String showBuildingExeStructure(String filePath){
-        int count = 0;
+        int count = -1;
         String i = null;
 
         File file = new File("database\\buildingExecutive.txt");

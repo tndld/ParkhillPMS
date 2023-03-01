@@ -297,7 +297,7 @@ public class ResidentHomepage extends javax.swing.JFrame {
                 "Are you sure want to log out?", "Logout", 
                 JOptionPane.YES_NO_OPTION);
         if(confirmLogout == JOptionPane.YES_OPTION){
-            user.logout2("database\\activeUser");
+            user.logout2("database\\activeUser", "database\\userType.txt");
             new ResidentLogin().setVisible(true);
             this.setVisible(false);
         }else{

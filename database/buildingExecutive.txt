@@ -1,3 +1,3 @@
 Username,Password,EmpID,Name,IC,Email,PhoneNo,Address,position
-lily,123,BE1,Lily,lily@gmail.com,0186546789,No 9 Jalan Putra,Head Building Executivemary,123,Mary,lily@gmail.com,0123456789,No 9 Jalan Putra,Member Building Executive
-3,33,AD3,3,3,3,3,3,3,
+lily,123,BE1,Lily,870606018888,lily@gmail.com,0186546789,No 9 Jalan Putra,Head Building Executivemary,
+mary,123,BE2,Mary,900809078222,mary@gmail.com,0123456789,No 10 Jalan Putra,Member Building Executive,
