@@ -112,25 +112,29 @@ public class User extends UserCommon{
 //        }
 //    }
         
-        public void logout2(String filename){
+        public void logout2(String filename, String file2){
             try {
                  // Open the file in write mode with "truncate" option to delete its content
                 FileWriter fw = new FileWriter(filename, false);
                 PrintWriter pw = new PrintWriter(fw, false);
                 
+                FileWriter fw2 = new FileWriter(file2, false);
+                PrintWriter pw2 = new PrintWriter(fw2, false);
+                
                 // Write an empty string to the file to clear its content
                 pw.flush();
+                pw2.flush();
                 
                 // Close the writers to release resources
                 pw.close();
                 fw.close();
+                
+                pw2.close();
+                fw2.close();
             } catch (IOException e) {
                  System.out.println("Exception Occurred" + e);
             }
-            JOptionPane.showMessageDialog(null, "You have been logged out.", 
-                    "Logout", JOptionPane.INFORMATION_MESSAGE);
-            this.isLoggedIn = false;
-    }
+        }
     
     public boolean isLoggedIn(){
         return this.isLoggedIn();

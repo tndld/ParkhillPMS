@@ -131,7 +131,7 @@ public class VendorHomepage extends javax.swing.JFrame {
                 "Are you sure want to log out?", "Logout", 
                 JOptionPane.YES_NO_OPTION);
         if(confirmLogout == JOptionPane.YES_OPTION){
-            user.logout2("database\\vendorActive");
+            user.logout2("database\\vendorActive","database\\userType.txt");
             new VendorLoginPage().setVisible(true);
             this.setVisible(false);
         }else{
