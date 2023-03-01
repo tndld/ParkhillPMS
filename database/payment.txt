@@ -1,0 +1,4 @@
+Invoice No.:Submission Date:Unit No.:Received From:Bank:Amount:Evidence:Status
+Inv2023-6:1 Mar 2023:B-07-01:Low Jye Shan:Public Bank:535.27:B-07-01_Low Jye Shan.png:Pending
+Inv2023-4:1 Mar 2023:C-07-02:Hoong Jhen Wei:CIMB Bank:221.2:C-07-02_Hoong Jhen Wei.png:Fail
+Inv2023-11:2 Mar 2023:D-07-01:Teo Su Yin:Maybank:0.01:D-07-01_Teo Su Yin.jpg:Fail

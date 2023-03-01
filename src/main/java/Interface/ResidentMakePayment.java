@@ -4,16 +4,25 @@
  */
 package Interface;
 
+import User.Payment;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.text.DateFormat;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -32,6 +41,9 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
         uploadStatus.setBackground(new java.awt.Color(0,0,0,1));
+        fileNameTF.setBackground(new java.awt.Color(0,0,0,1));
+        SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 1000.00, 0.01);
+        amountSpinner.setModel(interval);
     }
 
     /**
@@ -54,6 +66,7 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         uploadStatus = new javax.swing.JTextField();
         submitBTN = new javax.swing.JButton();
         note = new javax.swing.JLabel();
+        fileNameTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +109,10 @@ public class ResidentMakePayment extends javax.swing.JFrame {
 
         note.setText("Note: Rename to UNIT_NAME");
 
+        fileNameTF.setEditable(false);
+        fileNameTF.setBorder(null);
+        fileNameTF.setFocusable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,6 +141,7 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                                 .addComponent(evidence, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fileNameTF, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(evidenceBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))))
@@ -153,9 +171,11 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                     .addComponent(evidenceBTN))
                 .addGap(3, 3, 3)
                 .addComponent(note)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fileNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(uploadStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(submitBTN)
                 .addContainerGap())
         );
@@ -165,13 +185,50 @@ public class ResidentMakePayment extends javax.swing.JFrame {
 
     private void backBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBTNActionPerformed
         this.setVisible(false);
-        new ResidentViewPayment().setVisible(true);
+        new ResidentViewInvoice().setVisible(true);
     }//GEN-LAST:event_backBTNActionPerformed
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
-        System.out.println("Submitted");
-        this.setVisible(false);
-        new ResidentViewPayment().setVisible(true);
+        Date d = new Date();
+        String today = DateFormat.getDateInstance().format(d);
+        String bankName = bankTF.getText();
+        Double amt = (Double)amountSpinner.getValue();
+        String evi = fileNameTF.getText();
+        
+        if (!bankName.equals("") && !amt.equals("") && !amt.equals(0.0)){
+            String tempFile = "database\\tempPaymentInfo.txt";
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(tempFile));
+                String line = br.readLine();
+                String inv = line.split(":")[0];
+                String unit = line.split(":")[1];
+                String name = line.split(":")[2];
+                br.close();
+                new File(tempFile).delete();
+                
+                Payment pym = new Payment(unit, inv, name, today, bankName, amt, evi);
+                if (pym.addPayment()) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Payment Successfully Submitted!\nReceipt will be issued once we verify your payment.");
+                    this.setVisible(false);
+                    new ResidentViewPayment().setVisible(true);
+        
+                } else {
+                    JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(false);
+                    new ResidentViewInvoice().setVisible(true);
+                }
+                
+            } catch(IOException ex) {
+                System.out.println("Exception occurred when submitting payment: " + ex);
+            }
+        }
+       
+        
+        
+        
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void evidenceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_evidenceBTNActionPerformed
@@ -182,6 +239,10 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         if (upload == JFileChooser.APPROVE_OPTION){
             File target = new File(jf.getSelectedFile().getAbsolutePath());
             Path destination = new File("database\\userPayment\\", target.getName()).toPath();
+            
+            String fileName = target.getName();
+            fileNameTF.setText(fileName);
+            
             try{
                 BufferedImage img = ImageIO.read(target);
                 Files.copy(target.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
@@ -237,6 +298,7 @@ public class ResidentMakePayment extends javax.swing.JFrame {
     private javax.swing.JTextField bankTF;
     private javax.swing.JLabel evidence;
     private javax.swing.JButton evidenceBTN;
+    private javax.swing.JTextField fileNameTF;
     private javax.swing.JLabel issueInvoiceTitle;
     private javax.swing.JLabel note;
     private javax.swing.JButton submitBTN;

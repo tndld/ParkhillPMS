@@ -5,7 +5,6 @@
 package Interface;
 
 import User.Invoice;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -51,13 +50,22 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
 //        Set option in the unit drop down combo box
         DefaultComboBoxModel unitOpt = (DefaultComboBoxModel)unitCombo.getModel();
         String filePath = "database\\residentTenant.txt";
+        String filePath2 = "database\\vendor.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedReader br2 = new BufferedReader(new FileReader(filePath2));
             String line;
+            String line2;
             br.readLine();
+            br2.readLine();
             while ((line = br.readLine())!= null){
                 String[] resInfo = line.split(",");
                 String opt = resInfo[5] + " : " + resInfo[2];
+                unitOpt.addElement(opt);
+            }
+            while ((line2 = br2.readLine())!= null){
+                String[] venInfo = line2.split(",");
+                String opt = venInfo[5] + " : " + venInfo[2];
                 unitOpt.addElement(opt);
             }
             
@@ -143,7 +151,7 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
             }
         });
 
-        descCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Water Bill", "Management Fee", "Sinking Fund", "Insurance", "Late Interest Payment", "Access Card Fee", "Other" }));
+        descCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Water Bill", "Management Fee", "Sinking Fund", "Insurance", "Late Interest Payment", "Replacement Card", "Car Park Rental", "Shop Lot Rental", "Electricity Bill", "Clamping Charges", "Other" }));
         descCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descComboActionPerformed(evt);
@@ -306,7 +314,6 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         if (inv.addInvoice()) {
             JOptionPane.showMessageDialog(this, 
                         "Invoice Successfully Issued!");
-            new InvoicePage().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, 
                         "Errors occured, please try again.", "Error Message", 

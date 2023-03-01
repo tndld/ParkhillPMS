@@ -39,7 +39,7 @@ public class Invoice extends Transaction{
     }
     
     public Invoice(String unit, String invNo) {
-        super(unit, "", "");
+        super(unit, invNo);
         String filePath = "database\\invoice.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));

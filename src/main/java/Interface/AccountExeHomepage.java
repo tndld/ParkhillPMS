@@ -38,9 +38,9 @@ public class AccountExeHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         accExeLogoutBtn = new javax.swing.JToggleButton();
-        resBTN = new javax.swing.JButton();
-        accExeTitle = new javax.swing.JLabel();
-        venBTN = new javax.swing.JButton();
+        issueBTN = new javax.swing.JButton();
+        accExeTitle1 = new javax.swing.JLabel();
+        viewBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,22 +51,22 @@ public class AccountExeHomepage extends javax.swing.JFrame {
             }
         });
 
-        resBTN.setFont(new java.awt.Font("Cooper Black", 0, 28)); // NOI18N
-        resBTN.setText("Resident");
-        resBTN.addActionListener(new java.awt.event.ActionListener() {
+        issueBTN.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        issueBTN.setText("Issue New Invoice");
+        issueBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resBTNActionPerformed(evt);
+                issueBTNActionPerformed(evt);
             }
         });
 
-        accExeTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        accExeTitle.setText("Account Executive");
+        accExeTitle1.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        accExeTitle1.setText("Account Executive");
 
-        venBTN.setFont(new java.awt.Font("Cooper Black", 0, 28)); // NOI18N
-        venBTN.setText("Vendor");
-        venBTN.addActionListener(new java.awt.event.ActionListener() {
+        viewBTN.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        viewBTN.setText("View Invoice / Payment / Receipt");
+        viewBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                venBTNActionPerformed(evt);
+                viewBTNActionPerformed(evt);
             }
         });
 
@@ -75,31 +75,35 @@ public class AccountExeHomepage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(accExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(resBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(venBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(issueBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(273, 273, 273)
+                                .addComponent(accExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(viewBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(accExeTitle)
-                .addGap(102, 102, 102))
+                .addComponent(accExeTitle1)
+                .addGap(94, 94, 94))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(accExeTitle)
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(resBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(venBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addComponent(accExeTitle1)
+                .addGap(27, 27, 27)
+                .addComponent(issueBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(viewBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(accExeLogoutBtn)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,33 +115,25 @@ public class AccountExeHomepage extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_accExeLogoutBtnActionPerformed
 
-    private void resBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resBTNActionPerformed
+    private void issueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueBTNActionPerformed
+        this.setVisible(false);
+        new AccIssueResInvoice().setVisible(true);
+//        String filePath = "database\\accExeManageUser.txt";
+//        try {
+//            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
+//            pw.println("Resident");
+//            pw.close();
+//        } catch (IOException ex) {
+//            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
+//        } catch (Exception ex) {
+//            System.out.println("Unkown exception: " + ex);
+//        }
+    }//GEN-LAST:event_issueBTNActionPerformed
+
+    private void viewBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBTNActionPerformed
         this.setVisible(false);
         new AccountManageResident().setVisible(true);
-        String filePath = "database\\accExeManageUser.txt";
-        try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-            pw.println("Resident");
-            pw.close();
-        } catch (IOException ex) {
-            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
-        } catch (Exception ex) {
-            System.out.println("Unkown exception: " + ex);
-        }
-    }//GEN-LAST:event_resBTNActionPerformed
-
-    private void venBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venBTNActionPerformed
-        this.setVisible(false);
-        new AccountManageVendor().setVisible(true);
-        String filePath = "database\\accExeManageUser.txt";
-        try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-            pw.println("Vendor");
-            pw.close();
-        } catch (IOException ex) {
-            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
-        }
-    }//GEN-LAST:event_venBTNActionPerformed
+    }//GEN-LAST:event_viewBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,8 +172,8 @@ public class AccountExeHomepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton accExeLogoutBtn;
-    private javax.swing.JLabel accExeTitle;
-    private javax.swing.JButton resBTN;
-    private javax.swing.JButton venBTN;
+    private javax.swing.JLabel accExeTitle1;
+    private javax.swing.JButton issueBTN;
+    private javax.swing.JButton viewBTN;
     // End of variables declaration//GEN-END:variables
 }

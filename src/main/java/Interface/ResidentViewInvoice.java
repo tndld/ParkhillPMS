@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -387,42 +388,73 @@ public class ResidentViewInvoice extends getActiveUser {
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void getInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInvoiceBTNActionPerformed
-        int count = 0;
-        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
-        String currentUser = res.getFullName();
-        String unitNo = res.getUnitNo();
         
-        String filePath = "database\\invoice.txt";
-        String tempFile = "database\\tempInvItem.txt";
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-            
-            bw.write(invoiceTF.getText() + ":" + currentUser + ":" + unitNo 
-                    + ":" + issueDateTF.getText() + "\n");
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] invInfo = line.split(":");
+        if (!(invoiceTF.getText()).equals("")){
+            int count = 0;
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
+            String currentUser = res.getFullName();
+            String unitNo = res.getUnitNo();
 
-                if (invInfo[0].equals(invoiceTF.getText())){
-                    count += 1;
-                    bw.write(count + ":" + invInfo[4] + ":" + invInfo[6] + ":" 
-                            + invInfo[5] + "\n");
+            String filePath = "database\\invoice.txt";
+            String tempFile = "database\\tempInvItem.txt";
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(filePath));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+
+                bw.write(invoiceTF.getText() + ":" + currentUser + ":" + unitNo 
+                        + ":" + issueDateTF.getText() + "\n");
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] invInfo = line.split(":");
+
+                    if (invInfo[0].equals(invoiceTF.getText())){
+                        count += 1;
+                        bw.write(count + ":" + invInfo[4] + ":" + invInfo[6] + ":" 
+                                + invInfo[5] + "\n");
+                    }
                 }
-            }
-            br.close();
-            bw.close();
+                br.close();
+                bw.close();
 
-        } catch (IOException ex){
-            System.out.println("Exception occur when getting invoice item: " + ex);
+            } catch (IOException ex){
+                System.out.println("Exception occur when getting invoice item: " + ex);
+            } 
+
+            new InvoicePage().setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Please select an invoice item from the table to view.", "Error Message", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         
-        new InvoicePage().setVisible(true);
     }//GEN-LAST:event_getInvoiceBTNActionPerformed
 
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
-        this.setVisible(false);
-        new ResidentMakePayment().setVisible(true);
+        
+        if (!(invoiceTF1.getText()).equals("")){
+            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
+            String name = res.getFullName();
+            String unit = res.getUnitNo();
+
+            String tempFile = "database\\tempPaymentInfo.txt";
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+                bw.write(invoiceTF1.getText() + ":" + unit + ":" + name + ":");
+                bw.close();
+            } catch (IOException ex) {
+                System.out.println("Exception occur when payment button clicked: " + ex);
+            }
+
+            this.setVisible(false);
+            new ResidentMakePayment().setVisible(true);
+        }else {
+            JOptionPane.showMessageDialog(this, 
+                    "Please select an invoice item from the table to update payment.", "Error Message", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_paymentBTNActionPerformed
 
     private void invoiceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoiceTableMouseClicked
@@ -431,15 +463,15 @@ public class ResidentViewInvoice extends getActiveUser {
         String date = model.getValueAt(invoiceTable.getSelectedRow(), 1).toString();
         String desc = model.getValueAt(invoiceTable.getSelectedRow(), 2).toString();
         String amt = model.getValueAt(invoiceTable.getSelectedRow(), 3).toString();
-        String due = model.getValueAt(invoiceTable.getSelectedRow(), 4).toString();
-        String status = model.getValueAt(invoiceTable.getSelectedRow(), 5).toString();
+        String dueD = model.getValueAt(invoiceTable.getSelectedRow(), 4).toString();
+        String stat = model.getValueAt(invoiceTable.getSelectedRow(), 5).toString();
         
         invoiceTF.setText(invNo);
         issueDateTF.setText(date);
         descTF1.setText(desc);
         amountTF1.setText(amt);
-        dueTF.setText(due);
-        statusTF.setText(status);
+        dueTF.setText(dueD);
+        statusTF.setText(stat);
     }//GEN-LAST:event_invoiceTableMouseClicked
 
     private void pendingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingTableMouseClicked
@@ -476,6 +508,7 @@ public class ResidentViewInvoice extends getActiveUser {
     }
     
     private void setInvoiceTable(){
+        
         Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
         String currentUser = res.getFullName();
         

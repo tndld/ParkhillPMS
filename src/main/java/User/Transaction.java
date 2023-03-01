@@ -22,9 +22,11 @@ public abstract class Transaction {
         this.unit = unit;
         this.name = name;
         this.docDate = date;
-//        String[] dateInfo = date.split(" ");
-//        String year = dateInfo[2];
-//        this.invoiceNo = this.setNewInvNo(year);
+    }
+    
+    public Transaction(String unit, String invNo){
+        this.invoiceNo = invNo;
+        this.unit = unit;
     }
     
     public void setNewInvNo(String year){

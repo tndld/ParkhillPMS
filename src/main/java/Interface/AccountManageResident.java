@@ -4,14 +4,16 @@
  */
 package Interface;
 
+import User.Payment;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,6 +33,7 @@ public class AccountManageResident extends javax.swing.JFrame {
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
         setInvoiceTable();
+        setPaymentTable();
     }
 
     /**
@@ -85,9 +88,11 @@ public class AccountManageResident extends javax.swing.JFrame {
         rejectBTN = new javax.swing.JButton();
         bankTF = new javax.swing.JTextField();
         desc = new javax.swing.JLabel();
-        descTF = new javax.swing.JTextField();
-        due2 = new javax.swing.JLabel();
-        dueTF2 = new javax.swing.JTextField();
+        evidenceTF = new javax.swing.JTextField();
+        unitN = new javax.swing.JLabel();
+        unitTF = new javax.swing.JTextField();
+        statusLB = new javax.swing.JLabel();
+        statusTF = new javax.swing.JTextField();
         homepageBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -321,7 +326,7 @@ public class AccountManageResident extends javax.swing.JFrame {
                             .addComponent(amountTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(issueDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(vInvoiceBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                        .addComponent(vInvoiceBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -364,14 +369,14 @@ public class AccountManageResident extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Invoice No.", "Received From", "Submission Date", "Bank", "Description", "Amount", "Bill Due"
+                "Invoice No.", "Submission Date", "Unit No.", "Received From", "Bank", "Amount", "Evidence", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -383,6 +388,11 @@ public class AccountManageResident extends javax.swing.JFrame {
             }
         });
         paymentTable.getTableHeader().setReorderingAllowed(false);
+        paymentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paymentTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(paymentTable);
 
         approveBTN.setText("Approve");
@@ -416,18 +426,28 @@ public class AccountManageResident extends javax.swing.JFrame {
         amountTF.setEditable(false);
 
         rejectBTN.setText("Reject");
+        rejectBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rejectBTNActionPerformed(evt);
+            }
+        });
 
         bankTF.setEditable(false);
 
         desc.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        desc.setText("Description");
+        desc.setText("Evidence");
 
-        descTF.setEditable(false);
+        evidenceTF.setEditable(false);
 
-        due2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        due2.setText("Bill Due");
+        unitN.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        unitN.setText("Unit No.");
 
-        dueTF2.setEditable(false);
+        unitTF.setEditable(false);
+
+        statusLB.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        statusLB.setText("Status");
+
+        statusTF.setEditable(false);
 
         javax.swing.GroupLayout paymentPanelLayout = new javax.swing.GroupLayout(paymentPanel);
         paymentPanel.setLayout(paymentPanelLayout);
@@ -440,33 +460,39 @@ public class AccountManageResident extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
                     .addGroup(paymentPanelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resident, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(paymentPanelLayout.createSequentialGroup()
-                                .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(paymentPanelLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(paymentDate))
-                                    .addComponent(invoice2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(desc)
-                                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(descTF)
-                                    .addGroup(paymentPanelLayout.createSequentialGroup()
-                                        .addComponent(invoiceTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bank, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bankTF))
-                                    .addComponent(resTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(amountTF)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentPanelLayout.createSequentialGroup()
-                                        .addComponent(paymentDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(due2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dueTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(1, 1, 1)
+                                .addComponent(paymentDate))
+                            .addComponent(invoice2, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(desc)
+                            .addComponent(amount, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(resident, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(evidenceTF)
+                                .addGroup(paymentPanelLayout.createSequentialGroup()
+                                    .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(invoiceTF2, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                        .addComponent(resTF))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(paymentPanelLayout.createSequentialGroup()
+                                            .addComponent(bank, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(bankTF, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                                        .addGroup(paymentPanelLayout.createSequentialGroup()
+                                            .addComponent(unitN, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(unitTF, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))))
+                                .addGroup(paymentPanelLayout.createSequentialGroup()
+                                    .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(statusLB, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(statusTF, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                            .addComponent(paymentDateTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(rejectBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -487,29 +513,32 @@ public class AccountManageResident extends javax.swing.JFrame {
                     .addComponent(bankTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paymentPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(resident, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(resTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(resTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unitN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unitTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(paymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(paymentDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(due2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dueTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(paymentDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(evidenceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(paymentPanelLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addGap(19, 19, 19)
                         .addComponent(approveBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rejectBTN)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statusLB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statusTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         Tab.addTab("Payment Approval", paymentPanel);
@@ -561,6 +590,7 @@ public class AccountManageResident extends javax.swing.JFrame {
     }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void approveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approveBTNActionPerformed
+        
         this.setVisible(false);
         new AccGenerateReceipt().setVisible(true);
     }//GEN-LAST:event_approveBTNActionPerformed
@@ -667,66 +697,119 @@ public class AccountManageResident extends javax.swing.JFrame {
         amountTF1.setText(amt);
     }//GEN-LAST:event_outstandingTableMouseClicked
 
-    private void setInvoiceTable(){
-        String checkManaging = "database\\accExeManageUser.txt";
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(checkManaging));
-            String filePath;
-            if (br.readLine().equals("Resident")){
-                filePath = "database\\invoice.txt";
-                BufferedReader br2 = new BufferedReader(new FileReader(filePath));
-                String firstLine = br2.readLine().trim();
-                String[] columns = firstLine.split(":");
-                DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
-                invoice.setColumnIdentifiers(columns);
-                Object[] record = br2.lines().toArray();
-                for (int i = 0; i < record.length; i++){
-                    String line = record[i].toString().trim();
-                    String[] recInfo = line.split(":");
-                    invoice.addRow(recInfo);
-                }                
-                br2.close();
-                
-                String tempFile = "database\\tempOustandingInv.txt";
-                BufferedReader br4 = new BufferedReader(new FileReader(filePath));
-                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-                br4.readLine();
-                String line;
-                while ((line = br4.readLine()) != null) {
-                    String[] invInfo = line.split(":");
-                    if (invInfo[7].equals("Unpaid")) {
-                        bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
-                                invInfo[2] + ":" + invInfo[3] + ":" + 
-                                invInfo[4] + ":" + invInfo[5] + ":" + 
-                                invInfo[6] + "\n");
-                    }
-                }
-                bw.close();
-                br4.close();
-                
-                BufferedReader br3 = new BufferedReader(new FileReader(tempFile));
-                DefaultTableModel outstanding = (DefaultTableModel)outstandingTable.getModel();
-                Object[] record2 = br3.lines().toArray();
-                for (int i = 0; i < record2.length; i++) {
-                    String line2 = record2[i].toString().trim();
-                    String[] outInfo = line2.split(":");
-                    outstanding.addRow(outInfo);
-                }
-                br3.close();
-                
+    private void paymentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paymentTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)paymentTable.getModel();
+        String invNo = model.getValueAt(paymentTable.getSelectedRow(), 0).toString();
+        String from = model.getValueAt(paymentTable.getSelectedRow(), 3).toString();
+        String unit = model.getValueAt(paymentTable.getSelectedRow(), 2).toString();
+        String date = model.getValueAt(paymentTable.getSelectedRow(), 1).toString();
+        String bank = model.getValueAt(paymentTable.getSelectedRow(), 4).toString();
+        String amt = model.getValueAt(paymentTable.getSelectedRow(), 5).toString();
+        String evi = model.getValueAt(paymentTable.getSelectedRow(), 6).toString();
+        String status = model.getValueAt(paymentTable.getSelectedRow(), 7).toString();
+        
+        invoiceTF2.setText(invNo);
+        resTF.setText(from);
+        unitTF.setText(unit);
+        evidenceTF.setText(evi);
+        paymentDateTF.setText(date);
+        statusTF.setText(status);
+        amountTF.setText(amt);
+        bankTF.setText(bank);
+    }//GEN-LAST:event_paymentTableMouseClicked
+
+    private void rejectBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBTNActionPerformed
+        
+        if (!(invoiceTF2.getText()).equals("")){
+            Payment pym = new Payment(invoiceTF2.getText());
+            pym.setStatus("Fail");
+            if (pym.updatePaymentStatus(invoiceTF2.getText())){
+                JOptionPane.showMessageDialog(this, 
+                            "Payment was rejected. \n Please proceed to refund to user.");
+                        this.setVisible(false);
+                        new AccountManageResident().setVisible(true);
             } else {
-                filePath = "database\\venInvoice.txt";
+                        JOptionPane.showMessageDialog(this, 
+                            "Errors occured, please try again.", "Error Message", 
+                            JOptionPane.ERROR_MESSAGE);
             }
-            br.close();
+        }else {
+            JOptionPane.showMessageDialog(this, 
+                    "Please select a payment item from the table to update status.", "Error Message", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_rejectBTNActionPerformed
+
+    private void setInvoiceTable(){
+        try{
+            String filePath = "database\\invoice.txt";
+            BufferedReader br2 = new BufferedReader(new FileReader(filePath));
+            String firstLine = br2.readLine().trim();
+            String[] columns = firstLine.split(":");
+            DefaultTableModel invoiceTB = (DefaultTableModel)invoiceTable.getModel();
+            invoiceTB.setColumnIdentifiers(columns);
+            Object[] record = br2.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line = record[i].toString().trim();
+                String[] recInfo = line.split(":");
+                invoiceTB.addRow(recInfo);
+            }                
+            br2.close();
+
+            String tempFile = "database\\tempOustandingInv.txt";
+            BufferedReader br4 = new BufferedReader(new FileReader(filePath));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            br4.readLine();
+            String line;
+            while ((line = br4.readLine()) != null) {
+                String[] invInfo = line.split(":");
+                if (invInfo[7].equals("Unpaid")) {
+                    bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                            invInfo[2] + ":" + invInfo[3] + ":" + 
+                            invInfo[4] + ":" + invInfo[5] + ":" + 
+                            invInfo[6] + "\n");
+                }
+            }
+            bw.close();
+            br4.close();
+
+            BufferedReader br3 = new BufferedReader(new FileReader(tempFile));
+            DefaultTableModel outstanding = (DefaultTableModel)outstandingTable.getModel();
+            Object[] record2 = br3.lines().toArray();
+            for (int i = 0; i < record2.length; i++) {
+                String line2 = record2[i].toString().trim();
+                String[] outInfo = line2.split(":");
+                outstanding.addRow(outInfo);
+            }
+            br3.close();
+            new File(tempFile).delete();
             
-                        
         } catch (IOException ex) {
             System.out.println("Exception occur: " + ex);
         }
     }
     
-    private void checkOutstanding() {
-        
+    private void setPaymentTable() {
+        try {
+            String filePath = "database\\payment.txt";
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String firstLine = br.readLine().trim();
+            String[] columns = firstLine.split(":");
+            DefaultTableModel paymentTB = (DefaultTableModel)paymentTable.getModel();
+            paymentTB.setColumnIdentifiers(columns);
+            Object[] record = br.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line = record[i].toString().trim();
+                String[] recInfo = line.split(":");
+                if (recInfo[7].equals("Pending")) paymentTB.addRow(recInfo);
+            }                
+            br.close();
+            
+        } catch (IOException ex) {
+            System.out.println("Exception occur: " + ex);
+        }
     }
     
     /**
@@ -777,12 +860,10 @@ public class AccountManageResident extends javax.swing.JFrame {
     private javax.swing.JTextField bankTF;
     private javax.swing.JLabel desc;
     private javax.swing.JLabel desc1;
-    private javax.swing.JTextField descTF;
     private javax.swing.JTextField descTF1;
     private javax.swing.JLabel due;
-    private javax.swing.JLabel due2;
     private javax.swing.JTextField dueTF;
-    private javax.swing.JTextField dueTF2;
+    private javax.swing.JTextField evidenceTF;
     private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel invoice;
     private javax.swing.JLabel invoice2;
@@ -807,7 +888,11 @@ public class AccountManageResident extends javax.swing.JFrame {
     private javax.swing.JLabel resAccTitle;
     private javax.swing.JTextField resTF;
     private javax.swing.JLabel resident;
+    private javax.swing.JLabel statusLB;
+    private javax.swing.JTextField statusTF;
     private javax.swing.JLabel unit2;
+    private javax.swing.JLabel unitN;
+    private javax.swing.JTextField unitTF;
     private javax.swing.JTextField unitTF2;
     private javax.swing.JButton vInvoiceBTN;
     private javax.swing.JButton vInvoiceBTN1;
