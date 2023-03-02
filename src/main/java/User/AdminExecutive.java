@@ -37,6 +37,34 @@ public class AdminExecutive extends MgmtLevelUser {
     
     public AdminExecutive(String username, String password) {
         super(username, password);
+        //        Read from Resident text file to get user's details
+        String filePath = "database\\adminExecutive.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] adminInfo = line.split(",");
+//                Assign details into constructor
+                if (adminInfo[0].equals(username)){
+                    this.empID = adminInfo[2];
+                    this.name = adminInfo[3];
+                    this.ic = adminInfo[4];
+                    this.email = adminInfo[5];
+                    this.phoneNo = adminInfo[6];
+                    this.address =  adminInfo[7];
+                    this.position = adminInfo[8];
+                }
+            }
+                    
+            br.close();
+            fr.close();
+            
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
     }
     
     public String getUsername(){

@@ -5,6 +5,9 @@
 package User;
 
 import Interface.AccountExeHomepage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -22,6 +25,35 @@ public class AccountExecutive extends User {
     
     public AccountExecutive(String username, String password) {
         super(username, password);
+        
+        //        Read from Resident text file to get user's details
+        String filePath = "database\\accountExecutive.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] accountInfo = line.split(",");
+//                Assign details into constructor
+                if (accountInfo[0].equals(username)){
+                    this.empID = accountInfo[2];
+                    this.name = accountInfo[3];
+                    this.ic = accountInfo[4];
+                    this.email = accountInfo[5];
+                    this.phoneNo = accountInfo[6];
+                    this.address =  accountInfo[7];
+                    this.position = accountInfo[8];
+                }
+            }
+                    
+            br.close();
+            fr.close();
+            
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
     }
     
     public void accountExeMenu(){

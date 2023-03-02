@@ -6,6 +6,9 @@ package User;
 
 import Interface.AccountExeHomepage;
 import Interface.BuildingExeHomepage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -22,6 +25,35 @@ public class BuildingExecutive extends User {
     
     public BuildingExecutive(String username, String password) {
         super(username, password);
+        
+        //        Read from Resident text file to get user's details
+        String filePath = "database\\buildingExecutive.txt";
+        try{
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] buildingInfo = line.split(",");
+//                Assign details into constructor
+                if (buildingInfo[0].equals(username)){
+                    this.empID = buildingInfo[2];
+                    this.name = buildingInfo[3];
+                    this.ic = buildingInfo[4];
+                    this.email = buildingInfo[5];
+                    this.phoneNo = buildingInfo[6];
+                    this.address =  buildingInfo[7];
+                    this.position = buildingInfo[8];
+                }
+            }
+                    
+            br.close();
+            fr.close();
+            
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
     }
     
     public void buildingExeMenu(){
