@@ -101,6 +101,11 @@ public class ResidentHomepage extends javax.swing.JFrame {
         });
 
         receiptBTN.setText("My Receipt");
+        receiptBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiptBTNActionPerformed(evt);
+            }
+        });
 
         booking.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
         booking.setText("Facility Booking");
@@ -128,19 +133,7 @@ public class ResidentHomepage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(resAccTitle)
-                                .addGap(25, 25, 25)
-                                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -153,7 +146,17 @@ public class ResidentHomepage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(220, 220, 220)
                                 .addComponent(account)))
-                        .addGap(0, 62, Short.MAX_VALUE)))
+                        .addGap(0, 62, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(resAccTitle)
+                                .addGap(25, 25, 25)
+                                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator4))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -254,6 +257,11 @@ public class ResidentHomepage extends javax.swing.JFrame {
         this.setVisible(false);
         new ResidentViewInvoice().setVisible(true);
     }//GEN-LAST:event_billBTNActionPerformed
+
+    private void receiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptBTNActionPerformed
+        this.setVisible(false);
+        new ResidentViewReceipt().setVisible(true);
+    }//GEN-LAST:event_receiptBTNActionPerformed
 
     /**
      * @param args the command line arguments

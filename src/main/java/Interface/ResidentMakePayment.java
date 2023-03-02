@@ -195,8 +195,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(tempFile));
                 String line = br.readLine();
                 String inv = line.split(":")[0];
-//                String unit = line.split(":")[1];
-//                String name = line.split(":")[2];
                 String desc = line.split(":")[1];
                 br.close();
                 new File(tempFile).delete();

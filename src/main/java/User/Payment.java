@@ -60,7 +60,8 @@ public class Payment extends Transaction{
             while ((line = br.readLine()) != null){
                 String[] pymInfo = line.split(":");
                 String inv = pymInfo[0];
-                if (inv.equals(invNo)){
+                String pym = pymInfo[9];
+                if (inv.equals(invNo) && pym.equals(docNo)){
                     super.setDocDate(pymInfo[1]);
 //                    super.setUnit(pymInfo[2]);
 //                    super.setName(pymInfo[3]);

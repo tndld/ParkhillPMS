@@ -7,6 +7,7 @@ package Interface;
 import User.AccountExecutive;
 import User.Invoice;
 import User.Payment;
+import User.Receipt;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -15,6 +16,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -621,21 +624,20 @@ public class AccountManageResident extends getActiveUser {
         if (!(invoiceTF2.getText()).equals("")){
             AccountExecutive acc = new AccountExecutive(getActiveUser()[0], getActiveUser()[1]);
             String name = acc.getname();
+            String today = DateFormat.getDateInstance().format(new Date());
             
+            Receipt rcp = new Receipt(invoiceTF2.getText(), today, pymNoTF.getText(), descTF.getText(), name);
+            if (rcp.addReceipt()){
+                JOptionPane.showMessageDialog(this, 
+                        "Payment Approved.\nReceipt is issued.");
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                        "Errors occured, please try again.", "Error Message", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
             
-            
-//            Payment pym = new Payment(invoiceTF2.getText());
-//            pym.setStatus("Approved");
-//            if (pym.updatePaymentStatus(invoiceTF2.getText())){
-//                JOptionPane.showMessageDialog(this, 
-//                            "Payment approved, please proceed to generate receipt.");
-//                        this.setVisible(false);
-//                        jbjhihiojp
-//            } else {
-//                        JOptionPane.showMessageDialog(this, 
-//                            "Errors occured, please try again.", "Error Message", 
-//                            JOptionPane.ERROR_MESSAGE);
-//            }
+            this.setVisible(false);
+            new AccountManageResident().setVisible(true);
             
         }else {
             JOptionPane.showMessageDialog(this, 

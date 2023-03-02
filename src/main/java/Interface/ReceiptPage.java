@@ -4,11 +4,16 @@
  */
 package Interface;
 
+import User.Invoice;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,6 +46,8 @@ public class ReceiptPage extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
+        printReceipt();
     }
 
     /**
@@ -71,7 +78,7 @@ public class ReceiptPage extends javax.swing.JFrame {
         postcode = new javax.swing.JLabel();
         area = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        chargesTable = new javax.swing.JTable();
+        receiptTable = new javax.swing.JTable();
         total = new javax.swing.JLabel();
         totalTF = new javax.swing.JTextField();
         paymentMode = new javax.swing.JLabel();
@@ -186,20 +193,20 @@ public class ReceiptPage extends javax.swing.JFrame {
         area.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         area.setText("WP Kuala Lumpur.");
 
-        chargesTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        chargesTable.setModel(new javax.swing.table.DefaultTableModel(
+        receiptTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        receiptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "No.", "Description", "Amount (RM)"
+                "Description", "Amount (RM)"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -210,8 +217,8 @@ public class ReceiptPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        chargesTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(chargesTable);
+        receiptTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(receiptTable);
 
         total.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         total.setText("Total Amount Paid (RM)");
@@ -462,6 +469,33 @@ public class ReceiptPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_issueByTFActionPerformed
 
+    private void printReceipt() {
+        String tempFile = "database\\tempReceiptItem.txt";
+        try {
+            BufferedReader br2 = new BufferedReader(new FileReader(tempFile));
+            String line = br2.readLine();
+            String[] general = line.split(":");
+            receiptTF.setText(general[0]);
+            CusName.setText(general[3]);
+            unit.setText(general[2]);
+            unitTF.setText(general[2]);
+            dateTF.setText(general[1]);
+            issueByTF.setText(general[4]);
+            bankTF.setText(general[5]);
+            totalTF.setText(general[6]);
+            
+            DefaultTableModel rcpTable = (DefaultTableModel)receiptTable.getModel();
+            Object[] record = br2.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line2 = record[i].toString().trim();
+                String[] recInfo = line2.split(":");
+                rcpTable.addRow(recInfo);
+            }
+            br2.close();
+        } catch (IOException ex){
+            System.out.println("Exception occur when getting invoice item: " + ex);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -505,7 +539,6 @@ public class ReceiptPage extends javax.swing.JFrame {
     private javax.swing.JLabel area;
     private javax.swing.JLabel bank;
     private javax.swing.JTextField bankTF;
-    private javax.swing.JTable chargesTable;
     private javax.swing.JLabel condoAddress;
     private javax.swing.JLabel condoContact;
     private javax.swing.JLabel condoName;
@@ -521,6 +554,7 @@ public class ReceiptPage extends javax.swing.JFrame {
     private javax.swing.JLabel paymentModeTF;
     private javax.swing.JLabel postcode;
     private javax.swing.JTextField receiptTF;
+    private javax.swing.JTable receiptTable;
     private javax.swing.JLabel taman;
     private javax.swing.JLabel title;
     private javax.swing.JLabel total;

@@ -1,8 +1,8 @@
 Invoice No.:Issuance Date:Unit No.:Name:Description:Amount:Due:Status
 Inv2023-1:2 Mar 2023:D-07-01:Teo Su Yin:Water Bill - February:12.0:15 Mar 2023:Unpaid
-Inv2023-2:2 Mar 2023:B-07-01:Low Jye Shan:Management Fee - February:200.0:15 Mar 2023:Unpaid
-Inv2023-2:2 Mar 2023:B-07-01:Low Jye Shan:Sinking Fund - February:21.2:15 Mar 2023:Unpaid
-Inv2023-3:2 Mar 2023:C-07-02:Hoong Jhen Wei:Car Park Rental - February:100.0:31 Mar 2023:Unpaid
+Inv2023-2:2 Mar 2023:B-07-01:Low Jye Shan:Management Fee - February:200.0:15 Mar 2023:Paid
+Inv2023-2:2 Mar 2023:B-07-01:Low Jye Shan:Sinking Fund - February:21.2:15 Mar 2023:Paid
+Inv2023-3:2 Mar 2023:C-07-02:Hoong Jhen Wei:Car Park Rental - February:100.0:31 Mar 2023:Pending
 Inv2023-4:2 Mar 2023:C-07-02:Hoong Jhen Wei:Replacement Card - February:30.0:9 Mar 2023:Unpaid
-Inv2023-5:3 Mar 2023:C1-7099:Chee Yan Heng:Shop Lot Rental - March:2000.0:3 Mar 2023:Pending
+Inv2023-5:3 Mar 2023:C1-7099:Chee Yan Heng:Shop Lot Rental - March:2000.0:3 Mar 2023:Paid
 Inv2023-6:3 Mar 2023:2:Vendor 2:Water Bill - February:0.01:3 Mar 2023:Unpaid

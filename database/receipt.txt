@@ -1,1 +1,4 @@
-Receipt No.:Issuance Date:Invoice No.:Unit No.:Name:Amount:Issued By
+Receipt No.:Issuance Date:Payment No.:Invoice No.:Unit No.:Name:Description:Amount:Issued By
+PH2023-R1:3 Mar 2023:P2023-2:Inv2023-5:C1-7099:Chee Yan Heng:Shop Lot Rental - March:2000.0:Emily
+PH2023-R2:3 Mar 2023:P2023-4:Inv2023-2:B-07-01:Low Jye Shan:Management Fee - February:221.0:Emily
+PH2023-R3:3 Mar 2023:P2023-5:Inv2023-2:B-07-01:Low Jye Shan:Sinking Fund - February:221.2:Emily

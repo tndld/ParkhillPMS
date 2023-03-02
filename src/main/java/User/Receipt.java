@@ -5,7 +5,9 @@
 package User;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -17,19 +19,23 @@ import java.util.Date;
 public class Receipt extends Transaction{
     
     private String receiptNo;
+    private String description;
     private double total;
     private String issueBy;
+    public String paymentNo;
     
-    public Receipt(String invNo, String day, String paymentNo, String issuer) {
+    public Receipt(String invNo, String day, String paymentNo, String desc, String issuer) {
         super(invNo);
         super.setDocDate(day);
         setDocNo();
-        Payment pym = new Payment(invNo, paymentNo);
+        this.paymentNo = paymentNo;
+        this.description = desc;
+        Payment pym = new Payment(invNo, paymentNo, desc);
         this.total = pym.getAmt();
         this.issueBy = issuer;
     }
     
-    public Receipt(String invNo, String rcpNo){
+    public Receipt(String invNo, String rcpNo, String desc){
         super(invNo);
         this.receiptNo = rcpNo;
         
@@ -40,10 +46,13 @@ public class Receipt extends Transaction{
             while ((line = br.readLine()) != null){
                 String[] rcpInfo = line.split(":");
                 String rcp = rcpInfo[0];
-                if (rcp.equals(rcpNo)){
+                String description = rcpInfo[6];
+                if (rcp.equals(rcpNo) && (description.equals(desc))){
                     super.setDocDate(rcpInfo[1]);
-                    this.total = Double.parseDouble(rcpInfo[5]);
-                    this.issueBy = rcpInfo[6];
+                    this.paymentNo = rcpInfo[2];
+                    this.description = rcpInfo[6];
+                    this.total = Double.parseDouble(rcpInfo[7]);
+                    this.issueBy = rcpInfo[8];
                 }    
             }
             br.close();
@@ -61,6 +70,14 @@ public class Receipt extends Transaction{
         this.issueBy = accExe;
     }
     
+    public void setPaymentNo(String pym){
+        this.paymentNo = pym;
+    }
+    
+    public void setDesc(String desc){
+        this.description = desc;
+    }
+    
     public String getRcpNo(){
         return this.receiptNo;
     }
@@ -71,6 +88,36 @@ public class Receipt extends Transaction{
     
     public String getIssuer(){
         return this.issueBy;
+    }
+    
+    public String getDescription() {
+        return this.description;
+    }
+    
+    public String getPaymentNo() {
+        return this.paymentNo;
+    }
+    
+    public boolean addReceipt(){
+        
+        Payment pym = new Payment(this.getInvNo(), this.paymentNo, this.description);
+        Invoice inv = new Invoice(this.getInvNo(), this.description);
+        if (pym.updatePaymentStatus("Approve") && inv.updateInvoiceStatus("Paid")){
+            String filePath = "database\\receipt.txt";
+            try{
+                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
+                bw.write(this.receiptNo + ":" + this.getDocDate() + ":" + this.paymentNo + ":" + 
+                        this.getInvNo()+ ":" + this.getUnit() + ":" + this.getName() + ":" + 
+                        this.description + ":" + this.total + ":" + this.issueBy + "\n");
+                bw.close();
+                return true;
+            } catch(IOException ex) {
+                System.out.println("Exception occurred when submitting payment: " + ex);
+                return false;
+            }
+        } else{
+            return false;
+        }
     }
     
     @Override
@@ -85,7 +132,7 @@ public class Receipt extends Transaction{
             while ((line = br.readLine()) != null){
                 String[] rcpInfo = line.split(":");
                 String current = rcpInfo[0];
-                String[] idInfo = current.split("-");
+                String[] idInfo = current.split("-R");
                 int num = Integer.parseInt(idInfo[1]);
                 count = num;
             }

@@ -72,6 +72,11 @@ public class VendorHomepage extends javax.swing.JFrame {
         });
 
         receiptBTN.setText("My Receipt");
+        receiptBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiptBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +144,11 @@ public class VendorHomepage extends javax.swing.JFrame {
         this.setVisible(false);
         new ResidentViewPayment().setVisible(true);
     }//GEN-LAST:event_paymentBTNActionPerformed
+
+    private void receiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptBTNActionPerformed
+        this.setVisible(false);
+        new ResidentViewReceipt().setVisible(true);
+    }//GEN-LAST:event_receiptBTNActionPerformed
 
     /**
      * @param args the command line arguments
