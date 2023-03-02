@@ -63,15 +63,16 @@
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Component id="issueInvoiceTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="dltBTN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="addItemBTN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="issueBTN" min="-2" pref="75" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="57" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="addItemBTN" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="issueBTN" min="-2" pref="75" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,6 +116,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addItemBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="issueBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dltBTN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
@@ -272,6 +274,20 @@
                 <Column editable="true" title="Amount" type="java.lang.String"/>
               </Table>
             </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
@@ -280,6 +296,14 @@
       </SubComponents>
     </Container>
     <Component class="com.toedter.calendar.JDateChooser" name="dueDateChooser">
+    </Component>
+    <Component class="javax.swing.JButton" name="dltBTN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete Item"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dltBTNActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

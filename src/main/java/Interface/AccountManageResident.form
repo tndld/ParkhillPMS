@@ -30,10 +30,14 @@
                       <Component id="Tab" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="homepageBTN" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="resAccTitle" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                              <Component id="resAccTitle" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="homepageBTN" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -44,18 +48,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="homepageBTN" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="resAccTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Component id="Tab" min="-2" pref="487" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Component id="homepageBTN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="resAccTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="Tab" min="-2" pref="528" max="-2" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,7 +118,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="407" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="448" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="vInvoiceBTN" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -251,7 +249,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="407" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="448" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="vreceiptBTN" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -270,23 +268,17 @@
                 <Component class="javax.swing.JTable" name="receiptTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="0">
+                      <Table columnCount="6" rowCount="0">
                         <Column editable="false" title="Receipt No." type="java.lang.String"/>
+                        <Column editable="false" title="Issuance Date" type="java.lang.String"/>
                         <Column editable="false" title="Unit No." type="java.lang.String"/>
                         <Column editable="false" title="Received From" type="java.lang.String"/>
-                        <Column editable="false" title="Description" type="java.lang.Object"/>
-                        <Column editable="false" title="Issuance Date" type="java.lang.String"/>
                         <Column editable="false" title="Amount" type="java.lang.Object"/>
                         <Column editable="false" title="Bank" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -417,7 +409,7 @@
                           <Component id="amount1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="vInvoiceBTN1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -600,55 +592,64 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                      <Component id="paymentDate" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="invoice2" pref="105" max="32767" attributes="0"/>
-                                  <Component id="desc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="amount" pref="105" max="32767" attributes="0"/>
-                                  <Component id="resident" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="evidenceTF" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="invoiceTF2" pref="104" max="32767" attributes="0"/>
-                                              <Component id="resTF" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="bank" min="-2" pref="62" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="bankTF" pref="142" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="unitN" min="-2" pref="62" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="unitTF" pref="142" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <Component id="paymentDate" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="amountTF" min="-2" pref="104" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                          <Component id="statusLB" min="-2" pref="62" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="statusTF" pref="142" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="invoice2" pref="105" max="32767" attributes="0"/>
+                                      <Component id="desc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="amount" pref="105" max="32767" attributes="0"/>
+                                      <Component id="resident" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="paymentDateTF" alignment="1" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="desc2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="rejectBTN" max="32767" attributes="0"/>
-                                  <Component id="approveBTN" alignment="0" pref="137" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="descTF" max="32767" attributes="0"/>
+                                  <Component id="evidenceTF" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="amountTF" min="-2" pref="104" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="statusLB" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="statusTF" min="-2" pref="155" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="invoiceTF2" pref="104" max="32767" attributes="0"/>
+                                                  <Component id="resTF" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="unitN" min="-2" pref="62" max="-2" attributes="0"/>
+                                                  <Component id="bank" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="paymentDateTF" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Component id="paymentDate1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pymNoTF" max="32767" attributes="0"/>
+                                          <Component id="unitTF" max="32767" attributes="0"/>
+                                          <Component id="bankTF" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="rejectBTN" max="32767" attributes="0"/>
+                                  <Component id="approveBTN" min="-2" pref="95" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -660,15 +661,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="invoice2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="invoiceTF2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bank" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="bankTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="invoice2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="invoiceTF2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bank" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="bankTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="resident" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
@@ -680,28 +681,34 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="paymentDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="paymentDateTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="paymentDate1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="pymNoTF" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="desc" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="evidenceTF" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="desc2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="descTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="statusTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="statusLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="amountTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="amount" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="approveBTN" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="rejectBTN" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="amount" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="amountTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="statusLB" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="statusTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -717,19 +724,31 @@
                 <Component class="javax.swing.JTable" name="paymentTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="0">
+                      <Table columnCount="10" rowCount="0">
                         <Column editable="false" title="Invoice No." type="java.lang.String"/>
                         <Column editable="false" title="Submission Date" type="java.lang.String"/>
                         <Column editable="false" title="Unit No." type="java.lang.String"/>
                         <Column editable="false" title="Received From" type="java.lang.String"/>
                         <Column editable="false" title="Bank" type="java.lang.String"/>
+                        <Column editable="false" title="Description" type="java.lang.String"/>
                         <Column editable="false" title="Amount" type="java.lang.String"/>
                         <Column editable="false" title="Evidence" type="java.lang.String"/>
                         <Column editable="false" title="Status" type="java.lang.String"/>
+                        <Column editable="false" title="Payment No." type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -834,7 +853,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Bank"/>
+                <Property name="text" type="java.lang.String" value="Bank Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="amount">
@@ -898,6 +917,32 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="statusTF">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="paymentDate1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="16" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Payment No."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="pymNoTF">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="desc2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="16" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Description"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="descTF">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>

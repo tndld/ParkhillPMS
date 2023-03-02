@@ -24,40 +24,56 @@ public abstract class Transaction {
         this.docDate = date;
     }
     
-    public Transaction(String unit, String invNo){
+    public Transaction(String invNo){
         this.invoiceNo = invNo;
-        this.unit = unit;
-    }
-    
-    public void setNewInvNo(String year){
+        
         String filePath = "database\\invoice.txt";
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
-            br.readLine();
-            int count = 0;
             String line;
             while ((line = br.readLine()) != null){
-                String[] invInfo = line.split(":");
-                String date = invInfo[1];
-                String[] dateInfo = date.split(" ");
-                String y = dateInfo[2];
-                if (y.equals(year)){
-                    count += 1;
+                String[] info = line.split(":");
+                if (info[0].equals(invNo)){
+                    this.unit = info[2];
+                    this.name = info[3];
+                    break;
                 }
             }
             br.close();
-            int next = count + 1;
-            String newNo = "Inv" + year + "-" + String.valueOf(next);
-            
-            this.invoiceNo = newNo;
-            
-        } catch (IOException ex) {
-            System.out.println("IO Exception on set new invoice no.: " + ex);
-            
-        } catch(Exception ex) {
-            System.out.println("Exception occur when setting new invoice no. " + ex);
+        } catch (IOException ex){
+            System.out.println("Exception Occur :" + ex);
         }
     }
+    
+//    public void setNewInvNo(String year){
+//        String filePath = "database\\invoice.txt";
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(filePath));
+//            br.readLine();
+//            int count = 0;
+//            String line;
+//            while ((line = br.readLine()) != null){
+//                String[] invInfo = line.split(":");
+//                String date = invInfo[1];
+//                String[] dateInfo = date.split(" ");
+//                String y = dateInfo[2];
+//                if (y.equals(year)){
+//                    count += 1;
+//                }
+//            }
+//            br.close();
+//            int next = count + 1;
+//            String newNo = "Inv" + year + "-" + String.valueOf(next);
+//            
+//            this.invoiceNo = newNo;
+//            
+//        } catch (IOException ex) {
+//            System.out.println("IO Exception on set new invoice no.: " + ex);
+//            
+//        } catch(Exception ex) {
+//            System.out.println("Exception occur when setting new invoice no. " + ex);
+//        }
+//    }
     
     public void setExistInvNo(String inv) {
         this.invoiceNo = inv;
@@ -91,5 +107,6 @@ public abstract class Transaction {
         return this.docDate;
     }
     
-    public abstract double calTotal();
+//    public abstract double calTotal();
+    public abstract void setDocNo();
 }

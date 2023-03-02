@@ -1,4 +1,4 @@
-Invoice No.:Submission Date:Unit No.:Received From:Bank:Amount:Evidence:Status
-Inv2023-6:1 Mar 2023:B-07-01:Low Jye Shan:Public Bank:535.27:B-07-01_Low Jye Shan.png:Pending
-Inv2023-4:1 Mar 2023:C-07-02:Hoong Jhen Wei:CIMB Bank:221.2:C-07-02_Hoong Jhen Wei.png:Fail
-Inv2023-11:2 Mar 2023:D-07-01:Teo Su Yin:Maybank:0.01:D-07-01_Teo Su Yin.jpg:Fail
+Invoice No.:Submission Date:Unit No.:Received From:Bank:Description:Amount:Evidence:Status:Payment No.
+Inv2023-2:2 Mar 2023:B-07-01:Low Jye Shan:Maybank:Sinking Fund - February:0.05:maybank.jpg:Fail:P2023-1
+Inv2023-5:3 Mar 2023:C1-7099:Chee Yan Heng:Public Bank:Shop Lot Rental - March:2000.0:public.png:Pending:P2023-2
+Inv2023-6:3 Mar 2023:2:Vendor 2:CIMB:Water Bill - February:0.01:cimb.png:Fail:P2023-3

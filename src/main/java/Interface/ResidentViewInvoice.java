@@ -5,6 +5,7 @@
 package Interface;
 
 import User.Resident;
+import User.Vendor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -349,7 +350,7 @@ public class ResidentViewInvoice extends getActiveUser {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        billtabbedPane.addTab("Pending Fee", jPanel2);
+        billtabbedPane.addTab("Oustanding Fee", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -391,17 +392,30 @@ public class ResidentViewInvoice extends getActiveUser {
         
         if (!(invoiceTF.getText()).equals("")){
             int count = 0;
-            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
-            String currentUser = res.getFullName();
-            String unitNo = res.getUnitNo();
+            String currentUser = "";
+            String unit = "";
 
             String filePath = "database\\invoice.txt";
             String tempFile = "database\\tempInvItem.txt";
+            String typeFile = "database\\userType.txt";
             try {
+                BufferedReader bt = new BufferedReader(new FileReader(typeFile));
+                String type = bt.readLine();
+                if (type.equals("resident")){
+                    Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
+                    currentUser = res.getFullName();
+                    unit = res.getUnitNo();
+                } else if (type.equals("vendor")){
+                    Vendor ven = new Vendor(getActiveUser()[0], getActiveUser()[1]);
+                    currentUser = ven.getFullName();
+                    unit = ven.getLotNo();
+                }
+                bt.close();
+            
                 BufferedReader br = new BufferedReader(new FileReader(filePath));
                 BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
 
-                bw.write(invoiceTF.getText() + ":" + currentUser + ":" + unitNo 
+                bw.write(invoiceTF.getText() + ":" + currentUser + ":" + unit 
                         + ":" + issueDateTF.getText() + "\n");
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -433,14 +447,12 @@ public class ResidentViewInvoice extends getActiveUser {
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
         
         if (!(invoiceTF1.getText()).equals("")){
-            Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
-            String name = res.getFullName();
-            String unit = res.getUnitNo();
+            String desc = descTF2.getText();
 
             String tempFile = "database\\tempPaymentInfo.txt";
             try {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-                bw.write(invoiceTF1.getText() + ":" + unit + ":" + name + ":");
+                bw.write(invoiceTF1.getText() + ":" + desc + ":");
                 bw.close();
             } catch (IOException ex) {
                 System.out.println("Exception occur when payment button clicked: " + ex);
@@ -509,60 +521,76 @@ public class ResidentViewInvoice extends getActiveUser {
     
     private void setInvoiceTable(){
         
-        Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
-        String currentUser = res.getFullName();
+        
+        String currentUser = "";
         
         String filePath = "database\\invoice.txt";
         String tempFile = "database\\tempActiveResInv.txt";
         String tempFile2 = "database\\tempUnpaidActiveResInv.txt";
+        String typeFile = "database\\userType.txt";
+        
         try {
-            BufferedReader br = new BufferedReader (new FileReader(filePath));
-            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-            BufferedWriter bw2 = new BufferedWriter(new FileWriter(tempFile2));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] invInfo = line.split(":");
-                String user = invInfo[3];
-                
-                if (user.equals(currentUser)){
-                    bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
-                            invInfo[4] + ":" + invInfo[5] + ":" + 
-                            invInfo[6] + ":" + invInfo[7] + "\n");
-                    
-                    if(invInfo[7].equals("Unpaid")) {
-                        bw2.write(invInfo[0] + ":" + invInfo[1] + ":" + 
-                            invInfo[4] + ":" + invInfo[5] + ":" + 
-                            invInfo[6] + "\n");
+            BufferedReader bt = new BufferedReader(new FileReader(typeFile));
+            String type = bt.readLine();
+            if (type.equals("resident")){
+                Resident res = new Resident(getActiveUser()[0], getActiveUser()[1]);
+                currentUser = res.getFullName();
+            } else if (type.equals("vendor")){
+                Vendor ven = new Vendor(getActiveUser()[0], getActiveUser()[1]);
+                currentUser = ven.getFullName();
+            }
+            bt.close();
+            
+            if (currentUser != ""){
+                BufferedReader br = new BufferedReader (new FileReader(filePath));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+                BufferedWriter bw2 = new BufferedWriter(new FileWriter(tempFile2));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] invInfo = line.split(":");
+                    String user = invInfo[3];
+
+                    if (user.equals(currentUser)){
+                        bw.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                                invInfo[4] + ":" + invInfo[5] + ":" + 
+                                invInfo[6] + ":" + invInfo[7] + "\n");
+
+                        if(invInfo[7].equals("Unpaid")) {
+                            bw2.write(invInfo[0] + ":" + invInfo[1] + ":" + 
+                                invInfo[4] + ":" + invInfo[5] + ":" + 
+                                invInfo[6] + "\n");
+                        }
+    //                    
                     }
-//                    
                 }
-            }
-            br.close();
-            bw.close();
-            bw2.close();
+                br.close();
+                bw.close();
+                bw2.close();
+
+                BufferedReader br2 = new BufferedReader(new FileReader(tempFile));
+                DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
+                Object[] record = br2.lines().toArray();
+                for (int i = 0; i < record.length; i++){
+                    String line2 = record[i].toString().trim();
+                    String[] recInfo = line2.split(":");
+                    invoice.addRow(recInfo);
+                }
+                br2.close();
+                new File(tempFile).delete();
+
+                BufferedReader br3 = new BufferedReader(new FileReader(tempFile2));
+                DefaultTableModel pending = (DefaultTableModel)pendingTable.getModel();
+                Object[] record2 = br3.lines().toArray();
+                for (int i = 0; i < record2.length; i++){
+                    String line3 = record2[i].toString().trim();
+                    String[] recInfo = line3.split(":");
+    //                String[] recInfo = Arrays.copyOfRange(info, 0, info.length-1);
+                    pending.addRow(recInfo);
+                }
+                br3.close();
+                new File(tempFile2).delete();
+            } 
             
-            BufferedReader br2 = new BufferedReader(new FileReader(tempFile));
-            DefaultTableModel invoice = (DefaultTableModel)invoiceTable.getModel();
-            Object[] record = br2.lines().toArray();
-            for (int i = 0; i < record.length; i++){
-                String line2 = record[i].toString().trim();
-                String[] recInfo = line2.split(":");
-                invoice.addRow(recInfo);
-            }
-            br2.close();
-            new File(tempFile).delete();
-            
-            BufferedReader br3 = new BufferedReader(new FileReader(tempFile2));
-            DefaultTableModel pending = (DefaultTableModel)pendingTable.getModel();
-            Object[] record2 = br3.lines().toArray();
-            for (int i = 0; i < record2.length; i++){
-                String line3 = record2[i].toString().trim();
-                String[] recInfo = line3.split(":");
-//                String[] recInfo = Arrays.copyOfRange(info, 0, info.length-1);
-                pending.addRow(recInfo);
-            }
-            br3.close();
-            new File(tempFile2).delete();
             
         } catch (IOException ex) {
             System.out.println("Exception occur: " + ex);

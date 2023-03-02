@@ -404,7 +404,7 @@ public class InvoicePage extends javax.swing.JFrame {
             System.out.println("Exception occur when getting invoice item: " + ex);
         }
         
-        Invoice inv = new Invoice(unit.getText(), invoiceTF.getText());
+        Invoice inv = new Invoice(invoiceTF.getText());
         String total = String.valueOf(inv.calTotal());
         totalTF.setText(total);
     }

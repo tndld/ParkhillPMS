@@ -244,7 +244,11 @@ public class VendorLoginPage extends javax.swing.JFrame {
             try {
                 FileWriter myWriter = new FileWriter("database\\activeUser.txt"); //open the file
                 myWriter.write(userName + "," + pass);
+                FileWriter myWriter2 = new FileWriter("database\\userType.txt");
+                myWriter2.write("vendor");
+                
                 myWriter.close();
+                myWriter2.close();
                 
             } catch (IOException e) {
                 e.printStackTrace();

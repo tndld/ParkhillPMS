@@ -37,11 +37,12 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 1000.00, 0.01);
+//        Set spinner accept double
+        SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 10000.00, 0.01);
         amountSpinner.setModel(interval);
-//        By default choose today
+        
+//        By default choose today, then limit to select today and future only
         dueDateChooser.setDate(new Date());
-//        Limit to select today and future only
         ZoneId def = ZoneId.systemDefault();
         LocalDate local = LocalDate.now();
         Date d = Date.from(local.atStartOfDay(def).toInstant());
@@ -101,6 +102,7 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         itemTable = new javax.swing.JTable();
         dueDateChooser = new com.toedter.calendar.JDateChooser();
+        dltBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,6 +178,13 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(itemTable);
 
+        dltBTN.setText("Delete Item");
+        dltBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dltBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,14 +218,15 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
                         .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(issueInvoiceTitle)))
+                        .addComponent(issueInvoiceTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(dltBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addItemBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(issueBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(addItemBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(issueBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +261,8 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addItemBTN)
-                    .addComponent(issueBTN))
+                    .addComponent(issueBTN)
+                    .addComponent(dltBTN))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -292,7 +303,6 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
         String tempFile = "database\\tempInvFile.txt";
         try {
             PrintWriter pw = new PrintWriter(new File(tempFile));
-            pw.println(unit + "," + name + "," + month + "," + issueDate + "," + dueDate);
 //            Get item record in table
             DefaultTableModel model = (DefaultTableModel)itemTable.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -310,7 +320,7 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
             System.out.println("Exception occur when getting issuance form data : " + ex);
         }
         
-        Invoice inv = new Invoice(unit, name, issueDate, "", 0.0, dueDate);
+        Invoice inv = new Invoice(unit, name, issueDate, month, dueDate);
         if (inv.addInvoice()) {
             JOptionPane.showMessageDialog(this, 
                         "Invoice Successfully Issued!");
@@ -332,6 +342,16 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
     private void descComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descComboActionPerformed
+
+    private void dltBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBTNActionPerformed
+        int selectedRow = itemTable.getSelectedRow();
+        if (selectedRow != -1){
+            DefaultTableModel model = (DefaultTableModel)itemTable.getModel();
+            model.removeRow(selectedRow);
+        }
+        
+        
+    }//GEN-LAST:event_dltBTNActionPerformed
     
     /**
      * @param args the command line arguments
@@ -374,6 +394,7 @@ public class AccIssueResInvoice extends javax.swing.JFrame {
     private javax.swing.JSpinner amountSpinner;
     private javax.swing.JLabel desc;
     private javax.swing.JComboBox<String> descCombo;
+    private javax.swing.JButton dltBTN;
     private javax.swing.JLabel due;
     private com.toedter.calendar.JDateChooser dueDateChooser;
     private javax.swing.JButton homepageBTN;

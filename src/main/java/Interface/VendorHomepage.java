@@ -35,60 +35,110 @@ public class VendorHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        vendorProfileBTN = new javax.swing.JButton();
-        logoutBtn = new javax.swing.JButton();
+        resAccTitle = new javax.swing.JLabel();
+        setting = new javax.swing.JComboBox<>();
+        account = new javax.swing.JLabel();
+        billBTN = new javax.swing.JButton();
+        paymentBTN = new javax.swing.JButton();
+        receiptBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        vendorProfileBTN.setText("Profile Page");
-        vendorProfileBTN.addActionListener(new java.awt.event.ActionListener() {
+        resAccTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
+        resAccTitle.setText("Vendor Homepage");
+
+        setting.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Setting", "User Profile", "Log Out" }));
+        setting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vendorProfileBTNActionPerformed(evt);
+                settingActionPerformed(evt);
             }
         });
 
-        logoutBtn.setText("Logout");
-        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+        account.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
+        account.setText("Account");
+
+        billBTN.setText("Bill");
+        billBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutBtnActionPerformed(evt);
+                billBTNActionPerformed(evt);
             }
         });
+
+        paymentBTN.setText("My Payment");
+        paymentBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentBTNActionPerformed(evt);
+            }
+        });
+
+        receiptBTN.setText("My Receipt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(392, Short.MAX_VALUE)
-                        .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vendorProfileBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(resAccTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(billBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(paymentBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(receiptBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(account)))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logoutBtn)
-                .addGap(38, 38, 38)
-                .addComponent(vendorProfileBTN)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addComponent(resAccTitle)
+                .addGap(5, 5, 5)
+                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(account, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(billBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paymentBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(receiptBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vendorProfileBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorProfileBTNActionPerformed
-        this.setVisible(false);
-        new VendorProfile().setVisible(true);
-    }//GEN-LAST:event_vendorProfileBTNActionPerformed
+    private void settingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingActionPerformed
+        int selected = setting.getSelectedIndex();
+        if (selected == 1){
+            this.setVisible(false);
+            new VendorProfile().setVisible(true);
+        }else if (selected == 2){
+            logout();
+        }
+    }//GEN-LAST:event_settingActionPerformed
 
-    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        logout();
-    }//GEN-LAST:event_logoutBtnActionPerformed
+    private void billBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billBTNActionPerformed
+        this.setVisible(false);
+        new ResidentViewInvoice().setVisible(true);
+    }//GEN-LAST:event_billBTNActionPerformed
+
+    private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
+        this.setVisible(false);
+        new ResidentViewPayment().setVisible(true);
+    }//GEN-LAST:event_paymentBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,7 +190,11 @@ public class VendorHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton logoutBtn;
-    private javax.swing.JButton vendorProfileBTN;
+    private javax.swing.JLabel account;
+    private javax.swing.JButton billBTN;
+    private javax.swing.JButton paymentBTN;
+    private javax.swing.JButton receiptBTN;
+    private javax.swing.JLabel resAccTitle;
+    private javax.swing.JComboBox<String> setting;
     // End of variables declaration//GEN-END:variables
 }

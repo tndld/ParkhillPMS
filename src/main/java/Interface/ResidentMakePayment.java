@@ -42,7 +42,7 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         
         uploadStatus.setBackground(new java.awt.Color(0,0,0,1));
         fileNameTF.setBackground(new java.awt.Color(0,0,0,1));
-        SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 1000.00, 0.01);
+        SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 10000.00, 0.01);
         amountSpinner.setModel(interval);
     }
 
@@ -65,7 +65,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         evidenceBTN = new javax.swing.JButton();
         uploadStatus = new javax.swing.JTextField();
         submitBTN = new javax.swing.JButton();
-        note = new javax.swing.JLabel();
         fileNameTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,8 +106,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
             }
         });
 
-        note.setText("Note: Rename to UNIT_NAME");
-
         fileNameTF.setEditable(false);
         fileNameTF.setBorder(null);
         fileNameTF.setFocusable(false);
@@ -142,7 +139,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(fileNameTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(evidenceBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
@@ -169,11 +165,9 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(evidence, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(evidenceBTN))
-                .addGap(3, 3, 3)
-                .addComponent(note)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fileNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(18, 29, Short.MAX_VALUE)
                 .addComponent(uploadStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(submitBTN)
@@ -201,12 +195,13 @@ public class ResidentMakePayment extends javax.swing.JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(tempFile));
                 String line = br.readLine();
                 String inv = line.split(":")[0];
-                String unit = line.split(":")[1];
-                String name = line.split(":")[2];
+//                String unit = line.split(":")[1];
+//                String name = line.split(":")[2];
+                String desc = line.split(":")[1];
                 br.close();
                 new File(tempFile).delete();
                 
-                Payment pym = new Payment(unit, inv, name, today, bankName, amt, evi);
+                Payment pym = new Payment(inv, desc, today, bankName, amt, evi);
                 if (pym.addPayment()) {
                     JOptionPane.showMessageDialog(this, 
                         "Payment Successfully Submitted!\nReceipt will be issued once we verify your payment.");
@@ -300,7 +295,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
     private javax.swing.JButton evidenceBTN;
     private javax.swing.JTextField fileNameTF;
     private javax.swing.JLabel issueInvoiceTitle;
-    private javax.swing.JLabel note;
     private javax.swing.JButton submitBTN;
     private javax.swing.JTextField uploadStatus;
     // End of variables declaration//GEN-END:variables

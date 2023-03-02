@@ -81,6 +81,7 @@ public class ReceiptPage extends javax.swing.JFrame {
         issueByTF = new javax.swing.JTextField();
         paymentModeTF = new javax.swing.JLabel();
         Note = new javax.swing.JLabel();
+        jalan1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,7 +151,6 @@ public class ReceiptPage extends javax.swing.JFrame {
         CusName.setEditable(false);
         CusName.setBackground(new java.awt.Color(255, 255, 255));
         CusName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        CusName.setText("Low Jye Shan");
         CusName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CusName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CusName.setFocusable(false);
@@ -164,7 +164,6 @@ public class ReceiptPage extends javax.swing.JFrame {
         unit.setEditable(false);
         unit.setBackground(new java.awt.Color(255, 255, 255));
         unit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        unit.setText("B-7-1, Parkhill Residence,");
         unit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         unit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         unit.setFocusable(false);
@@ -215,7 +214,7 @@ public class ReceiptPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(chargesTable);
 
         total.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        total.setText("Total Current Charges (RM)");
+        total.setText("Total Amount Paid (RM)");
 
         totalTF.setEditable(false);
         totalTF.setBackground(new java.awt.Color(255, 255, 255));
@@ -272,6 +271,9 @@ public class ReceiptPage extends javax.swing.JFrame {
 
         Note.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         Note.setText("This is a computer generated document. No signature is required.");
+
+        jalan1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jalan1.setText(", Parkhill Residence,");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -332,9 +334,12 @@ public class ReceiptPage extends javax.swing.JFrame {
                                                     .addComponent(area))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(unit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                                    .addComponent(CusName, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(CusName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jalan1)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -388,7 +393,9 @@ public class ReceiptPage extends javax.swing.JFrame {
                     .addComponent(unit1)
                     .addComponent(CusName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
-                .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jalan1))
                 .addGap(2, 2, 2)
                 .addComponent(jalan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -509,6 +516,7 @@ public class ReceiptPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jalan;
+    private javax.swing.JLabel jalan1;
     private javax.swing.JLabel paymentMode;
     private javax.swing.JLabel paymentModeTF;
     private javax.swing.JLabel postcode;

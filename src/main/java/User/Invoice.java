@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  *
@@ -23,23 +26,18 @@ public class Invoice extends Transaction{
     private String dueDate;
     private String status;
     
-    public Invoice(String unit, String name, String date, String desc, 
-            double amount, String due){
+    public Invoice(String unit, String name, String date, String desc, String due){
         
         super(unit, name, date);
         
-        String[] dateInfo = date.split(" ");
-        String year = dateInfo[2];
-        super.setNewInvNo(year);
-        
+        this.setDocNo();
         this.desciption = desc;
-        this.amount = amount;
         this.dueDate = due;
         this.status = "Unpaid";
     }
     
-    public Invoice(String unit, String invNo) {
-        super(unit, invNo);
+    public Invoice(String invNo) {
+        super(invNo);
         String filePath = "database\\invoice.txt";
         try{
             BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -48,10 +46,31 @@ public class Invoice extends Transaction{
             while ((line = br.readLine()) != null){
                 String[] invInfo = line.split(":");
                 if (invInfo[0].equals(invNo)){
-                    super.setExistInvNo(invInfo[0]);
                     super.setDocDate(invInfo[1]);
-                    super.setUnit(invInfo[2]);
-                    super.setName(invInfo[3]);
+                    this.desciption = invInfo[4];
+                    this.amount = Double.parseDouble(invInfo[5]);
+                    this.dueDate = invInfo[6];
+                    this.status = invInfo[7];
+                }
+            }
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
+    }
+    
+    public Invoice(String invNo, String desc) {
+        super(invNo);
+        String filePath = "database\\invoice.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            br.readLine();
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] invInfo = line.split(":");
+                if (invInfo[0].equals(invNo) && invInfo[4].equals(desc)){
+                    super.setDocDate(invInfo[1]);
                     this.desciption = invInfo[4];
                     this.amount = Double.parseDouble(invInfo[5]);
                     this.dueDate = invInfo[6];
@@ -106,27 +125,18 @@ public class Invoice extends Transaction{
             BufferedReader br = new BufferedReader(new FileReader(tempFile));
             BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
             
-            String general = br.readLine();
-            String[] generalInfo = general.split(",");
-            String unit = generalInfo[0];
-            String name = generalInfo[1];
-            String month = generalInfo[2];
-            String issueDate = generalInfo[3];
-            String dueDate = generalInfo[4];
-            
             String line;
             while ((line = br.readLine()) != null){
                 String[] item = line.split(",");
-                String desc = item[0];
+                String desc = item[0] + " - " + this.desciption;
+                this.desciption = desc;
                 String amt = item[1];
-                
-                Invoice inv = new Invoice(unit, name, issueDate, desc, 
-                        Double.parseDouble(amt), dueDate);
-                
-                bw.write(inv.getInvNo() + ":" + inv.getDocDate() + ":" + 
-                        inv.getUnit() + ":" + inv.getName() + ":" + 
-                        inv.desciption + " - " + month + ":" + inv.amount + ":" + inv.dueDate 
-                        + ":" + inv.status + "\n");
+                this.amount = Double.parseDouble(amt);
+
+                bw.write(this.getInvNo() + ":" + this.getDocDate() + ":" + 
+                        this.getUnit() + ":" + this.getName() + ":" + 
+                        this.desciption + ":" + this.amount + ":" + 
+                        this.dueDate + ":" + this.status + "\n");
             }
             br.close();
             bw.close();
@@ -143,7 +153,50 @@ public class Invoice extends Transaction{
         }
     }
     
-    @Override
+    public boolean updateInvoiceStatus(String stat){
+        String filePath = "database\\invoice.txt";
+        String tempFile = "database\\tempInv.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] invInfo = line.split(":");
+                String invNo = invInfo[0];
+                String item = invInfo[4];
+                if (invNo.equals(this.getInvNo()) && item.equals(this.getDesc())){
+                    this.setStatus(stat);
+                    pw.println(this.getInvNo() + ":" + this.getDocDate() + ":" + 
+                        this.getUnit() + ":" + this.getName() + ":" + 
+                        this.desciption + ":" + this.amount + ":" + 
+                        this.dueDate + ":" + this.status);
+                } else {
+                    pw.println(line);
+                }
+            }
+            br.close();
+            pw.flush();
+            pw.close();
+            
+            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
+            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
+            String copy;
+            while ((copy = br2.readLine()) != null){
+                p2.println(copy);
+            }
+            br2.close();
+            p2.close();
+            File f = new File(tempFile);
+            f.delete();
+            return true;
+            
+        } catch(IOException ex){
+            System.out.println("Exception occurs when updating invoice status: " + ex);
+            return false;
+        }
+        
+    }
+    
     public double calTotal(){
         String filePath = "database\\tempInvItem.txt";
         double total = 0;
@@ -164,6 +217,37 @@ public class Invoice extends Transaction{
         } catch (Exception ex) {
             System.out.println("Exception occur when getting issuance form data : " + ex);
             return 0;
+        }
+    }
+    
+    @Override
+    public void setDocNo(){
+        String filePath = "database\\invoice.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            br.readLine();
+            int count = 0;
+            String line;
+            String year = DateFormat.getDateInstance().format(new Date()).split(" ")[2];
+            while ((line = br.readLine()) != null){
+                String[] invInfo = line.split(":");
+                String current = invInfo[0];
+                year = invInfo[1].split(" ")[2];
+                String[] idInfo = current.split("-");
+                int no = Integer.parseInt(idInfo[1]);
+                count = no;
+            }
+            br.close();
+            int next = count + 1;
+            String newNo = "Inv" + year + "-" + String.valueOf(next);
+            
+            super.setExistInvNo(newNo);
+            
+        } catch (IOException ex) {
+            System.out.println("IO Exception on set new invoice no.: " + ex);
+            
+        } catch(Exception ex) {
+            System.out.println("Exception occur when setting new invoice no. " + ex);
         }
     }
     
