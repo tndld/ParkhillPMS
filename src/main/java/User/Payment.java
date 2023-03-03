@@ -37,17 +37,6 @@ public class Payment extends Transaction{
         this.status = "Pending";
     }
     
-//    public Payment(String unit, String invNo, String name, 
-//            String day, String bank, double amt, String evi){
-//        super(unit, invNo);
-//        super.setName(name);
-//        super.setDocDate(day);
-//        this.bank = bank;
-//        this.amount = amt;
-//        this.evidence = evi;
-//        this.status = "Pending";
-//    }
-    
     public Payment(String invNo, String docNo, String desc){
         super(invNo);
         this.paymentNo = docNo;
@@ -77,33 +66,6 @@ public class Payment extends Transaction{
             System.out.println("Exception occurs when retrieving payment info: " + ex);
         }
     }
-    
-//    public Payment(String invNo){
-//        super("", invNo);
-//        
-//        String filePath = "database\\payment.txt";
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader(filePath));
-//            String line;
-//            while ((line = br.readLine()) != null){
-//                String[] pymInfo = line.split(":");
-//                String inv = pymInfo[0];
-//                if (inv.equals(invNo)){
-//                    super.setDocDate(pymInfo[1]);
-//                    super.setUnit(pymInfo[2]);
-//                    super.setName(pymInfo[3]);
-//                    this.bank = pymInfo[4];
-//                    this.amount = Double.parseDouble(pymInfo[5]);
-//                    this.evidence = pymInfo[6];
-//                    this.status = pymInfo[7];
-//                }    
-//            }
-//            br.close();
-//            
-//        } catch(IOException ex){
-//            System.out.println("Exception occurs when retrieving payment info: " + ex);
-//        }
-//    }
     
     public String getBank() {
         return this.bank;
@@ -216,48 +178,6 @@ public class Payment extends Transaction{
         }
         
     }
-    
-//    public boolean updatePaymentStatus(String invNo){
-//        String filePath = "database\\payment.txt";
-//        String tempFile = "database\\tempPayment.txt";
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader(filePath));
-//            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)));
-//            String line;
-//            while ((line = br.readLine()) != null){
-//                String[] pymInfo = line.split(":");
-//                String inv = pymInfo[0];
-//                if (inv.equals(invNo)){
-//                    pw.println(super.getInvNo() + ":" + super.getDocDate() 
-//                            + ":" + super.getUnit() + ":" + super.getName() 
-//                            + ":" + this.bank + ":" + this.desc + ":" + this.amount + ":" 
-//                            + this.evidence + ":" + this.status + ":" + this.paymentNo);
-//                } else {
-//                    pw.println(line);
-//                }
-//            }
-//            br.close();
-//            pw.flush();
-//            pw.close();
-//            
-//            BufferedReader br2 = new BufferedReader (new FileReader(tempFile));
-//            PrintWriter p2 = new PrintWriter (new BufferedWriter(new FileWriter(filePath)));
-//            String copy;
-//            while ((copy = br2.readLine()) != null){
-//                p2.println(copy);
-//            }
-//            br2.close();
-//            p2.close();
-//            File f = new File(tempFile);
-//            f.delete();
-//            
-//            return true;
-//            
-//        } catch(IOException ex){
-//            System.out.println("Exception occurs when retrieving payment info: " + ex);
-//            return false;
-//        }
-//    }
     
     @Override
     public void setDocNo(){

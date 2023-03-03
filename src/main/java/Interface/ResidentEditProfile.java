@@ -132,11 +132,11 @@ public class ResidentEditProfile extends getActiveUser {
                             .addComponent(emailTF)
                             .addComponent(fullNameTF, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(saveBtn)
-                .addGap(205, 205, 205))
+                .addGap(220, 220, 220))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

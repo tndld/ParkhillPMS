@@ -105,14 +105,6 @@ public class Resident extends User {
         this.password = password;
     }
     
-//    public void updateResident(String username, String fullName, String email, String phone, String unitNum){
-//        Resident res = new Resident(username, password);
-//        res.fullName = fullName;
-//        res.email = email;
-//        res.phoneNo = phone;
-//        res.unitNo = unitNum;
-//    }
-//    
     public void editDetails(String uname, String pw, String fname, String email, String phone){
         
 //        Change value in constructor

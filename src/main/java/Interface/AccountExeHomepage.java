@@ -119,16 +119,6 @@ public class AccountExeHomepage extends javax.swing.JFrame {
     private void issueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueBTNActionPerformed
         this.setVisible(false);
         new AccIssueResInvoice().setVisible(true);
-//        String filePath = "database\\accExeManageUser.txt";
-//        try {
-//            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
-//            pw.println("Resident");
-//            pw.close();
-//        } catch (IOException ex) {
-//            System.out.println("I/O Exception occur when recording the user role being managed: " + ex);
-//        } catch (Exception ex) {
-//            System.out.println("Unkown exception: " + ex);
-//        }
     }//GEN-LAST:event_issueBTNActionPerformed
 
     private void viewBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBTNActionPerformed
