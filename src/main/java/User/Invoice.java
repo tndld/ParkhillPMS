@@ -126,10 +126,10 @@ public class Invoice extends Transaction{
             BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
             
             String line;
+            String month = this.desciption;
             while ((line = br.readLine()) != null){
                 String[] item = line.split(",");
-                String desc = item[0] + " - " + this.desciption;
-                this.desciption = desc;
+                this.desciption = item[0] + " - " + month;
                 String amt = item[1];
                 this.amount = Double.parseDouble(amt);
 
