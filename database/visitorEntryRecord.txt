@@ -1,2 +1,2 @@
-entryID;unitNo;residentName;residentPhone;visitorName;visitorPhone;visitorCarPlate;inDate;outDate;
-ET1;B-01-01;Lily;0189876789;Yan Ling;0187678965;AKM6789;27 Feb;28 Feb;
+Visitor,B-07-01,Low Jye Shan,0127063702,Teo Su Yin,020103-01-2626,JQW1234,26 Feb 2023,26 Feb 2023,2 hour(s),jshan022023-02-25T18:03:25.938631,5,7,
+Overnight,B-07-01,Low Jye Shan,0127063702,Hoong Jhen Wei,021126-10-2929,AKW5566,27 Feb 2023,2 Mar 2023,3 day(s),jshan022023-02-25T18:06:12.868198200,5pm,100,

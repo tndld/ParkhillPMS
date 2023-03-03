@@ -4,6 +4,20 @@
  */
 package Interface;
 
+import User.Guard;
+import java.awt.Dimension;
+import static java.awt.SystemColor.info;
+import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Asus
@@ -15,6 +29,38 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
      */
     public ViewVisitorEntry() {
         initComponents();
+        
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
+        File file = new File("database\\visitorEntryRecord.txt");
+        
+        DefaultTableModel model = (DefaultTableModel) visitorEntryTable.getModel();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String currentLine;
+            while ((currentLine = br.readLine()) != null){
+                Object [] entryInfo = currentLine.split(",");
+                String[] dataArray = {entryInfo[10].toString(),
+                                      entryInfo[0].toString(),
+                                      entryInfo[1].toString(),
+                                      entryInfo[2].toString(),
+                                      entryInfo[3].toString(),
+                                      entryInfo[4].toString(),
+                                      entryInfo[5].toString(),
+                                      entryInfo[6].toString(),
+                                      entryInfo[7].toString(),
+                                      entryInfo[8].toString(),
+                                      entryInfo[9].toString(),
+                                      entryInfo[11].toString(),
+                                      entryInfo[12].toString()};
+                model.addRow(dataArray);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ViewVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -28,10 +74,14 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
 
         UserProfileTitle = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         visitorEntryTable = new javax.swing.JTable();
-        addBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
+        searchTF = new javax.swing.JTextField();
+        residentUsernameLabel2 = new javax.swing.JLabel();
+        inTimeLabel = new javax.swing.JLabel();
+        outTimeTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,32 +95,6 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
             }
         });
 
-        visitorEntryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Unit No", "Resident Name", "Resident Phone", "Visitor Name", "Visitor Phone", "Visitor Car Plate", "In Date", "Out Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        visitorEntryTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(visitorEntryTable);
-
-        addBtn.setText("Add");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
-            }
-        });
-
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,60 +102,157 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
             }
         });
 
+        visitorEntryTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Reference", "Type", "Unit No", "Resident Name", "Resident Phone", "Visitor Name", "Visitor IC", "Visitor Car Plate", "In Date", "Out Date", "Duration", "In Time", "Out Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        visitorEntryTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(visitorEntryTable);
+
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        residentUsernameLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        residentUsernameLabel2.setText("Search:");
+
+        inTimeLabel.setText("Out Time:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 24, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(inTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(outTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(155, 155, 155)
-                            .addComponent(UserProfileTitle))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UserProfileTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
                 .addComponent(UserProfileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn)
-                    .addComponent(updateBtn))
-                .addGap(107, 107, 107))
+                    .addComponent(searchBtn)
+                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateBtn)
+                    .addComponent(inTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new MainMenu().setVisible(true);
+        new GuardHomepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBtnActionPerformed
-
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        // Get the selected row index
+        int row = visitorEntryTable.getSelectedRow();
+        
+        String searchText = searchTF.getText();
+        String outTime = outTimeTF.getText();
+        
+        if (row < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to update.", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            String ref = visitorEntryTable.getValueAt(row, 0).toString();
+
+            Guard guard = new Guard(null,null);
+            if(guard.updateVisitorEntry(ref, outTime)){
+                visitorEntryTable.getModel().setValueAt(outTime, row, 12);
+                JOptionPane.showMessageDialog(this, "Visitor Entry updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                searchTF.setText("");
+                outTimeTF.setText("");
+                
+            } else{
+                JOptionPane.showMessageDialog(this, "Fail to update visitor entry.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+
+        String searchText = searchTF.getText();
+
+        Guard guard = new Guard(null,null);
+        DefaultTableModel searchResultTable = null;
+
+        // check whether the search bar is empty
+        if (searchText.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter a reference to search.", "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }else {
+            searchResultTable = guard.searchVisitorEntry(searchText);
+        }
+
+        // display the search result
+        visitorEntryTable.setModel(searchResultTable);
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +281,8 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -171,9 +294,13 @@ public class ViewVisitorEntry extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserProfileTitle;
-    private javax.swing.JButton addBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JLabel inTimeLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField outTimeTF;
+    private javax.swing.JLabel residentUsernameLabel2;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchTF;
     private javax.swing.JButton updateBtn;
     private javax.swing.JTable visitorEntryTable;
     // End of variables declaration//GEN-END:variables

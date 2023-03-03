@@ -5,6 +5,7 @@
 package Interface;
 
 import User.BuildingManager;
+import User.Guard;
 import User.VisitorPass;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -43,7 +44,10 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
         searchTF = new javax.swing.JTextField();
         residentUsernameLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        searchTable = new javax.swing.JTable();
+        visitorPassTable = new javax.swing.JTable();
+        recordBtn = new javax.swing.JButton();
+        inTimeLabel = new javax.swing.JLabel();
+        inTimeTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +59,7 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
         });
 
         parkhillLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        parkhillLabel.setText("View Visitor Pass Page");
+        parkhillLabel.setText("Visitor Pass Page");
 
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -67,19 +71,19 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
         residentUsernameLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         residentUsernameLabel2.setText("Search:");
 
-        searchTable.setModel(new javax.swing.table.DefaultTableModel(
+        visitorPassTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Reference", "Type", "Unit No", "Resident Name", "Resident Phone", "Visitor Name", "Visitor IC", "Visitor Car Plate", "In Date", "Out Dare", "Duration"
+                "Reference", "Type", "Unit No", "Resident Name", "Resident Phone", "Visitor Name", "Visitor IC", "Visitor Car Plate", "In Date", "Out Date", "Duration"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -90,32 +94,52 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        searchTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(searchTable);
+        visitorPassTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(visitorPassTable);
+
+        recordBtn.setText("Record");
+        recordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordBtnActionPerformed(evt);
+            }
+        });
+
+        inTimeLabel.setText("In Time:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(inTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(recordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(parkhillLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(264, 264, 264)
+                                .addComponent(parkhillLabel)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(18, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,24 +148,26 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(5, 5, 5)
                 .addComponent(parkhillLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchBtn)
-                            .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn)
+                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentUsernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(recordBtn)
+                    .addComponent(inTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        new MainMenu().setVisible(true);
+        new GuardHomepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -149,8 +175,8 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String searchText = searchTF.getText();
-        
-        VisitorPass visitor = new VisitorPass(null,null);
+
+        Guard guard = new Guard(null,null);
         DefaultTableModel searchResultTable = null;       
         
         // check whether the search bar is empty
@@ -158,12 +184,44 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a reference to search.", "Error",
                 JOptionPane.ERROR_MESSAGE);
         }else {
-            searchResultTable = visitor.searchVisitorPass(searchText);
+            searchResultTable = guard.searchVisitorPass(searchText);
         }
         
         // display the search result
-        searchTable.setModel(searchResultTable);
+        visitorPassTable.setModel(searchResultTable);
     }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void recordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordBtnActionPerformed
+        // TODO add your handling code here:
+        String searchText = searchTF.getText();
+        String inTime = inTimeTF.getText();
+        
+        Guard guard = new Guard(null,null);
+        
+        if(searchTF.getText().isEmpty() || inTimeTF.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please ensure search bar and in time input is not empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+        } else {
+            if(guard.checkVisitorEntryRecordExists(searchText)){
+                JOptionPane.showMessageDialog(this, "Record already existed.", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (guard.recordVisitorEntry(searchText, inTime)){
+                JOptionPane.showMessageDialog(this, "Visitor Entry Record Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                inTimeTF.setText("");
+                searchTF.setText("");
+            
+            } else {
+                    JOptionPane.showMessageDialog(this, "Fail to record visitor entry.", "Error", JOptionPane.ERROR_MESSAGE);
+                    inTimeTF.setText("");
+                    searchTF.setText("");
+                }
+            }     
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_recordBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +250,12 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -203,11 +267,14 @@ public class GuardViewVisitorPass extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JLabel inTimeLabel;
+    private javax.swing.JTextField inTimeTF;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel parkhillLabel;
+    private javax.swing.JButton recordBtn;
     private javax.swing.JLabel residentUsernameLabel2;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchTF;
-    private javax.swing.JTable searchTable;
+    private javax.swing.JTable visitorPassTable;
     // End of variables declaration//GEN-END:variables
 }
