@@ -45,36 +45,6 @@ public abstract class Transaction {
         }
     }
     
-//    public void setNewInvNo(String year){
-//        String filePath = "database\\invoice.txt";
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader(filePath));
-//            br.readLine();
-//            int count = 0;
-//            String line;
-//            while ((line = br.readLine()) != null){
-//                String[] invInfo = line.split(":");
-//                String date = invInfo[1];
-//                String[] dateInfo = date.split(" ");
-//                String y = dateInfo[2];
-//                if (y.equals(year)){
-//                    count += 1;
-//                }
-//            }
-//            br.close();
-//            int next = count + 1;
-//            String newNo = "Inv" + year + "-" + String.valueOf(next);
-//            
-//            this.invoiceNo = newNo;
-//            
-//        } catch (IOException ex) {
-//            System.out.println("IO Exception on set new invoice no.: " + ex);
-//            
-//        } catch(Exception ex) {
-//            System.out.println("Exception occur when setting new invoice no. " + ex);
-//        }
-//    }
-    
     public void setExistInvNo(String inv) {
         this.invoiceNo = inv;
     }
