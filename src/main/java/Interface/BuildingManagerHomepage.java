@@ -4,9 +4,11 @@
  */
 package Interface;
 
+import User.AdminExecutive;
 import User.BuildingManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,9 +106,7 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buidingExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buidingExeLogoutBtnActionPerformed
-        BuildingManager manager = new BuildingManager("building", "building123");
-        manager.logout();
-        this.setVisible(false);
+        logout();
     }//GEN-LAST:event_buidingExeLogoutBtnActionPerformed
 
     private void userMgmtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMgmtBtnActionPerformed
@@ -155,6 +155,19 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void logout(){
+        BuildingManager manager = new BuildingManager(null, null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            manager.logout2("database\\activeUser");
+            new LoginMgmt().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buidingExeLogoutBtn;

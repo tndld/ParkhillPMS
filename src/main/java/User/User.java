@@ -66,75 +66,46 @@ public class User extends UserCommon{
         }
         return false;
     }
-    
-    
-    // log out function for management level account
-    public void logout(){
-        int confirmLogout = JOptionPane.showConfirmDialog(null, 
-                "Are you sure want to log out?", "Logout", 
-                JOptionPane.YES_NO_OPTION);
-        if(confirmLogout == JOptionPane.YES_OPTION){
-            this.isLoggedIn = false;
-            
-            JOptionPane.showMessageDialog(null, "You have been logged out.", 
-                    "Logout", JOptionPane.INFORMATION_MESSAGE);
-            
-            new MainMenu().setVisible(true);
-        }
-    }
         
-        // log out function for residents, tenants, and guardss
-//        public void logout2(String filename){
-//        int confirmLogout = JOptionPane.showConfirmDialog(null, 
-//                "Are you sure want to log out?", "Logout", 
-//                JOptionPane.YES_NO_OPTION);
-//        if(confirmLogout == JOptionPane.YES_OPTION){
-//            this.isLoggedIn = false;
-//            try {
-//                 // Open the file in write mode with "truncate" option to delete its content
-//                FileWriter fw = new FileWriter(filename, false);
-//                PrintWriter pw = new PrintWriter(fw, false);
-//                
-//                // Write an empty string to the file to clear its content
-//                pw.flush();
-//                
-//                // Close the writers to release resources
-//                pw.close();
-//                fw.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            JOptionPane.showMessageDialog(null, "You have been logged out.", 
-//                    "Logout", JOptionPane.INFORMATION_MESSAGE);
-//            new MainMenu().setVisible(true);
-//            
-//        } else {
-//        }
-//    }
-        
-        public void logout2(String filename, String file2){
-            try {
-                 // Open the file in write mode with "truncate" option to delete its content
-                FileWriter fw = new FileWriter(filename, false);
-                PrintWriter pw = new PrintWriter(fw, false);
+    public void logout2(String filename, String file2){
+        try {
+            // Open the file in write mode with "truncate" option to delete its content
+            FileWriter fw = new FileWriter(filename, false);
+            PrintWriter pw = new PrintWriter(fw, false);
                 
-                FileWriter fw2 = new FileWriter(file2, false);
-                PrintWriter pw2 = new PrintWriter(fw2, false);
+            FileWriter fw2 = new FileWriter(file2, false);
+            PrintWriter pw2 = new PrintWriter(fw2, false);
                 
-                // Write an empty string to the file to clear its content
-                pw.flush();
-                pw2.flush();
+            // Write an empty string to the file to clear its content
+            pw.flush();
+            pw2.flush();
                 
-                // Close the writers to release resources
-                pw.close();
-                fw.close();
+            // Close the writers to release resources
+            pw.close();
+            fw.close();
                 
-                pw2.close();
-                fw2.close();
-            } catch (IOException e) {
-                 System.out.println("Exception Occurred" + e);
-            }
+            pw2.close();
+            fw2.close();
+                
+        } catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
         }
+     }
+    
+    public void logout(String filename){
+        try {
+            // Open the file in write mode with "truncate" option to delete its content
+            FileWriter fw = new FileWriter(filename, false);
+            PrintWriter pw = new PrintWriter(fw, false);
+                
+            // Close the writers to release resources
+            pw.close();
+            fw.close();
+                
+        } catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
+        }
+     }
     
     public boolean isLoggedIn(){
         return this.isLoggedIn();

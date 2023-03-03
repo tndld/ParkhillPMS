@@ -5,12 +5,14 @@
 package Interface;
 
 import User.AccountExecutive;
+import User.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,9 +112,8 @@ public class AccountExeHomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accExeLogoutBtnActionPerformed
-        AccountExecutive accountExe = new AccountExecutive("account", "account123");
-        accountExe.logout();
-        this.setVisible(false);
+        logout();
+        
     }//GEN-LAST:event_accExeLogoutBtnActionPerformed
 
     private void issueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueBTNActionPerformed
@@ -169,6 +170,19 @@ public class AccountExeHomepage extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void logout(){
+        AccountExecutive accountExe = new AccountExecutive(null, null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            accountExe.logout2("database\\activeUser", "database\\userType.txt");
+            new LoginMgmt().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton accExeLogoutBtn;

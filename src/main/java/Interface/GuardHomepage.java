@@ -4,9 +4,11 @@
  */
 package Interface;
 
+import User.BuildingManager;
 import User.Guard;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,7 +46,7 @@ public class GuardHomepage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mgmtLoginPageLabel.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
-        mgmtLoginPageLabel.setText("Guard Login Page");
+        mgmtLoginPageLabel.setText("Guard  Homepage");
 
         accExeLogoutBtn.setText("Log Out");
         accExeLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -80,12 +82,8 @@ public class GuardHomepage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(mgmtLoginPageLabel)
-                .addContainerGap(140, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(185, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkpointBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(insidentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,15 +96,19 @@ public class GuardHomepage extends javax.swing.JFrame {
                                 .addComponent(updateVisitorEntryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(viewVisitorPassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(183, 183, 183)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(mgmtLoginPageLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(accExeLogoutBtn)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(mgmtLoginPageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(34, 34, 34)
                 .addComponent(viewVisitorPassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateVisitorEntryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,9 +123,7 @@ public class GuardHomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accExeLogoutBtnActionPerformed
-        Guard guard = new Guard(null, null);
-        guard.logout();
-        this.setVisible(false);
+        logout();
     }//GEN-LAST:event_accExeLogoutBtnActionPerformed
 
     private void viewVisitorPassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVisitorPassBtnActionPerformed
@@ -178,6 +178,19 @@ public class GuardHomepage extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void logout(){
+        Guard guard = new Guard(null, null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            guard.logout("database\\activeUser");
+            new GuardLogin().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton accExeLogoutBtn;

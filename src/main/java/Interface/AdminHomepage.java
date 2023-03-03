@@ -4,9 +4,11 @@
  */
 package Interface;
 
+import User.AccountExecutive;
 import User.AdminExecutive;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -154,9 +156,7 @@ public class AdminHomepage extends javax.swing.JFrame {
 
     private void AdminExeLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminExeLogoutBtnActionPerformed
 
-        AdminExecutive adminExe = new AdminExecutive(null,null);
-        adminExe.logout();
-        this.setVisible(false);
+       logout();
     }//GEN-LAST:event_AdminExeLogoutBtnActionPerformed
 
     private void residentTenantManagementPageLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentTenantManagementPageLabelActionPerformed
@@ -216,6 +216,19 @@ public class AdminHomepage extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void logout(){
+        AdminExecutive admin = new AdminExecutive(null, null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            admin.logout2("database\\activeUser");
+            new LoginMgmt().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton AdminExeLogoutBtn;

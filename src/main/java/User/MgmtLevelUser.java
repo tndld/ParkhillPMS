@@ -64,40 +64,24 @@ public abstract class MgmtLevelUser {
         return false;
     }
     
-    
-    // log out function for management level account
-    public void logout(){
-        int confirmLogout = JOptionPane.showConfirmDialog(null, 
-                "Are you sure want to log out?", "Logout", 
-                JOptionPane.YES_NO_OPTION);
-        if(confirmLogout == JOptionPane.YES_OPTION){
-            this.isLoggedIn = false;
-            
-            JOptionPane.showMessageDialog(null, "You have been logged out.", 
-                    "Logout", JOptionPane.INFORMATION_MESSAGE);
-            
-            new MainMenu().setVisible(true);
+    public void logout2(String filename){
+        try {
+            // Open the file in write mode with "truncate" option to delete its content
+            FileWriter fw = new FileWriter(filename, false);
+            PrintWriter pw = new PrintWriter(fw, false);
+                
+            // Write an empty string to the file to clear its content
+            pw.flush();
+                
+            // Close the writers to release resources
+            pw.close();
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
         }
-    }
-    
-            public void logout2(String filename){
-            try {
-                 // Open the file in write mode with "truncate" option to delete its content
-                FileWriter fw = new FileWriter(filename, false);
-                PrintWriter pw = new PrintWriter(fw, false);
-                
-                // Write an empty string to the file to clear its content
-                pw.flush();
-                
-                // Close the writers to release resources
-                pw.close();
-                fw.close();
-            } catch (IOException e) {
-                 System.out.println("Exception Occurred" + e);
-            }
-            JOptionPane.showMessageDialog(null, "You have been logged out.", 
-                    "Logout", JOptionPane.INFORMATION_MESSAGE);
-            this.isLoggedIn = false;
+        JOptionPane.showMessageDialog(null, "You have been logged out.", 
+                "Logout", JOptionPane.INFORMATION_MESSAGE);
+        this.isLoggedIn = false;
     }
     
     public boolean isLoggedIn(){

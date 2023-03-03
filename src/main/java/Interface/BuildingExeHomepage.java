@@ -4,10 +4,12 @@
  */
 package Interface;
 
+import User.AdminExecutive;
 import User.BuildingExecutive;
 import User.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,9 +95,7 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        BuildingExecutive buildingExe = new BuildingExecutive("building", "building123");
-        buildingExe.logout();
-        this.setVisible(false);
+        logout();
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void patrollingSchedulBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrollingSchedulBtnActionPerformed
@@ -141,8 +141,17 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
     }
     
     public void logout(){
-        
-    }
+        BuildingExecutive building = new BuildingExecutive(null, null);
+        int confirmLogout = JOptionPane.showConfirmDialog(null, 
+                "Are you sure want to log out?", "Logout", 
+                JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == JOptionPane.YES_OPTION){
+            building.logout("database\\activeUser");
+            new LoginMgmt().setVisible(true);
+            this.setVisible(false);
+        }else{
+            this.setVisible(true);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel homepageLabel;
