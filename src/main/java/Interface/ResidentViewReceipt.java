@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +37,15 @@ public class ResidentViewReceipt extends getActiveUser {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
-        setDefaultCloseOperation(ResidentViewReceipt.DISPOSE_ON_CLOSE);
+//        setDefaultCloseOperation(ResidentViewReceipt.DISPOSE_ON_CLOSE);
+        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing (WindowEvent e){
+                dispose();
+            }
+        });
         
         setReceiptTable();
     }
@@ -50,7 +59,6 @@ public class ResidentViewReceipt extends getActiveUser {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        homepageBTN = new javax.swing.JButton();
         receipt = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         receiptTable = new javax.swing.JTable();
@@ -71,13 +79,6 @@ public class ResidentViewReceipt extends getActiveUser {
         pymNoTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        homepageBTN.setText("Back");
-        homepageBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homepageBTNActionPerformed(evt);
-            }
-        });
 
         receipt.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         receipt.setText("My Receipt");
@@ -163,9 +164,7 @@ public class ResidentViewReceipt extends getActiveUser {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,9 +207,7 @@ public class ResidentViewReceipt extends getActiveUser {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homepageBTN)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(receipt)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,11 +240,6 @@ public class ResidentViewReceipt extends getActiveUser {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
-        this.setVisible(false);
-        new ResidentHomepage().setVisible(true);
-    }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void getReceiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getReceiptBTNActionPerformed
         if (!rcpNoTF.getText().equals("")){
@@ -425,7 +417,6 @@ public class ResidentViewReceipt extends getActiveUser {
     private javax.swing.JTextField amountTF;
     private javax.swing.JTextField descTF;
     private javax.swing.JButton getReceiptBTN;
-    private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel inv;
     private javax.swing.JTextField invNo;
     private javax.swing.JLabel invoice2;

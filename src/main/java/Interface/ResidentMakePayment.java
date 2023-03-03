@@ -7,6 +7,8 @@ package Interface;
 import User.Payment;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,6 +23,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -40,6 +43,14 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing (WindowEvent e){
+                dispose();
+            }
+        });
+        
         uploadStatus.setBackground(new java.awt.Color(0,0,0,1));
         fileNameTF.setBackground(new java.awt.Color(0,0,0,1));
         SpinnerNumberModel interval = new SpinnerNumberModel(0.01, 0.01, 10000.00, 0.01);
@@ -55,7 +66,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backBTN = new javax.swing.JButton();
         issueInvoiceTitle = new javax.swing.JLabel();
         bank = new javax.swing.JLabel();
         amount = new javax.swing.JLabel();
@@ -68,13 +78,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         fileNameTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        backBTN.setText("Back");
-        backBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBTNActionPerformed(evt);
-            }
-        });
 
         issueInvoiceTitle.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         issueInvoiceTitle.setText("Add Payment");
@@ -121,9 +124,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -149,9 +149,7 @@ public class ResidentMakePayment extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBTN)
-                .addGap(23, 23, 23)
+                .addGap(52, 52, 52)
                 .addComponent(issueInvoiceTitle)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -176,11 +174,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBTNActionPerformed
-        this.setVisible(false);
-        new ResidentViewInvoice().setVisible(true);
-    }//GEN-LAST:event_backBTNActionPerformed
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         Date d = new Date();
@@ -286,7 +279,6 @@ public class ResidentMakePayment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount;
     private javax.swing.JSpinner amountSpinner;
-    private javax.swing.JButton backBTN;
     private javax.swing.JLabel bank;
     private javax.swing.JTextField bankTF;
     private javax.swing.JLabel evidence;

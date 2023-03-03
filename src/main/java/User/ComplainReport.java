@@ -6,9 +6,6 @@ package User;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -61,7 +58,7 @@ public class ComplainReport extends Report {
             JFreeChart chart = ChartFactory.createBarChart(
                 "Total Complains and Status",
                 "Status",
-                "Payment Amount",
+                "Complain Count",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true,
@@ -81,18 +78,18 @@ public class ComplainReport extends Report {
             rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
             BarRenderer renderer = (BarRenderer) plot.getRenderer();
-            renderer.setDrawBarOutline(false);
+            renderer.setSeriesPaint(0, new Color(33, 113, 181));
 
               // Create the chart panel
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(800, 600));
+            ChartPanel chartPanel = new ChartPanel(chart);
+            chartPanel.setPreferredSize(new Dimension(800, 600));
 
-        // Create the frame and add the chart panel to it
-        JFrame frame = new JFrame("Sales Report");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setContentPane(chartPanel);
-        frame.pack();
-        frame.setVisible(true);
+            // Create the frame and add the chart panel to it
+            JFrame frame = new JFrame("Sales Report");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setContentPane(chartPanel);
+            frame.pack();
+            frame.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

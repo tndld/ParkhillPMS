@@ -38,6 +38,7 @@ public class AccountManageResident extends getActiveUser {
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
         setInvoiceTable();
+        setReceiptTable();
         setPaymentTable();
     }
 
@@ -694,8 +695,41 @@ public class AccountManageResident extends getActiveUser {
     }//GEN-LAST:event_vInvoiceBTNActionPerformed
 
     private void vreceiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vreceiptBTNActionPerformed
-        this.setVisible(false);
-        new ReceiptPage().setVisible(true);
+        int selectedRow = receiptTable.getSelectedRow();
+        if (selectedRow != -1){
+            DefaultTableModel model = (DefaultTableModel)receiptTable.getModel();
+            String rcpNo = model.getValueAt(receiptTable.getSelectedRow(), 0).toString();
+            String date = model.getValueAt(receiptTable.getSelectedRow(), 1).toString();
+            String unit = model.getValueAt(receiptTable.getSelectedRow(), 4).toString();
+            String name = model.getValueAt(receiptTable.getSelectedRow(), 5).toString();
+            String desc = model.getValueAt(receiptTable.getSelectedRow(), 6).toString();
+            String amt = model.getValueAt(receiptTable.getSelectedRow(), 7).toString();
+            String issuer = model.getValueAt(receiptTable.getSelectedRow(), 8).toString();
+            String pymNO = model.getValueAt(receiptTable.getSelectedRow(), 2).toString();
+            
+            String tempFile = "database\\tempReceiptItem.txt";
+            String filePath = "database\\payment.txt";
+            
+            try{
+                BufferedReader br = new BufferedReader(new FileReader(filePath));
+                String line;
+                String bankN = "";
+                while ((line = br.readLine()) != null){
+                    String[] info = line.split(":");
+                    String pym = info[9];
+                    if (pym.equals(pymNO)){
+                        bankN = info[4];
+                    }
+                }
+                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+                bw.write(rcpNo + ":" + date + ":" + unit + ":" + name + ":" + issuer + ":" + bankN + ":" + amt + "\n" + desc + ":" + amt);
+                bw.close();
+                new ReceiptPage().setVisible(true);
+                
+            } catch (IOException ex){
+                System.out.println("Exception occur when getting invoice item: " + ex);
+            }
+        }
     }//GEN-LAST:event_vreceiptBTNActionPerformed
 
     private void invoiceBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invoiceBTN1ActionPerformed
@@ -870,6 +904,28 @@ public class AccountManageResident extends getActiveUser {
             System.out.println("Exception occur: " + ex);
         }
     }
+    
+    private void setReceiptTable(){
+        try {
+            String filePath = "database\\receipt.txt";
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String firstLine = br.readLine().trim();
+            String[] columns = firstLine.split(":");
+            DefaultTableModel rcpTB = (DefaultTableModel)receiptTable.getModel();
+            rcpTB.setColumnIdentifiers(columns);
+            Object[] record = br.lines().toArray();
+            for (int i = 0; i < record.length; i++){
+                String line = record[i].toString().trim();
+                String[] recInfo = line.split(":");
+                rcpTB.addRow(recInfo);
+            }                
+            br.close();
+            
+        } catch (IOException ex) {
+            System.out.println("Exception occur: " + ex);
+        }
+    }
+    
     
     private void setPaymentTable() {
         try {

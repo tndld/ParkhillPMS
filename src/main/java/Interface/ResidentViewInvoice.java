@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +37,14 @@ public class ResidentViewInvoice extends getActiveUser {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         
-        setDefaultCloseOperation(ResidentViewInvoice.DISPOSE_ON_CLOSE);
+//        setDefaultCloseOperation(ResidentViewInvoice.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing (WindowEvent e){
+                dispose();
+            }
+        });
 
         setInvoiceTable();
     }
@@ -51,7 +59,6 @@ public class ResidentViewInvoice extends getActiveUser {
     private void initComponents() {
 
         bill = new javax.swing.JLabel();
-        homepageBTN = new javax.swing.JButton();
         billtabbedPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -88,13 +95,6 @@ public class ResidentViewInvoice extends getActiveUser {
 
         bill.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         bill.setText("My Bill");
-
-        homepageBTN.setText("Back");
-        homepageBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homepageBTNActionPerformed(evt);
-            }
-        });
 
         invoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -365,9 +365,7 @@ public class ResidentViewInvoice extends getActiveUser {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(billtabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(billtabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
                         .addComponent(bill)))
@@ -376,9 +374,7 @@ public class ResidentViewInvoice extends getActiveUser {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homepageBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addComponent(bill)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(billtabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,11 +383,6 @@ public class ResidentViewInvoice extends getActiveUser {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
-        this.setVisible(false);
-        new ResidentHomepage().setVisible(true);
-    }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void getInvoiceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInvoiceBTNActionPerformed
         
@@ -653,7 +644,6 @@ public class ResidentViewInvoice extends getActiveUser {
     private javax.swing.JTextField dueTF;
     private javax.swing.JTextField dueTF1;
     private javax.swing.JButton getInvoiceBTN;
-    private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel invoice;
     private javax.swing.JLabel invoice1;
     private javax.swing.JTextField invoiceTF;

@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,7 +35,15 @@ public class ResidentViewPayment extends getActiveUser {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
-        setDefaultCloseOperation(ResidentViewPayment.DISPOSE_ON_CLOSE);
+//        setDefaultCloseOperation(ResidentViewPayment.DISPOSE_ON_CLOSE);
+        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing (WindowEvent e){
+                dispose();
+            }
+        });
         
         setPaymentTable();
     }
@@ -48,7 +57,6 @@ public class ResidentViewPayment extends getActiveUser {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        homepageBTN = new javax.swing.JButton();
         paymentHistory = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         paymentTable = new javax.swing.JTable();
@@ -68,13 +76,6 @@ public class ResidentViewPayment extends getActiveUser {
         descTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        homepageBTN.setText("Back");
-        homepageBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homepageBTNActionPerformed(evt);
-            }
-        });
 
         paymentHistory.setFont(new java.awt.Font("Goudy Old Style", 3, 36)); // NOI18N
         paymentHistory.setText("Payment History");
@@ -151,10 +152,8 @@ public class ResidentViewPayment extends getActiveUser {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homepageBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,9 +194,7 @@ public class ResidentViewPayment extends getActiveUser {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homepageBTN)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(paymentHistory)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,11 +225,6 @@ public class ResidentViewPayment extends getActiveUser {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void homepageBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homepageBTNActionPerformed
-        this.setVisible(false);
-        new ResidentHomepage().setVisible(true);
-    }//GEN-LAST:event_homepageBTNActionPerformed
 
     private void paymentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paymentTableMouseClicked
         DefaultTableModel model = (DefaultTableModel)paymentTable.getModel();
@@ -367,7 +359,6 @@ public class ResidentViewPayment extends getActiveUser {
     private javax.swing.JTextField bankTF;
     private javax.swing.JTextField descTF;
     private javax.swing.JTextField dueTF1;
-    private javax.swing.JButton homepageBTN;
     private javax.swing.JLabel invoice1;
     private javax.swing.JTextField invoiceTF1;
     private javax.swing.JScrollPane jScrollPane2;
