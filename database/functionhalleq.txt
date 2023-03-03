@@ -1,0 +1,12 @@
+Equipment Name:Quantity
+Round Table:20
+Long Table:20
+Plastic Chair:200
+Wrapped Chair:200
+Plates:500
+Bowl:500
+Glass:500
+Mixer:2
+Microphone:5
+Projector:1
+Spotlight:2

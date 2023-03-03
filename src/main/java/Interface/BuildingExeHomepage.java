@@ -4,9 +4,7 @@
  */
 package Interface;
 
-import User.AdminExecutive;
 import User.BuildingExecutive;
-import User.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -40,6 +38,9 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
         logoutBtn = new javax.swing.JToggleButton();
         homepageLabel = new javax.swing.JLabel();
         patrollingSchedulBtn = new javax.swing.JButton();
+        jobBtn = new javax.swing.JButton();
+        complainBtn = new javax.swing.JButton();
+        reportBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,27 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
             }
         });
 
+        jobBtn.setText("Assign Job");
+        jobBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobBtnActionPerformed(evt);
+            }
+        });
+
+        complainBtn.setText("Complain List");
+        complainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                complainBtnActionPerformed(evt);
+            }
+        });
+
+        reportBtn.setText("View Report");
+        reportBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,7 +98,11 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(176, 176, 176)
-                .addComponent(patrollingSchedulBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(patrollingSchedulBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jobBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(complainBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reportBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,7 +114,13 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
                 .addComponent(homepageLabel)
                 .addGap(50, 50, 50)
                 .addComponent(patrollingSchedulBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jobBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(complainBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +135,24 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
         new PatrollingSchedule().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_patrollingSchedulBtnActionPerformed
+
+    private void jobBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobBtnActionPerformed
+        // TODO add your handling code here:
+        new AssignedJobList().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jobBtnActionPerformed
+
+    private void complainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complainBtnActionPerformed
+        // TODO add your handling code here:
+        new AdminManageComplain().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_complainBtnActionPerformed
+
+    private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
+        // TODO add your handling code here:
+        new GenerateReportAdmin().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_reportBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,8 +204,11 @@ public class BuildingExeHomepage extends javax.swing.JFrame {
         }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton complainBtn;
     private javax.swing.JLabel homepageLabel;
+    private javax.swing.JButton jobBtn;
     private javax.swing.JToggleButton logoutBtn;
     private javax.swing.JButton patrollingSchedulBtn;
+    private javax.swing.JButton reportBtn;
     // End of variables declaration//GEN-END:variables
 }

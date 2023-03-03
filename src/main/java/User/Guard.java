@@ -33,6 +33,27 @@ public class Guard extends User{
     
     public Guard(String username, String password) {
         super(username, password);
+        
+        String filePath = "database\\guard.txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = br.readLine()) != null){
+                String[] guardInfo = line.split(",");
+//                Assign details into constructor
+                if (guardInfo[0].equals(username)){
+                    this.username = guardInfo[0];
+                    this.password = guardInfo[1];
+                }
+            }
+                    
+            br.close();
+            
+        } catch(IOException e){
+            System.out.println("Input/Output Exception : " + e);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
     }
     
     public String getUsername(){

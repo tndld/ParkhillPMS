@@ -45,6 +45,13 @@ public class AdminHomepage extends javax.swing.JFrame {
         cleanerMgmtBtn1 = new javax.swing.JButton();
         guardMgmtBtn = new javax.swing.JButton();
         technicianMgmtBtn = new javax.swing.JButton();
+        account2 = new javax.swing.JLabel();
+        complainBtn = new javax.swing.JButton();
+        account3 = new javax.swing.JLabel();
+        eqBtn = new javax.swing.JButton();
+        bookBtn = new javax.swing.JButton();
+        account4 = new javax.swing.JLabel();
+        complainBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +99,43 @@ public class AdminHomepage extends javax.swing.JFrame {
             }
         });
 
+        account2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        account2.setText("Complain Management");
+
+        complainBtn.setText("View Complain");
+        complainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                complainBtnActionPerformed(evt);
+            }
+        });
+
+        account3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        account3.setText("Facility Equipment and Booking Management");
+
+        eqBtn.setText("Equipment ");
+        eqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eqBtnActionPerformed(evt);
+            }
+        });
+
+        bookBtn.setText("Booking");
+        bookBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookBtnActionPerformed(evt);
+            }
+        });
+
+        account4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        account4.setText("Unit Management");
+
+        complainBtn1.setText("Unit");
+        complainBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                complainBtn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,38 +145,55 @@ public class AdminHomepage extends javax.swing.JFrame {
                 .addComponent(AdminExeLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(residentTenantTitle)
+                .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(residentTenantTitle))
+                        .addComponent(complainBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addComponent(account4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(account2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(account3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(technicianMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cleanerMgmtBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(guardMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(residentTenantManagementPageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(account1)
-                                .addComponent(account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(eqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(complainBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(technicianMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cleanerMgmtBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(guardMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(residentTenantManagementPageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(account1)
+                                        .addComponent(account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(119, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(15, 15, 15)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(15, Short.MAX_VALUE)))
+                    .addContainerGap(17, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(AdminExeLogoutBtn)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(residentTenantTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(account1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(residentTenantManagementPageLabel)
@@ -143,12 +204,26 @@ public class AdminHomepage extends javax.swing.JFrame {
                     .addComponent(cleanerMgmtBtn1)
                     .addComponent(technicianMgmtBtn)
                     .addComponent(guardMgmtBtn))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(account2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(complainBtn)
+                .addGap(27, 27, 27)
+                .addComponent(account3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eqBtn)
+                    .addComponent(bookBtn))
+                .addGap(28, 28, 28)
+                .addComponent(account4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(complainBtn1)
+                .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(180, 180, 180)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(181, Short.MAX_VALUE)))
+                    .addContainerGap(397, Short.MAX_VALUE)))
         );
 
         pack();
@@ -181,6 +256,30 @@ public class AdminHomepage extends javax.swing.JFrame {
         new AdminTechnicianManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_technicianMgmtBtnActionPerformed
+
+    private void complainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complainBtnActionPerformed
+        // TODO add your handling code here:
+        new AdminManageComplain().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_complainBtnActionPerformed
+
+    private void eqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eqBtnActionPerformed
+        // TODO add your handling code here:
+        new AdminFacilityManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_eqBtnActionPerformed
+
+    private void bookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookBtnActionPerformed
+        // TODO add your handling code here:
+        new AdminFacilityBookingManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bookBtnActionPerformed
+
+    private void complainBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complainBtn1ActionPerformed
+        // TODO add your handling code here:
+        new UnitManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_complainBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,7 +333,14 @@ public class AdminHomepage extends javax.swing.JFrame {
     private javax.swing.JToggleButton AdminExeLogoutBtn;
     private javax.swing.JLabel account;
     private javax.swing.JLabel account1;
+    private javax.swing.JLabel account2;
+    private javax.swing.JLabel account3;
+    private javax.swing.JLabel account4;
+    private javax.swing.JButton bookBtn;
     private javax.swing.JButton cleanerMgmtBtn1;
+    private javax.swing.JButton complainBtn;
+    private javax.swing.JButton complainBtn1;
+    private javax.swing.JButton eqBtn;
     private javax.swing.JButton guardMgmtBtn;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton residentTenantManagementPageLabel;

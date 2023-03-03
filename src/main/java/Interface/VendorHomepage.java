@@ -24,6 +24,7 @@ public class VendorHomepage extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+        
     }
 
     /**
@@ -41,6 +42,8 @@ public class VendorHomepage extends javax.swing.JFrame {
         billBTN = new javax.swing.JButton();
         paymentBTN = new javax.swing.JButton();
         receiptBTN = new javax.swing.JButton();
+        viewComplaintBTN = new javax.swing.JButton();
+        complaint = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +81,16 @@ public class VendorHomepage extends javax.swing.JFrame {
             }
         });
 
+        viewComplaintBTN.setText("View and Add Complain");
+        viewComplaintBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewComplaintBTNActionPerformed(evt);
+            }
+        });
+
+        complaint.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
+        complaint.setText("Complaint");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,7 +115,14 @@ public class VendorHomepage extends javax.swing.JFrame {
                                 .addComponent(receiptBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(149, 149, 149)
-                                .addComponent(account)))))
+                                .addComponent(account))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(complaint)))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +139,11 @@ public class VendorHomepage extends javax.swing.JFrame {
                     .addComponent(billBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paymentBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(receiptBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(complaint, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,19 +160,22 @@ public class VendorHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_settingActionPerformed
 
     private void billBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewInvoice().setVisible(true);
     }//GEN-LAST:event_billBTNActionPerformed
 
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewPayment().setVisible(true);
     }//GEN-LAST:event_paymentBTNActionPerformed
 
     private void receiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewReceipt().setVisible(true);
     }//GEN-LAST:event_receiptBTNActionPerformed
+
+    private void viewComplaintBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewComplaintBTNActionPerformed
+        // TODO add your handling code here:
+        new UserComplainList().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_viewComplaintBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,9 +229,11 @@ public class VendorHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel account;
     private javax.swing.JButton billBTN;
+    private javax.swing.JLabel complaint;
     private javax.swing.JButton paymentBTN;
     private javax.swing.JButton receiptBTN;
     private javax.swing.JLabel resAccTitle;
     private javax.swing.JComboBox<String> setting;
+    private javax.swing.JButton viewComplaintBTN;
     // End of variables declaration//GEN-END:variables
 }

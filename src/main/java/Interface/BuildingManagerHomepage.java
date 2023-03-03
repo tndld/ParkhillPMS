@@ -4,7 +4,6 @@
  */
 package Interface;
 
-import User.AdminExecutive;
 import User.BuildingManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -40,6 +39,7 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
         homepageLabel = new javax.swing.JLabel();
         userMgmtBtn = new javax.swing.JButton();
         teamMgmtBtn = new javax.swing.JButton();
+        reportBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +67,13 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
             }
         });
 
+        reportBtn.setText("Generate and View Report");
+        reportBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +92,8 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
                 .addGap(183, 183, 183)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(teamMgmtBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userMgmtBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(userMgmtBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reportBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +107,9 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
                 .addComponent(userMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(teamMgmtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,6 +130,12 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
         new ManagerTeamStructurePage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_teamMgmtBtnActionPerformed
+
+    private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
+        // TODO add your handling code here:
+        new GenerateReport().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_reportBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +188,7 @@ public class BuildingManagerHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buidingExeLogoutBtn;
     private javax.swing.JLabel homepageLabel;
+    private javax.swing.JButton reportBtn;
     private javax.swing.JButton teamMgmtBtn;
     private javax.swing.JButton userMgmtBtn;
     // End of variables declaration//GEN-END:variables

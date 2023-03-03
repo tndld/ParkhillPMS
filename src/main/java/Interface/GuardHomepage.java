@@ -8,6 +8,12 @@ import User.BuildingManager;
 import User.Guard;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,6 +69,11 @@ public class GuardHomepage extends javax.swing.JFrame {
         });
 
         insidentBtn.setText("Incident");
+        insidentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insidentBtnActionPerformed(evt);
+            }
+        });
 
         checkpointBtn.setText("Checkpoint");
         checkpointBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +154,29 @@ public class GuardHomepage extends javax.swing.JFrame {
         new ViewVisitorEntry().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_updateVisitorEntryBtnActionPerformed
+
+    private void insidentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insidentBtnActionPerformed
+        String userFile = "database\\activeUser.txt";
+        // TODO add your handling code here:
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader(userFile));
+            String line = br.readLine();
+            String[] activeUser = line.split(",");
+            String uname = activeUser[0];
+            String pw = activeUser[1];
+            System.out.println(uname);
+            System.out.println(pw);
+            Guard guard = new Guard(uname,pw);
+            System.out.println(guard.getUsername());
+            new UserComplainList().setVisible(true);
+            this.setVisible(false);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GuardHomepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GuardHomepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_insidentBtnActionPerformed
 
     /**
      * @param args the command line arguments

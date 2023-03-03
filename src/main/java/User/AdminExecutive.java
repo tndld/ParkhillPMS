@@ -68,11 +68,11 @@ public class AdminExecutive extends MgmtLevelUser {
     }
     
     public String getUsername(){
-        return this.username;
+        return super.username;
     }
     
     public String getpassword(){
-        return this.username;
+        return super.username;
     }
     
     public String getEmpID(){

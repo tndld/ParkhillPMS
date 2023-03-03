@@ -1,3 +1,1 @@
-Reference No:Type:Date:Duration:Visitor Name:Visitor IC:Car Plate:
-jshan022023-02-25T12:47:24.271690300,Overnight,26 Feb 2023,1 day(s),Hoong Jhen Wei,021126-10-9999,AKW5566
-jshan022023-02-25T12:51:54.671411400,Overnight,28 Feb 2023,1 day(s),Low Jye Ling,891204-018888,FD780
+Reference No:Type:Date:Estimate Duration:Visitor Name:Visitor IC:Car Plate:

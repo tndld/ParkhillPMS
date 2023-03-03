@@ -50,11 +50,9 @@ public class ResidentHomepage extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         booking = new javax.swing.JLabel();
         viewBookingBTN = new javax.swing.JButton();
-        newBookingBTN = new javax.swing.JButton();
         complaint = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         viewComplaintBTN = new javax.swing.JButton();
-        newBookingBTN1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,34 +110,20 @@ public class ResidentHomepage extends javax.swing.JFrame {
         booking.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
         booking.setText("Facility Booking");
 
-        viewBookingBTN.setText("View Booking");
+        viewBookingBTN.setText("View and Add Booking");
         viewBookingBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewBookingBTNActionPerformed(evt);
             }
         });
 
-        newBookingBTN.setText("New Booking");
-        newBookingBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBookingBTNActionPerformed(evt);
-            }
-        });
-
         complaint.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
         complaint.setText("Complaint");
 
-        viewComplaintBTN.setText("View Complaint");
+        viewComplaintBTN.setText("View and Add Complain");
         viewComplaintBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewComplaintBTNActionPerformed(evt);
-            }
-        });
-
-        newBookingBTN1.setText("New Complaint");
-        newBookingBTN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBookingBTN1ActionPerformed(evt);
             }
         });
 
@@ -154,17 +138,6 @@ public class ResidentHomepage extends javax.swing.JFrame {
                         .addComponent(residentUsernameLabel)
                         .addGap(190, 190, 190))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(booking)
-                        .addGap(183, 183, 183))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(viewBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(newBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(complaint)
-                        .addGap(202, 202, 202))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(viewVPassBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ApplyVPassBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,13 +146,20 @@ public class ResidentHomepage extends javax.swing.JFrame {
                         .addComponent(resAccTitle)
                         .addGap(99, 99, 99))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(newBookingBTN1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(booking)
+                        .addGap(183, 183, 183))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator3)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(71, 71, 71)
@@ -190,18 +170,19 @@ public class ResidentHomepage extends javax.swing.JFrame {
                                 .addComponent(receiptBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(220, 220, 220)
-                                .addComponent(account)))
-                        .addGap(0, 62, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator3)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(account))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addGap(157, 157, 157)
+                                .addComponent(viewBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 62, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(complaint)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,17 +211,13 @@ public class ResidentHomepage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(booking, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(viewBookingBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(complaint, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newBookingBTN1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(viewComplaintBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -268,34 +245,27 @@ public class ResidentHomepage extends javax.swing.JFrame {
 
     private void viewBookingBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBookingBTNActionPerformed
         // TODO add your handling code here:
+        new AdminFacilityBookingManagement().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_viewBookingBTNActionPerformed
 
-    private void newBookingBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newBookingBTNActionPerformed
-
     private void paymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewPayment().setVisible(true);
     }//GEN-LAST:event_paymentBTNActionPerformed
 
     private void billBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewInvoice().setVisible(true);
     }//GEN-LAST:event_billBTNActionPerformed
 
     private void receiptBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptBTNActionPerformed
-        this.setVisible(false);
         new ResidentViewReceipt().setVisible(true);
     }//GEN-LAST:event_receiptBTNActionPerformed
 
     private void viewComplaintBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewComplaintBTNActionPerformed
         // TODO add your handling code here:
+        new UserComplainList().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_viewComplaintBTNActionPerformed
-
-    private void newBookingBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingBTN1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newBookingBTN1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,8 +350,6 @@ public class ResidentHomepage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JButton newBookingBTN;
-    private javax.swing.JButton newBookingBTN1;
     private javax.swing.JButton paymentBTN;
     private javax.swing.JButton receiptBTN;
     private javax.swing.JLabel resAccTitle;

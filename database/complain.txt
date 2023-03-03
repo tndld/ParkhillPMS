@@ -1,0 +1,9 @@
+ID:Resident Name:Contact Num:Description:Resolved
+1:Hoong Jhen Wei:012-4501715:AADASDASD:false
+2:LJS:012-2456123:Testing Water Pipe Leak2:true
+5:Guard:N/A:Garad:false
+7:Chee Yan Heng:012-1112879:AdminEditDoneDd:true
+9:Teo Su Yin:01111281358:Lift not working:true
+10:Hoong Jhen Wei:0124501715:dasdasdasd:true
+11:Teo Su Yin:01111281358:Door frequently left unclosed and trigger ring bells.:false
+12:Hoong Jhen Wei:asdasd:asdasdasddasdasdsad:true
