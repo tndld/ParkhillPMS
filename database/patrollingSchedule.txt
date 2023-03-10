@@ -3,4 +3,3 @@ Gate A;Daily;12pm;11:59pm;check-in;
 Perimeter Wall;Weekly;5am;6am;To check-in;
 Carpark A;Daily;6pm;12am;check-in;
 Gate B;Daily;5pm;12am;check-in;
-3;Daily;3;3;To check-in;

@@ -6,3 +6,4 @@ Inv2023-2:3 Mar 2023:B-07-01:Low Jye Shan:Maybank:Management Fee - February:221.
 Inv2023-2:3 Mar 2023:B-07-01:Low Jye Shan:Maybank:Sinking Fund - February:221.2:maybank.jpg:Approve:P2023-5
 Inv2023-6:3 Mar 2023:2:Vendor 2:CIMB:Water Bill - February:0.1:cimb.png:Fail:P2023-6
 Inv2023-3:3 Mar 2023:C-07-02:Hoong Jhen Wei:Public Bank:Car Park Rental - February:100.0:public.png:Pending:P2023-7
+Inv2023-1:3 Mar 2023:D-07-01:Teo Su Yin:CIMB:Water Bill - February:300.0::Pending:P2023-8

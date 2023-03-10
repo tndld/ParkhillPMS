@@ -146,20 +146,16 @@ public class FacilityBooking {
                     fw.write(sb.toString());
                     return true;
                 } catch (IOException e) {
-                    System.out.println("1");
                     return false;
                 }
             } else {
-                System.out.println("2");
                 return false;
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Facility.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("3");
             return false;
         } catch (IOException ex) {
             Logger.getLogger(Facility.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("4");
             return false;
         }
     }
@@ -175,7 +171,6 @@ public class FacilityBooking {
             while ((line = br.readLine()) != null) {
                 String[] dataRow = line.split(";");
                 if (dataRow[0].equals(String.valueOf(getId()))) {
-                    System.out.println("yes");
                     setName(name);
                     setContact(contact);
                     setUnitNumber(unitNumber);
@@ -196,7 +191,6 @@ public class FacilityBooking {
                     return false;
                 }
             } else {
-                System.out.println(foundVariable);
                 return false;
             }
         } catch (FileNotFoundException ex) {

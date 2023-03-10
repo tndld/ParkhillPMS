@@ -1,9 +1,9 @@
 ID:Description:Assigned Worker:Status:Complete By
-3:a:Abu:Pending:a
-4:b:Barten:Completed:bTest
-6:a:Abu:Pending:a
-7:b:Barten:Completed:bTest
-9:a:Abu:Pending:a
-10:b:Barten:Completed:bTest
-12:a:Abu:Pending:a
-13:b:Barten:Completed:bTest
+1:Fix the elevator at ground floor:Daphne:Pending:15/3/2023
+2:Infront unit C-03-02, smelly substance detected. Clean immediately:Sarah:Completed:11/3/2023
+3:Parking lot no 39 owner complain other vehicle parked:Siwa:Pending:14/3/2023
+4:One of the lift is facing  breakdown, check it out. :Anne:Pending:13/3/2023
+5:Someone vommited in the lobby, clean immediately.:Navin:Completed:10/3/2023
+6:Fight occured in second floor, resolve the issue.:Ming Ming:Completed:10/3/2023
+7:Bubble tea spilled infront guard house:Sarah:Pending:11/3/2023
+8:Visitor overnight parking did not move their car after specific time:Siwa:Pending:12/3/2023

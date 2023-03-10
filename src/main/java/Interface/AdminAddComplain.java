@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 public class AdminAddComplain extends javax.swing.JFrame {
     String fileLoc = "database\\complain.txt";
-    int id;
+    int id=1;
     /**
      * Creates new form AddComplain2
      */
@@ -53,6 +53,7 @@ public class AdminAddComplain extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileLoc));
             String line = br.readLine(); // read the first line
+            idTF.setText(Integer.toString(id));
             while ((line = br.readLine()) != null) {
                 String[] dataRow = line.split(":");
                 id = Integer.parseInt(dataRow[0]); 

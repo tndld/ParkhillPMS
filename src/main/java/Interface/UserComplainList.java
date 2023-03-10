@@ -207,7 +207,6 @@ public class UserComplainList extends javax.swing.JFrame {
             Resident res = new Resident(uname, pw);
             Vendor ven = new Vendor(uname,pw);
             Guard guard = new Guard(uname,pw);
-            System.out.println(guard.getUsername());
             if (res.getFullName() != null) {
                 new ResidentHomepage().setVisible(true);
                 this.setVisible(false);

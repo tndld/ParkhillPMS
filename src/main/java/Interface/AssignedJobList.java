@@ -31,10 +31,7 @@ public class AssignedJobList extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
-  
-        Date currentDate = new Date();
-        System.out.println(currentDate);
-        try {
+          try {
             File file = new File(fileLoc);
             BufferedReader br = new BufferedReader(new FileReader(file));
             String firstLine = br.readLine().trim();
@@ -173,7 +170,6 @@ public class AssignedJobList extends javax.swing.JFrame {
         // TODO add your handling code here:
         AssignedTask task = new AssignedTask();
         String keyword = searchTF.getText();
-        System.out.println(keyword);
         task.searchTable(keyword, taskTable);
     }//GEN-LAST:event_searchBtnActionPerformed
 

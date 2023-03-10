@@ -13,13 +13,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class UserAddComplain extends javax.swing.JFrame {
     String fileLoc = "database\\complain.txt";
     String userFile = "database\\activeUser.txt";
-    int id;
+    int id=1;
     /**
      * Creates new form UserAddComplain
      */
@@ -58,6 +56,7 @@ public class UserAddComplain extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileLoc));
             String line = br.readLine(); // read the first line
+            idTF.setText(Integer.toString(id));
             while ((line = br.readLine()) != null) {
                 String[] dataRow = line.split(":");
                 id = Integer.parseInt(dataRow[0]); 
@@ -164,6 +163,11 @@ public class UserAddComplain extends javax.swing.JFrame {
         contactTF.setEditable(false);
 
         idTF.setEditable(false);
+        idTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTFActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -286,6 +290,10 @@ public class UserAddComplain extends javax.swing.JFrame {
     private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTFActionPerformed
+
+    private void idTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTFActionPerformed
 
     /**
      * @param args the command line arguments

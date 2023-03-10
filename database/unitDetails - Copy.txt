@@ -1,5 +1,0 @@
-Unit Number:Square Feet:Number of Bedrooms:Owner Name:Owner Contact
-C-13-08:1208:3:HJW:012-4501715
-C-19-07:1208:3:LJK:012-4503456
-C-19-08:1208:3:Sss:0100000
-C-11-02:1008:3:Ddd:0124551

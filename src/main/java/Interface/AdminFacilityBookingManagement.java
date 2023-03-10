@@ -283,9 +283,7 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-            System.out.println(tabbedPane.getSelectedIndex());
             if (tabbedPane.getSelectedIndex() == 0) {
-                System.out.println(tabbedPane.getSelectedIndex());
 //                String typeOfFacility = "function";
                 int selectedFunctionRow = fhallTable.getSelectedRow();
                 if (selectedFunctionRow != -1){
@@ -304,7 +302,6 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
             } else 
                 
             if (tabbedPane.getSelectedIndex() == 1) {
-                System.out.println(tabbedPane.getSelectedIndex());
 //                String typeOfFacility = "gym";&
                 int selectedGymRow = gymTable.getSelectedRow();
                 if (selectedGymRow != -1){
@@ -344,7 +341,6 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(this,"Booking does Not Exist, Delete Failed");
                     }
-                    book.refreshTable(fhallTable, model, fileLoc);
                 } else {
                     JOptionPane.showMessageDialog(this,"Please select a row!");
                 } 
@@ -367,7 +363,6 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Booking Does Not Exist, Delete Failed");
                 }
-                book.refreshTable(gymTable, model, fileLoc);
             } else {
                 JOptionPane.showMessageDialog(this,"Please select a row!");
             }

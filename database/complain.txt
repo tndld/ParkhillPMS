@@ -1,9 +1,10 @@
 ID:Resident Name:Contact Num:Description:Resolved
-1:Hoong Jhen Wei:012-4501715:AADASDASD:false
-2:LJS:012-2456123:Testing Water Pipe Leak2:true
-5:Guard:N/A:Garad:false
-7:Chee Yan Heng:012-1112879:AdminEditDoneDd:true
-9:Teo Su Yin:01111281358:Lift not working:true
-10:Hoong Jhen Wei:0124501715:dasdasdasd:true
-11:Teo Su Yin:01111281358:Door frequently left unclosed and trigger ring bells.:false
-12:Hoong Jhen Wei:asdasd:asdasdasddasdasdsad:true
+1:Hoong Jhen Wei:0124501715:Water leaking constantly from upstairs:false
+2:Hoong Jhen Wei:0124501715:Garbage room very smelly, constantly throw away pls:false
+3:Hoong Jhen Wei:0124501715:Water pressure always low, do check it out :false
+4:Teo Su Yin:01111281358:Tenant staying in C-05-01 making loud noises at midnight:true
+5:Teo Su Yin:01111281358:Water pipe is leaking:false
+6:Low Jye Shan:0127173702:Garbage room always full:false
+7:Low Jye Shan:0127173702:Light bulb on second floor always not functioning:true
+8:Low Jye Shan:0127173702:Lobby hallway is very dark at night time:false
+9:Low Jye Shan:0127173702:Lift bomba not working:false

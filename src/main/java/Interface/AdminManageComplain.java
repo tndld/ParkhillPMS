@@ -189,14 +189,11 @@ public class AdminManageComplain extends javax.swing.JFrame {
             String pw = activeUser[1];
             AdminExecutive admin = new AdminExecutive(uname, pw);
             BuildingExecutive manager = new BuildingExecutive(uname,pw);
-            System.out.println(manager.getname());
-            System.out.println(admin.getname());
             if (admin.getname() != null) {
                 new AdminHomepage().setVisible(true);
                 this.setVisible(false);
             } else if (manager.getname()!= null ) {
                 new BuildingExeHomepage().setVisible(true);
-                System.out.println("1");
                 this.setVisible(false);
             } 
             br.close();

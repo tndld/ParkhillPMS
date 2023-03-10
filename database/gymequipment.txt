@@ -4,4 +4,4 @@ Dumbbell Set:15
 Treadmill:4
 Rowing Machine:2
 Stationary Bicycle:3
-Barbell Set:4
+Barbell Set:6
