@@ -43,6 +43,8 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
         
         String activeUserFile = "database\\activeUser.txt";
         String userFile = "database\\residentTenant.txt";
+        boolean resident = false;
+        boolean adm = false;
         try {
             BufferedReader ar = new BufferedReader(new FileReader(activeUserFile));
             String lineA = ar.readLine();
@@ -54,6 +56,8 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
             
             if ((res.getFullName() != null )) {
 //                new ResidentFacilityBookingManagement().setVisible(true);
+                  resident = true;
+                  adm = false;
                 try{
                     BufferedReader br = new BufferedReader(new FileReader(fileGym));
                     String firstLine = br.readLine().trim();
@@ -88,6 +92,8 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
                     System.out.println("Exception Occurred" + e);
                 }
             } else if ((admin.getUsername() != null )) {
+                adm = true;
+                resident = false;
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(fileGym));
                     String firstLine = br.readLine().trim();
@@ -338,6 +344,8 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
                     String fileLoc = "database\\" + typeOfFac +"Booking.txt";
                     if (book.deleteBooking(id, fileLoc)){
                         JOptionPane.showMessageDialog(this, "Booking Successfully Deleted");
+                        this.dispose();
+                        new AdminFacilityBookingManagement().setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this,"Booking does Not Exist, Delete Failed");
                     }
@@ -360,6 +368,8 @@ public class AdminFacilityBookingManagement extends javax.swing.JFrame {
                 String fileLoc = "database\\" + typeOfFac +"Booking.txt";
                 if (book.deleteBooking(id, fileLoc)){
                     JOptionPane.showMessageDialog(this,  "Booking Successfully Deleted");
+                        model.fireTableDataChanged();
+                        gymTable.repaint();
                 } else {
                     JOptionPane.showMessageDialog(this, "Booking Does Not Exist, Delete Failed");
                 }
